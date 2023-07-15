@@ -13,13 +13,29 @@ String.prototype.minus = function(substraend){
     let auxSubstraend;
     
     //checking which number is bigger
-    if(this.length > substraend.length){
-        auxMinuend = this.split('');          //converting string to array 
-        auxSubstraend = substraend.split(''); //converting string to array 
-    }
-    else if(substraend.length > this.length){
-        auxMinuend = substraend.split('');  //converting string to array
-        auxSubstraend = this.split('');     //converting string to array
+    if(this.length > substraend.length) { //minuend is bigger
+        auxMinuend = this.split('');          
+        auxSubstraend = substraend.split(''); 
+    } else if(substraend.length > this.length) { //substraend is bigger
+        auxMinuend = substraend.split('');  
+        auxSubstraend = this.split('');   
+        isNegative = true;  
+    } else { //they are same length, more observation is neccesary
+        //we will check both numbers most significan digitis, the first number that
+        //have a smaller digit is the smaller number
+        for(let i = 0; i < this.length; i ++) {
+            if(this[i] > substraend[i]){
+                auxMinuend = this.split('');  //minuend is bigger        
+                auxSubstraend = substraend.split(''); 
+                break;
+            } else if(substraend[i] > this[i]){
+                auxMinuend = substraend.split(''); //substraend is bigger
+                auxSubstraend = this.split('');
+                break;  
+            } else{ //they area equal, the result is 0
+                return('0');
+            }
+        }
     }
 
     return '1234'
