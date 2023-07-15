@@ -1,0 +1,19 @@
+{
+  "name": "nodejs_development_course",
+  "version": "1.0.0",
+  "description": "class 01",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jszychowskilaba/nodejs_development_course.git"
+  },
+  "author": "Jose Szychowski",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jszychowskilaba/nodejs_development_course/issues"
+  },
+  "homepage": "https://github.com/jszychowskilaba/nodejs_development_course#readme"
+}
