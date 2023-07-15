@@ -8,12 +8,13 @@ function generateRandomNumber(maxDigitNumber) {
     }while(digits == 0); //number of digitis will never be 0
     
     let randomNumber = '';
+    
     for (let i = 0; i < digits; i++) {
-      const digit = Math.floor(Math.random() * 10);
-      if(i == 0 && digit == 0) { //so the first digit of the number will never be 0
-        i = -1;
-        continue;
-        }
+      let digit;
+      do{
+        digit = Math.floor(Math.random() * 10);
+      }while(i == 0 && digit == 0); //number of first digit will never be 0
+
       randomNumber += digit.toString();
     }
     return randomNumber;

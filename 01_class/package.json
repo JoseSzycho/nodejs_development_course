@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/jszychowskilaba/nodejs_development_course/issues"
   },
-  "homepage": "https://github.com/jszychowskilaba/nodejs_development_course#readme"
+  "homepage": "https://github.com/jszychowskilaba/nodejs_development_course#readme",
+  "devDependencies": {
+    "jest": "^29.6.1"
+  }
 }

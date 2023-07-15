@@ -41,39 +41,4 @@ String.prototype.plus = function(addend){
     return sum.join(''); //convert sum array to string
 }
 
-
-//-------------------------Testing the new plus prototype--------------------------------
-
-const generateRandomNumber =  require('./generateRandomNumber'); //it generates a random number with a max number of digits
-const maxDigitNumber = 500; //set the max number of digit for the random number (number of digits will be from 1 to maxDigitNumber)
-const numberOfTests = 10000; //number of test to be performed
-let testResult = true; //if a test does not pass, it turns false
-
-
-for(let i = 0; i < numberOfTests; i ++){
-    console.log(`Test ${i+1}`);
-
-    //generating random numbers with a random amount of digits
-    let firstAddend = generateRandomNumber(maxDigitNumber);
-    let secondAddend = generateRandomNumber(maxDigitNumber);
-
-    //result using BigInt
-    let resultMathLib = String(BigInt(firstAddend) + BigInt(secondAddend)); 
-    console.log(`Math lib result: \n ${resultMathLib}`);
-
-    //result usign plus prototype of String
-    let resultStringPlus = firstAddend.plus(secondAddend); 
-    console.log(`Plus prototype result: \n ${resultStringPlus} \n`);
-
-    if(resultMathLib !== resultStringPlus) {
-        testResult = false; //if result not equals, test fails;
-    }
-}
-
-if(testResult){
-    console.log('Test passed');
-}
-else{
-    console.log('Test failed');
-}
-
+module.exports = String;
