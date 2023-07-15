@@ -2,7 +2,6 @@ String.prototype.minus = function(substraend){
 
     let numberOfOperations = 0; //number of operation it will be performed
     let rest = [];   //total of the substraction
-    let borrow = 0;  //if partial substraction, if substraend > minuend, minuend borrow one unit to its most significan neighbor
     
     //if substraend > minuend, the result will be negative, so we change order
     //between the operators, the minuend will be the auxSubstraend, and the
@@ -24,13 +23,14 @@ String.prototype.minus = function(substraend){
         //we will check both numbers most significan digitis, the first number that
         //have a smaller digit is the smaller number
         for(let i = 0; i < this.length; i ++) {
-            if(this[i] > substraend[i]){
-                auxMinuend = this.split('');  //minuend is bigger        
+            if(this[i] > substraend[i]){    //minuend is bigger 
+                auxMinuend = this.split('');         
                 auxSubstraend = substraend.split(''); 
                 break;
-            } else if(substraend[i] > this[i]){
-                auxMinuend = substraend.split(''); //substraend is bigger
+            } else if(substraend[i] > this[i]){ //substraend is bigger
+                auxMinuend = substraend.split(''); 
                 auxSubstraend = this.split('');
+                isNegative = true;
                 break;  
             } else{ //they area equal, the result is 0
                 return('0');
@@ -38,7 +38,29 @@ String.prototype.minus = function(substraend){
         }
     }
 
-    return '1234'
+    //if auxMinuend is shorter in digit number than auxSubstraend, 
+    //we fill the most significant numbers of auxSubstraend  with zeros
+    if(auxMinuend.length > auxSubstraend.length){
+        const diff = auxMinuend.length - auxSubstraend.length;
+        for(let i = 0; i < diff; i ++){
+            auxSubstraend.unshift('0'); 
+        }
+    }
+
+    //trasnversing from back to front in both strings
+    //for the total of partial operations we will perform
+    for(let i = auxMinuend.length - 1; i >= 0; i--) {
+        if(auxSubstraend[i] > auxMinuend[i]){
+            rest.unshift(Number('1' + auxMinuend[i]) - Number(auxSubstraend[i]));
+            auxMinuend[i - 1] = Number(auxMinuend[i - 1]) - 1;
+            continue;
+        } 
+        rest.unshift(Number(auxMinuend[i]) - Number(auxSubstraend[i]));
+    }
+
+    rest = rest.join(''); //convert rest array to string
+    if(isNegative) '-'.concat(rest); //adds negative symbol to rest result
+    return restResult;
 }
 
 module.exports = String;
