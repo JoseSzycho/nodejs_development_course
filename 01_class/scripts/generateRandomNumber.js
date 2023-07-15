@@ -13,7 +13,7 @@ function generateRandomNumber(maxDigitNumber) {
       if(i == 0 && digit == 0) { //so the first digit of the number will never be 0
         i = -1;
         continue;
-    }
+        }
       randomNumber += digit.toString();
     }
     return randomNumber;
