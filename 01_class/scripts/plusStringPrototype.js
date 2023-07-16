@@ -38,6 +38,12 @@ String.prototype.plus = function(addend){
 
     if(carry) sum.unshift(1); //if there is a carry reminder, we add it to most significant digit of sum
 
+    //removing unnecesary zeros, in case the object in case the object
+    //was called with zeros in the most significants bits
+    while(sum[0] === 0 && sum.length > 1){ 
+        sum.shift();                       
+    }
+
     return sum.join(''); //convert sum array to string
 }
 

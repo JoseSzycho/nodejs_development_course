@@ -1,6 +1,5 @@
 String.prototype.minus = function(substraend){
 
-    let numberOfOperations = 0; //number of operation it will be performed
     let rest = [];   //total of the substraction
     
     //if substraend > minuend, the result will be negative, so we change order
@@ -44,7 +43,6 @@ String.prototype.minus = function(substraend){
 
     //if auxMinuend is shorter in digit number than auxSubstraend, 
     //we fill the most significant numbers of auxSubstraend  with zeros
-    
     if(auxMinuend.length > auxSubstraend.length){
         const diff = auxMinuend.length - auxSubstraend.length;
         for(let i = 0; i < diff; i ++){
@@ -55,11 +53,11 @@ String.prototype.minus = function(substraend){
     //trasnversing from back to front in both strings
     //for the total of partial operations we will perform
     for(let i = auxMinuend.length - 1; i >= 0; i--) {
-        if(auxSubstraend[i] > auxMinuend[i]){
+        if(auxSubstraend[i] > auxMinuend[i]){ //in this case, we need to borrow units to our left neighbour
             rest.unshift(Number('1' + auxMinuend[i]) - Number(auxSubstraend[i]));
 
             let j = 1;
-            while(auxMinuend[i - j] === '0'){
+            while(auxMinuend[i - j] === '0'){ //if the neighbour is a zero, we neet to take to the next neighbour
                 auxMinuend[i - j] = '9';
                 j++;
             };
@@ -72,7 +70,7 @@ String.prototype.minus = function(substraend){
     }
 
     //if the last most significant digits from lasts partials operations are the same, we must remove
-    //the remainders zeros
+    //the remainders zeros, also if the object was called with zeros in the most significant digits
     while(rest[0] === 0 && rest.length > 1){
         rest.shift();
     }
