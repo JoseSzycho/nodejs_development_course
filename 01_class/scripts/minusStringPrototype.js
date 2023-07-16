@@ -20,9 +20,11 @@ String.prototype.minus = function(substraend){
         auxSubstraend = this.split(''); 
         isNegative = true;
     } 
-    if(substraend.length == this.length) { //they are same length, more observation is neccesary
-        //we will check both numbers most significan digitis, the first number that
-        //have a smaller digit is the smaller number
+
+    //Numbers are same length, more observation is neccesary
+    //we will check both numbers most significan digitis, the first number that
+    //have a smaller digit is the smaller number
+    if(substraend.length == this.length) { 
         for(let i = 0; i < this.length; i ++) {
             if(this[i] > substraend[i]){    //minuend is bigger 
                 auxMinuend = this.split('');         
@@ -35,7 +37,9 @@ String.prototype.minus = function(substraend){
                 isNegative = true;
                 break;
             } 
-            if(i == this.length - 1){ //if the for ends, both numbers are equals and result is 0
+
+            //if the for ends, both numbers are equals and result is 0
+            if(i == this.length - 1){ 
                 return '0';
             }
         }

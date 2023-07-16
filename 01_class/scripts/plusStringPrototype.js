@@ -7,7 +7,7 @@ String.prototype.plus = function(addend){
     let firstAddend; 
     let secondAddend; 
 
-    //Makes the longets number to be in firstAddend
+    //Makes the longest number to be in firstAddend
     if(this.length >= addend.length){
         firstAddend = this.split('');       //converting string to array  
         secondAddend = addend.split('');    //converting string to array
