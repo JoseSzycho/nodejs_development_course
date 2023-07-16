@@ -14,7 +14,7 @@ String.prototype.multiply = function(multiplier) {
         for(let k = multiplicand.length - 1; k >= 0; k-- ) {
             
             //partial result, if we have carry from another operation, we add it.
-            //It is convertod to string in order to take the units and tens, 
+            //It is converted to string in order to take the units and tens, 
             //as we cannot use math library
             let partialResult = String(Number(multiplier[j]) * Number(multiplicand[k]) + result[j + k + 1] + carry);
             
