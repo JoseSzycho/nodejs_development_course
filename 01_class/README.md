@@ -23,6 +23,12 @@ String.divide(string) => string
 String.multiply(string) => string
 ```
 
+### Homework development
+
+Each task have its hown test file and script. Each script is stored in the ```./scripts``` folder and each test is store in the ```./tests``` folder.
+
+__Tests are performed in jest and using random numbers. The maximun amount of digits of the random numbers and number of tests to perform can be edited.__
+
 ### String.plus(string) => string 
 
 This task is made using a classic algorithm learned in school. For making the script por readable, all string are transformed to arrays, even if it not necessary.
