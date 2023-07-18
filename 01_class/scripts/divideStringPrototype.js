@@ -1,18 +1,15 @@
-const minusStringPrototype = require('../scripts/minusStringPrototype'); 
-const plusStringPrototype = require('../scripts/plusStringPrototype');
-const multiplyStringPrototype = require('../scripts/multiplyStringPrototype');
+const minusStringPrototype = require('./minusStringPrototype'); 
 
-String.prototype.divide = function(divisor) {
-    let DECIMALPRECISION = 1000;
-    let newDivisor = divisor.split('');
-    let newDividend = this.split('');
-    let reminder = this.split(''); 
-    let result = ['0'];
-    let intResult = ['0'];
-    let decimaResult = ['0'];
-    let shift = 0;
-
-     const isNumberOneBiggerOrEqual = (number1, number2) => {
+String.prototype.div = function (strDivisor){
+   
+    let dividend = this.split('');      //converting string to array
+    let divisor = strDivisor.split(''); //converting string to array
+    let intResult;                      //for storing partial result 
+    
+    
+    if(divisor['0'] == '0') throw new Error ('Cannot divide by zero');
+    
+    const isNumberOneBiggerOrEqual = (number1, number2) => {
 
         if(number1.length > number2.length) return 'bigger';
         if(number2.length > number1.length) return 'smaller';
@@ -36,78 +33,55 @@ String.prototype.divide = function(divisor) {
             }
         }
 
-     }
+    }
 
+    const divide = (dividend, divisor) => {
+        let subDividend = [];   //stores most significant digits of dividend till is bigger than  divisor for making the partial operation
+        let partialResult;      //stores calculations of each round
+        let reminder = [];      //stores (subdividend - divisor) of eacho round
+        let result = [];        //stores the final result
 
-     if(isNumberOneBiggerOrEqual(reminder, divisor) !== 'smaller') {
-
-        while(isNumberOneBiggerOrEqual(reminder, divisor) !== 'smaller'){
-            reminder = (reminder.join('').minus(divisor)).split('');
-            intResult = (intResult.join('').plus('1')).split('');
-         }
-
-         if(reminder == '0') return intResult.join('');
-     }
-     
-     //borar lo de abajo si no funciona
-     while(isNumberOneBiggerOrEqual(reminder, divisor) !== 'bigger'){
-        shift++;
-        reminder.push('0');
-     } 
-
-     //ajustar precision
-     for(let i = 0; i<shift - 1; i++) DECIMALPRECISION /= 10;
-
-
-
-     reminder = (reminder.join('')).multiply(String(DECIMALPRECISION)).split('');
-     
- 
-     while(isNumberOneBiggerOrEqual(reminder, divisor) !== 'smaller'){
-        reminder = (reminder.join('').minus(divisor)).split('');
-        decimaResult = (decimaResult.join('').plus('1')).split('');
-     }
+        const divLength = dividend.length;
+        for(let i = 0; i <= divLength - 1; i++){    //there are are much operations as dividend lengtth
+            subDividend.push(dividend.shift());     //storing first digit of dividend
+            if(subDividend[0] == '0'){              //If digit is 0, we add 0 to partial result and skip to next round,
+                subDividend = [];                   //is a special case when there is no remindir
+                result.push(String(0));
+                continue;                           //skip to next run
+            }
     
-     //borrar si no funchiona
-     for(let i = 0; i < shift - 1; i++) {
-        decimaResult.unshift('0');
-     }
- 
-     result = (intResult.concat('.').concat(decimaResult));
-
-     /*
-     for(let i = result.length - 1; i >= 0; i--){
-        console.log(result[i])
-        if(result[i] === '0') {
-            result.pop();
+            if(isNumberOneBiggerOrEqual(subDividend, divisor) !== 'smaller') { //when the subdividend is bigger than divisor, we can perform operation
+                reminder = subDividend;
+                partialResult = 0;
+    
+                while(isNumberOneBiggerOrEqual(reminder, divisor) !== 'smaller'){       //Finding the partial result, the amount of times we cant rest
+                    reminder = (reminder.join('').minus(divisor.join(''))).split('');   //the divisor to the reminder is the partial result
+                    partialResult++;
+                };
+         
+                if(reminder[0] === '0') {       //If there is no reminder, it must be empty, 
+                    subDividend = [];           //for pushing a digit from dividend in next round
+                } else{
+                    subDividend = reminder;     //if there is a reminder, we push to it next values from dividend in next round
+                } 
+                result.push(String(partialResult)); //storing partial result
+          
+            } else{
+              if(result.length > 0)  result.push(String(0)); //If not operation could be performed, we add zero 
+            }                                                //to result and take digit from dividend in next round
         }
-     }
-     */
-
-     return result.join('');
+    
+        if(result[0] == undefined) result = ['0'] ; //if there was not posible operation, result is zero
+        return([result.join(''), reminder]);
+    }
+    
+    //getting int parte of result and reminder for calculatin
+    //the decimal part
+   
+    [intResult, reminderFromIntResult] = divide(dividend, divisor);
+    
+    return intResult;
+    
 }
 
-
-
-   /*
-for(let i = 0; i < DECIMALPRECISION; i++){
-
-    if(isNumberOneBiggerOrEqual(reminder, divisor) === 'smaller') {
-        decimaResult.push('0');
-        reminder.push('0');
-    } else {
-        result = ['0'];
-        while(isNumberOneBiggerOrEqual(reminder, divisor) !== 'smaller'){
-            reminder = (reminder.join('').minus(divisor)).split('');
-            result = (result.join('').plus('1')).split('');
-         }
-         decimaResult.push(result);
-    }
-    if(reminder == '0') break;
- }
-
- result = intResult.concat(decimaResult).join('');
- 
- return(result);
-
- */
+module.exports = String;
