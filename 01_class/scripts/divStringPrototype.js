@@ -38,45 +38,37 @@ String.prototype.div = function (strDivisor){
     }
 
     const divLength = dividend.length;
-    for(let i = 0; i <= divLength; i++){
-
-        subDividend.push(dividend.shift());
+    for(let i = 0; i <= divLength - 1; i++){
         
+     
+        subDividend.push(dividend.shift());
+        console.log("subdividend start: " +subDividend)
 
         if(isNumberOneBiggerOrEqual(subDividend, divisor) !== 'smaller') {
             reminder = subDividend;
             partialResult = 0;
 
             while(isNumberOneBiggerOrEqual(reminder, divisor) !== 'smaller'){
-                console.log("reminder: " +reminder.join(''))
                 reminder = (reminder.join('').minus(divisor.join(''))).split('');
                 partialResult++;
-                console.log("reminder 1: " +reminder)
-            }
-   
-            /*
-            while(isNumberOneBiggerOrEqual(reminder, divisor) !== 'smaller'){
-                console.log("reminder: " +reminder.join(''))
-                reminder = (reminder.join('').minus(divisor.join(''))).split('');
-                partialResult++;
-                console.log("reminder 1: " +reminder)
-            }
-            */
-            intResult.push(partialResult);
-            if(reminder === '0') {
-                subDividend = [0];
-              
-            } else {
+            };
+     
+            if(reminder[0] === '0') {
+                subDividend = []
+            } else{
+                
                 subDividend = reminder;
-            }
-            
-        }
-        intResult.push(0);
-
-       
+            } 
+            intResult.push(String(partialResult));
+      
+        } else{
+          if(intResult.length > 0)  intResult.push(String(0));
+        }        
     }
 
-    return(String(intResult));
+    if(intResult[0] == undefined) intResult = ['0'] ;
+
+    return(intResult.join(''));
      
     
 }
