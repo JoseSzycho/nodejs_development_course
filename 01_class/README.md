@@ -31,11 +31,11 @@ __Tests are performed in jest and using random numbers. The maximun amount of di
 
 ### String.plus(string) => string 
 
-This task is made using a classic algorithm learned in school. For making the script por readable, all string are transformed to arrays, even if it not necessary.
+This task is made using a classic algorithm learned in school. For making the script por readable, all string are transformed to arrays, even if it's not necessary.
 
 For performing the operations, it is checked which addend have more digits, the one with more digits will be the first addend, the other one will be filled with zeros in the most significant digits in order to have tha same length, so we can use the same script with out having to use conditionals for the cases in which numbers have different lengths.
 
-Then we transverse both numbers from back to front, partial operations are performed and the carry numbers are stored to add to the next most significant digit.
+Then we transverse both numbers from back to front, partial operations are performed for each columnd and the carry numbers are stored to add to the next most significant digit.
 
 |    |   | *1* | *1* | *1* |   | 
 | -- | --| - | --| --| - |
@@ -43,17 +43,17 @@ Then we transverse both numbers from back to front, partial operations are perfo
 | +  | 0 | 3 | 8 | 7 | 6 |
 |    | 1 | 8 | 0 | 1 | 5 |
 
-Finally, it is checkef if there are zeros in the most significant digits, in case the user used the prototype with numbers like "02342" for example. If there are zeros we romove them.
+Finally, it is checkef if there are zeros in the most significant digits of the result, in case the user used the prototype with numbers like "02342" for example. If there are zeros we romove them.
 
 ### String.minus(string) => string 
 
-This task is made using a classic algorithm learned in school. For making the script por readable, all string are transformed to arrays, even if it not necessary.
+This task is made using a classic algorithm learned in school. For making the script por readable, all string are transformed to arrays, even if it's not necessary.
 
-First we check which number is in abosolute module is bigger, if the minuend is bigger than substraend we proceed in this order, if substraned is bigger than minuend, we have to invert the order of the operators and check a flag that indicates the rest  will be negative, then it proceed with the rest as normal.
+First we check which number is bigger in abosulte module, if the minuend is bigger than substraend we proceed in this order, if substraned is bigger than minuend, we have to invert the order of the operators and check a flag that indicates the rest  will be negative, then the algorithm proceed with the rest as normal.
 
 Zeros are filled to the most significant digits of the shorter operand, so we can use the same script with out having to use conditionals for the cases in which numbers have different lengths.
 
-Then we transverse both numbers from back to front, partial operations are performed, being aware the if the partial minuend is smaller than the partial substraend, a ten must be borrower from a neighbor.
+Finally we transverse both numbers from back to front, partial operations are performed, being aware the if the partial minuend is smaller than the partial substraend, we must borrow a ten from a neighbour.
 
 |    |   | *1*3  | *10*   | *1*3 |   | 
 | -- | --| -     | --    | --    | - |
@@ -64,12 +64,12 @@ Then we transverse both numbers from back to front, partial operations are perfo
 Finally we check if the result have a zero at the most signficant digit, if so, we remove it. It might the case the most significant number of both operands are the same, so a reamainding zero will appear.
 
 ## String.multiply(string) => string
-This task is made using a classic algorithm learned in school with a small variation. For making the script por readable, all string are transformed to arrays, even if it not necessary.
+This task is made using a classic algorithm learned in school with a small variation. For making the script por readable, all string are transformed to arrays, even if it's not necessary.
 
 First, we create and empty array that will store the result. This array have the necessary length for storing the maximun possible result.
 
-Then we proceed to iterate over to fors, transversing both numbers from back to front in order to perform the partial operations.
-There is a carry variable that stores if a partial sum operation have more than two digits. 
+Then we proceed to iterate over two fors, transversing both numbers from back to front in order to perform the partial operations.
+There is a carry variable that stores if a partial sum operation have more than two digits, so we add it in the next run. 
 
 |    |   | |  |  |   | 
 | -- | --| - | --| --| - |
@@ -90,7 +90,7 @@ This task is made using a classic algorithm learned in school. We only divide in
 
 ![Divition example](./images/image.png)
 
-The algorithm works using a subDividend, which will always try to takes digits from dividiend in order to be equal or bigger than divisor, so it can perform the operation. 
+The algorithm works using a subDividend, which will always try to takes digits from dividiend in order to be equal or bigger than divisor, so it can perform the operation, lets explain with an example. 
 
 In the first run the subDividend will be 42, as it is bigger than 12, it will go into a while cycle, where it calculates the partial result (3) an the reminder (36).
 
