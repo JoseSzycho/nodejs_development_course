@@ -4,6 +4,7 @@ String.prototype.minus = function(substraend){
     let originalSubstraend = substraend.split('');
     let originalMinuend = this.split('');
 
+    //Removing initials zeros if sent by user
     while(originalMinuend[0] === '0' && originalMinuend.length > 1){
         originalMinuend.shift();
     }

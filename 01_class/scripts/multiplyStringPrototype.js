@@ -3,6 +3,8 @@ String.prototype.multiply = function(multiplier) {
     multiplier = multiplier.split('');
     let carry = 0;
 
+    //As is made the algorithm, it is not need to remove initials zeros sent by user
+
     //creating empty array with zeros with expected result size, it have zeros
     //in order to use them for operations, as partial operations are stored there
     let result = new Array(multiplier.length + multiplicand.length).fill(0); 

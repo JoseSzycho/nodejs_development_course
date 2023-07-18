@@ -6,6 +6,13 @@ String.prototype.div = function (strDivisor){
     let divisor = strDivisor.split(''); //converting string to array
     let intResult;                      //for storing partial result 
     
+    //Removing initials zeros if sent by user
+    while(dividend[0] === '0' && dividend.length > 1){
+        dividend.shift();
+    }
+    while(divisor[0] === '0' && divisor.length > 1){
+        divisor.shift();
+    }
     
     if(divisor['0'] == '0') throw new Error ('Cannot divide by zero');
     

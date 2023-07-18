@@ -23,7 +23,7 @@ String.divide(string) => string
 String.multiply(string) => string
 ```
 
-### Homework development
+## Homework development
 
 Each task have its hown test file and script. Each script is stored in the ```./scripts``` folder and each test is store in the ```./tests``` folder.
 
@@ -82,3 +82,18 @@ There is a carry variable that stores if a partial sum operation have more than 
 The variation from school algorithm begins here, instead of having one new array for each partial operation, we perform the partial operations over the result array, so the partial results are being stored there and are modificated every run of the fors cycles.
 
 Finnaly we remove the unnecesary zeros, as we start with an array filled with zeros, if most signficant digit are not overloaded, we have to remove them.
+
+## String.multiply(string) => string
+
+This task is made using a classic algorithm learned in school. We only divide integers numbers and return integer results. If there is a reminder, we ignore it. We cannot divide by zero.
+
+
+![Divition example](./images/image.png)
+
+The algorithm works using a subDividend, which will always try to takes digits from dividiend in order to be equal or bigger than divisor, so it can perform the operation. 
+
+In the first run the subDividend will be 42, as it is bigger than 12, it will go into a while cycle, where it calculates the partial result (3) an the reminder (36).
+
+As the reminder (36) is bigger than the divisor (12), we can perform the operation as explained before.
+
+Now, we have a reminder of 6, that is not bigger than the divisor (12), so the reminder is stored in the subDividend, and we push the 0 from the dividend, so now we can perform the last operation.

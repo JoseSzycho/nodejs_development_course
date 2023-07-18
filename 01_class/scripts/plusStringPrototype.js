@@ -7,6 +7,8 @@ String.prototype.plus = function(addend){
     let firstAddend; 
     let secondAddend; 
 
+    //As is made the algorithm, it is not need to remove initials zeros sent by user
+
     //Makes the longest number to be in firstAddend
     if(this.length >= addend.length){
         firstAddend = this.split('');       //converting string to array  
