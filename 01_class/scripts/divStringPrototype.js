@@ -39,10 +39,13 @@ String.prototype.div = function (strDivisor){
 
     const divLength = dividend.length;
     for(let i = 0; i <= divLength - 1; i++){
-        
-     
         subDividend.push(dividend.shift());
-        console.log("subdividend start: " +subDividend)
+        
+        if(subDividend[0] == '0'){
+            subDividend = [];
+            intResult.push(String(0));
+            continue;
+        }
 
         if(isNumberOneBiggerOrEqual(subDividend, divisor) !== 'smaller') {
             reminder = subDividend;
@@ -54,9 +57,8 @@ String.prototype.div = function (strDivisor){
             };
      
             if(reminder[0] === '0') {
-                subDividend = []
+                subDividend = [];
             } else{
-                
                 subDividend = reminder;
             } 
             intResult.push(String(partialResult));
@@ -69,6 +71,52 @@ String.prototype.div = function (strDivisor){
     if(intResult[0] == undefined) intResult = ['0'] ;
 
     return(intResult.join(''));
+
+
+    while(isNumberOneBiggerOrEqual(reminder, divisor) !== 'bigger'){
+        shift++;
+        reminder.push('0');
+    } 
+
+    //ajustar precision
+    for(let i = 0; i<shift - 1; i++) DECIMALPRECISION /= 10;
+
+    decimalDividend = (reminder.join('')).multiply(String(DECIMALPRECISION)).split('');
+
+
+    //calculates the decimal part of the result
+    subDividend = [];
+    divLength = decimalDividend.length;
+    for(let i = 0; i <= divLength - 1; i++){
+  
+        subDividend.push(decimalDividend.shift());
+        if(isNumberOneBiggerOrEqual(subDividend, divisor) !== 'smaller') {
+            reminder = subDividend;
+            partialResult = 0;
+  
+            while(isNumberOneBiggerOrEqual(reminder, divisor) !== 'smaller'){
+                reminder = (reminder.join('').minus(divisor.join(''))).split('');
+                partialResult++;
+            };
+       
+            if(reminder[0] === '0') {
+                subDividend = []
+            } else{
+                subDividend = reminder;
+            }
+                decimalResult.push(String(partialResult));
+        
+        } else{
+            if(intResult.length > 0)  decimalResult.push(String(0));
+        }        
+    }
+
+    //borrar si no funchiona
+    for(let i = 0; i < shift - 1; i++) {
+        decimalResult.unshift('0');
+    }
+
+    return((intResult.concat('.').concat(decimalResult)).join(''));
      
     
 }
