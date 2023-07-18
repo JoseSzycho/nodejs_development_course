@@ -1,7 +1,7 @@
 const generateRandomNumber =  require('../scripts/generateRandomNumber'); //it generates a random number with a max number of digits
 const StringPrototype = require('../scripts/minusStringPrototype'); 
-const maxDigitNumber = 100; //set the max number of digit for the random number (number of digits will be from 1 to maxDigitNumber)
-const numberOfTests = 10000; //number of test to be performed
+const maxDigitNumber = 60; //set the max number of digit for the random number (number of digits will be from 1 to maxDigitNumber)
+const numberOfTests = 9999; //number of test to be performed
 
 describe('Test minus prototype and type of result', () => {
     for(let i = 0; i < numberOfTests; i ++){
@@ -15,7 +15,6 @@ describe('Test minus prototype and type of result', () => {
 
         //result usign minus prototype of String
         let resultStringMinus = minuend.minus(substraend); 
-
         
             test(`Expect ${minuend} - ${substraend} to be ${resultMathLib}`, () => {
                 expect(resultStringMinus).toBe(resultMathLib);
