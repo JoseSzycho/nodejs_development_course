@@ -4,12 +4,13 @@ const multiplyStringPrototype = require('../scripts/multiplyStringPrototype');
 
 
 String.prototype.div = function (strDivisor){
+   
     let dividend = this.split('');
     let divisor = strDivisor.split('');
-    let subDividend = [];
-    let partialResult;
-    let reminder = [];
-    let intResult = [];
+    let intResult;
+   
+    let reminderFromIntResult;
+    
         
     const isNumberOneBiggerOrEqual = (number1, number2) => {
 
@@ -37,87 +38,54 @@ String.prototype.div = function (strDivisor){
 
     }
 
-    const divLength = dividend.length;
-    for(let i = 0; i <= divLength - 1; i++){
-        subDividend.push(dividend.shift());
-        
-        if(subDividend[0] == '0'){
-            subDividend = [];
-            intResult.push(String(0));
-            continue;
-        }
+    const divide = (dividend, divisor) => {
+        let subDividend = [];
+        let partialResult;
+        let reminder = [];
+        let result = [];
 
-        if(isNumberOneBiggerOrEqual(subDividend, divisor) !== 'smaller') {
-            reminder = subDividend;
-            partialResult = 0;
-
-            while(isNumberOneBiggerOrEqual(reminder, divisor) !== 'smaller'){
-                reminder = (reminder.join('').minus(divisor.join(''))).split('');
-                partialResult++;
-            };
-     
-            if(reminder[0] === '0') {
+        const divLength = dividend.length;
+        for(let i = 0; i <= divLength - 1; i++){
+            subDividend.push(dividend.shift());
+            
+            if(subDividend[0] == '0'){
                 subDividend = [];
-            } else{
-                subDividend = reminder;
-            } 
-            intResult.push(String(partialResult));
-      
-        } else{
-          if(intResult.length > 0)  intResult.push(String(0));
-        }        
-    }
-
-    if(intResult[0] == undefined) intResult = ['0'] ;
-
-    return(intResult.join(''));
-
-
-    while(isNumberOneBiggerOrEqual(reminder, divisor) !== 'bigger'){
-        shift++;
-        reminder.push('0');
-    } 
-
-    //ajustar precision
-    for(let i = 0; i<shift - 1; i++) DECIMALPRECISION /= 10;
-
-    decimalDividend = (reminder.join('')).multiply(String(DECIMALPRECISION)).split('');
-
-
-    //calculates the decimal part of the result
-    subDividend = [];
-    divLength = decimalDividend.length;
-    for(let i = 0; i <= divLength - 1; i++){
-  
-        subDividend.push(decimalDividend.shift());
-        if(isNumberOneBiggerOrEqual(subDividend, divisor) !== 'smaller') {
-            reminder = subDividend;
-            partialResult = 0;
-  
-            while(isNumberOneBiggerOrEqual(reminder, divisor) !== 'smaller'){
-                reminder = (reminder.join('').minus(divisor.join(''))).split('');
-                partialResult++;
-            };
-       
-            if(reminder[0] === '0') {
-                subDividend = []
-            } else{
-                subDividend = reminder;
+                result.push(String(0));
+                continue;
             }
-                decimalResult.push(String(partialResult));
-        
-        } else{
-            if(intResult.length > 0)  decimalResult.push(String(0));
-        }        
+    
+            if(isNumberOneBiggerOrEqual(subDividend, divisor) !== 'smaller') {
+                reminder = subDividend;
+                partialResult = 0;
+    
+                while(isNumberOneBiggerOrEqual(reminder, divisor) !== 'smaller'){
+                    reminder = (reminder.join('').minus(divisor.join(''))).split('');
+                    partialResult++;
+                };
+         
+                if(reminder[0] === '0') {
+                    subDividend = [];
+                } else{
+                    subDividend = reminder;
+                } 
+                result.push(String(partialResult));
+          
+            } else{
+              if(result.length > 0)  result.push(String(0));
+            }        
+        }
+    
+        if(result[0] == undefined) result = ['0'] ;
+        return([result.join(''), reminder]);
     }
-
-    //borrar si no funchiona
-    for(let i = 0; i < shift - 1; i++) {
-        decimalResult.unshift('0');
-    }
-
-    return((intResult.concat('.').concat(decimalResult)).join(''));
-     
+    
+    //getting int parte of result and reminder for calculatin
+    //the decimal part
+   
+    [intResult, reminderFromIntResult] = divide(dividend, divisor);
+    
+    return intResult;
+    
     
 }
 
