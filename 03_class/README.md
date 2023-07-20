@@ -208,6 +208,78 @@ console.log(+booleanValue); // Output: 1 (true is converted to 1)
 console.log(+notANumber); // Output: NaN (cannot be converted to a number)
 ```
 
+### Falsy values of Boolean type convertion
+__This values will give a false:__
+```js
+if (false) {
+  console.log("This won't be executed");
+}
+if (0) { //also +0 and -0
+  console.log("This won't be executed");
+}
+if (NaN) {
+  console.log("This won't be executed");
+}
+if (null) {
+  console.log("This won't be executed");
+}
+if (undefined) {
+  console.log("This won't be executed");
+}
+if ("") { // also "0"
+  console.log("This won't be executed");
+}
+
+//All of other values will return true
+```
+
+### Object to primitive convertions
+[For detailed information see this.](https://javascript.info/object-toprimitive).
+
+__Function toString__
+
+First it will check for the method toString and return the value, if no method is available, it will check for valueOf and it will try to return this, if no method is there, it will return error.
+
+_function.toString()
+
+	if isPrimitive(input.toString) => input.toString
+	if isPrimitive(input.valueOf) => input.valueOf
+	thrwow new TypeError_
+
+  __Function toNumber__
+
+  First it will check for the method valueOf and return the value, if no method is available, it will check for toString and it will try to return this, if no method is there, it will return error.
+
+_function.toNumber()
+
+	if isPrimitive(input.valueOf) => input.valueOf
+	if isPrimitive(input.toString) => input.toString
+	thrwow new TypeError_
+
+  __There is also a Symbol.toPrimitive method, check the link at the begining of this section.__
+
+  ```js
+let user = {
+  name: "John",
+  money: 1000,
+
+  // for hint="string"
+  toString() {
+    return `Hi: "${this.name}"`;
+  },
+
+  // for hint="number" or "default"
+  valueOf() {
+    return this.money;
+  }
+
+};
+
+console.log(user); // {name: "John"}
+console.log(String(user)); // => Hi: "John"
+console.log(user + 500); // => 1500 (here convert user to Number, return 1000 and add 500)
+  ```
+
 ## Why string is unmutable
 ```Info from chatGPT, it seems okay```
 
@@ -252,30 +324,6 @@ __Modifying Elements:__ If you modify an element in the array, JavaScript uses t
 
 This reference-based approach is why arrays can have dynamic lengths and why operations like adding or removing elements from an array are relatively efficient. When you modify an array, you don't need to copy the entire array's contents; you only need to update the specific elements being changed.
 
-## Falsy values of Boolean type convertion
-__This values will give a false:__
-```js
-if (false) {
-  console.log("This won't be executed");
-}
-if (0) { //also +0 and -0
-  console.log("This won't be executed");
-}
-if (NaN) {
-  console.log("This won't be executed");
-}
-if (null) {
-  console.log("This won't be executed");
-}
-if (undefined) {
-  console.log("This won't be executed");
-}
-if ("") { // also "0"
-  console.log("This won't be executed");
-}
-
-//All of other values will return true
-```
 ## Operators
 JavaScript have many kind of operators, these operators are:
 
@@ -289,3 +337,12 @@ JavaScript have many kind of operators, these operators are:
 * __Type Operators__
 
 [See explanation of each operator here.](https://www.w3schools.com/js/js_operators.asp)
+
+
+## Cheat sheet for ```==```
+
+![== char](./images/equal.png)
+
+## Cheat sheet for ```===```
+
+![=== char](./images/equalType.png)
