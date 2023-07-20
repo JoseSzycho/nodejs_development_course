@@ -143,9 +143,49 @@ Nan === Nan // => false
 
 let val = NaN;
 Number.isNan(val) // => true
+if(val === val) // => false, only happens with NaN
 
 // This stands since the beginning of JavaScript
 typeof null === "object";
 ```
 
 ## Type conversion
+
+JavaScript have two types of type convertions:
+* __Implict / non-explicit__ 
+* __Non-implicit / explicit__
+
+### Implicit type convertion
+ Happens automatically by JavaScript when an operation involves operands of different types.
+
+```js
+// Example
+let num1 = 5;          // num1 is a number
+let num2 = "10";       // num2 is a string
+
+let result = num1 + num2; // JavaScript will convert num1 to a string and perform string concatenation.
+console.log(result);   // Output: "510" (a string)
+```
+
+### Non-implicit / explicit type convertion
+Developers can explicitly convert data from one type to another using various built-in functions or methods. 
+```js
+// Example
+let strNumber = "42";
+let num = Number(strNumber); // Converts the string "42" to a number 42
+console.log(num); // Output: 42
+```
+
+__Some explicit__ type convertions are:
+* __Number():__ Converts a value to a number.
+* __parseInt() and parseFloat():__ Converts a string to an integer or floating-point number.
+* __String():__ Converts a value to a string.
+* __Boolean():__ Converts a value to a boolean.
+* __BigInt():__ Converts a number into a big int.
+
+__Explicit type convertions__ can also be:
+* __Simple:__ Simple type conversion refers to converting primitive data types directly into other primitive data types, like the examples shown above.
+* __Complex:__ Complex type conversion involves converting objects into primitive data types or other objects (arrays, objects, functions). This conversiones are done with:
+  * toString()
+  * valueOf()
+  
