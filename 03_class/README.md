@@ -189,3 +189,65 @@ __Explicit type convertions__ can also be:
   * toString()
   * valueOf()
   
+  ### Unary "+" operator
+  
+__The unary plus operator (+)__ is a built-in operator in JavaScript that is used to convert its operand into a number explicitly. It is a form of explicit type conversion similar to using the Number() function but in a more concise form.
+
+__Example:__
+```js
+let numString = "42";
+let numericString = "3.14";
+let negativeString = "-10";
+let booleanValue = true;
+let notANumber = "Hello";
+
+console.log(+numString); // Output: 42 (converted to a number)
+console.log(+numericString); // Output: 3.14 (converted to a number)
+console.log(+negativeString); // Output: -10 (converted to a number)
+console.log(+booleanValue); // Output: 1 (true is converted to 1)
+console.log(+notANumber); // Output: NaN (cannot be converted to a number)
+```
+
+## Why string is unmutable
+```Info from chatGPT, it seems okay```
+
+In JavaScript, strings are immutable, which means that once a string is created, its content cannot be changed. Any operation that seems to modify a string actually creates a new string with the modified content, leaving the original string unchanged. This immutability is a fundamental characteristic of strings in JavaScript and is shared by most programming languages.
+
+__There are several reasons why strings are designed to be immutable:__
+
+* __Predictability:__ Immutability ensures that strings behave predictably in various scenarios. Once you have a string value, you can rely on it not changing unexpectedly, which can lead to more reliable and bug-free code.
+
+* __Performance:__ Immutable strings make certain operations more efficient. For example, when concatenating two strings, instead of modifying the existing string, JavaScript can create a new string by combining the contents of the original strings. This approach is more efficient in terms of memory usage and execution speed.
+
+* __Sharing:__ In some cases, JavaScript can optimize memory usage by sharing references to the same string among different variables. If strings were mutable, modifying one variable could inadvertently affect other variables sharing the same string reference.
+
+* __Security:__ Immutability can improve security by preventing certain types of attacks, such as data tampering or injection vulnerabilities. Immutable strings help ensure data integrity in security-critical applications.
+
+__Example:__
+```js
+let originalString = "Hello";
+let modifiedString = originalString.toUpperCase();
+
+console.log(originalString); // Output: "Hello" (unchanged)
+console.log(modifiedString); // Output: "HELLO" (new string with modified content)
+
+```
+
+## Observation of arrays
+```Copied from internet, it is okay.```
+
+In JavaScript, __arrays are objects__, and like all objects, they are __stored in memory as references__. When you declare an array in JavaScript, what you actually create is a reference to the memory location where the array data is stored.
+
+__When you assign an array variable to other variable, you copy the memory reference, so when you change any of the variables, the other will also be modified.__
+
+Here's a simplified explanation of how arrays work in memory:
+
+__Declaration:__ When you declare an array, JavaScript allocates memory for the array's contents and stores the elements sequentially in memory. It also creates a reference (a memory address) that points to the location where the array data is stored.
+
+__Reference:__ The array variable you declare doesn't contain the actual array data directly. Instead, it holds the memory address (reference) to where the array data is stored in memory.
+
+__Accessing Elements:__ When you access elements in the array using their index, JavaScript uses the reference to locate the memory address of the desired element and fetches its value from that location.
+
+__Modifying Elements:__ If you modify an element in the array, JavaScript uses the reference to find the memory address of the element and updates the value at that location.
+
+This reference-based approach is why arrays can have dynamic lengths and why operations like adding or removing elements from an array are relatively efficient. When you modify an array, you don't need to copy the entire array's contents; you only need to update the specific elements being changed.
