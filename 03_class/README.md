@@ -251,3 +251,41 @@ __Accessing Elements:__ When you access elements in the array using their index,
 __Modifying Elements:__ If you modify an element in the array, JavaScript uses the reference to find the memory address of the element and updates the value at that location.
 
 This reference-based approach is why arrays can have dynamic lengths and why operations like adding or removing elements from an array are relatively efficient. When you modify an array, you don't need to copy the entire array's contents; you only need to update the specific elements being changed.
+
+## Falsy values of Boolean type convertion
+__This values will give a false:__
+```js
+if (false) {
+  console.log("This won't be executed");
+}
+if (0) { //also +0 and -0
+  console.log("This won't be executed");
+}
+if (NaN) {
+  console.log("This won't be executed");
+}
+if (null) {
+  console.log("This won't be executed");
+}
+if (undefined) {
+  console.log("This won't be executed");
+}
+if ("") { // also "0"
+  console.log("This won't be executed");
+}
+
+//All of other values will return true
+```
+## Operators
+JavaScript have many kind of operators, these operators are:
+
+* __Arithmetic Operators__
+* __Assignment Operators__
+* __Comparison Operators__
+* __String Operators__
+* __Logical Operators__
+* __Bitwise Operators__
+* __Ternary Operators__
+* __Type Operators__
+
+[See explanation of each operator here.](https://www.w3schools.com/js/js_operators.asp)
