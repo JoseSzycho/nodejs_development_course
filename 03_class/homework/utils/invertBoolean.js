@@ -1,5 +1,5 @@
 const invertBoolean = (value) => {
-    if(typeof value !== 'bolleand') throw new TypeError('Value must be boolean type.');
+    if(typeof value !== 'boolean') throw new TypeError('Value must be boolean type.');
     if(value === true) return false;
     if(value === false) return true;
 
