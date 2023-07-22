@@ -61,7 +61,7 @@ test('Expect Map([4, 5, 6]) to be "1,4,2,5,3,6"', () => {
     myMap.set('2', 5);
     myMap.set('3', 6);
     expect(sintringifyValue(myMap))
-    .toBe('1,4,2,5,3,6');
+    .toBe('[["1",4],["2",5],["3",6]]');
 });
 
 test('Expect null to be "null', () => {
@@ -69,7 +69,7 @@ test('Expect null to be "null', () => {
     .toBe('null');
 });
 
-test('Expect [1, 2, 3, 4] to be "1,2,3,4', () => {
+test('Expect [1, 2, 3, 4] to be "1,2,3,4"', () => {
     expect(sintringifyValue([1, 2, 3, 4]))
     .toBe('[1,2,3,4]');
 });

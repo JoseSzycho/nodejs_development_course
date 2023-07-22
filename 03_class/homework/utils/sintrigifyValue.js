@@ -22,11 +22,8 @@ const sintringifyValue = (value) => {
             return String(value);
 
         case 'object':
-            const setOrMaptoArray = (value) => {
-                return Array.from(value).join(',')
-            }
-            if(value instanceof Set) return setOrMaptoArray(value);
-            if(value instanceof Map) return setOrMaptoArray(value);
+            if(value instanceof Set) return Array.from(value).join(',');
+            if(value instanceof Map) return JSON.stringify([...value]);
             return JSON.stringify(value); // for array, null, date, objects
 
         default: // if here, there is an unexpected case
