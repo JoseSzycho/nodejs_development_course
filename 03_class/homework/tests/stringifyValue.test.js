@@ -11,6 +11,12 @@ test('Expect NaN to string be an error', () => {
         .toThrow('NaN is not valid for converting to string');
 });
 
+test('Expect undefined to string be an error', () => {
+    expect(() => {
+        sintringifyValue(undefined)})
+        .toThrow('There is no value for converting to string.');
+});
+
 test('Expect "Hello World" to be "Hello World"', () => {
     expect(sintringifyValue('Hello World'))
     .toBe('Hello World');
