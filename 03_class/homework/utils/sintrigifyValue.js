@@ -29,7 +29,7 @@ const sintringifyValue = (value) => {
             if(value instanceof Map) return setOrMaptoArray(value);
             return JSON.stringify(value); // for array, null, date, objects
 
-        default:
+        default: // if here, there is an unexpected case
             throw new TypeError(`Unexpected error with ${value} of type ${typeof value},
              copy paste this error and send to developer.`);
     }
