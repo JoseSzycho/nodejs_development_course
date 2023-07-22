@@ -18,16 +18,9 @@ test('Expect "Hello World" to be an error"', () => {
         .toThrow('Can not convert to number.');
 });
 
-test('Expect NaN to string be an error', () => {
+test('Expect NaN to be an error', () => {
     expect(() => {
         convertToNumber(NaN)})
-        .toThrow('Can not convert to number.');
-});
-
-
-test('Expect Symbol(1) to be an error', () => {
-    expect(() => {
-        convertToNumber(Symbol(1))})
         .toThrow('Can not convert to number.');
 });
 
@@ -36,12 +29,24 @@ test('Expect BigInt(543) to be 543', () => {
     .toBe(543);
 });
 
+test('Expect Symbol(1) to be an error', () => {
+    expect(() => {
+        convertToNumber(Symbol(1))})
+        .toThrow('Can not convert to number.');
+});
+
 test('Expect function to be an error', () => {
     const func = () => {
         console.log("Hello World !");
     }
     expect(() => {
         convertToNumber(func)})
+        .toThrow('Can not convert to number.');
+});
+
+test('Expect undefined to be an error', () => {
+    expect(() => {
+        convertToNumber(undefined)})
         .toThrow('Can not convert to number.');
 });
 
