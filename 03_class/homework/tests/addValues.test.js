@@ -2,28 +2,34 @@ const addValues = require('../utils/addValues');
 
 describe('Testing error scenarios', () => {
 
-    test('One value is a NaN', () => {
+    test('Second value is a NaN', () => {
         expect(() => {
             addValues(5, NaN)})
-            .toThrow(TypeError)
+            .toThrow('NaN is not valid for adding.')
+    });
+
+    test('First value is a NaN', () => {
+        expect(() => {
+            addValues(NaN, 5)})
+            .toThrow('NaN is not valid for adding.')
     });
 
     test('One value is a undefined', () => {
         expect(() => {
             addValues(undefined, "hey")})
-            .toThrow(TypeError)
+            .toThrow('Value must be a number or string')
     });
 
     test('Values are valid data types but are different types', () => {
         expect(() => {
-            addValues(5, "hey")})
-            .toThrow(TypeError)
+            addValues("hey", 5)})
+            .toThrow('Both values must be equal type.')
     });
 
     test('One value is an array', () => {
         expect(() => {
             addValues(5, [5])})
-            .toThrow(TypeError)
+            .toThrow('Value must be a number or string')
     });
 });
 

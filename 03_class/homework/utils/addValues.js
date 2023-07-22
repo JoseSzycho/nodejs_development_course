@@ -1,6 +1,6 @@
 // Adds to values.
-// It only work with String and Number
-// Only returns if both values are equal type
+// It only work with String and Number data types
+// Only returns if both values are equal and valid data type
 
 const addValues = (value1, value2) => {
     
