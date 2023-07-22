@@ -62,6 +62,14 @@ const convertToNumber = (value) => {
                 return auxValue;
             }
 
+            // If here, there is a bug.
+            throw new TypeError(`Unexpected error with ${value} of type ${typeof value},
+            copy paste this error and send to developer.`);
+
+        default:
+            // If here, there is a bug.
+            throw new TypeError(`Unexpected error with ${value} of type ${typeof value},
+            copy paste this error and send to developer.`);
     }
 }
 
