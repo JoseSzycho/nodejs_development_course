@@ -1,9 +1,21 @@
-const convertToNumber = require('../utils/converToNumber');
+const convertToNumber = require('../utils/convertToNumber');
 
 
 test('Expect 431 to be 431', () => {
     expect(convertToNumber(431))
-    .toBe('431');
+    .toBe(431);
+});
+
+
+test('Expect "431" to be 431', () => {
+    expect(convertToNumber('431'))
+    .toBe(431);
+});
+
+test('Expect "Hello World" to be an error"', () => {
+    expect(() => {
+        convertToNumber('Hello World')})
+        .toThrow('Can not convert to number.');
 });
 
 test('Expect NaN to string be an error', () => {
@@ -12,14 +24,11 @@ test('Expect NaN to string be an error', () => {
         .toThrow('Can not convert to number.');
 });
 
-test('Expect "Hello World" to be an error"', () => {
-    expect(convertToNumber('Hello World'))
-    .toBe('Can not convert to number.');
-});
 
 test('Expect Symbol(1) to be an error', () => {
-    expect(convertToNumber(Symbol("1")))
-    .toBe('Can not convert to number.');
+    expect(() => {
+        convertToNumber(Symbol(1))})
+        .toThrow('Can not convert to number.');
 });
 
 test('Expect BigInt(543) to be 543', () => {
@@ -43,7 +52,7 @@ test('Expect true to be 1', () => {
 
 test('Expect false to be 0', () => {
     expect(convertToNumber(false))
-    .toBe('false');
+    .toBe(0);
 });
 
 test('Expect Set([1, 2, 3]) to be 123', () => {
@@ -76,14 +85,21 @@ test('Expect Map... to an error', () => {
         .toThrow('Can not convert to number.');
 });
 
+
+test('Expect array [1, 2, 3, 4] to be 1234', () => {
+    expect(convertToNumber([1, 2, 3, 4]))
+    .toBe(1234);
+});
+
+test('Expect array [1, "a", 3] to be an error', () => {
+    expect(() => {
+        convertToNumber([1, 'a', 3])})
+        .toThrow('Can not convert to number.');
+});
+
 test('Expect null to be 0', () => {
     expect(convertToNumber(null))
     .toBe(0);
-});
-
-test('Expect [1, 2, 3, 4] to be 1234', () => {
-    expect(convertToNumber([1, 2, 3, 4]))
-    .toBe(1234);
 });
 
 test('Expect objet to be 456', () => {
