@@ -24,6 +24,11 @@ const addValues = (value1, value2) => {
     if(typeof value1 == 'number') return value1 + value2;
     if(typeof value2 == 'string') return value1.concat(value2);
  
+    // If we are here, there is a bug
+    throw new TypeError(
+        `Unexpected error with ${value1} of type ${typeof value1}
+        and ${value2} of type ${typeof value2},
+        copy paste this error and send to developer.`);
 }
 
 module.exports = addValues;
