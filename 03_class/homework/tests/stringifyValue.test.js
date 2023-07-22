@@ -1,4 +1,4 @@
-const sintringifyValue = require('../utils/sintrigifyValue');
+const sintringifyValue = require('../utils/stringifyValue');
 
 test('Expect 431 to be "431"', () => {
     expect(sintringifyValue(431))
