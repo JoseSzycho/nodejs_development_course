@@ -12,14 +12,13 @@ const convertToNumber = (value) => {
             auxValue = Number(value);
             if(!(auxValue == auxValue)) throw new TypeError('Can not convert to number.'); // if NaN
             return Number(auxValue);
-
-        case 'symbol':
-            throw new TypeError('Can not convert to number.');
-
+        
         case 'bigint':
             return Number(value);
 
+        case 'symbol':
         case 'function':
+        case 'undefined':
             throw new TypeError('Can not convert to number.');
 
         case 'boolean':
