@@ -9,7 +9,7 @@ const convertToNumber = (value) => {
             return value;
         
         case 'string':
-            auxValue = Number(value);
+            auxValue = parseFloat(value);
             if(!(auxValue == auxValue)) throw new TypeError('Can not convert to number.'); // if NaN
             return Number(auxValue);
         
