@@ -30,6 +30,11 @@ describe("Value to Number coercion", () => {
         expect(coerceToType(false, 'number')).toBe(0);
     })
 
+    test('Expect null to be 0', () => {
+        expect(coerceToType(null, 'number')).toBe(0);
+    })
+
+
     test('Expect undefined to be an error', () => {
         expect(() => {
             coerceToType(undefined, 'number')})
@@ -109,5 +114,63 @@ describe("Value to Boolean coercion", () => {
             .toThrow('Can not convert to boolean.');
     });
 
+    test('Expect undefined to be an error', () => {
+        expect(() => {
+            coerceToType(undefined, 'boolean')})
+            .toThrow('Can not convert to boolean.');
+    });
+
+    test('Expect null to be an error', () => {
+        expect(() => {
+            coerceToType(null, 'boolean')})
+            .toThrow('Can not convert to boolean.');
+    });
+
+    test('Expect NaN to be an error', () => {
+        expect(() => {
+            coerceToType(NaN, 'boolean')})
+            .toThrow('Can not convert to boolean.');
+    });
+
 });
 
+describe("Value to String coercion", () => {
+    test('Expect 435 to be "453"', () => {
+        expect(coerceToType(453, 'string')).toBe('453');
+    })
+
+    test('Expect true to be "true"', () => {
+        expect(coerceToType(true, 'string')).toBe('true');
+    })
+
+    test('Expect false to be "false"', () => {
+        expect(coerceToType(false, 'string')).toBe('false');
+    })
+
+    test('Expect [1,2,3] to be "1,2,3"', () => {
+        expect(coerceToType([1,2,3], 'string')).toBe("1,2,3");
+    })
+
+    test('Expect BigInt(478) to be "478"', () => {
+        expect(coerceToType(BigInt(478), 'string')).toBe('478');
+    })
+
+    test('Expect null to be "null"', () => {
+        expect(coerceToType(null, 'string')).toBe('null');
+    })
+
+    test('Expect undefined to be an error', () => {
+        expect(() => {
+            coerceToType(undefined, 'string')})
+            .toThrow('Can not convert to string.');
+    });
+
+    test('Expect Obj to be an error', () => {
+        expect(() => {
+            const obj = {
+                name: 'Jose'
+            }
+            coerceToType(obj, 'string')})
+            .toThrow('Can not convert to string.');
+    });
+});
