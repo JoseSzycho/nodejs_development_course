@@ -6,6 +6,11 @@ test('Expect 431 to be 431', () => {
     .toBe(431);
 });
 
+test('Expect "431 qw" to be 431', () => {
+    expect(convertToNumber("431 qw"))
+    .toBe(431);
+});
+
 
 test('Expect "431" to be 431', () => {
     expect(convertToNumber('431'))
@@ -32,6 +37,12 @@ test('Expect BigInt(543) to be 543', () => {
 test('Expect Symbol(1) to be an error', () => {
     expect(() => {
         convertToNumber(Symbol(1))})
+        .toThrow('Can not convert to number.');
+});
+
+test('Expect "q 431" to be an error', () => {
+    expect(() => {
+        convertToNumber("q 431")})
         .toThrow('Can not convert to number.');
 });
 
