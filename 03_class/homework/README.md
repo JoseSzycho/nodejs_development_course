@@ -119,6 +119,12 @@ The behavior for different data types are the next:
         * __null:__ returns "null"
         * __Other instances of object__ throws an error
 
+### Syntax
+```js
+coerceToType(value, 'number');
+coerceToType(value, 'boolean');
+coerceToType(value, 'string');
+```
 
 
 
