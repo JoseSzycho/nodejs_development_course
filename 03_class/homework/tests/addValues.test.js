@@ -20,17 +20,12 @@ describe('Testing error scenarios', () => {
             .toThrow('Value must be a number or string')
     });
 
-    test('Values are valid data types but are different types', () => {
+    test('Expect [5,4] + "bar" to be error', () => {
         expect(() => {
-            addValues("hey", 5)})
-            .toThrow('Both values must be equal type.')
+            addValues([5, 4], "bar")})
+            .toThrow('Value must be a number or string')
     });
 
-    test('One value is an array', () => {
-        expect(() => {
-            addValues(5, [5])})
-            .toThrow('Both values must be equal type.')
-    });
 });
 
 describe('Testing functional escenarios', () => {
@@ -43,6 +38,21 @@ describe('Testing functional escenarios', () => {
     test('Expect "foo" + "bar" to be "foobar', () => {
         expect(addValues('foo', 'bar'))
         .toBe('foobar');
+    });
+
+    test('Expect 5 + "bar" to be "5bar"', () => {
+        expect(addValues(5, 'bar'))
+        .toBe('5bar');
+    });
+
+    test('Expect 5 + "3" to be "53"', () => {
+        expect(addValues(5, "3"))
+        .toBe('53');
+    });
+
+    test('Expect 5 + [33] to be "533"', () => {
+        expect(addValues(5, [33]))
+        .toBe('533');
     });
 
 });

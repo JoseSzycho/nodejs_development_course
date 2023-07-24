@@ -24,11 +24,13 @@ __These functions are:__
 
 ## addValues()
 
-The __addValues()__ functions accepts two values, if both values are:
-* __String:__ returns value1 concatenated value 2
-* __Number__ (NaN not accepted), returns value1 + value2
+The __addValues()__ functions accepts two values:
+* __String__
+* __Number__ 
 
-__In any other case__, it will throw an error.
+And returns value1 + value2.
+
+__In any other case, NaN or NULL__, it will throw an error.
 error.
 
 ### Syntax
