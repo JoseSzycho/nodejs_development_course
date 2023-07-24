@@ -79,11 +79,7 @@ The behavior for different data types are the next:
 * __Undefined:__ throws an error.
 * __Boolean:__ returns 1 or 0.
 * __Objects:__
-    * __Set:__ returns the values in the next format ```<value1><value2>...<valueN>``` if values are not NaN
-    * __Map:__ ignore the keys and return the values in the next format ```<value1><value2>...<valueN>``` if values are not NaN
-    * __Array:__ returns the values in the next format ```<value1><value2>...<valueN>``` if values are not NaN
     * __null:__ returns 0
-    * __Object:__ ignore the keys and return the values in the next format ```<value1><value2>...<valueN>```
 
 ### Syntax
 ```js

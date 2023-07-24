@@ -70,70 +70,13 @@ test('Expect false to be 0', () => {
     .toBe(0);
 });
 
-test('Expect Set([1, 2, 3]) to be 123', () => {
-    expect(convertToNumber(new Set([1, 2, 3])))
-    .toBe(123);
-});
 
-test('Expect Set([1, "a", 3]) to be an error', () => {
-    expect(() => {
-        convertToNumber(new Set([1, 'a', 3]))})
-        .toThrow('Can not convert to number.');
-});
-
-test('Expect Map.. to be 456', () => {
-    const myMap = new Map();
-    myMap.set('1', 4);
-    myMap.set('b', 5);
-    myMap.set('3', 6);
-    expect(convertToNumber(myMap))
-    .toBe(456);
-});
-
-test('Expect Map... to an error', () => {
-    const myMap = new Map();
-    myMap.set('1', 4);
-    myMap.set('2', "a");
-    myMap.set('3', 6);
-    expect(() => {
-        convertToNumber(myMap)})
-        .toThrow('Can not convert to number.');
-});
-
-
-test('Expect array [1, 2, 3, 4] to be 1234', () => {
-    expect(convertToNumber([1, 2, 3, 4]))
-    .toBe(1234);
-});
-
-test('Expect array [1, "a", 3] to be an error', () => {
-    expect(() => {
-        convertToNumber([1, 'a', 3])})
-        .toThrow('Can not convert to number.');
-});
 
 test('Expect null to be 0', () => {
     expect(convertToNumber(null))
     .toBe(0);
 });
 
-test('Expect objet to be 456', () => {
-    let obj = {
-        a: 4,
-        b: 5,
-        c: 6
-    }
-    expect(convertToNumber(obj))
-    .toBe(456);
-});
 
-test('Expect object to an error', () => {
-    let obj = {
-        a: 4,
-        b: 'b',
-        c: 6
-    }
-    expect(() => {
-        convertToNumber(obj)})
-        .toThrow('Can not convert to number.');
-});
+
+
