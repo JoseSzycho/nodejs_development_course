@@ -2,6 +2,23 @@
 
 This library provides advanced data transformation functions.
 
+```js
+//Import example 1 - imports only a dessire function
+const {addValues} = require('./index')
+const value1 = 4;
+const value2 = 8;
+const result  = addValues(value1, value2)
+console.log(result)
+```
+```js
+//Import example 2 - imports all functions
+const advancedTransformations = require('./index')
+const value1 = 4;
+const value2 = 8;
+const result  = advancedTransformations.addValues(value1, value2)
+console.log(result)
+```
+
 __These functions are:__
 
 ## addValues()
