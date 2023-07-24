@@ -1,9 +1,9 @@
 const coerceToType = (value, type) => {
 
+    const {convertToNumber, stringifyValue} = require('../index');
+
     if(type === 'number') {
-        const auxValue = Number(value);
-        if(!(auxValue == auxValue)) throw new TypeError('Can not convert to number.'); // if NaN, no coersion is possible
-        return auxValue;
+        return convertToNumber(value);
     }
 
     if(type === 'boolean')  {
@@ -27,23 +27,7 @@ const coerceToType = (value, type) => {
     }
 
     if(type === 'string') {
-        const valueType = typeof value;
-        switch(valueType){
-            case 'number':
-                if(!(value == value)) throw new TypeError('Can not convert to string.');
-            case 'string':
-            case 'bigint':
-            case 'boolean':
-                return String(value);
-
-            case 'object':
-                if(value instanceof Array) return String(value);
-                if(value == null) return String(value);
-                throw new TypeError('Can not convert to string.');
-            
-            default:
-                throw new TypeError('Can not convert to string.');
-        }
+       return stringifyValue(value);
     }
     
 };

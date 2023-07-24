@@ -98,13 +98,7 @@ The function only returns a value if convertion is possible when using the next 
 
 The behavior for different data types are the next:
 
-* __Any value to Number:__  it uses Number() explicit coercion
-    * __" ":__ returns 0
-    * __[value]:__ returns the convertion of the value if not a NaN
-    * __true:__ returns 1
-    * __false:__ returns 0
-    * __strings:__ returns the conversion if possible  
-    * __If coercion not possible__, throws an error.
+* __Any value to Number:__  it uses convertToNumber() behavior
 
 * __Any value to Boolean:__ it uses Boolean() explicit coercion
     * __returns true for the next cases:__
@@ -121,15 +115,8 @@ The behavior for different data types are the next:
 
     * __Other values will throw an error.__
 
-* Any value to String: it uses String() explicit coercion, only returns conversion for the next data types:
-    * __Number__ (if not a NaN)
-    * __String__
-    * __BigInt__
-    * __Boolean:__ returns "true" / "false"
-    * __Objects:__
-        * __Array:__ return the values separated by comma
-        * __null:__ returns "null"
-        * __Other instances of object__ throws an error
+* Any value to String: it uses stringifyValue() behavior
+
 
 ### Syntax
 ```js
