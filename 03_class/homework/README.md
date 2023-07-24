@@ -12,11 +12,12 @@ console.log(result)
 ```
 ```js
 //Import example 2 - imports all functions
-const advancedTransformations = require('./index')
-const value1 = 4;
-const value2 = 8;
-const result  = advancedTransformations.addValues(value1, value2)
-console.log(result)
+const advancedTransformations = require('./index');
+const sumResult  = advancedTransformations.addValues(2, 4);
+const sumString = advancedTransformations.coerceToType(sumResult, 'string');
+const invertedBoolean = advancedTransformations.invertBoolean(false);
+const numSting = advancedTransformations.stringifyValue(431);
+const number = advancedTransformations.convertToNumber('428');
 ```
 
 __These functions are:__
