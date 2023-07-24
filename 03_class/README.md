@@ -1,5 +1,22 @@
 # Class 03
 
+In this readme, the important concepts of the class will be provided, and the homework to be carried out.
+
+__The homework development is in the folder ```./homework/```__
+
+__Main concepts:__
+* Variable types
+* Hoisting
+* Data types
+* Type conversion
+* Why string is unmutable
+* Observation of arrays
+* Operators
+* Cheat sheet for ==
+* Cheat sheet for ===
+* Homework
+
+
 ## Variable types
 Have script have to ways for declaring variables, __both of them are block scopded__.
 * let
