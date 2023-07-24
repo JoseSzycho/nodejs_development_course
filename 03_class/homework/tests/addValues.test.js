@@ -29,7 +29,7 @@ describe('Testing error scenarios', () => {
     test('One value is an array', () => {
         expect(() => {
             addValues(5, [5])})
-            .toThrow('Value must be a number or string')
+            .toThrow('Both values must be equal type.')
     });
 });
 
