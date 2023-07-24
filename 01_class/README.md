@@ -1,3 +1,5 @@
+__Homework approved__
+
 # Class 01
 In this readme, the important concepts of the class will be provided, the homework to be carried out and finally the explanation of how each point of the homework was carried out.
 
