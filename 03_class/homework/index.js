@@ -1,4 +1,4 @@
-const {addValues} = require('./utils/addValues');
+const addValues = require('./utils/addValues');
 const coerceToType = require('./utils/coerceToType')
 const convertToNumber = require('./utils/convertToNumber');
 const invertBoolean = require('./utils/invertBoolean');
