@@ -1,4 +1,4 @@
-const invertBoolean = require('../utils/invertBoolean');
+const {invertBoolean} = require('../index');
 
 test('Expect false to be true', () => {
     expect(invertBoolean(false)).toBe(true);

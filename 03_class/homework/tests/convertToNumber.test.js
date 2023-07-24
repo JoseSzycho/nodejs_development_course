@@ -1,5 +1,4 @@
-const convertToNumber = require('../utils/convertToNumber');
-
+const {convertToNumber} = require('../index');
 
 test('Expect 431 to be 431', () => {
     expect(convertToNumber(431))

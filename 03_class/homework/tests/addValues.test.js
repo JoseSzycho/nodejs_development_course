@@ -1,4 +1,4 @@
-const addValues = require('../utils/addValues');
+const {addValues} = require('../index');
 
 describe('Testing error scenarios', () => {
 

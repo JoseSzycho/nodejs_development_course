@@ -1,4 +1,4 @@
-const coerceToType = require('../utils/coerceToType')
+const {coerceToType} = require('../index');
 
 describe("Value to Number coercion", () => {
     

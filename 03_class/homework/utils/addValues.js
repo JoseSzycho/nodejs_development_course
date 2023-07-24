@@ -31,4 +31,4 @@ const addValues = (value1, value2) => {
         copy paste this error and send to developer.`);
 }
 
-module.exports = addValues;
+module.exports = {addValues};
