@@ -49,8 +49,6 @@ The behavior for different data types are the next:
 * __Function:__ returns the code of the function
 * __Boolean:__ returns "true" / "false"
 * __Object:__
-    * __Set:__ returns the values separated by comma
-    * __Map:__ returns the result in next format: ```[["<key1>",<value1>],["<key2>",<value2>],...,["<keyN>"<valueN>]]```
     * __null:__ returns "null"
     * __Other instances of object:__ returns JSON.stringify(value). [More about JSON.stringifify here.](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify)
 

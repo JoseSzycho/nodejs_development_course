@@ -8,13 +8,13 @@ test('Expect 431 to be "431"', () => {
 test('Expect NaN to string be an error', () => {
     expect(() => {
         stringifyValue(NaN)})
-        .toThrow('NaN is not valid for converting to string');
+        .toThrow('Value not valid for converting to string.');
 });
 
 test('Expect undefined to string be an error', () => {
     expect(() => {
         stringifyValue(undefined)})
-        .toThrow('There is no value for converting to string.');
+        .toThrow('Value not valid for converting to string.');
 });
 
 test('Expect "Hello World" to be "Hello World"', () => {
@@ -50,20 +50,6 @@ test('Expect false to be "false"', () => {
     .toBe('false');
 });
 
-test('Expect Set([1, 2, 3]) to be "1,2,3"', () => {
-    expect(stringifyValue(new Set([1, 2, 3])))
-    .toBe('1,2,3');
-});
-
-test('Expect Map([4, 5, 6]) to be "1,4,2,5,3,6"', () => {
-    const myMap = new Map();
-    myMap.set('1', 4);
-    myMap.set('2', 5);
-    myMap.set('3', 6);
-    expect(stringifyValue(myMap))
-    .toBe('[["1",4],["2",5],["3",6]]');
-});
-
 test('Expect null to be "null', () => {
     expect(stringifyValue(null))
     .toBe('null');
@@ -71,7 +57,7 @@ test('Expect null to be "null', () => {
 
 test('Expect [1, 2, 3, 4] to be "1,2,3,4"', () => {
     expect(stringifyValue([1, 2, 3, 4]))
-    .toBe('[1,2,3,4]');
+    .toBe('1,2,3,4');
 });
 
 
