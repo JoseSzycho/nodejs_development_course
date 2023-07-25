@@ -130,9 +130,81 @@ __npm install package-name --save-dev :__ This flag is used to save the installe
 
 __npm i:__ short hand for __npm install__. 
 
+__npm root -g :__ indicates where the root for global installs is located
+
 __npm update: __ This command will update all the packages listed to the latest version (specified by the tag config), respecting the semver constraints of both your package and its dependencies (if they also require the same package).
 ```bash
 npm update [<pkg>...]
 
 aliases: up, upgrade, udpate
 ```
+### npm scripts
+
+npm scripts are custom scripts defined in the "package.json" file of a Node.js project. These scripts allow developers to run various commands and automate tasks related to their project's development, testing, building, and deployment. npm scripts are an essential feature of npm, and they provide a convenient way to execute complex or repetitive tasks using simple commands.
+
+To define an npm script, you add a "scripts" section in your "package.json" file, where each script is associated with a name and a command.
+
+```JSON
+// Example
+"scripts": {
+  "start": "node index.js",
+  "test": "mocha",
+  "build": "webpack",
+  "lint": "eslint src",
+  "deploy": "npm run build && rsync -avz dist/ user@example.com:/var/www/app"
+}
+```
+
+__"start":__ This script runs the command node index.js when you run __npm start__. It is often used to start your application.
+
+__"test":__ This script runs the command mocha when you run __npm test__. It is typically used to execute test suites.
+
+__"build":__ This script runs the command webpack when you run __npm run build__. It is used to bundle and build your application.
+
+__"lint":__ This script runs the command eslint src when you run __npm run lint__. It is used to perform code linting on the "src" directory.
+
+### package.json
+
+
+In the "package.json" file of a Node.js project, the "description" field is used to provide a brief description of the project. It serves as a way to give a concise overview of what the project is about and what its main purpose is. This description can be helpful for other developers who come across your project on npm (the Node Package Manager) or when sharing your project with others.
+
+```JSON
+// Example
+{
+  "name": "my-awesome-project",
+  "version": "1.0.0",
+  "description": "An amazing Node.js project that does awesome things.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "mocha",
+    "build": "webpack"
+  },
+  "author": "John Doe",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "lodash": "^4.17.21"
+  }
+}
+```
+### package-lock.json
+
+
+The "package-lock.json" file is an automatically generated file by npm that is used to keep track of the exact versions of dependencies and their transitive dependencies installed in a Node.js project. This file is primarily used for deterministic and consistent dependency resolution.
+
+Unlike the "package.json" file, the "package-lock.json" file is not meant to be manually edited or maintained by developers. Instead, npm handles its generation and updates automatically whenever you install or update dependencies using the npm install command.
+
+__The "package-lock.json" file includes the following information:__
+
+1. __Exact Versions:__ It lists all the dependencies installed in your project along with their exact version numbers. This ensures that the same versions of dependencies are installed by anyone else who runs npm install on your project, avoiding version mismatches and inconsistencies.
+
+2. __Transitive Dependencies:__ It also includes the full tree of transitive dependencies, meaning all the dependencies that are required by the direct dependencies. This tree ensures that all dependencies in your project are compatible and correctly resolved.
+
+3. __Integrity Hashes:__ It includes integrity hashes for each installed package. These hashes are used to verify the integrity of the downloaded packages, ensuring they have not been tampered with or corrupted.
+
+4. __Locking Mechanism:__ The "package-lock.json" file acts as a locking mechanism, preventing unintended updates to dependencies when using the npm install command. It ensures that only the exact versions specified in the lock file are installed, even if newer versions are available in the npm registry.
+
+The "package-lock.json" file is crucial for collaborative projects and for ensuring that the development environment of all contributors remains consistent. It helps to avoid unexpected changes in dependencies, making the project more stable and reliable.
+
+When you share your project with others or use it on a different machine, the "package-lock.json" file ensures that the same versions of dependencies are installed, providing a consistent environment for everyone working on the project.
