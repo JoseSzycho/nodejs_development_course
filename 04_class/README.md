@@ -61,6 +61,48 @@ A package is a collection of related code and resources that are bundled togethe
 
 It allows developers to distribute and share code more easily and facilitates the installation and management of dependencies in projects. A package can contain one or more modules or libraries.
 
+
+### Most popular packet managare differencies
+
+We will provide principal characteristics for:
+* NPM
+* YARN
+* PNPM
+
+__In speed comparison:__ PNPM (fastest) > YARN > NPM 
+
+#### YARN
+
+* __Workspaces__ are a feature that allows developers to manage multiple related packages within the same repository (monorepo). Packages can share dependencies and more
+
+* __Automatic handling dependencies in lock files:__ The main idea behind this feature is to automatically detect when the yarn.lock file is outdated and make sure it gets updated appropriately. This helps prevent discrepancies between the yarn.lock file and the actual installed dependencies, which could lead to inconsistencies when working in collaborative environments or across different systems.
+
+* __Selective dependecy resolution:__ Yarn supports selective version resolutions, which lets you define custom package versions or ranges inside your dependencies through the resolutions field in your package.json
+
+* __Yarn upgrade-interactive:__ is a command provided by Yarn that allows developers to interactively upgrade dependencies in a project. This command provides a user-friendly interface that lets you view and select which packages to update and which versions to upgrade to.
+
+* __Parallel instalation:__ faster than NPM
+
+* __Offline instalation:__ it allows to install offline any package that was installed in the past
+
+* __Concise duplication:__ packages are always installed in the same order, so it will alwys be exactly the same lock file be installed in the same way in different computers.
+
+#### PNPM
+
+The main purpose of PNPM is to hold all the packages at a global (centralized) store and use them if needed by other projects too by creating hard links to it.
+
+- Saves a huge amount of disk space.
+- Takes faster time to install the packages.
+- It has in-built support for mono repositories.
+
+* __Hard links:__ Instead of copying the package files multiple times for different projects, PNPM creates a single shared copy and uses symbolic links to make the package available to each project that depends on it.
+
+https://www.freecodecamp.org/news/javascript-package-manager-npm-and-yarn/
+
+## NPM
+
+npm stands for "Node Package Manager." It is a package manager for JavaScript programming language, primarily used with Node.js runtime. npm allows developers to easily install, share, and manage packages or libraries of code created by other developers to solve common programming tasks or add functionality to their projects.
+
 ### How NPM works
 
 In the past, NPM used to work duplicating depdencies if it was neccesary, for example in a case wher you install two dependencies, if both dependecies uses the same dependencies, they were duplicated instead of being shared, that caused to use lot of mememory and bein slow. Now this is solved.
@@ -79,37 +121,18 @@ In the past, NPM used to work duplicating depdencies if it was neccesary, for ex
 
 Overall, NPM streamlines the process of managing dependencies and distributing packages, making it an essential tool for Node.js and JavaScript developers. It ensures that projects can easily use external libraries while maintaining version consistency and package integrity.
 
-### Most popular packet managare differencies
+### Some commands
 
-We will provide principal characteristics for:
-* NPM
-* YARN
-* PNPM
+__npm install package-name --save :__ --save flag is defaoult. This flag was used to save the installed package as a regular dependency in the "dependencies" section of "package.json." Regular dependencies are those required for the application to run correctly in production.
 
-__YARN__
+__npm install package-name --save-dev :__ This flag is used to save the installed package as a development dependency in the "devDependencies" section of "package.json." Development dependencies are those required for development and testing purposes but not necessary for the production runtime. For example:
 
-* __Workspaces__ are a feature that allows developers to manage multiple related packages within the same repository (monorepo). Packages can share dependencies and more
 
-* __Automatic handling dependencies in lock files:__ The main idea behind this feature is to automatically detect when the yarn.lock file is outdated and make sure it gets updated appropriately. This helps prevent discrepancies between the yarn.lock file and the actual installed dependencies, which could lead to inconsistencies when working in collaborative environments or across different systems.
+__npm i:__ short hand for __npm install__. 
 
-* __Selective dependecy resolution:__ Yarn supports selective version resolutions, which lets you define custom package versions or ranges inside your dependencies through the resolutions field in your package.json
+__npm update: __ This command will update all the packages listed to the latest version (specified by the tag config), respecting the semver constraints of both your package and its dependencies (if they also require the same package).
+```bash
+npm update [<pkg>...]
 
-* __Yarn upgrade-interactive:__ is a command provided by Yarn that allows developers to interactively upgrade dependencies in a project. This command provides a user-friendly interface that lets you view and select which packages to update and which versions to upgrade to.
-
-* __Parallel instalation:__ faster than NPM
-
-* __Offline instalation:__ it allows to install offline any package that was installed in the past
-
-* __Concise duplication:__ packages are always installed in the same order, so it will alwys be exactly the same lock file be installed in the same way in different computers.
-
-__PNPM__
-
-The main purpose of PNPM is to hold all the packages at a global (centralized) store and use them if needed by other projects too by creating hard links to it.
-
-- Saves a huge amount of disk space.
-- Takes faster time to install the packages.
-- It has in-built support for mono repositories.
-
-* __Hard links:__ Instead of copying the package files multiple times for different projects, PNPM creates a single shared copy and uses symbolic links to make the package available to each project that depends on it.
-
-https://www.freecodecamp.org/news/javascript-package-manager-npm-and-yarn/
+aliases: up, upgrade, udpate
+```
