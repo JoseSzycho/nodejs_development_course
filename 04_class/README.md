@@ -208,3 +208,50 @@ __The "package-lock.json" file includes the following information:__
 The "package-lock.json" file is crucial for collaborative projects and for ensuring that the development environment of all contributors remains consistent. It helps to avoid unexpected changes in dependencies, making the project more stable and reliable.
 
 When you share your project with others or use it on a different machine, the "package-lock.json" file ensures that the same versions of dependencies are installed, providing a consistent environment for everyone working on the project.
+
+### Looking for certain version
+
+Examples:
+
+* __~1.5.2 :__ "~" indica que se puede instalar o actualizar hasta la ultima versión de patch version
+
+* __^1.5.2 :__ "^" indicates que can install or update till the latest version of minor version.
+
+* __*1.5.2 :__ * indicates to install or upgrade to the latest version.
+
+*  __2.2.2 - 2.2.9 :__ indicates a valid range of version
+
+* __We can also create range version using logical operators, example :__ < 2.1.0 || > 2.6.0
+
+## npx
+
+__npx__ is used to execute Node.js packages that are not globally installed. It allows you to run a Node.js binary from a package without having to install the package globally or adding it to your project's dependencies. This is particularly useful when you want to run a one-time command or a utility from a package without polluting your system or project with unnecessary dependencies.
+
+```js
+// Example, if there is a command-line utility called "example-tool" provided by a package called "example-package," you can run it using npx like this:
+npx example-package example-tool
+```
+
+__npx__ will first check if the "example-package" is installed locally in the current project's __node_modules folder__. If it is not found, it will download the latest version of the package from the npm registry and then run the "example-tool" command from that package.
+
+## Semantic Versioning
+
+[More information at semver.org.](https://semver.org/)
+
+Semantic versioning is used for versioning develpments. The next syntax is used:
+
+* __x.y.z :__ where;
+  * __x :__ major version
+  * __y :__ minor version
+  * __z :__ patch version
+
+__x.y.z are always integer numbers that starts at zero and grows up.__
+
+### How to increment numbers
+* __0.y.z :__ indicates app still in development
+
+* __Patch version Z (x.y.Z | x > 0)__ MUST be incremented if only backward compatible bug fixes are introduced. A bug fix is defined as an internal change that fixes incorrect behavior.
+
+* __Minor version Y (x.Y.z | x > 0)__ MUST be incremented if new, backward compatible functionality is introduced to the public API. It MUST be incremented if any public API functionality is marked as deprecated. It MAY be incremented if substantial new functionality or improvements are introduced within the private code. It MAY include patch level changes. Patch version MUST be reset to 0 when minor version is incremented.
+
+* __Major version X (X.y.z | X > 0)__ MUST be incremented if any backward incompatible changes are introduced to the public API. It MAY also include minor and patch level changes. Patch and minor versions MUST be reset to 0 when major version is incremented.
