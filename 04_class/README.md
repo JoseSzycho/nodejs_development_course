@@ -1,8 +1,31 @@
 # Class 04
 
 __Main concepts:__
-* Package manager
-* Semantic Versioning
+<!-- TOC -->
+
+- [Class 04](#class-04)
+    - [Package manager](#package-manager)
+        - [Why Do You Need a Package Manager?](#why-do-you-need-a-package-manager)
+        - [How a packet manager works](#how-a-packet-manager-works)
+        - [Some examples of packet managers](#some-examples-of-packet-managers)
+        - [Package vs module](#package-vs-module)
+            - [Module](#module)
+            - [Package](#package)
+        - [Most popular packet managare differencies](#most-popular-packet-managare-differencies)
+            - [YARN](#yarn)
+            - [PNPM](#pnpm)
+    - [NPM](#npm)
+        - [How NPM works](#how-npm-works)
+        - [Some commands](#some-commands)
+        - [npm scripts](#npm-scripts)
+        - [package.json](#packagejson)
+        - [package-lock.json](#package-lockjson)
+        - [Looking for certain version](#looking-for-certain-version)
+    - [npx](#npx)
+    - [Semantic Versioning](#semantic-versioning)
+        - [How to increment numbers](#how-to-increment-numbers)
+
+<!-- /TOC -->
 
 ## Package manager
 
@@ -142,6 +165,7 @@ npm update [<pkg>...]
 
 aliases: up, upgrade, udpate
 ```
+
 ### npm scripts
 
 npm scripts are custom scripts defined in the "package.json" file of a Node.js project. These scripts allow developers to run various commands and automate tasks related to their project's development, testing, building, and deployment. npm scripts are an essential feature of npm, and they provide a convenient way to execute complex or repetitive tasks using simple commands.
@@ -192,6 +216,7 @@ In the "package.json" file of a Node.js project, the "description" field is used
   }
 }
 ```
+
 ### package-lock.json
 
 
