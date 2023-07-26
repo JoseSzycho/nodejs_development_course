@@ -77,7 +77,7 @@ console.log(calcRectArea(5, 6));
 
 [More information here.](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)
 
-### Function expression
+### Anonymous function expression
 
 The function keyword can be used to define a function inside an expression.
 
@@ -136,7 +136,174 @@ const obj = {
     console.log(this.i, this);
   },
 };
+```
 
+### Immediately Invoked Function Expression (IIFE)
 
+An IIFE (Immediately Invoked Function Expression) is a JavaScript function that runs as soon as it is defined.
+
+__The primary purpose of using IIFE__ is to create a new scope, allowing you to encapsulate code and avoid polluting the global namespace. 
+
+```js
+(function () {
+  // …
+})();
+
+(() => {
+  // …
+})();
+
+(async () => {
+  // …
+})();
+```
+Is commonly used for authentification, conections to data bases
+SOLEMOS USARLO PARA autentificacion por ejemplo.
+para conexiones con base de datos
+Se usa como para poder inicializar algo
+buscar bien para que lo querriamos usar.
+
+[More information here.](https://developer.mozilla.org/es/docs/Glossary/IIFE)
+
+## Function parameters
+
+There are two special kinds of parameter syntax:
+* __default parameters__
+* __rest parameters__
+
+Be aware of this:
+
+* __Arguments are Passed by Value:__ Changes to arguments are not visible (reflected) outside the function.
+* __Objects are Passed by Reference:__ Changes to object properties are visible (reflected) outside the function.
+
+### Default parameters
+
+In JavaScript, parameters of functions default to undefined. However, in some situations it might be useful to set a different default value. This is exactly what default parameters do.
+
+```js
+function multiply(a, b) {
+  b = typeof b !== "undefined" ? b : 1;
+  return a * b;
+}
+
+console.log(multiply(5)); // 5
+```
+
+With default parameters, a manual check in the function body is no longer necessary. You can put 1 as the default value for b in the function head:
+
+```js
+function multiply(a, b = 1) {
+  return a * b;
+}
+
+console.log(multiply(5)); // 5
+```
+
+### Rest parameters
+
+The rest parameter syntax allows us to represent an indefinite number of arguments as an array using the spread operator.
+
+```js
+// Example
+function multiply(multiplier, ...theArgs) {
+  return theArgs.map((x) => multiplier * x);
+}
+
+const arr = multiply(2, 1, 2, 3);
+console.log(arr); // [2, 4, 6]
+```
+
+## Generator function
+
+The function* declaration creates a binding of a new generator function to a given name. A generator function can be exited and later re-entered, with its context (variable bindings) saved across re-entrances.
+
+```js
+// Example
+function* generator(i) {
+  yield i;
+  yield i + 10;
+}
+
+const gen = generator(10);
+
+console.log(gen.next().value);
+// Expected output: 10
+
+console.log(gen.next().value);
+// Expected output: 20
+```
+
+[More information here.](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function*)
+
+## Object destructuring
+
+Object destructuring is a feature in JavaScript that allows you to extract properties from an object and assign them to variables with the same name as the property keys. It provides a concise way to work with objects and access their properties. Let's see how object destructuring works in combination with functions.
+
+```js
+const person = {
+  firstName: 'John',
+  lastName: 'Doe',
+  age: 30,
+  country: 'USA',
+};
+
+// Be aware the parameters are inside {} and have the same name as the object properties
+function printPersonInfo({ firstName, lastName, age }) {
+  console.log(`First Name: ${firstName}`);
+  console.log(`Last Name: ${lastName}`);
+  console.log(`Age: ${age}`);
+}
+
+printPersonInfo(person);
+// => First Name: John
+// => Last Name: Doe
+// => Age: 30
+```
+
+## Return values
+
+Considering a function returns an array, object, etc. We can receibe them in the next way:
+
+```js
+// Considere the element of the right to be the returned value
+const [a, b] = array;
+const [a, , b] = array;
+const [a = aDefault, b] = array;
+const [a, b, ...rest] = array;
+const [a, , b, ...rest] = array;
+const [a, b, ...{ pop, push }] = array;
+const [a, b, ...[c, d]] = array;
+
+// Keys must have the same name of the returned element
+const { a, b } = obj;
+const { a: a1, b: b1 } = obj;
+const { a: a1 = aDefault, b = bDefault } = obj;
+const { a, b, ...rest } = obj;
+const { a: a1, b: b1, ...rest } = obj;
+const { [key]: a } = obj;
+
+let a, b, a1, b1, c, d, rest, pop, push;
+[a, b] = array;
+[a, , b] = array;
+[a = aDefault, b] = array;
+[a, b, ...rest] = array;
+[a, , b, ...rest] = array;
+[a, b, ...{ pop, push }] = array;
+[a, b, ...[c, d]] = array;
+
+({ a, b } = obj); // brackets are required
+({ a: a1, b: b1 } = obj);
+({ a: a1 = aDefault, b = bDefault } = obj);
+({ a, b, ...rest } = obj);
+({ a: a1, b: b1, ...rest } = obj);
+
+// Example
+const doSmth = () => {
+  return {
+    name: "roger",
+    age: 22
+  };
+}
+const { age, name } = doSmth();
 
 ```
