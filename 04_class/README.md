@@ -1,5 +1,9 @@
 # Class 04
 
+__Main concepts:__
+* Package manager
+* Semantic Versioning
+
 ## Package manager
 
 A package manager is a tool developers use to automate finding, downloading, installing, configuring, upgrading, and removing a system's packages.
