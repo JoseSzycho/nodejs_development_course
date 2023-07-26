@@ -1,10 +1,26 @@
+
+
 # Class 5
 
-This class is all about functions.
+__Table of content:__
 
-## Main topics
+* 1. [First-class function](#First-classfunction)
+* 2. [Ways to declare a function](#Waystodeclareafunction)
+	* 2.1. [Function declaration](#Functiondeclaration)
+	* 2.2. [Anonymous function expression](#Anonymousfunctionexpression)
+	* 2.3. [Named function expression](#Namedfunctionexpression)
+	* 2.4. [Arrow function expression](#Arrowfunctionexpression)
+	* 2.5. [Immediately Invoked Function Expression (IIFE)](#ImmediatelyInvokedFunctionExpressionIIFE)
+* 3. [Function parameters](#Functionparameters)
+	* 3.1. [Default parameters](#Defaultparameters)
+	* 3.2. [Rest parameters](#Restparameters)
+* 4. [Generator function](#Generatorfunction)
+* 5. [Object destructuring](#Objectdestructuring)
+* 6. [Return values](#Returnvalues)
+* 7. [Function that return functions](#Functionthatreturnfunctions)
 
-## First-class function
+
+##  1. <a name='First-classfunction'></a>First-class function
 
 A programming language is said to have First-class functions when functions in that language are treated like any other variable. For example, in such a language, a function can be passed as an argument to other functions, can be returned by another function and can be assigned as a value to a variable.
 
@@ -60,9 +76,9 @@ console.log(greetingFunctions[1]("Maria")); // Output: ¡Hola, Maria!
 
 ```
 
-## Ways to declare a function
+##  2. <a name='Waystodeclareafunction'></a>Ways to declare a function
 
-### Function declaration
+###  2.1. <a name='Functiondeclaration'></a>Function declaration
 
 The function declaration creates a binding of a new function to a given name.
 
@@ -77,7 +93,7 @@ console.log(calcRectArea(5, 6));
 
 [More information here.](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)
 
-### Anonymous function expression
+###  2.2. <a name='Anonymousfunctionexpression'></a>Anonymous function expression
 
 The function keyword can be used to define a function inside an expression.
 
@@ -92,7 +108,7 @@ console.log(getRectArea(3, 4));
 
 [More information here.](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/function)
 
-### Named function expression
+###  2.3. <a name='Namedfunctionexpression'></a>Named function expression
 
 It creates a function expression with a named function.
 
@@ -106,7 +122,7 @@ console.log(calcArea(3,5));
 ```
 This helps for debugging, as the function will left traces.
 
-### Arrow function expression
+###  2.4. <a name='Arrowfunctionexpression'></a>Arrow function expression
 
 An __arrow function expression__ is a compact alternative to a traditional function expression, with some semantic differences and deliberate limitations in usage:
 
@@ -138,7 +154,7 @@ const obj = {
 };
 ```
 
-### Immediately Invoked Function Expression (IIFE)
+###  2.5. <a name='ImmediatelyInvokedFunctionExpressionIIFE'></a>Immediately Invoked Function Expression (IIFE)
 
 An IIFE (Immediately Invoked Function Expression) is a JavaScript function that runs as soon as it is defined.
 
@@ -165,7 +181,7 @@ buscar bien para que lo querriamos usar.
 
 [More information here.](https://developer.mozilla.org/es/docs/Glossary/IIFE)
 
-## Function parameters
+##  3. <a name='Functionparameters'></a>Function parameters
 
 There are two special kinds of parameter syntax:
 * __default parameters__
@@ -176,7 +192,7 @@ Be aware of this:
 * __Arguments are Passed by Value:__ Changes to arguments are not visible (reflected) outside the function.
 * __Objects are Passed by Reference:__ Changes to object properties are visible (reflected) outside the function.
 
-### Default parameters
+###  3.1. <a name='Defaultparameters'></a>Default parameters
 
 In JavaScript, parameters of functions default to undefined. However, in some situations it might be useful to set a different default value. This is exactly what default parameters do.
 
@@ -199,7 +215,7 @@ function multiply(a, b = 1) {
 console.log(multiply(5)); // 5
 ```
 
-### Rest parameters
+###  3.2. <a name='Restparameters'></a>Rest parameters
 
 The rest parameter syntax allows us to represent an indefinite number of arguments as an array using the spread operator.
 
@@ -213,7 +229,7 @@ const arr = multiply(2, 1, 2, 3);
 console.log(arr); // [2, 4, 6]
 ```
 
-## Generator function
+##  4. <a name='Generatorfunction'></a>Generator function
 
 The function* declaration creates a binding of a new generator function to a given name. A generator function can be exited and later re-entered, with its context (variable bindings) saved across re-entrances.
 
@@ -235,7 +251,7 @@ console.log(gen.next().value);
 
 [More information here.](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function*)
 
-## Object destructuring
+##  5. <a name='Objectdestructuring'></a>Object destructuring
 
 Object destructuring is a feature in JavaScript that allows you to extract properties from an object and assign them to variables with the same name as the property keys. It provides a concise way to work with objects and access their properties. Let's see how object destructuring works in combination with functions.
 
@@ -260,7 +276,7 @@ printPersonInfo(person);
 // => Age: 30
 ```
 
-## Return values
+##  6. <a name='Returnvalues'></a>Return values
 
 Considering a function returns an array, object, etc. We can receibe them in the next way:
 
@@ -306,4 +322,25 @@ const doSmth = () => {
 }
 const { age, name } = doSmth();
 
+```
+
+##  7. <a name='Functionthatreturnfunctions'></a>Function that return functions
+
+
+In JavaScript, you can create a function that returns another function. This concept is known as a "higher-order function." They are a powerful feature of JavaScript and enable the creation of more flexible and reusable code.
+
+```js
+// Example
+function createMultiplier(multiplier) {
+  // Inner function returned by the outer function
+  return function (number) {
+    return number * multiplier;
+  };
+}
+
+const double = createMultiplier(2);
+const triple = createMultiplier(3);
+
+console.log(double(5)); // Output: 10 (2 * 5)
+console.log(triple(5)); // Output: 15 (3 * 5)
 ```
