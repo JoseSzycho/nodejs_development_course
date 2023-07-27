@@ -525,3 +525,117 @@ console.log(newAdd(9)); // cached
 
 ## Lazy functions
 
+### Lazy evaluation
+Lazy evaluation is a programming paradigm where the evaluation of an expression or function is delayed until its value is actually needed. In JavaScript, this can be achieved using functions, closures, and higher-order functions.
+
+As a result, lazy evaluation suddenly rose to fame in functional programming for several reasons. It allows the programmer to access data structure components out of order after initializing them, as long as there are no circular dependencies. It also decreases an algorithm’s time complexity by removing transitory computations.
+
+__It increases CPU performance but decreases RAM performance.__
+
+```js
+// Example
+
+function lazyAdd(a, b) {
+  return () => a + b; // This function is created, but the addition is not performed yet
+}
+
+const result = lazyAdd(5, 10); // No addition is done at this point
+
+// Later, when the result is needed, the addition is performed
+console.log(result()); // Output: 15
+```
+
+### Lazy loading
+
+Lazy loading is a technique used in web development to defer the loading of non-critical resources until they are needed. This can help improve the initial page load time and overall performance by loading resources only when they become necessary.
+For example, let's say you have a JavaScript module with a function that is only required in certain situations:
+
+```js
+// Example
+
+// lazyModule.js
+export function lazyFunction() {
+  console.log("Lazy function is executed!");
+}
+
+// Main script
+// Some code...
+
+// Only load the module when the condition is met
+if (someCondition) {
+  import('./lazyModule.js').then(({ lazyFunction }) => {
+    lazyFunction(); // The function is executed only when the module is loaded
+  });
+}
+
+// Some more code...
+```
+
+In this example, the lazyModule.js and its lazyFunction are only loaded and executed if someCondition is true. Otherwise, the code is not loaded, saving unnecessary resource requests and improving the page load time.
+
+
+## Currying
+
+It is a technique in functional programming, that transforms the function of multiple arguments into several functions of a single argument in sequence. 
+
+* It allows to solve a function parcially till you have all parameters available
+* It helps us to create a higher-order function
+* It reduces the chances of error in our function by dividing it into multiple smaller functions that can handle one responsibility.
+* It is very useful in building modular and reusable code
+* It helps us to avoid passing the same variable multiple times
+* It makes the code more readable
+
+```js
+//Example 1
+
+function sum(a) {
+    return (b) => {
+        return (c) => {
+            return a + b + c
+        }
+    }
+}
+console.log(sum(1)(2)(3)) // 6
+
+// You can call the function partially
+const sum1 = sum(1);
+const sum2 = sum1(2);
+const result = sum2(3);
+console.log(result); // 6
+
+
+// Example 2 with arrow functions
+
+const sum = a => b => c => a*b*c;
+console.log(sum(1)(2)(3)) // 6
+```
+
+__You can also create a function to transform any function to the curry version.__
+
+```js
+function currying(fn, ...args) {
+    return (..._arg) => {
+        return fn(...args, ..._arg);
+    }
+}
+```
+
+## Function composition
+
+Function composition is another powerful technique in functional programming, which involves combining two or more functions to create a new function. The output of one function becomes the input to the next function in the chain. This allows you to build complex transformations or computations by composing smaller, reusable functions together.
+
+```js
+// Example functions to be composed
+const add = (x) => x + 1;
+const square = (x) => x * x;
+const subtractTen = (x) => x - 10;
+
+// Manual function composition
+const composedFunction = (x) => subtractTen(square(add(x)));
+
+// Usage
+const result = composedFunction(5);
+console.log(result); // Output: ((5 + 1) * (5 + 1)) - 10 = 26
+```
+
+Using function composition can lead to code that is more modular, easier to reason about, and promotes reusability. By breaking down complex operations into smaller, focused functions, you can build a pipeline of transformations that are more manageable and easier to maintain. Additionally, it aligns well with the functional programming paradigm and encourages the use of pure functions, which can lead to more predictable and bug-free code.
