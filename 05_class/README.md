@@ -522,3 +522,6 @@ const newAdd = memoizedAdd();
 console.log(newAdd(9)); // calculated
 console.log(newAdd(9)); // cached
 ```
+
+## Lazy functions
+
