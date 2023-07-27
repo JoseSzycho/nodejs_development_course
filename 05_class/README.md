@@ -110,7 +110,68 @@ console.log(add(2)) // logs 2
 console.log(add(2)) // logs 4
 ```
 
+## Higher-order functions (HOF)
 
+Have two criterias, if follow one of both of them is high order function.
+
+1. Takes a function as an argument
+2. Return function as a result
+
+```js
+// Example 1 with out HOF
+//Suppose I want you to write a function that calculates the area and diameter of a circle. As a beginner, the first solution that comes to our mind is to write each separate function to calculate area or diameter.
+
+const radius = [1, 2, 3];
+
+// function to calculate area of the circle
+const calculateArea =  function (radius) {
+    const output = [];
+    for(let i = 0; i< radius.length; i++){
+        output.push(Math.PI * radius[i] * radius[i]);
+    }
+    return output;
+}
+
+// function to calculate diameter of the circle
+const calculateDiameter =  function (radius) {
+    const output = [];
+    for(let i = 0; i< radius.length; i++){
+        output.push(2 * radius[i]);
+    }
+    return output;
+}
+
+console.log(calculateArea(radius));
+console.log(calculateDiameter(radius))
+//But have you noticed the problem with the above code? Aren't we writing almost the same function again and again with slightly different logic? Also, the functions we have written aren't reusable, are they?
+
+
+// Example 2 same exercise but with HOG
+const radius = [1, 2, 3];
+
+// logic to clculate area
+const area = function(radius){
+    return Math.PI * radius * radius;
+}
+
+// logic to calculate diameter
+const diameter = function(radius){
+    return 2 * radius;
+}
+
+// a reusable function to calculate area, diameter, etc
+const calculate = function(radius, logic){ 
+    const output = [];
+    for(let i = 0; i < radius.length; i++){
+        output.push(logic(radius[i]))
+    }
+    return output;
+}
+
+console.log(calculate(radius, area));
+console.log(calculate(radius, diameter));
+```
+[More information here.](https://www.freecodecamp.org/news/higher-order-functions-in-javascript-explained/#:~:text=A%20higher%20order%20function%20is%20a%20function%20that%20takes%20one,functions%20like%20map%20and%20reduce.)
 
 ##  2. <a name='Waystodeclareafunction'></a>Ways to declare a function
 
@@ -393,6 +454,8 @@ const add = (function () {
   return function () {counter += 1; return counter}
 })();
 
+//See that we can inmediately use add, if we create the add closure with out the (...)() we must first initializate the closure in a new variable, example: const newAdd = add();
+
 add();
 add();
 add();// the counter is now 3
@@ -422,3 +485,40 @@ console.log(Counter.getCount()); // Output: 2
 ```
 
 [More information here.](https://www.w3schools.com/js/js_function_closures.asp)
+
+## Functional caching
+
+__How to use Memoize to cache JavaScript function results and speed up your code:__
+
+Memoizing in simple terms means memorizing or storing in memory. A memoized function is usually faster because if the function is called subsequently with the previous value(s), then instead of executing the function, we would be fetching the result from the cache.
+
+__Functional Caching is the process of saving a cache that has the values recorded from the previous time(s) the function was executed.__
+
+So say we want to create a function that adds all integers beneath a given integer, but also saves the values of the last time it ran in an array so that the function can save itself work the next time that it ran? Let’s try it out.
+
+```js
+// a simple function to add something
+const add = (n) => (n + 10);
+add(9);
+
+// a simple memoized function to add something
+const memoizedAdd = () => {
+  let cache = {};
+  return (n) => {
+    if (n in cache) {
+      console.log('Fetching from cache');
+      return cache[n];
+    }
+    else {
+      console.log('Calculating result');
+      let result = n + 10;
+      cache[n] = result;
+      return result;
+    }
+  }
+}
+// returned function from memoizedAdd
+const newAdd = memoizedAdd();
+console.log(newAdd(9)); // calculated
+console.log(newAdd(9)); // cached
+```
