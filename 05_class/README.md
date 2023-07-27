@@ -1,26 +1,58 @@
 
-
 # Class 5
+
+In this readme, the important concepts of the class will be provided and the homework to be carried out.
+
+The homework development is in the folder ```./homework/```.
 
 __Table of content:__
 
-* 1. [First-class function](#First-classfunction)
-* 2. [Ways to declare a function](#Waystodeclareafunction)
-	* 2.1. [Function declaration](#Functiondeclaration)
-	* 2.2. [Anonymous function expression](#Anonymousfunctionexpression)
-	* 2.3. [Named function expression](#Namedfunctionexpression)
-	* 2.4. [Arrow function expression](#Arrowfunctionexpression)
-	* 2.5. [Immediately Invoked Function Expression (IIFE)](#ImmediatelyInvokedFunctionExpressionIIFE)
-* 3. [Function parameters](#Functionparameters)
-	* 3.1. [Default parameters](#Defaultparameters)
-	* 3.2. [Rest parameters](#Restparameters)
-* 4. [Generator function](#Generatorfunction)
-* 5. [Object destructuring](#Objectdestructuring)
-* 6. [Return values](#Returnvalues)
-* 7. [Function that return functions](#Functionthatreturnfunctions)
+<!-- vscode-markdown-toc -->
+* 1. [Recommended read](#Recommendedread)
+* 2. [First-class function](#First-classfunction)
+* 3. [Pure functions](#Purefunctions)
+* 4. [Higher-order functions (HOF)](#Higher-orderfunctionsHOF)
+* 5. [Ways to declare a function](#Waystodeclareafunction)
+	* 5.1. [Function declaration](#Functiondeclaration)
+	* 5.2. [Anonymous function expression](#Anonymousfunctionexpression)
+	* 5.3. [Named function expression](#Namedfunctionexpression)
+	* 5.4. [Arrow function expression](#Arrowfunctionexpression)
+	* 5.5. [Immediately Invoked Function Expression (IIFE)](#ImmediatelyInvokedFunctionExpressionIIFE)
+* 6. [Function parameters](#Functionparameters)
+	* 6.1. [Default parameters](#Defaultparameters)
+	* 6.2. [Rest parameters](#Restparameters)
+* 7. [Generator function](#Generatorfunction)
+* 8. [Object destructuring](#Objectdestructuring)
+* 9. [Return values](#Returnvalues)
+* 10. [Function that return functions](#Functionthatreturnfunctions)
+* 11. [Closures](#Closures)
+* 12. [Functional caching](#Functionalcaching)
+* 13. [Lazy functions](#Lazyfunctions)
+	* 13.1. [Lazy evaluation](#Lazyevaluation)
+	* 13.2. [Lazy loading](#Lazyloading)
+* 14. [Currying](#Currying)
+* 15. [Function composition](#Functioncomposition)
+* 16. [Imperative vs declarative way of programming](#Imperativevsdeclarativewayofprogramming)
+	* 16.1. [Imperative programming](#Imperativeprogramming)
+	* 16.2. [Declarative programming](#Declarativeprogramming)
+	* 16.3. [Pros and cons](#Prosandcons)
+* 17. [Recursion and tail recursion](#Recursionandtailrecursion)
+* 18. [Homework](#Homework)
+
+<!-- vscode-markdown-toc-config
+	numbering=true
+	autoSave=true
+	/vscode-markdown-toc-config -->
+<!-- /vscode-markdown-toc -->
 
 
-##  1. <a name='First-classfunction'></a>First-class function
+##  1. <a name='Recommendedread'></a>Recommended read
+
+This article is very helpfull for functional programming.
+
+[Click here.](https://mostly-adequate.gitbook.io/mostly-adequate-guide/)
+
+##  2. <a name='First-classfunction'></a>First-class function
 
 A programming language is said to have First-class functions when functions in that language are treated like any other variable. For example, in such a language, a function can be passed as an argument to other functions, can be returned by another function and can be assigned as a value to a variable.
 
@@ -76,7 +108,7 @@ console.log(greetingFunctions[1]("Maria")); // Output: ¡Hola, Maria!
 
 ```
 
-## Pure functions
+##  3. <a name='Purefunctions'></a>Pure functions
 
 A function is a reusable block of code that accepts arguments and returns a computed value.
 
@@ -110,7 +142,7 @@ console.log(add(2)) // logs 2
 console.log(add(2)) // logs 4
 ```
 
-## Higher-order functions (HOF)
+##  4. <a name='Higher-orderfunctionsHOF'></a>Higher-order functions (HOF)
 
 Have two criterias, if follow one of both of them is high order function.
 
@@ -173,9 +205,9 @@ console.log(calculate(radius, diameter));
 ```
 [More information here.](https://www.freecodecamp.org/news/higher-order-functions-in-javascript-explained/#:~:text=A%20higher%20order%20function%20is%20a%20function%20that%20takes%20one,functions%20like%20map%20and%20reduce.)
 
-##  2. <a name='Waystodeclareafunction'></a>Ways to declare a function
+##  5. <a name='Waystodeclareafunction'></a>Ways to declare a function
 
-###  2.1. <a name='Functiondeclaration'></a>Function declaration
+###  5.1. <a name='Functiondeclaration'></a>Function declaration
 
 The function declaration creates a binding of a new function to a given name.
 
@@ -190,7 +222,7 @@ console.log(calcRectArea(5, 6));
 
 [More information here.](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)
 
-###  2.2. <a name='Anonymousfunctionexpression'></a>Anonymous function expression
+###  5.2. <a name='Anonymousfunctionexpression'></a>Anonymous function expression
 
 The function keyword can be used to define a function inside an expression.
 
@@ -205,7 +237,7 @@ console.log(getRectArea(3, 4));
 
 [More information here.](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/function)
 
-###  2.3. <a name='Namedfunctionexpression'></a>Named function expression
+###  5.3. <a name='Namedfunctionexpression'></a>Named function expression
 
 It creates a function expression with a named function.
 
@@ -219,7 +251,7 @@ console.log(calcArea(3,5));
 ```
 This helps for debugging, as the function will left traces.
 
-###  2.4. <a name='Arrowfunctionexpression'></a>Arrow function expression
+###  5.4. <a name='Arrowfunctionexpression'></a>Arrow function expression
 
 An __arrow function expression__ is a compact alternative to a traditional function expression, with some semantic differences and deliberate limitations in usage:
 
@@ -251,7 +283,7 @@ const obj = {
 };
 ```
 
-###  2.5. <a name='ImmediatelyInvokedFunctionExpressionIIFE'></a>Immediately Invoked Function Expression (IIFE)
+###  5.5. <a name='ImmediatelyInvokedFunctionExpressionIIFE'></a>Immediately Invoked Function Expression (IIFE)
 
 An IIFE (Immediately Invoked Function Expression) is a JavaScript function that runs as soon as it is defined.
 
@@ -278,7 +310,7 @@ buscar bien para que lo querriamos usar.
 
 [More information here.](https://developer.mozilla.org/es/docs/Glossary/IIFE)
 
-##  3. <a name='Functionparameters'></a>Function parameters
+##  6. <a name='Functionparameters'></a>Function parameters
 
 There are two special kinds of parameter syntax:
 * __default parameters__
@@ -289,7 +321,7 @@ Be aware of this:
 * __Arguments are Passed by Value:__ Changes to arguments are not visible (reflected) outside the function.
 * __Objects are Passed by Reference:__ Changes to object properties are visible (reflected) outside the function.
 
-###  3.1. <a name='Defaultparameters'></a>Default parameters
+###  6.1. <a name='Defaultparameters'></a>Default parameters
 
 In JavaScript, parameters of functions default to undefined. However, in some situations it might be useful to set a different default value. This is exactly what default parameters do.
 
@@ -312,7 +344,7 @@ function multiply(a, b = 1) {
 console.log(multiply(5)); // 5
 ```
 
-###  3.2. <a name='Restparameters'></a>Rest parameters
+###  6.2. <a name='Restparameters'></a>Rest parameters
 
 The rest parameter syntax allows us to represent an indefinite number of arguments as an array using the spread operator.
 
@@ -326,7 +358,7 @@ const arr = multiply(2, 1, 2, 3);
 console.log(arr); // [2, 4, 6]
 ```
 
-##  4. <a name='Generatorfunction'></a>Generator function
+##  7. <a name='Generatorfunction'></a>Generator function
 
 The function* declaration creates a binding of a new generator function to a given name. A generator function can be exited and later re-entered, with its context (variable bindings) saved across re-entrances.
 
@@ -348,7 +380,7 @@ console.log(gen.next().value);
 
 [More information here.](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function*)
 
-##  5. <a name='Objectdestructuring'></a>Object destructuring
+##  8. <a name='Objectdestructuring'></a>Object destructuring
 
 Object destructuring is a feature in JavaScript that allows you to extract properties from an object and assign them to variables with the same name as the property keys. It provides a concise way to work with objects and access their properties. Let's see how object destructuring works in combination with functions.
 
@@ -373,7 +405,7 @@ printPersonInfo(person);
 // => Age: 30
 ```
 
-##  6. <a name='Returnvalues'></a>Return values
+##  9. <a name='Returnvalues'></a>Return values
 
 Considering a function returns an array, object, etc. We can receibe them in the next way:
 
@@ -421,7 +453,7 @@ const { age, name } = doSmth();
 
 ```
 
-##  7. <a name='Functionthatreturnfunctions'></a>Function that return functions
+##  10. <a name='Functionthatreturnfunctions'></a>Function that return functions
 
 
 In JavaScript, you can create a function that returns another function. This concept is known as a "higher-order function." They are a powerful feature of JavaScript and enable the creation of more flexible and reusable code.
@@ -442,7 +474,7 @@ console.log(double(5)); // Output: 10 (2 * 5)
 console.log(triple(5)); // Output: 15 (3 * 5)
 ```
 
-## Closures
+##  11. <a name='Closures'></a>Closures
 
 A __closure__ is the __combination of a function bundled together (enclosed) with references to its surrounding state__ (the lexical environment). In other words, a closure gives you access to an outer function's scope from an inner function. In JavaScript, closures are created every time a function is created, at function creation time.
 
@@ -486,7 +518,7 @@ console.log(Counter.getCount()); // Output: 2
 
 [More information here.](https://www.w3schools.com/js/js_function_closures.asp)
 
-## Functional caching
+##  12. <a name='Functionalcaching'></a>Functional caching
 
 __How to use Memoize to cache JavaScript function results and speed up your code:__
 
@@ -523,9 +555,9 @@ console.log(newAdd(9)); // calculated
 console.log(newAdd(9)); // cached
 ```
 
-## Lazy functions
+##  13. <a name='Lazyfunctions'></a>Lazy functions
 
-### Lazy evaluation
+###  13.1. <a name='Lazyevaluation'></a>Lazy evaluation
 Lazy evaluation is a programming paradigm where the evaluation of an expression or function is delayed until its value is actually needed. In JavaScript, this can be achieved using functions, closures, and higher-order functions.
 
 As a result, lazy evaluation suddenly rose to fame in functional programming for several reasons. It allows the programmer to access data structure components out of order after initializing them, as long as there are no circular dependencies. It also decreases an algorithm’s time complexity by removing transitory computations.
@@ -545,7 +577,7 @@ const result = lazyAdd(5, 10); // No addition is done at this point
 console.log(result()); // Output: 15
 ```
 
-### Lazy loading
+###  13.2. <a name='Lazyloading'></a>Lazy loading
 
 Lazy loading is a technique used in web development to defer the loading of non-critical resources until they are needed. This can help improve the initial page load time and overall performance by loading resources only when they become necessary.
 For example, let's say you have a JavaScript module with a function that is only required in certain situations:
@@ -574,7 +606,7 @@ if (someCondition) {
 In this example, the lazyModule.js and its lazyFunction are only loaded and executed if someCondition is true. Otherwise, the code is not loaded, saving unnecessary resource requests and improving the page load time.
 
 
-## Currying
+##  14. <a name='Currying'></a>Currying
 
 It is a technique in functional programming, that transforms the function of multiple arguments into several functions of a single argument in sequence. 
 
@@ -620,7 +652,7 @@ function currying(fn, ...args) {
 }
 ```
 
-## Function composition
+##  15. <a name='Functioncomposition'></a>Function composition
 
 Function composition is another powerful technique in functional programming, which involves combining two or more functions to create a new function. The output of one function becomes the input to the next function in the chain. This allows you to build complex transformations or computations by composing smaller, reusable functions together.
 
@@ -639,3 +671,94 @@ console.log(result); // Output: ((5 + 1) * (5 + 1)) - 10 = 26
 ```
 
 Using function composition can lead to code that is more modular, easier to reason about, and promotes reusability. By breaking down complex operations into smaller, focused functions, you can build a pipeline of transformations that are more manageable and easier to maintain. Additionally, it aligns well with the functional programming paradigm and encourages the use of pure functions, which can lead to more predictable and bug-free code.
+
+##  16. <a name='Imperativevsdeclarativewayofprogramming'></a>Imperative vs declarative way of programming
+
+Imperative and declarative programming are two different paradigms for writing computer programs. They represent different approaches to specifying how a program should 
+achieve its goal.
+
+###  16.1. <a name='Imperativeprogramming'></a>Imperative programming
+
+Imperative programming is a programming paradigm where the focus is on describing step-by-step how to achieve a certain task. In this style of programming, the programmer explicitly specifies the sequence of actions that the computer must take to solve the problem. The emphasis is on describing "how" to do something, often involving mutable state and explicit control flow.
+
+__Characteristics of imperative programming:__
+
+* Programs consist of a series of statements that modify the program's state.
+* The control flow is typically achieved using loops, conditionals (if/else), and explicit instructions (e.g., "go to" statements).
+* Mutable data is common, and changes to data are explicitly performed.
+* The programmer needs to manage low-level details of the program's execution.
+
+```py
+# Python example: Imperative way to calculate the sum of numbers in an array
+#
+def sum_array(arr):
+    total = 0
+    for num in arr:
+        total += num
+    return total
+```
+
+###  16.2. <a name='Declarativeprogramming'></a>Declarative programming
+
+Declarative programming is a programming paradigm where the focus is on describing what the program should accomplish without specifying the step-by-step process of achieving it. In this style of programming, the programmer defines the desired outcome or result, and the programming language or framework takes care of the underlying implementation details.
+
+__Characteristics of declarative programming:__
+
+* Programs describe the logic and relationships between elements, rather than specifying the exact sequence of steps.
+The emphasis is on "what" needs to be done, and the "how" is abstracted away.
+* Functional programming is a common approach in declarative programming, where pure functions and immutable data are used.
+* Declarative code is often more concise and easier to understand.
+
+
+```py
+# Python example: Declarative way to calculate the sum of numbers in an array
+def sum_array(arr):
+    return sum(arr)
+```
+
+###  16.3. <a name='Prosandcons'></a>Pros and cons
+
+* Imperative programming allows fine-grained control and can be efficient for certain low-level tasks, but it can lead to more complex and harder-to-read code.
+* Declarative programming promotes code simplicity, modularity, and easier maintenance, but it may require more abstraction and familiarity with the underlying language or framework.
+
+Both paradigms have their place in software development, and a skilled programmer knows when to use each approach effectively based on the specific requirements of the problem being solved.
+
+##  17. <a name='Recursionandtailrecursion'></a>Recursion and tail recursion
+
+[Read this article.](https://dev.to/hi_iam_chris/recursion-and-tail-recursion-with-javascript-2fdg)
+
+##  18. <a name='Homework'></a>Homework
+
+```
+Task 1: Immutability and Pure Functions
+
+1. Implement a pure function called `calculateDiscountedPrice` that takes an array of products and a discount percentage as arguments. The function should return a new array of products with discounted prices based on the given percentage, without modifying the original products.
+
+2. Create a pure function called `calculateTotalPrice` that takes an array of products as an argument. The function should return the total price of all products, without modifying the original array or its items.
+
+Task 2: Function Composition and Point-Free Style
+
+1. Implement a function called `getFullName` that takes a person object with `firstName` and `lastName` properties. The function should return the person's full name in the format "FirstName LastName".
+
+2. Create a function called `filterUniqueWords` that takes a string of text and returns an array of unique words, sorted in alphabetical order, without using explicit loops. Use function composition and point-free style.
+
+3. Implement a function called `getAverageGrade` that takes an array of student objects, each containing a `name` and `grades` property. The function should return the average grade of all students, without modifying the original array or its items. Use function composition and point-free style.
+
+Task 3: Closures and Higher-Order Functions
+
+1. Create a function called `createCounter` that returns a closure. The closure should be a counter function that increments the count on each call and returns the updated count. Each closure should have its own independent count.
+
+2. Implement a higher-order function called `repeatFunction` that takes a function and a number as arguments. The function should return a new function that invokes the original function multiple times based on the provided number. If the number is negative, the new function should invoke the original function indefinitely until stopped.
+
+Task 4: Recursion and Tail Call Optimization
+
+1. Implement a recursive function called `calculateFactorial` that calculates the factorial of a given number. Optimize the function to use tail call optimization to avoid stack overflow for large input numbers.
+
+2. Create a recursive function called `power` that takes a base and an exponent as arguments. The function should calculate the power of the base to the exponent using recursion.
+
+Task 5: Lazy Evaluation and Generators (do not use yield)
+
+1. Implement a lazy evaluation function called `lazyMap` that takes an array and a mapping function. The function should return a lazy generator that applies the mapping function to each element of the array one at a time.
+
+2. Create a lazy generator function called `fibonacciGenerator` that generates Fibonacci numbers one at a time using lazy evaluation.
+```
