@@ -76,6 +76,42 @@ console.log(greetingFunctions[1]("Maria")); // Output: ¡Hola, Maria!
 
 ```
 
+## Pure functions
+
+A function is a reusable block of code that accepts arguments and returns a computed value.
+
+A pure function always returns the same value given the same arguments and produces no side effects.
+
+__Pure functions are:__
+* More redeable
+* Better for optimization
+* Better for tesitning
+* Independent
+* Don't have side effects.
+
+```js
+// Pure function example
+function sum(a, b) {
+  return a + b
+}
+
+console.log(sum(1, 2)) // logs 3
+console.log(sum(1, 2)) // logs 3
+
+// Impure function example (value can be modified)
+let value = 0
+
+function add(increase) {
+  value += increase // Side-effect
+  return value
+}
+
+console.log(add(2)) // logs 2
+console.log(add(2)) // logs 4
+```
+
+
+
 ##  2. <a name='Waystodeclareafunction'></a>Ways to declare a function
 
 ###  2.1. <a name='Functiondeclaration'></a>Function declaration
@@ -344,3 +380,45 @@ const triple = createMultiplier(3);
 console.log(double(5)); // Output: 10 (2 * 5)
 console.log(triple(5)); // Output: 15 (3 * 5)
 ```
+
+## Closures
+
+A __closure__ is the __combination of a function bundled together (enclosed) with references to its surrounding state__ (the lexical environment). In other words, a closure gives you access to an outer function's scope from an inner function. In JavaScript, closures are created every time a function is created, at function creation time.
+
+```js
+// Example 1
+
+const add = (function () {
+  let counter = 0;
+  return function () {counter += 1; return counter}
+})();
+
+add();
+add();
+add();// the counter is now 3
+
+
+// Example 2: with different "private methods"
+const Counter = (() => {
+  // Private variable, not accessible from outside
+  let count = 0;
+
+  // Private function, not accessible from outside
+  const increment = () => {
+    count++;
+  };
+
+  // Public methods, accessible from outside
+  return {
+    getCount: () => count,
+    increment: () => increment()
+  };
+})();
+
+console.log(Counter.getCount()); // Output: 0
+Counter.increment();
+Counter.increment();
+console.log(Counter.getCount()); // Output: 2
+```
+
+[More information here.](https://www.w3schools.com/js/js_function_closures.asp)
