@@ -4,7 +4,6 @@
 const calculateDiscountedPrice = (products, discount) => {
   const discountToDecimals = (100 - discount) / 100;
   const discountedProductsPrice = products.map((el) => el * discountToDecimals);
-  console.log(discountedProductsPrice);
   return discountedProductsPrice;
 };
 
