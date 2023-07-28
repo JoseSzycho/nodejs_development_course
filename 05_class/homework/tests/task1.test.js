@@ -1,6 +1,7 @@
 const calculateDiscountedPrice = require("../task1/calculateDiscountedPrice");
+const calculateTotalPrice = require("../task1/calculateTotalPrice");
 
-describe("Calculate Discounted Price function tests", () => {
+describe("calculateDiscountedPrice function tests", () => {
   test("Expect [2, 4, 6, 8] with 50% descount to be [1, 2, 3, 4]", () => {
     const productsPrice = [2, 4, 6, 8];
     const expectedProductPrice = [1, 2, 3, 4];
@@ -9,7 +10,6 @@ describe("Calculate Discounted Price function tests", () => {
       productsPrice,
       discount
     );
-    console.log(discountedProductsPrice);
     expect(discountedProductsPrice).toEqual(expectedProductPrice);
   });
 
@@ -34,5 +34,35 @@ describe("Calculate Discounted Price function tests", () => {
     );
     expect(discountedProductsPrice).toEqual(expectedProductPrice);
   });
+
+  test("Expect [1, 2, 3, 4] to not be modified", () => {
+    const productsPrice = [1, 2, 3, 4];
+    const discount = 70;
+    const discountedProductsPrice = calculateDiscountedPrice(
+      productsPrice,
+      discount
+    );
+    expect(productsPrice).toEqual([1, 2, 3, 4]);
+  });
 });
 
+describe("calculateTotalPrice function tests", () => {
+  test("Expect total price of [1, 2, 3] to be 6", () => {
+    const priceOfProducts = [1, 2, 3];
+    const totalPrice = 6;
+    expect(calculateTotalPrice(priceOfProducts)).toBe(totalPrice);
+  });
+
+  test("Expect total price of [99] to be 99", () => {
+    const priceOfProducts = [99];
+    const totalPrice = 99;
+    expect(calculateTotalPrice(priceOfProducts)).toBe(totalPrice);
+  });
+
+  test("Expect price [1, 2, 3] to not change after calling the function", () => {
+    const priceOfProducts = [1, 2, 3];
+    const totalPrice = 6;
+    expect(calculateTotalPrice(priceOfProducts)).toBe(totalPrice);
+    expect(priceOfProducts).toEqual([1, 2, 3]);
+  });
+});
