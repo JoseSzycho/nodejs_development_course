@@ -1,4 +1,5 @@
 const getFullName = require("../task2/getFullName");
+const filterUniqueWords = require("../task2/filterUniqueWords");
 
 describe("getFullName function tests", () => {
   test('Expect {firstName: Homero, lastName: Simpson} to be "Homero Simpson"', () => {
@@ -31,5 +32,26 @@ describe("getFullName function tests", () => {
       });
   });
   
+
+});
+
+describe("fulterUniqueWords tests", () => {
+  test('Expect "hi" to be ["hi"]', () => {
+    const text = "hi";
+    const uniqueWords = filterUniqueWords(text);
+    expect(uniqueWords).toEqual(["hi"]);
+  });
+
+  test('Expect "hi bye" to be ["bye", "hi"]', () => {
+    const text = "hi bye";
+    const uniqueWords = filterUniqueWords(text);
+    expect(uniqueWords).toEqual(["bye", "hi"]);
+  });
+
+  test('Expect "hi bye hi HI bYe bye tree CaR" to be ["bye", "car", "hi", "tree"]', () => {
+    const text = "hi bye hi HI bYe bye tree CaR";
+    const uniqueWords = filterUniqueWords(text);
+    expect(uniqueWords).toEqual(["bye", "car", "hi", "tree"]);
+  });
 
 });
