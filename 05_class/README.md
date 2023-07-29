@@ -732,7 +732,7 @@ Both paradigms have their place in software development, and a skilled programme
 
 ##  18. <a name='Homework'></a>Homework
 
-```
+
 Task 1: Immutability and Pure Functions
 
 1. Implement a pure function called `calculateDiscountedPrice` that takes an array of products and a discount percentage as arguments. The function should return a new array of products with discounted prices based on the given percentage, without modifying the original products.
@@ -764,4 +764,3 @@ Task 5: Lazy Evaluation and Generators (do not use yield)
 1. Implement a lazy evaluation function called `lazyMap` that takes an array and a mapping function. The function should return a lazy generator that applies the mapping function to each element of the array one at a time.
 
 2. Create a lazy generator function called `fibonacciGenerator` that generates Fibonacci numbers one at a time using lazy evaluation.
-```
