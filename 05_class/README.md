@@ -727,6 +727,9 @@ Both paradigms have their place in software development, and a skilled programme
 
 [Read this article.](https://dev.to/hi_iam_chris/recursion-and-tail-recursion-with-javascript-2fdg)
 
+## Pointfree Style
+[Read this article.](https://blog.openreplay.com/forever-functional-pointfree-style-programming/)
+
 ##  18. <a name='Homework'></a>Homework
 
 ```
