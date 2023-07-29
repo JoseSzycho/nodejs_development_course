@@ -97,12 +97,12 @@ describe("getAverageGrade function tests", () => {
 
     const student2 = {
       name: "Lisa",
-      grades: [6]
+      grades: [6],
     };
 
     const student3 = {
       name: "Marge",
-      grades: [9, 9, 5, 5]
+      grades: [9, 9, 5, 5],
     };
 
     const students = [student1, student2, student3];
@@ -121,6 +121,19 @@ describe("getAverageGrade function tests", () => {
       name: "Lisa",
       grades: [3, 4, 2],
     };
-  })
-  
+
+    const students = [student1, student2];
+    const averageGrade = getAverageGrade(students);
+
+    expect(students).toEqual([
+      {
+        name: "Bart",
+        grades: [7, 5, 4],
+      },
+      {
+        name: "Lisa",
+        grades: [3, 4, 2],
+      },
+    ]);
+  });
 });
