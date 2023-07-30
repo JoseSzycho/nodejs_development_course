@@ -14,4 +14,4 @@ In each task folder the __subtasks__ are provided in different files. The name o
 
 The tests of each task are provided in the ```tests``` folder. Each test file have the name ```task#.test.js```, where _#_ is the task number. 
 
-Each test file contains the tests of all the subtask of the task.
+Each test file contains the tests of all the subtasks of the task.
