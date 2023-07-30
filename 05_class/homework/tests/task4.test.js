@@ -34,6 +34,11 @@ describe("power function tests", () => {
     expect(() => power(5, -1)).toThrowError("Exponent cannot be negative.");
   });
 
+  test("Expect boolean exponent to throw error", () => {
+    expect(() => power(5, 1.3)).toThrowError("Exponent must be integer.");
+  });
+
+
   test("Expect 0^0 to be indeterminate error", () => {
     expect(() => power(0, 0)).toThrowError("Indeterminate result.");
   });
