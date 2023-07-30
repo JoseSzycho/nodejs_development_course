@@ -8,8 +8,9 @@ const filterUniqueWords = (text) => {
   // Second, we convert each word to lower case, so all have the same format
   // Third, we delete the repeatied words
   // Fourth, we sort everything
-  const composedWordsFilter = (x) => sort(selectUniqueWords(splitText(x).map(textToLowerCase)));
- 
+  const composedWordsFilter = (x) =>
+    sort(selectUniqueWords(splitText(x).map(textToLowerCase)));
+
   return composedWordsFilter(text);
 };
 
