@@ -1,5 +1,7 @@
 const calculateFactorial = (number) => {
-  if (number < 0) return 1; // using this evaluation outside recursive fuction to not evaluate it in every run
+  if (number == 0) return 1; // using this evaluation outside recursive fuction to not evaluate it in every run
+  if (number <= 0)
+    throw new Error("Cannot calculate factorial of negative numbers");
   const factorial = (number, operations = 0, result = 1) => {
     if (operations == number) return result; // if number operations == numbers, calculation is finished
     operations++;

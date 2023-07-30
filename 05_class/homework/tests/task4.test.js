@@ -2,7 +2,9 @@ const calculateFactorial = require("../task4/calculateFactorial");
 
 describe("calculateFactorial function tests", () => {
   test("Expect factorial of negative number to be 1", () => {
-    expect(calculateFactorial(-5)).toBe(1);
+    expect(() => calculateFactorial(-5)).toThrowError(
+      "Cannot calculate factorial of negative numbers"
+    );
   });
 
   test("Expect factorial of 0 to be 1", () => {
