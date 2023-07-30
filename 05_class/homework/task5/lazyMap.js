@@ -5,7 +5,7 @@ const lazyMap = (array, fn) => {
   const lazyReturn = () => {
     counter++;
 
-    if (counter >= array.length)
+    if (counter >= array.length) // We cannot map a number if the returned all array
       throw new Error("No element left to lazy map.");
 
     return fn(newArray[counter]); // return the maped array[n element]

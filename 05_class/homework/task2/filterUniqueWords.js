@@ -1,5 +1,5 @@
 const filterUniqueWords = (text) => {
-  const splitText = (x) => x.split(" "); //separated words into an array
+  const splitText = (x) => x.split(" "); //separate words into an array
   const textToLowerCase = (x) => x.toLowerCase(); //lower case each word element
   const selectUniqueWords = (x) => [...new Set(x)]; //delete repeated elements
   const sort = (x) => x.sort(); //sorts in alphabetical order

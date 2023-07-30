@@ -6,7 +6,7 @@ const repeatFunction = (fn, timesToRepeat) => {
       }
     };
   }
-
+  // If number is negative, we go here
   return () => {
     while (true) {
       fn();
