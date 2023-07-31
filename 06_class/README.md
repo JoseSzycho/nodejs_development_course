@@ -1,0 +1,175 @@
+# Class 06 - Objects
+
+## What are objects
+
+Objects are one of the fundamental data types, and they are __used to store and organize data in a structured manner__. An object is a __collection of key-value pairs__ where each key represents a property, and each value represents the value associated with that property.
+
+__An object variable contains the reference in memory of the object.__
+
+## Ways to create objects
+
+There are to principal ways to create an object.
+
+### Object literals
+
+This is the simplest and most common way to create an object. It uses curly braces {} and defines the properties and their values within the braces, each key-value is separated by a comma.
+
+```js
+const person = {
+  name: "John",
+  age: 30,
+  city: "New York",
+  isEmployed: true,
+};
+```
+
+### Object constructor
+
+You can also create an object using the Object constructor function and then adding properties and values to it.
+
+```js
+
+// With constructor functions, the newly created object inherits from the constructor's prototype
+//const car = new Car();
+
+const person = new Object();
+person.name = "John";
+person.age = 30;
+person.city = "New York";
+person.isEmployed = true;
+```
+
+__Advantages of using the object constructor:__
+
+* Simple and easy to understand.
+* Allows adding properties dynamically to the object.
+
+__Disadvantages:__
+
+* No easy way to set the prototype of the object explicitly.
+* Objects created with the constructor do not have a direct relationship with a prototype.
+
+### Object.create
+
+The Object.create() static method creates a new object, using an existing object as the prototype of the newly created object.
+
+```js
+//Object.create builds an object that inherits directly from the one passed as its first argument.
+
+const personPrototype = {
+  age: 30,
+  city: "New York",
+  isEmployed: true,
+};
+
+const person = Object.create(personPrototype);
+person.name = "John";
+
+person.age // => 30
+```
+
+__Advantages of using Object.create():__
+
+* Allows you to set up a prototype chain, enabling prototype-based inheritance.
+* Provides a cleaner separation between the prototype and instance-specific properties.
+
+__Disadvantages:__
+
+* Requires creating a separate prototype object first.
+* More complex than the object constructor for simple object creation.
+
+### ES6 classes
+
+ES6 classes are a syntactical sugar over the existing prototype-based inheritance model of JavaScript. They provide a more familiar and structured way to create constructor functions and handle inheritance.
+
+```js
+class Person {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+
+  sayHello() {
+    console.log(`Hello, my name is ${this.name} and I am ${this.age} years old.`);
+  }
+}
+```
+
+## Ways to acces an object property
+
+### Dot Notation
+
+```js
+const person = {
+  name: "John",
+  age: 30,
+};
+
+console.log(person.name); // Output: "John"
+console.log(person.age);  // Output: 30
+```
+
+### Bracket notation
+```js
+const person = {
+  name: "John",
+  age: 30,
+};
+
+console.log(person["name"]); // Output: "John"
+console.log(person["age"]);  // Output: 30
+
+const propertyName = "age";
+console.log(person[propertyName]); // Output: 30
+```
+
+## Object inheritance
+
+__Long story short: If we try to find in its properties, if not found we search the global prototype, if not found it goes to the Object prototype.__ 
+
+In JavaScript, the inheritance chain is the relationship formed between objects through their prototypes. This chain allows objects to inherit properties and methods from their prototype objects and forms the basis of prototype-based inheritance in the language.
+
+Each object in JavaScript has an internal reference to its prototype. When you access a property or method on an object, if it's not found directly on the object, JavaScript follows the prototype chain and looks for the property or method in the object's prototype. If it's not found there, the search continues up the chain until the property or method is found, or until the end of the prototype chain is reached, which is Object.prototype.
+
+
+```js
+// Define a constructor function "Person"
+function Person(name) {
+  this.name = name;
+}
+
+// Add a method to the prototype of "Person"
+Person.prototype.sayHello = function() {
+  console.log(`Hello, my name is ${this.name}.`);
+};
+
+// Create an instance of "Person"
+const john = new Person("John");
+
+// Access the "name" property and the "sayHello" method
+console.log(john.name); // Output: "John"
+john.sayHello(); // Output: "Hello, my name is John."
+
+john -> Person.prototype -> Object.prototype -> null
+```
+
+```js
+// Another example for seing how the chain works
+
+// Define a constructor function "Person"
+function Person(name) {
+  this.name = name;
+}
+
+// Add a constant to the prototype of "Person"
+Person.prototype.age = 35;
+
+// Create an instance of "Person"
+const Bob = new Person("Bob");
+
+console.log(Bob.age); // 35 becaouse of inheritance
+Bob -> Person.prototype.age
+
+Bob.age = 28;
+console.log(Bob.age); // 28
+```
