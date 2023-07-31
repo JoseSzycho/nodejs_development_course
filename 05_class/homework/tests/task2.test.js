@@ -35,6 +35,20 @@ describe("getFullName function tests", () => {
 });
 
 describe("fulterUniqueWords function tests", () => {
+  test("Expect error if a string is not sent.", () => {
+    const text = [1, 3];
+    expect(() => filterUniqueWords(text)).toThrow(
+      "Cannot filter if text it is not a string."
+    );
+  });
+
+  test("Expect error if a string is not sent.", () => {
+    const text = ["hello world !"];
+    expect(() => filterUniqueWords(text)).toThrow(
+      "Cannot filter if text it is not a string."
+    );
+  });
+
   test('Expect "hi" to be ["hi"]', () => {
     const text = "hi";
     const uniqueWords = filterUniqueWords(text);

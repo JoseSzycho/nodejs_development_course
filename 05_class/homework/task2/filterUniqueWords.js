@@ -1,4 +1,7 @@
 const filterUniqueWords = (text) => {
+  if (typeof text != "string")
+    throw new TypeError("Cannot filter if text it is not a string.");
+
   const splitText = (x) => x.split(" "); //separate words into an array
   const textToLowerCase = (x) => x.toLowerCase(); //lower case each word element
   const selectUniqueWords = (x) => [...new Set(x)]; //delete repeated elements
