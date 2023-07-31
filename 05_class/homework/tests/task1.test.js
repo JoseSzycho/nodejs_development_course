@@ -76,6 +76,22 @@ describe("calculateDiscountedPrice function tests", () => {
 });
 
 describe("calculateTotalPrice function tests", () => {
+
+  test("Expect error with negative price product", () => {
+    const priceOfProducts = [1, -2, 3];
+    expect(() => calculateTotalPrice(priceOfProducts)).toThrow(
+      "Cannot operate with negative numbers."
+    );
+  });
+
+  test("Expect error if a price is not a Number", () => {
+    const priceOfProducts = [1, "hi", 3];
+    expect(() => calculateTotalPrice(priceOfProducts)).toThrow(
+      "Cannot operate over this element."
+    );
+  });
+
+
   test("Expect total price of [1, 2, 3] to be 6", () => {
     const priceOfProducts = [1, 2, 3];
     const totalPrice = 6;
