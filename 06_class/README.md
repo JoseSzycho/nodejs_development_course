@@ -364,6 +364,92 @@ obj.name = "Alice"; // Output: "Setting name..."
 console.log(obj._name); // Output: "Alice"
 ```
 
-## Hide object property 
+## Hide object property
 
 This can be made using Class. We will se this in next class.
+
+## Object property attributes
+
+**The default only appears if whe create a property using Object.defineProperty and we do not set certain attribute.**
+
+### [[Get]]
+
+Is undefined if we not set it.
+
+### [[Set]] undefined si nio lo ponemos
+
+Is undefined if we not set it.
+
+### [[Value]]
+
+The value associated with the property. Can be any valid JavaScript value (number, object, function, etc.). Defaults to undefined.
+
+### [[Writable]]
+
+`true` if the value associated with the property may be changed with an assignment operator. Defaults to false.
+
+### [Enumerable]]
+
+`true` if and only if this property shows up during enumeration of the properties on the corresponding object. Defaults to false.
+
+### [[Configurable]]
+
+when this is set to `false`,
+
+- the type of this property cannot be changed between data property and accessor property, and
+- the property may not be deleted, and
+- other attributes of its descriptor cannot be changed (however, if it's a data descriptor with writable: true, the value can be changed, and writable can be changed to false).
+
+## Read property descriptors of a object
+
+El método Object.getOwnPropertyDescriptors(<object>) es una función de JavaScript que devuelve un objeto que contiene los descriptores de todas las propiedades directas (enumerables y no enumerables) de un objeto dado.
+
+```js
+const obj = {
+  prop1: 42,
+  prop2: "Hello",
+  prop3: true
+};
+
+const descriptors = Object.getOwnPropertyDescriptors(obj);
+
+console.log(descriptors.prop1);
+// Output: { value: 42, writable: true, enumerable: true, configurable: true }
+
+console.log(descriptors.prop2);
+// Output: { value: 'Hello', writable: true, enumerable: true, configurable: true }
+
+console.log(descriptors.prop3);
+// Output: { value: true, writable: true, enumerable: true, configurable: true }
+```
+
+## Set / modify property descriptors of a object
+
+The Object.defineProperty() static method defines a new property directly on an object, or modifies an existing property on an object, and returns the object.
+
+```js
+const obj = {};
+
+// Define a new property with specific attributes
+Object.defineProperty(obj, "name", {
+  value: "John",
+  writable: false,
+  enumerable: true,
+  configurable: false
+});
+
+console.log(obj.name); // Output: "John"
+
+// Trying to change the value of a non-writable property will not work silently in strict mode
+obj.name = "Jane"; // This will not have any effect due to non-writable attribute
+
+// Enumerate properties (since it's enumerable)
+for (const key in obj) {
+  console.log(key); // Output: "name"
+}
+
+// Trying to delete a non-configurable property will not work silently
+delete obj.name; // This will not have any effect due to non-configurable attribute
+
+console.log(obj.name); // Output: "John" (property still exists)
+```
