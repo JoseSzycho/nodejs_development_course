@@ -2,6 +2,35 @@ const calculateDiscountedPrice = require("../task1/calculateDiscountedPrice");
 const calculateTotalPrice = require("../task1/calculateTotalPrice");
 
 describe("calculateDiscountedPrice function tests", () => {
+  test("Expect error with negative price product", () => {
+    const productsPrice = [2, 4, -6, 8];
+    const discount = 50;
+
+    expect(() => calculateDiscountedPrice(productsPrice, discount)).toThrow(
+      "Cannot operate with negative numbers."
+    );
+  });
+
+  test("Expect error product price product is NaN", () => {
+    const productsPrice = [2, 4, "Hi", 8];
+    const discount = 50;
+
+    expect(() => calculateDiscountedPrice(productsPrice, discount)).toThrow(
+      "Cannot operate over this element."
+    );
+  });
+
+  test("Expect error if discount > 100", () => {
+    const productsPrice = [2, 4, 8, 8];
+    const discount = 101;
+
+    expect(() => calculateDiscountedPrice(productsPrice, discount)).toThrow(
+      "Discount must be in range of 0 - 100"
+    );
+  });
+
+  
+
   test("Expect [2, 4, 6, 8] with 50% descount to be [1, 2, 3, 4]", () => {
     const productsPrice = [2, 4, 6, 8];
     const expectedProductPrice = [1, 2, 3, 4];
@@ -47,6 +76,22 @@ describe("calculateDiscountedPrice function tests", () => {
 });
 
 describe("calculateTotalPrice function tests", () => {
+
+  test("Expect error with negative price product", () => {
+    const priceOfProducts = [1, -2, 3];
+    expect(() => calculateTotalPrice(priceOfProducts)).toThrow(
+      "Cannot operate with negative numbers."
+    );
+  });
+
+  test("Expect error if a price is not a Number", () => {
+    const priceOfProducts = [1, "hi", 3];
+    expect(() => calculateTotalPrice(priceOfProducts)).toThrow(
+      "Cannot operate over this element."
+    );
+  });
+
+
   test("Expect total price of [1, 2, 3] to be 6", () => {
     const priceOfProducts = [1, 2, 3];
     const totalPrice = 6;

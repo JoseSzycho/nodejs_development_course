@@ -7,6 +7,14 @@ const getAverageGrade = (students) => {
     return sumAllGrades(x) / x.length;
   };
 
+  // Cechking for input error
+  const errorIfNotValidGrade = (el) => {
+    if (el > 10 || el < 0)
+      throw new TypeError("Grade must be in the range of 0 - 10.");
+  };
+  const allStundetGrades = allGrades(allGradesArrays(students));
+  allStundetGrades.forEach(errorIfNotValidGrade);
+
   // First, we get an array that contain all the grades array for each student
   // Second, we join all arrays together to only have one array with all grades
   // Third, we calculate the average of this array

@@ -1,4 +1,7 @@
 const getFullName = ({ firstName, lastName }) => {
+  if (typeof firstName != "string" || typeof lastName != "string")
+    throw new TypeError("Cannot operate if input is not a string.");
+
   const normalizeName = (el) => {
     return el.charAt(0).toUpperCase() + el.slice(1).toLowerCase();
   };

@@ -3,6 +3,16 @@ const filterUniqueWords = require("../task2/filterUniqueWords");
 const getAverageGrade = require("../task2/getAverageGrade");
 
 describe("getFullName function tests", () => {
+  test("Expect error if a string is not sent.", () => {
+    const person = {
+      firstName: "Homero",
+      lastName: 1,
+    };
+    expect(() => getFullName(person)).toThrow(
+      "Cannot operate if input is not a string."
+    );
+  });
+  
   test('Expect {firstName: Homero, lastName: Simpson} to be "Homero Simpson"', () => {
     const person = {
       firstName: "Homero",
@@ -34,7 +44,21 @@ describe("getFullName function tests", () => {
   });
 });
 
-describe("fulterUniqueWords function tests", () => {
+describe("filterUniqueWords function tests", () => {
+  test("Expect error if a string is not sent.", () => {
+    const text = [1, 3];
+    expect(() => filterUniqueWords(text)).toThrow(
+      "Cannot filter if text it is not a string."
+    );
+  });
+
+  test("Expect error if a string is not sent.", () => {
+    const text = ["hello world !"];
+    expect(() => filterUniqueWords(text)).toThrow(
+      "Cannot filter if text it is not a string."
+    );
+  });
+
   test('Expect "hi" to be ["hi"]', () => {
     const text = "hi";
     const uniqueWords = filterUniqueWords(text);
@@ -55,6 +79,24 @@ describe("fulterUniqueWords function tests", () => {
 });
 
 describe("getAverageGrade function tests", () => {
+  test("Expect error if a grade is not in the valid range.", () => {
+    const student1 = {
+      name: "Bart",
+      grades: [7, 7, 7, 7],
+    };
+
+    const student2 = {
+      name: "Lisa",
+      grades: [9, -1, 9, 9],
+    };
+
+    const students = [student1, student2];
+
+    expect(() => getAverageGrade(students)).toThrow(
+      "Grade must be in the range of 0 - 10."
+    );
+  });
+
   test("Expect average to be 8", () => {
     const student1 = {
       name: "Bart",
