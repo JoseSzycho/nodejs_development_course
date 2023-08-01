@@ -1,3 +1,52 @@
+<!-- TOC -->
+
+- [Class 06 - Objects](#class-06---objects)
+    - [What are objects](#what-are-objects)
+    - [Ways to create objects](#ways-to-create-objects)
+        - [Object literals](#object-literals)
+        - [Object constructor](#object-constructor)
+        - [Object.create](#objectcreate)
+        - [ES6 classes](#es6-classes)
+    - [Ways to acces an object property](#ways-to-acces-an-object-property)
+        - [Dot Notation](#dot-notation)
+        - [Bracket notation](#bracket-notation)
+    - [Object inheritance](#object-inheritance)
+    - [Inmutable objects](#inmutable-objects)
+    - [Ways to copy an object](#ways-to-copy-an-object)
+        - [**Shallow Copy using Object.assign:**](#shallow-copy-using-objectassign)
+        - [Shallow Copy using the Spread Operator ES6+:](#shallow-copy-using-the-spread-operator-es6)
+        - [Deep Copy using JSON.parse and JSON.stringify:](#deep-copy-using-jsonparse-and-jsonstringify)
+        - [Deep Copy using External Libraries:](#deep-copy-using-external-libraries)
+    - [Comparing if two obcejts are equal](#comparing-if-two-obcejts-are-equal)
+    - [Object length](#object-length)
+        - [Object.getOwnPropertyNames<<obj>obj>](#objectgetownpropertynamesobjobj)
+        - [Object.keys<<obj>obj>](#objectkeysobjobj)
+        - [Object.entries<<obj>obj>](#objectentriesobjobj)
+        - [Object.values<<obj>obj>](#objectvaluesobjobj)
+        - [for in cycle](#for-in-cycle)
+    - [Getter and setter methods](#getter-and-setter-methods)
+        - [Getter](#getter)
+        - [Setter](#setter)
+    - [Hide object property](#hide-object-property)
+    - [Object property attributes](#object-property-attributes)
+        - [[[Get]]](#get)
+        - [[[Set]] undefined si nio lo ponemos](#set-undefined-si-nio-lo-ponemos)
+        - [[[Value]]](#value)
+        - [[[Writable]]](#writable)
+        - [[Enumerable]]](#enumerable)
+        - [[[Configurable]]](#configurable)
+    - [Read property descriptors of a object](#read-property-descriptors-of-a-object)
+    - [Set / modify property descriptors of a object](#set--modify-property-descriptors-of-a-object)
+    - [Ways to protect an object](#ways-to-protect-an-object)
+        - [Object.preventExtensions](#objectpreventextensions)
+        - [Object.seal](#objectseal)
+        - [Object.freeze **STRONGEST ONE**](#objectfreeze-strongest-one)
+        - [Object.freeze vs Object.seal vs Object.preventExtensions](#objectfreeze-vs-objectseal-vs-objectpreventextensions)
+    - [Homework](#homework)
+
+<!-- /TOC -->
+
+
 # Class 06 - Objects
 
 ## What are objects
@@ -408,7 +457,7 @@ El método Object.getOwnPropertyDescriptors(<object>) es una función de JavaScr
 const obj = {
   prop1: 42,
   prop2: "Hello",
-  prop3: true
+  prop3: true,
 };
 
 const descriptors = Object.getOwnPropertyDescriptors(obj);
@@ -435,7 +484,7 @@ Object.defineProperty(obj, "name", {
   value: "John",
   writable: false,
   enumerable: true,
-  configurable: false
+  configurable: false,
 });
 
 console.log(obj.name); // Output: "John"
@@ -458,12 +507,12 @@ console.log(obj.name); // Output: "John" (property still exists)
 
 ### Object.preventExtensions()
 
- built-in method that allows you to prevent any new properties from being added to an object. It effectively makes an object non-extensible, meaning that you cannot add new properties to it, but you can still modify or delete existing properties.
+built-in method that allows you to prevent any new properties from being added to an object. It effectively makes an object non-extensible, meaning that you cannot add new properties to it, but you can still modify or delete existing properties.
 
- ```js
- const obj = {
+```js
+const obj = {
   prop1: "value 1",
-  prop2: "value 2"
+  prop2: "value 2",
 };
 
 console.log(Object.isExtensible(obj)); // Output: true (Object is initially extensible)
@@ -483,21 +532,21 @@ console.log(obj.prop1); // Output: "modified value"
 delete obj.prop2; // You can still delete existing properties
 
 console.log(obj.prop2); // Output: undefined (Property was deleted)
- ```
+```
 
- ### Object.seal()
+### Object.seal()
 
 Is a built-in method that provides a way to seal an object, preventing the addition or deletion of properties and making all existing properties non-configurable. However, it allows you to modify the values of existing properties.
 
-__It works by making:__
+**It works by making:**
 
-* Object.preventExtenions(obj)
-* Makes al properties [[Configurable]] = false
+- Object.preventExtenions(obj)
+- Makes al properties [[Configurable]] = false
 
 ```js
 const obj = {
   prop1: "value 1",
-  prop2: "value 2"
+  prop2: "value 2",
 };
 
 console.log(Object.isExtensible(obj)); // Output: true (Object is initially extensible)
@@ -522,19 +571,19 @@ console.log(obj.prop2); // Output: "value 2" (Property was not deleted)
 
 // You cannot make existing properties configurable again after sealing
 Object.defineProperty(obj, "prop1", {
-  configurable: true
+  configurable: true,
 });
 // TypeError: Cannot redefine property: prop1
 ```
 
-### Object.freeze() __STRONGEST ONE__
+### Object.freeze() **STRONGEST ONE**
 
 The Object.freeze() static method freezes an object. Freezing an object prevents extensions and makes existing properties non-writable and non-configurable. A frozen object can no longer be changed: new properties cannot be added, existing properties cannot be removed, their enumerability, configurability, writability, or value cannot be changed, and the object's prototype cannot be re-assigned. freeze() returns the same object that was passed in.
 
 ```js
 const obj = {
   prop1: "value 1",
-  prop2: "value 2"
+  prop2: "value 2",
 };
 
 console.log(Object.isExtensible(obj)); // Output: true (Object is initially extensible)
@@ -562,12 +611,11 @@ console.log(obj.prop2); // Output: "value 2" (Property was not deleted)
 
 ### `Object.freeze` vs `Object.seal` vs `Object.preventExtensions`
 
-|   |CREATE|READ|UPDATE|DELETE|
-|---|:---:|:---:|:---:|:---:|
-|`Object.freeze`| ✗ | ✓ | ✗ | ✗ |
-|`Object.seal`| ✗ | ✓ | ✓ | ✗ |
-|`Object.preventExtensions`| ✗ | ✓ | ✓ | ✓ |
-
+|                            | CREATE | READ | UPDATE | DELETE |
+| -------------------------- | :----: | :--: | :----: | :----: |
+| `Object.freeze`            |   ✗    |  ✓   |   ✗    |   ✗    |
+| `Object.seal`              |   ✗    |  ✓   |   ✓    |   ✗    |
+| `Object.preventExtensions` |   ✗    |  ✓   |   ✓    |   ✓    |
 
 ## Homework
 
@@ -595,7 +643,7 @@ quantity: 5
 
 Use property descriptors to make the price and quantity properties non-enumerable and non-writable.
 
-Implement a function called getTotalPrice that takes the product object as an argument and returns the total price (calculated as price * quantity). Ensure that the function accesses the non-enumerable properties directly using the Object.getOwnPropertyDescriptor method.
+Implement a function called getTotalPrice that takes the product object as an argument and returns the total price (calculated as price \* quantity). Ensure that the function accesses the non-enumerable properties directly using the Object.getOwnPropertyDescriptor method.
 
 Implement a function called deleteNonConfigurable that takes an object and a property name as arguments. The function should delete the specified property from the object if it exists. If the property is non-configurable, throw an error with an appropriate message.
 
