@@ -229,3 +229,98 @@ const deepCopy = _.cloneDeep(originalObject);
 
 console.log(deepCopy); // Output: { name: "John", age: 30, address: { city: "New York" } }
 ```
+
+## Comparing if two obcejts are equal
+
+There is no method in JavaScript for comparing objects, as the properties may be changen in position, or when you copy the objects, some information may be lost, as in the case of Deep Copy where you lost the functions.
+
+One simple way is using external libraryis, like __lodash__.
+
+```js
+const _ = require('lodash');
+
+const obj1 = { key: 'value', nested: { foo: 'bar' } };
+const obj2 = { key: 'value', nested: { foo: 'bar' } };
+const obj3 = { key: 'different value', nested: { foo: 'bar' } };
+
+console.log(_.isEqual(obj1, obj2)); // true
+console.log(_.isEqual(obj1, obj3)); // false
+```
+
+## Object length
+
+There are several ways for knowing the length of an objects. Some ways are :
+
+### Object.getOwnPropertyNames(<<obj>obj>)
+
+Allows you to retrieve an array of all property names (including non-enumerable properties) of an object, both enumerable and non-enumerable. 
+
+__This method does not include inherited properties from the prototype chain.__
+
+```js
+const obj = { a: 1, b: 2, c: 3 };
+
+const propertyNames = Object.getOwnPropertyNames(obj);
+const length = propertyNames.length;
+console.log(length); // 3
+```
+
+### Object.keys(<<obj>obj>)
+
+This method to get an array of the object's own enumerable property names (keys), and then you can simply find the length of that array.
+
+__This method does not include inherited properties from the prototype chain.__
+
+```js
+const obj = { a: 1, b: 2, c: 3 };
+
+const length = Object.keys(obj).length;
+console.log(length); // 3
+```
+
+### Object.entries(<<obj>obj>)
+
+The Object.entries() static method returns an array of a given object's own enumerable string-keyed property key-value pairs.
+
+```js
+const obj = { a: 1, b: 2, c: 3 };
+
+const length = Object.entries(obj).length;
+console.log(length); // 3
+```
+
+__This method does not include inherited properties from the prototype chain.__
+
+### Object.values(<<obj>obj>)
+
+count of the object's values, you can use Object.values() to get an array of the object's own enumerable property values, and then get the length of that array.
+
+__This method does not include inherited properties from the prototype chain.__
+
+```js
+const obj = { a: 1, b: 2, c: 3 };
+
+const length = Object.values(obj).length;
+console.log(length); // 3
+```
+
+### for in cycle
+
+A custom function to count the properties of an object by iterating over its keys and counting them. It also counts inherited properties if they are enumrables.
+
+```js
+function getObjectLength(obj) {
+  let count = 0;
+  for (const key in obj) {
+    if (obj[key]) { // If whe change to obj.hasOwnProperty(key), only counts for the own properties
+      count++;
+    }
+  }
+  return count;
+}
+
+const obj = { a: 1, b: 2, c: 3 };
+
+const length = getObjectLength(obj);
+console.log(length); // 3
+```
