@@ -2,9 +2,9 @@
 
 ## What are objects
 
-Objects are one of the fundamental data types, and they are __used to store and organize data in a structured manner__. An object is a __collection of key-value pairs__ where each key represents a property, and each value represents the value associated with that property.
+Objects are one of the fundamental data types, and they are **used to store and organize data in a structured manner**. An object is a **collection of key-value pairs** where each key represents a property, and each value represents the value associated with that property.
 
-__An object variable contains the reference in memory of the object.__
+**An object variable contains the reference in memory of the object.**
 
 ## Ways to create objects
 
@@ -28,7 +28,6 @@ const person = {
 You can also create an object using the Object constructor function and then adding properties and values to it.
 
 ```js
-
 // With constructor functions, the newly created object inherits from the constructor's prototype
 //const car = new Car();
 
@@ -39,15 +38,15 @@ person.city = "New York";
 person.isEmployed = true;
 ```
 
-__Advantages of using the object constructor:__
+**Advantages of using the object constructor:**
 
-* Simple and easy to understand.
-* Allows adding properties dynamically to the object.
+- Simple and easy to understand.
+- Allows adding properties dynamically to the object.
 
-__Disadvantages:__
+**Disadvantages:**
 
-* No easy way to set the prototype of the object explicitly.
-* Objects created with the constructor do not have a direct relationship with a prototype.
+- No easy way to set the prototype of the object explicitly.
+- Objects created with the constructor do not have a direct relationship with a prototype.
 
 ### Object.create
 
@@ -65,18 +64,18 @@ const personPrototype = {
 const person = Object.create(personPrototype);
 person.name = "John";
 
-person.age // => 30
+person.age; // => 30
 ```
 
-__Advantages of using Object.create():__
+**Advantages of using Object.create():**
 
-* Allows you to set up a prototype chain, enabling prototype-based inheritance.
-* Provides a cleaner separation between the prototype and instance-specific properties.
+- Allows you to set up a prototype chain, enabling prototype-based inheritance.
+- Provides a cleaner separation between the prototype and instance-specific properties.
 
-__Disadvantages:__
+**Disadvantages:**
 
-* Requires creating a separate prototype object first.
-* More complex than the object constructor for simple object creation.
+- Requires creating a separate prototype object first.
+- More complex than the object constructor for simple object creation.
 
 ### ES6 classes
 
@@ -90,7 +89,9 @@ class Person {
   }
 
   sayHello() {
-    console.log(`Hello, my name is ${this.name} and I am ${this.age} years old.`);
+    console.log(
+      `Hello, my name is ${this.name} and I am ${this.age} years old.`
+    );
   }
 }
 ```
@@ -106,10 +107,11 @@ const person = {
 };
 
 console.log(person.name); // Output: "John"
-console.log(person.age);  // Output: 30
+console.log(person.age); // Output: 30
 ```
 
 ### Bracket notation
+
 ```js
 const person = {
   name: "John",
@@ -117,7 +119,7 @@ const person = {
 };
 
 console.log(person["name"]); // Output: "John"
-console.log(person["age"]);  // Output: 30
+console.log(person["age"]); // Output: 30
 
 const propertyName = "age";
 console.log(person[propertyName]); // Output: 30
@@ -125,12 +127,11 @@ console.log(person[propertyName]); // Output: 30
 
 ## Object inheritance
 
-__Long story short: If we try to find in its properties, if not found we search the global prototype, if not found it goes to the Object prototype.__ 
+**Long story short: If we try to find in its properties, if not found we search the global prototype, if not found it goes to the Object prototype.**
 
 In JavaScript, the inheritance chain is the relationship formed between objects through their prototypes. This chain allows objects to inherit properties and methods from their prototype objects and forms the basis of prototype-based inheritance in the language.
 
 Each object in JavaScript has an internal reference to its prototype. When you access a property or method on an object, if it's not found directly on the object, JavaScript follows the prototype chain and looks for the property or method in the object's prototype. If it's not found there, the search continues up the chain until the property or method is found, or until the end of the prototype chain is reached, which is Object.prototype.
-
 
 ```js
 // Define a constructor function "Person"
@@ -180,7 +181,7 @@ Objcets in JavaScript ara mutable by defaoult, but there are some external libra
 
 ## Ways to copy an object
 
-### __Shallow Copy using Object.assign():__
+### **Shallow Copy using Object.assign():**
 
 If you want to create a new object that is a shallow copy of the original object (i.e., the properties of the new object reference the same objects in memory as the original), you can use Object.assign()
 
@@ -234,14 +235,14 @@ console.log(deepCopy); // Output: { name: "John", age: 30, address: { city: "New
 
 There is no method in JavaScript for comparing objects, as the properties may be changen in position, or when you copy the objects, some information may be lost, as in the case of Deep Copy where you lost the functions.
 
-One simple way is using external libraryis, like __lodash__.
+One simple way is using external libraryis, like **lodash**.
 
 ```js
-const _ = require('lodash');
+const _ = require("lodash");
 
-const obj1 = { key: 'value', nested: { foo: 'bar' } };
-const obj2 = { key: 'value', nested: { foo: 'bar' } };
-const obj3 = { key: 'different value', nested: { foo: 'bar' } };
+const obj1 = { key: "value", nested: { foo: "bar" } };
+const obj2 = { key: "value", nested: { foo: "bar" } };
+const obj3 = { key: "different value", nested: { foo: "bar" } };
 
 console.log(_.isEqual(obj1, obj2)); // true
 console.log(_.isEqual(obj1, obj3)); // false
@@ -253,9 +254,9 @@ There are several ways for knowing the length of an objects. Some ways are :
 
 ### Object.getOwnPropertyNames(<<obj>obj>)
 
-Allows you to retrieve an array of all property names (including non-enumerable properties) of an object, both enumerable and non-enumerable. 
+Allows you to retrieve an array of all property names (including non-enumerable properties) of an object, both enumerable and non-enumerable.
 
-__This method does not include inherited properties from the prototype chain.__
+**This method does not include inherited properties from the prototype chain.**
 
 ```js
 const obj = { a: 1, b: 2, c: 3 };
@@ -269,7 +270,7 @@ console.log(length); // 3
 
 This method to get an array of the object's own enumerable property names (keys), and then you can simply find the length of that array.
 
-__This method does not include inherited properties from the prototype chain.__
+**This method does not include inherited properties from the prototype chain.**
 
 ```js
 const obj = { a: 1, b: 2, c: 3 };
@@ -289,13 +290,13 @@ const length = Object.entries(obj).length;
 console.log(length); // 3
 ```
 
-__This method does not include inherited properties from the prototype chain.__
+**This method does not include inherited properties from the prototype chain.**
 
 ### Object.values(<<obj>obj>)
 
 count of the object's values, you can use Object.values() to get an array of the object's own enumerable property values, and then get the length of that array.
 
-__This method does not include inherited properties from the prototype chain.__
+**This method does not include inherited properties from the prototype chain.**
 
 ```js
 const obj = { a: 1, b: 2, c: 3 };
@@ -312,7 +313,8 @@ A custom function to count the properties of an object by iterating over its key
 function getObjectLength(obj) {
   let count = 0;
   for (const key in obj) {
-    if (obj[key]) { // If whe change to obj.hasOwnProperty(key), only counts for the own properties
+    if (obj[key]) {
+      // If whe change to obj.hasOwnProperty(key), only counts for the own properties
       count++;
     }
   }
@@ -324,3 +326,44 @@ const obj = { a: 1, b: 2, c: 3 };
 const length = getObjectLength(obj);
 console.log(length); // 3
 ```
+
+## Getter and setter methods
+
+Setter and getter methods are used to define custom behavior when setting and getting the values of an object's properties. They allow you to have more control over the property access and provide additional functionality, such as validation or computed values.
+
+### Getter
+
+The `get` syntax binds an object property to a function that will be called when that property is looked up. It can also be used in classes.
+
+```js
+const obj = {
+  _name: "John",
+  get name() {
+    console.log("Getting name...");
+    return this._name;
+  },
+};
+
+console.log(obj.name); // Output: "Getting name..." and "John"
+```
+
+### Setter
+
+The `set` syntax binds an object property to a function to be called when there is an attempt to set that property. It can also be used in classes.
+
+```js
+const obj = {
+  _name: "",
+  set name(newName) {
+    console.log("Setting name...");
+    this._name = newName;
+  },
+};
+
+obj.name = "Alice"; // Output: "Setting name..."
+console.log(obj._name); // Output: "Alice"
+```
+
+## Hide object property 
+
+This can be made using Class. We will se this in next class.
