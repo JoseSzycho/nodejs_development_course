@@ -173,3 +173,59 @@ Bob -> Person.prototype.age
 Bob.age = 28;
 console.log(Bob.age); // 28
 ```
+
+## Inmutable objects
+
+Objcets in JavaScript ara mutable by defaoult, but there are some external libraries that can make objects inmutables.
+
+## Ways to copy an object
+
+### __Shallow Copy using Object.assign():__
+
+If you want to create a new object that is a shallow copy of the original object (i.e., the properties of the new object reference the same objects in memory as the original), you can use Object.assign()
+
+```js
+const originalObject = { name: "John", age: 30 };
+const shallowCopy = Object.assign({}, originalObject);
+
+console.log(shallowCopy); // Output: { name: "John", age: 30 }
+```
+
+### Shallow Copy using the Spread Operator (ES6+):
+
+The spread operator ... is another way to perform a shallow copy of an object.
+
+Both Object.assign() and the spread operator create a new object with the same top-level properties as the original object. However, if the properties themselves are objects or arrays, they will be copied by reference. This means that if you modify a nested object in the copied object, it will also affect the original object.
+
+```js
+const originalObject = { name: "John", age: 30 };
+const shallowCopy = { ...originalObject };
+
+console.log(shallowCopy); // Output: { name: "John", age: 30 }
+```
+
+### Deep Copy using JSON.parse() and JSON.stringify():
+
+If you need a deep copy of an object (i.e., creating a new object with all properties and nested properties copied by value rather than by reference), you can use JSON.parse() and JSON.stringify().
+
+Note that using JSON.parse() and JSON.stringify() to perform a deep copy has some limitations. It will not work with functions, undefined, or circular references in the original object, as these cannot be represented in JSON.
+
+```js
+const originalObject = { name: "John", age: 30, address: { city: "New York" } };
+const deepCopy = JSON.parse(JSON.stringify(originalObject));
+
+console.log(deepCopy); // Output: { name: "John", age: 30, address: { city: "New York" } }
+```
+
+### Deep Copy using External Libraries:
+
+For more complex scenarios or cases with functions, undefined values, or circular references, you might consider using external libraries like Lodash's cloneDeep() method or Immutable.js's utilities for deep copying.
+
+```js
+const _ = require("lodash");
+
+const originalObject = { name: "John", age: 30, address: { city: "New York" } };
+const deepCopy = _.cloneDeep(originalObject);
+
+console.log(deepCopy); // Output: { name: "John", age: 30, address: { city: "New York" } }
+```
