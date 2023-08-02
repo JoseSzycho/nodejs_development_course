@@ -302,6 +302,218 @@ console.log(array1);
 // Expected output: Array [4, 5, 1, 2, 3]
 ```
 
+### Array.prototype.pop()
+
+The pop() method removes the last element from an array and returns that element. This method changes the length of the array.
+
+```js
+// Syntax
+pop();
+
+const plants = ["broccoli", "cauliflower", "cabbage", "kale", "tomato"];
+
+console.log(plants.pop());
+// Expected output: "tomato"
+
+console.log(plants);
+// Expected output: Array ["broccoli", "cauliflower", "cabbage", "kale"]
+
+plants.pop();
+
+console.log(plants);
+// Expected output: Array ["broccoli", "cauliflower", "cabbage"]
+```
+
+### Array.prototype.shift()
+
+The shift() method removes the first element from an array and returns that removed element. This method changes the length of the array.
+
+```js
+const array1 = [1, 2, 3];
+
+const firstElement = array1.shift();
+
+console.log(array1);
+// Expected output: Array [2, 3]
+
+console.log(firstElement);
+// Expected output: 1
+```
+
+### Array.prototype.concat()
+
+The concat() method is used to merge two or more arrays. This method does not change the existing arrays, but instead returns a new array.
+
+```js
+// Syntax
+concat();
+concat(value0);
+concat(value0, value1);
+concat(value0, value1, /* … ,*/ valueN);
+
+const array1 = ["a", "b", "c"];
+const array2 = ["d", "e", "f"];
+const array3 = array1.concat(array2);
+
+console.log(array3);
+// Expected output: Array ["a", "b", "c", "d", "e", "f"]
+```
+
+### Merge arrays with spread operator
+
+```js
+const array1 = [1, 2, 3];
+const array2 = [4, 5, 6];
+const newArray = [...array1, ...array2];
+```
+
+### Array.prototype.indexOf()
+
+The indexOf() method returns the first index at which a given element can be found in the array, or -1 if it is not present.
+
+```js
+// Syntax
+indexOf(searchElement);
+indexOf(searchElement, fromIndex);
+
+const beasts = ["ant", "bison", "camel", "duck", "bison"];
+
+console.log(beasts.indexOf("bison"));
+// Expected output: 1
+
+// Start from index 2
+console.log(beasts.indexOf("bison", 2));
+// Expected output: 4
+
+console.log(beasts.indexOf("giraffe"));
+// Expected output: -1
+```
+
+### Array.prototype.lastIndexOf()
+
+The lastIndexOf() method returns the last index at which a given element can be found in the array, or -1 if it is not present. The array is searched backwards, starting at fromIndex.
+
+```js
+// Syntax
+lastIndexOf(searchElement);
+lastIndexOf(searchElement, fromIndex);
+
+const animals = ["Dodo", "Tiger", "Penguin", "Dodo"];
+
+console.log(animals.lastIndexOf("Dodo"));
+// Expected output: 3
+
+console.log(animals.lastIndexOf("Tiger"));
+// Expected output: 1
+```
+
+### Array.prototype.find()
+
+The find() method returns the first element in the provided array that satisfies the provided testing function. If no values satisfy the testing function, undefined is returned.
+
+```js
+// Syntax
+find(callbackFn);
+find(callbackFn, thisArg);
+
+const array1 = [5, 12, 8, 130, 44];
+
+const found = array1.find((element) => element > 10);
+
+console.log(found);
+// Expected output: 12
+```
+
+### Array.prototype.includes()
+
+The includes() method determines whether an array includes a certain value among its entries, returning true or false as appropriate.
+
+```js
+// Syntax
+includes(searchElement);
+includes(searchElement, fromIndex);
+
+const array1 = [1, 2, 3];
+
+console.log(array1.includes(2));
+// Expected output: true
+
+const pets = ["cat", "dog", "bat"];
+
+console.log(pets.includes("cat"));
+// Expected output: true
+
+console.log(pets.includes("at"));
+// Expected output: false
+```
+
+### Array.prototype.toString()
+
+The toString() method returns a string representing the specified array and its elements.
+
+```js
+// Syntax
+toString();
+
+const array1 = [1, 2, "a", "1a"];
+
+console.log(array1.toString());
+// Expected output: "1,2,a,1a"
+```
+
+### rray.prototype.join()
+
+The join() method creates and returns a new string by concatenating all of the elements in an array (or an array-like object), separated by commas or a specified separator string. If the array has only one item, then that item will be returned without using the separator.
+
+```js
+// Syntax
+join();
+join(separator);
+
+const elements = ["Fire", "Air", "Water"];
+
+console.log(elements.join());
+// Expected output: "Fire,Air,Water"
+
+console.log(elements.join(""));
+// Expected output: "FireAirWater"
+
+console.log(elements.join("-"));
+// Expected output: "Fire-Air-Water"
+```
+
+### Array.from()
+
+The Array.from() static method creates a new, shallow-copied Array instance from an iterable or array-like object.
+
+```js
+// Syntax
+Array.from(arrayLike);
+Array.from(arrayLike, mapFn);
+Array.from(arrayLike, mapFn, thisArg);
+
+console.log(Array.from("foo"));
+// Expected output: Array ["f", "o", "o"]
+
+console.log(Array.from([1, 2, 3], (x) => x + x));
+// Expected output: Array [2, 4, 6]
+```
+
+### Copy array unique elements using Set
+
+```js
+const arr = [1, 2, 5, 5, 7, 7];
+const newArr = [...new Set(arr)];
+```
+
+### Best way for clearing an array
+
+```js
+const a = [2, 2, 2, 2, 3, 4, 5, 5, 5, 5];
+a.length = 0;
+a; // => []
+```
+
 ### Array.prototype.forEach()
 
 The forEach() method executes a provided function once for each array element.
