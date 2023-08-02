@@ -213,6 +213,95 @@ console.log(sumWithInitial);
 // Expected output: 10
 ```
 
+### Array.prototype.splice()
+
+The splice() method changes the contents of an array by removing or replacing existing elements and/or adding new elements in place.
+
+```js
+// Syntax
+splice(start);
+splice(start, deleteCount);
+splice(start, deleteCount, item0);
+splice(start, deleteCount, item0, item1);
+splice(start, deleteCount, item0, item1, /* … ,*/ itemN);
+
+const months = ["Jan", "March", "April", "June"];
+months.splice(1, 0, "Feb");
+// Inserts at index 1
+console.log(months);
+// Expected output: Array ["Jan", "Feb", "March", "April", "June"]
+
+months.splice(4, 1, "May");
+// Replaces 1 element at index 4
+console.log(months);
+// Expected output: Array ["Jan", "Feb", "March", "April", "May"]
+```
+
+### Array.prototype.slice()
+
+The slice() method returns a shallow copy of a portion of an array into a new array object selected from start to end (end not included) where start and end represent the index of items in that array. The original array will not be modified.
+
+- Negative index counts back from the end of the array — if start < 0, start + array.length is used.
+
+```js
+// Syntax
+slice();
+slice(start);
+slice(start, end);
+
+const animals = ["ant", "bison", "camel", "duck", "elephant"];
+
+console.log(animals.slice(2));
+// Expected output: Array ["camel", "duck", "elephant"]
+
+console.log(animals.slice(2, 4));
+// Expected output: Array ["camel", "duck"]
+
+console.log(animals.slice(1, 5));
+// Expected output: Array ["bison", "camel", "duck", "elephant"]
+
+console.log(animals.slice(-2));
+// Expected output: Array ["duck", "elephant"]
+
+console.log(animals.slice(2, -1));
+// Expected output: Array ["camel", "duck"]
+
+console.log(animals.slice());
+// Expected output: Array ["ant", "bison", "camel", "duck", "elephant"]
+```
+
+### Array.prototype.push()
+
+The push() method adds the specified elements to the end of an array and returns the new length of the array.
+
+```js
+const animals = ["pigs", "goats", "sheep"];
+
+const count = animals.push("cows");
+console.log(count);
+// Expected output: 4
+console.log(animals);
+// Expected output: Array ["pigs", "goats", "sheep", "cows"]
+
+animals.push("chickens", "cats", "dogs");
+console.log(animals);
+// Expected output: Array ["pigs", "goats", "sheep", "cows", "chickens", "cats", "dogs"]
+```
+
+### Array.prototype.unshift()
+
+The unshift() method adds the specified elements to the beginning of an array and returns the new length of the array.
+
+```js
+const array1 = [1, 2, 3];
+
+console.log(array1.unshift(4, 5));
+// Expected output: 5
+
+console.log(array1);
+// Expected output: Array [4, 5, 1, 2, 3]
+```
+
 ### Array.prototype.forEach()
 
 The forEach() method executes a provided function once for each array element.
@@ -239,6 +328,8 @@ array1.forEach((element) => console.log(element));
 
 Explained above.
 
+With the rest below we can use continue; break;
+
 ### for...of
 
 The for...of statement executes a loop that operates on a sequence of values sourced from an iterable object. Iterable objects include instances of built-ins such as Array, String, TypedArray, Map, Set, NodeList (and other DOM collections), as well as the arguments object, generators produced by generator functions, and user-defined iterables.
@@ -257,3 +348,109 @@ for (const element of array1) {
 // Expected output: "b"
 // Expected output: "c"
 ```
+
+### for...in
+
+The for...in statement iterates over all enumerable string properties of an object (ignoring properties keyed by symbols), including inherited enumerable properties.
+
+```js
+// Syntax
+for (variable in object) statement;
+
+const object = { a: 1, b: 2, c: 3 };
+
+for (const property in object) {
+  console.log(`${property}: ${object[property]}`);
+}
+
+// Expected output:
+// "a: 1"
+// "b: 2"
+// "c: 3"
+```
+
+### for
+
+The for statement creates a loop that consists of three optional expressions, enclosed in parentheses and separated by semicolons, followed by a statement (usually a block statement) to be executed in the loop.
+
+```js
+// Syntax
+for (initialization; condition; afterthought) statement;
+
+let str = "";
+
+for (let i = 0; i < 9; i++) {
+  str = str + i;
+}
+
+console.log(str);
+// Expected output: "012345678"
+```
+
+### while
+
+The while statement creates a loop that executes a specified statement as long as the test condition evaluates to true. The condition is evaluated before executing the statement.
+
+```js
+// Syntax
+while (condition) statement;
+
+let n = 0;
+
+while (n < 3) {
+  n++;
+}
+
+console.log(n);
+// Expected output: 3
+```
+
+### do...while
+
+The do...while statement creates a loop that executes a specified statement until the test condition evaluates to false. The condition is evaluated after executing the statement, resulting in the specified statement executing at least once.
+
+```js
+// Syntax
+do statement;
+while (condition);
+
+let result = "";
+let i = 0;
+
+do {
+  i = i + 1;
+  result = result + i;
+} while (i < 5);
+
+console.log(result);
+// Expected output: "12345"
+```
+
+### Array.prototype[@@iterator]
+
+The [@@iterator]() method of Array instances implements the iterable protocol and allows arrays to be consumed by most syntaxes expecting iterables, such as the spread syntax and for...of loops. It returns an array iterator object that yields the value of each index in the array.
+
+```js
+// Syntax
+array[Symbol.iterator]();
+
+const arr = ["a", "b", "c", "d", "e"];
+const arrIter = arr[Symbol.iterator]();
+console.log(arrIter.next().value); // a
+console.log(arrIter.next().value); // b
+console.log(arrIter.next().value); // c
+console.log(arrIter.next().value); // d
+console.log(arrIter.next().value); // e
+console.log(arrIter.next().value); // undefined
+
+arrIter.next().done; // false, true if there are not more elements
+```
+
+### Good practices for array iterators
+
+- **forEach** => usual for arrays
+- **for ... in** => better for objects
+- **for ... of** => if you want to use break
+- **for** => if we have to thandle current state
+- **do ... while** => for running one time with out condition
+- **while** => for everything else
