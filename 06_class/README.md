@@ -1,6 +1,11 @@
+# Class 06 - Objects
+
+## Table of content
+
 <!-- TOC -->
 
 - [Class 06 - Objects](#class-06---objects)
+    - [Table of content](#table-of-content)
     - [What are objects](#what-are-objects)
     - [Ways to create objects](#ways-to-create-objects)
         - [Object literals](#object-literals)
@@ -45,9 +50,6 @@
     - [Homework](#homework)
 
 <!-- /TOC -->
-
-
-# Class 06 - Objects
 
 ## What are objects
 
