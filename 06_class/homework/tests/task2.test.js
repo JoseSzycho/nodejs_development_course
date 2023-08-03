@@ -14,9 +14,10 @@ describe("product object tests", () => {
   });
 });
 
-describe.skip("getTotalPrice function test", () => {
-  test("Expect total price to be 50000", () => {
-    const { product, getTotalPrice } = require("../tasks/task2/product");
-    expect(getTotalPrice(product)).toBe(50000);
+describe("getTotalPrice function test", () => {
+  test("Expect total price to be 5000", () => {
+    const { getTotalPrice } = require("../tasks/task2/getTotalPrice");
+    const { product } = require("../tasks/task2/product");
+    expect(getTotalPrice(product)).toBe(5000);
   });
 });
