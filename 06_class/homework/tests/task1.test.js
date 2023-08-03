@@ -33,3 +33,13 @@ test("Expect properties to ONLY be updated with updateInfo property", () => {
   expect(person.surname).toBe(undefined);
   
 });
+
+test("Expect person address property to {}, non enumerable and non configurable", () => {
+    const { person } = require("../tasks/task1");
+
+    const personAddressDescriptors = Object.getOwnPropertyDescriptors(person).address;
+    expect(personAddressDescriptors.value).toEqual({});
+    expect(personAddressDescriptors.writable).toBe(true);
+    expect(personAddressDescriptors.configurable).toBe(false);
+    expect(personAddressDescriptors.enumerable).toBe(false);
+})

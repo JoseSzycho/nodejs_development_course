@@ -21,7 +21,16 @@ const person = {
   },
 };
 
+// Setting properties as no-writable (only read)
 Object.keys(person).forEach((key) => setWritableDescriptor(person, key, false));
+
+// Creating new property
+Object.defineProperty(person, "address", {
+  value: {},
+  writable: true,
+  enumerable: false,
+  configurable: false,
+});
 
 module.exports = {
   person,
