@@ -20,4 +20,31 @@ describe("getTotalPrice function test", () => {
     const { product } = require("../tasks/task2/product");
     expect(getTotalPrice(product)).toBe(5000);
   });
+
+  test("Expect error for negative price", () => {
+    const { getTotalPrice } = require("../tasks/task2/getTotalPrice");
+    const product = {
+      price: -4,
+      quantity: 49,
+    };
+    expect(() => getTotalPrice(product)).toThrow(`price must be a valid number.`);
+  });
+
+  test("Expect error for NaN quantity", () => {
+    const { getTotalPrice } = require("../tasks/task2/getTotalPrice");
+    const product = {
+      price: 53,
+      quantity: NaN,
+    };
+    expect(() => getTotalPrice(product)).toThrow(`quantity must be a valid number.`);
+  });
+
+  test("Expect error for string price", () => {
+    const { getTotalPrice } = require("../tasks/task2/getTotalPrice");
+    const product = {
+      price: "53",
+      quantity: 28,
+    };
+    expect(() => getTotalPrice(product)).toThrow(`price must be a valid number.`);
+  });
 });
