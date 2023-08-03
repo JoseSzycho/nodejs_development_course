@@ -1,3 +1,7 @@
+const {
+  deleteNonConfigurable,
+} = require("../tasks/task2/deleteNonConfigurable");
+
 describe("product object tests", () => {
   test("Expect product price and quantity to be non-enumerable and non-writable", () => {
     const { product } = require("../tasks/task2/product");
@@ -27,7 +31,9 @@ describe("getTotalPrice function test", () => {
       price: -4,
       quantity: 49,
     };
-    expect(() => getTotalPrice(product)).toThrow(`price must be a valid number.`);
+    expect(() => getTotalPrice(product)).toThrow(
+      `price must be a valid number.`
+    );
   });
 
   test("Expect error for NaN quantity", () => {
@@ -36,7 +42,9 @@ describe("getTotalPrice function test", () => {
       price: 53,
       quantity: NaN,
     };
-    expect(() => getTotalPrice(product)).toThrow(`quantity must be a valid number.`);
+    expect(() => getTotalPrice(product)).toThrow(
+      `quantity must be a valid number.`
+    );
   });
 
   test("Expect error for string price", () => {
@@ -45,6 +53,40 @@ describe("getTotalPrice function test", () => {
       price: "53",
       quantity: 28,
     };
-    expect(() => getTotalPrice(product)).toThrow(`price must be a valid number.`);
+    expect(() => getTotalPrice(product)).toThrow(
+      `price must be a valid number.`
+    );
+  });
+});
+
+describe("deleteNonConfigurable function test", () => {
+  const person = {
+    firstName: "Mikaela",
+    lastName: "Hnatiuk",
+    age: 19,
+  };
+
+  test("Expect valid property to be deleted", () => {
+    deleteNonConfigurable(person, "age");
+    expect(person).toEqual({
+      lastName: "Hnatiuk",
+      firstName: "Mikaela",
+    });
+  });
+
+  test("Expect error from deleting a non-confiruable propterty", () => {
+    Object.defineProperty(person, "firstName", {
+      configurable: false,
+    });
+    expect(() => deleteNonConfigurable(person, "firstName")).toThrow(
+      "Cannot delete non-configurable property."
+    );
+  });
+
+  test("Expecto error if triying to delete a not existent property.", () => {
+    
+    expect(() => deleteNonConfigurable(person, "surname")).toThrow(
+      "Object do no not contains property surname."
+    );
   });
 });
