@@ -5,56 +5,56 @@
 <!-- TOC -->
 
 - [Class 06 - Objects](#class-06---objects)
-    - [Table of content](#table-of-content)
-    - [What are objects](#what-are-objects)
-    - [Ways to create objects](#ways-to-create-objects)
-        - [Object literals](#object-literals)
-        - [Object constructor](#object-constructor)
-        - [Object.create](#objectcreate)
-        - [ES6 classes](#es6-classes)
-    - [Ways to acces an object property](#ways-to-acces-an-object-property)
-        - [Dot Notation](#dot-notation)
-        - [Bracket notation](#bracket-notation)
-    - [Object inheritance](#object-inheritance)
-    - [Inmutable objects](#inmutable-objects)
-    - [Ways to copy an object](#ways-to-copy-an-object)
-        - [**Shallow Copy using Object.assign:**](#shallow-copy-using-objectassign)
-        - [Shallow Copy using the Spread Operator ES6+:](#shallow-copy-using-the-spread-operator-es6)
-        - [Deep Copy using JSON.parse and JSON.stringify:](#deep-copy-using-jsonparse-and-jsonstringify)
-        - [Deep Copy using External Libraries:](#deep-copy-using-external-libraries)
-    - [Comparing if two obcejts are equal](#comparing-if-two-obcejts-are-equal)
-    - [Object length](#object-length)
-        - [Object.getOwnPropertyNames<<obj>obj>](#objectgetownpropertynamesobjobj)
-        - [Object.keys<<obj>obj>](#objectkeysobjobj)
-        - [Object.entries<<obj>obj>](#objectentriesobjobj)
-        - [Object.values<<obj>obj>](#objectvaluesobjobj)
-        - [for in cycle](#for-in-cycle)
-    - [Getter and setter methods](#getter-and-setter-methods)
-        - [Getter](#getter)
-        - [Setter](#setter)
-    - [Hide object property](#hide-object-property)
-    - [Object property attributes](#object-property-attributes)
-        - [[[Get]]](#get)
-        - [[[Set]] undefined si nio lo ponemos](#set-undefined-si-nio-lo-ponemos)
-        - [[[Value]]](#value)
-        - [[[Writable]]](#writable)
-        - [[Enumerable]]](#enumerable)
-        - [[[Configurable]]](#configurable)
-    - [Read property descriptors of a object](#read-property-descriptors-of-a-object)
-    - [Set / modify property descriptors of a object](#set--modify-property-descriptors-of-a-object)
-    - [Ways to protect an object](#ways-to-protect-an-object)
-        - [Object.preventExtensions](#objectpreventextensions)
-        - [Object.seal](#objectseal)
-        - [Object.freeze **STRONGEST ONE**](#objectfreeze-strongest-one)
-        - [Object.freeze vs Object.seal vs Object.preventExtensions](#objectfreeze-vs-objectseal-vs-objectpreventextensions)
-    - [Homework](#homework)
-        - [Task 1: Object Property Manipulation](#task-1-object-property-manipulation)
-        - [Task 2: Object Property Enumeration and Deletion](#task-2-object-property-enumeration-and-deletion)
-        - [Task 3: Object Property Getters and Setters](#task-3-object-property-getters-and-setters)
-        - [Task 4: Advanced Property Descriptors](#task-4-advanced-property-descriptors)
-        - [Task 5: Object Observation](#task-5-object-observation)
-        - [Task 6: Object Deep Cloning](#task-6-object-deep-cloning)
-        - [Task 7: Object Property Validation](#task-7-object-property-validation)
+  - [Table of content](#table-of-content)
+  - [What are objects](#what-are-objects)
+  - [Ways to create objects](#ways-to-create-objects)
+    - [Object literals](#object-literals)
+    - [Object constructor](#object-constructor)
+    - [Object.create](#objectcreate)
+    - [ES6 classes](#es6-classes)
+  - [Ways to acces an object property](#ways-to-acces-an-object-property)
+    - [Dot Notation](#dot-notation)
+    - [Bracket notation](#bracket-notation)
+  - [Object inheritance](#object-inheritance)
+  - [Inmutable objects](#inmutable-objects)
+  - [Ways to copy an object](#ways-to-copy-an-object)
+    - [**Shallow Copy using Object.assign:**](#shallow-copy-using-objectassign)
+    - [Shallow Copy using the Spread Operator ES6+:](#shallow-copy-using-the-spread-operator-es6)
+    - [Deep Copy using JSON.parse and JSON.stringify:](#deep-copy-using-jsonparse-and-jsonstringify)
+    - [Deep Copy using External Libraries:](#deep-copy-using-external-libraries)
+  - [Comparing if two obcejts are equal](#comparing-if-two-obcejts-are-equal)
+  - [Object length](#object-length)
+    - [Object.getOwnPropertyNames<<obj>obj>](#objectgetownpropertynamesobjobj)
+    - [Object.keys<<obj>obj>](#objectkeysobjobj)
+    - [Object.entries<<obj>obj>](#objectentriesobjobj)
+    - [Object.values<<obj>obj>](#objectvaluesobjobj)
+    - [for in cycle](#for-in-cycle)
+  - [Getter and setter methods](#getter-and-setter-methods)
+    - [Getter](#getter)
+    - [Setter](#setter)
+  - [Hide object property](#hide-object-property)
+  - [Object property attributes](#object-property-attributes)
+    - [[[Get]]](#get)
+    - [[[Set]] undefined si nio lo ponemos](#set-undefined-si-nio-lo-ponemos)
+    - [[[Value]]](#value)
+    - [[[Writable]]](#writable)
+    - [[Enumerable]]](#enumerable)
+    - [[[Configurable]]](#configurable)
+  - [Read property descriptors of a object](#read-property-descriptors-of-a-object)
+  - [Set / modify property descriptors of a object](#set--modify-property-descriptors-of-a-object)
+  - [Ways to protect an object](#ways-to-protect-an-object)
+    - [Object.preventExtensions](#objectpreventextensions)
+    - [Object.seal](#objectseal)
+    - [Object.freeze **STRONGEST ONE**](#objectfreeze-strongest-one)
+    - [Object.freeze vs Object.seal vs Object.preventExtensions](#objectfreeze-vs-objectseal-vs-objectpreventextensions)
+  - [Homework](#homework)
+    - [Task 1: Object Property Manipulation](#task-1-object-property-manipulation)
+    - [Task 2: Object Property Enumeration and Deletion](#task-2-object-property-enumeration-and-deletion)
+    - [Task 3: Object Property Getters and Setters](#task-3-object-property-getters-and-setters)
+    - [Task 4: Advanced Property Descriptors](#task-4-advanced-property-descriptors)
+    - [Task 5: Object Observation](#task-5-object-observation)
+    - [Task 6: Object Deep Cloning](#task-6-object-deep-cloning)
+    - [Task 7: Object Property Validation](#task-7-object-property-validation)
 
 <!-- /TOC -->
 
@@ -633,6 +633,7 @@ Homework 4, Deadline 07.08.2023
 ### Task 1: Object Property Manipulation
 
 Create an object called person with the following properties and values:
+
 ```
 firstName: "John"
 lastName: "Doe"
@@ -648,19 +649,19 @@ Create a new property called `address` on the person object with an initial valu
 
 ### Task 2: Object Property Enumeration and Deletion
 
-Create a new object called product with the following properties and values:
+Create a new object called `product` with the following properties and values:
 
+```
 name: "Laptop"
-
 price: 1000
-
 quantity: 5
+```
 
 Use property descriptors to make the price and quantity properties non-enumerable and non-writable.
 
-Implement a function called getTotalPrice that takes the product object as an argument and returns the total price (calculated as price \* quantity). Ensure that the function accesses the non-enumerable properties directly using the Object.getOwnPropertyDescriptor method.
+Implement a function called `getTotalPrice` that takes the product object as an argument and returns the total price (calculated as price \* quantity). Ensure that the function accesses the non-enumerable properties directly using the Object.getOwnPropertyDescriptor method.
 
-Implement a function called deleteNonConfigurable that takes an object and a property name as arguments. The function should delete the specified property from the object if it exists. If the property is non-configurable, throw an error with an appropriate message.
+Implement a function called `deleteNonConfigurable` that takes an object and a property name as arguments. The function should delete the specified property from the object if it exists. If the property is non-configurable, throw an error with an appropriate message.
 
 ### Task 3: Object Property Getters and Setters
 
