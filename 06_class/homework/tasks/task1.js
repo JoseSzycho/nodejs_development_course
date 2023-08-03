@@ -1,3 +1,4 @@
+// For setting Writable descriptor property to true or false
 const setWritableDescriptor = (obj, key, value) => {
   Object.defineProperty(obj, key, {
     writable: value,
@@ -12,7 +13,7 @@ const person = {
   updateInfo: (newInfo) => {
     Object.keys(person).forEach((key) => {
       if (Object.keys(newInfo).includes(key)) {
-        // If new info is not in person, we ignore it
+        // If a newFinfo property is not in person, we ignore it
         setWritableDescriptor(person, key, true);
         person[key] = newInfo[key];
         setWritableDescriptor(person, key, false);
