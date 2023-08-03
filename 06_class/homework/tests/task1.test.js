@@ -1,5 +1,5 @@
 test("Expect properties to not be changed", () => {
-  const { person } = require("../tasks/task1");
+  const { person } = require("../tasks/task1/person");
   //Attempting to modify newPerson propertires
   person.firstName = "Homero";
   person.lastName = "Simpson";
@@ -13,7 +13,7 @@ test("Expect properties to not be changed", () => {
 });
 
 test("Expect properties to ONLY be updated with updateInfo property", () => {
-  const { person } = require("../tasks/task1");
+  const { person } = require("../tasks/task1/person");
 
   const newInfo = {
     firstName: "Jane",
@@ -35,7 +35,7 @@ test("Expect properties to ONLY be updated with updateInfo property", () => {
 });
 
 test("Expect person address property to {}, non enumerable and non configurable", () => {
-    const { person } = require("../tasks/task1");
+    const { person } = require("../tasks/task1/person");
 
     const personAddressDescriptors = Object.getOwnPropertyDescriptors(person).address;
     expect(personAddressDescriptors.value).toEqual({});
