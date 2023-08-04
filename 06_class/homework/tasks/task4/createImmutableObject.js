@@ -19,8 +19,26 @@ const setPropertiesDescriptors = (obj) => {
 
 const createImmutableObject = (obj) => {
   const newObj = JSON.parse(JSON.stringify(obj)); // Create a deep copy of object
-  setPropertiesDescriptors(newObj); //calling recusrive function for making ALL properties only rad
+  setPropertiesDescriptors(newObj); //calling recusrive function for making ALL properties only read
   return newObj; //
 };
 
+// Creating immutable version of person from task 1
+const person = require("../task1/person");
+const immutablePerson = createImmutableObject(person);
+
+// console.log(Object.getOwnPropertyDescriptors(immutablePerson)); => {
+ /* person: {
+    value: {
+      firstName: 'John',
+      lastName: 'Doe',
+      age: 30,
+      email: 'john.doe@example.com'
+    },
+    writable: false,
+    enumerable: true,
+    configurable: false
+  }
+}
+*/
 module.exports = { createImmutableObject };
