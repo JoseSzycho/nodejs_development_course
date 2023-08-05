@@ -23,13 +23,24 @@ test("Expect schema to match object", () => {
 });
 
 test("Expect schema to match object", () => {
+  const newStudentSchema = ["string", "string"]
+  const newStudent = ["jose", " Szychowski"]
+
+  expect(validateObject(newStudent, newStudentSchema)).toBe(true);
+});
+
+test("Expect schema to not match object", () => {
+  const newStudentSchema = ["string", {a: "string", b: "number"}]
+  const newStudent = ["jose", {a: "Bob", b: 5}]
+
+  expect(validateObject(newStudent, newStudentSchema)).toBe(true);
+});
+
+test("Expect schema with properties in different order to match object", () => {
   const newStudentSchema = {
     firstName: "string",
     lastName: "string",
-    location: {
-      city: "string",
-      country: "string",
-    },
+    location: "object",
     favouriteTeams: {
       sports: {
         footbal: "string",
@@ -205,3 +216,4 @@ test("Expect nested object with different proprerty type to not match", () => {
 
   expect(validateObject(newStudent, newStudentSchema)).toBe(false);
 });
+
