@@ -13,6 +13,14 @@ test("Expect tu return an array of same length", () => {
   expect(shuffledArray.length).toBe(array.length);
 });
 
+test("Expect tu return an array of same length", () => {
+    const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  
+    const shuffledArray = customShuffle(array);
+  
+    expect(shuffledArray.length).toBe(array.length);
+  });
+
 test("Expect to return a uniform randomness", () => {
   const array = [1, 100, 400, 600];
   const arrayAverage = array.reduce((acc, el) => acc + el, 0) / array.length;
@@ -52,3 +60,4 @@ test("Expect to return a uniform randomness", () => {
 
   */
 });
+
