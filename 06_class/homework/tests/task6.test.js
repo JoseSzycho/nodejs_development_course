@@ -90,7 +90,7 @@ test("Expect cloned object property values to not change after changes in origin
 
   const newObj = deepCloneObject(testObj);
 
-  testObj.a = "123";
+  testObj.a[0] = 2;
   testObj.b = [1, 2, 3];
   delete testObj.c;
 
@@ -99,4 +99,18 @@ test("Expect cloned object property values to not change after changes in origin
     b: { a: 1, b: 3, c: 5 },
     c: "hi",
   });
+});
+
+test("Expect circular reference to throw error", () => {
+  const testObj = {
+    a: 1,
+    b: 2,
+    c: [3, 4],
+  };
+
+  testObj.c[1] = testObj;
+
+  expect(() => deepCloneObject(testObj)).toThrow(
+    "Circular referecernce detected."
+  );
 });
