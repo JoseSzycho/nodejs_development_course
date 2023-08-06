@@ -2,34 +2,38 @@ const customFilterUnique = require("../tasks/task1/customFilterUnique");
 
 // Task 1.2
 test("Expect to filter an array of object and return unique objects", () => {
-  // Function object creator for testing
-  function person(name, age) {
-    this.name = name;
-    this.age = age;
-  }
-
   // Objects for testing
-  const person1 = new person("Bob", 25);
-  const person2 = new person("Anna", 29);
-  const person3 = new person("John", 61);
-  const person4 = new person("Laura", 20);
 
   const personsArray = [
     // Testing array
-    person1,
-    person2,
-    person3,
-    person4,
-    person2,
-    person4,
-    person3,
-    person1,
+    5,
+    "hi",
+    { name: "Bob", age: 25 },
+    { name: "Anna", age: 29 },
+    { name: "John", age: 61 },
+    { name: "Laura", age: 20 },
+    { name: "Anna", age: 29 },
+    { name: "Laura", age: 20 },
+    { name: "John", age: 61 },
+    { name: "Bob", age: 25 },
+    { name: "Michael", age: 20 },
+    { name: "Laura", age: 20 },
+    { name: "Michael", age: 20 },
+    ["some garbage"],
+    { notName: "car" },
+    { notName: "car", age: 12 },
   ];
   const isUnder30 = (el) => el.age < 30; // Testing callback
 
   const personsUnder30 = customFilterUnique(personsArray, isUnder30);
 
-  expect(personsUnder30).toEqual([person1, person2, person4]);
+  expect(personsUnder30).toEqual([
+    { name: "Bob", age: 25 },
+    { name: "Anna", age: 29 },
+    { name: "Laura", age: 20 },
+    { name: "Michael", age: 20 },
+    { notName: "car", age: 12 },
+  ]);
 });
 
 test("Expect error if array argument is not a array", () => {
@@ -39,15 +43,22 @@ test("Expect error if array argument is not a array", () => {
 });
 
 test("Expect error if callback argument is not a function", () => {
-  const array = [1, 2, 3];
+  const array = [1, 1, 3];
   const callback = 4;
   expect(() => customFilterUnique(array, callback)).toThrow(
     "Callback must be a function."
   );
 });
 
+test("Expect error if triying to filter an element that have nestef objects", () => {
+  const array = [{ a: 5, b: {a:1} }, 1, 2, 3, 4, "hi", 1, undefined, 2, 3, 4, 8];
+  const callback = (el) => el != null;
+
+  expect(() => customFilterUnique(array, callback)).toThrow("Cannot handle nested objects.");
+});
+
 test("Expect filtered arrays to be unique", () => {
-  const array = [1, 2, 3, 4, 1, 2, 3, 4, 8];
+  const array = [{ a: 5 }, 1, 2, 3, 4, "hi", 1, undefined, 2, 3, 4, 8];
   const callback = (el) => el % 2 == 0;
 
   const filteredArray = customFilterUnique(array, callback);
