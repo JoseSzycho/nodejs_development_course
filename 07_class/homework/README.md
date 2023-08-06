@@ -1,4 +1,4 @@
-In this folder the homeworf of class 6 is provided.
+In this folder the homeworf of class 7 is provided.
 
 ## Homework structure
 
