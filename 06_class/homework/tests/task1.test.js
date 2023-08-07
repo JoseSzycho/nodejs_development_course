@@ -12,34 +12,46 @@ test("Expect properties to not be changed", () => {
   expect(person.email).toBe("john.doe@example.com");
 });
 
-test("Expect properties to ONLY be updated with updateInfo property", () => {
+test("Expect error if try to modify a readOnly property", () => {
   const { person } = require("../tasks/task1/person");
 
-  const newInfo = {
+  const newInfo1 = {
     firstName: "Jane",
+  };
+  const newInfo2 = {
     lastName: "Mary",
-    age: 32,
-    email: "mary.jane@example.com",
-    surname: "MaryJane",
+  };
+  const newInfo3 = {
+    age: 35,
   };
 
-  person.updateInfo(newInfo);
-  person.name = "Jose"; // Name must not be changef with out updateInfo
-
-  expect(person.firstName).toBe("Jane");
-  expect(person.lastName).toBe("Mary");
-  expect(person.age).toBe(32);
-  expect(person.email).toBe("mary.jane@example.com");
-  expect(person.surname).toBe(undefined);
-  
+  expect(() => person.updateInfo(newInfo1)).toThrow(
+    "Cannot update read only properties."
+  );
+  expect(() => person.updateInfo(newInfo2)).toThrow(
+    "Cannot update read only properties."
+  );
+  expect(() => person.updateInfo(newInfo3)).toThrow(
+    "Cannot update read only properties."
+  );
 });
 
 test("Expect person address property to {}, non enumerable and non configurable", () => {
-    const { person } = require("../tasks/task1/person");
+  const { person } = require("../tasks/task1/person");
 
-    const personAddressDescriptors = Object.getOwnPropertyDescriptors(person).address;
-    expect(personAddressDescriptors.value).toEqual({});
-    expect(personAddressDescriptors.writable).toBe(true);
-    expect(personAddressDescriptors.configurable).toBe(false);
-    expect(personAddressDescriptors.enumerable).toBe(false);
-})
+  const personAddressDescriptors =
+    Object.getOwnPropertyDescriptors(person).address;
+  expect(personAddressDescriptors.value).toEqual({});
+  expect(personAddressDescriptors.writable).toBe(true);
+  expect(personAddressDescriptors.configurable).toBe(false);
+  expect(personAddressDescriptors.enumerable).toBe(false);
+});
+
+test("Expect person addres to be updated", () => {
+  const { person } = require("../tasks/task1/person");
+  const newInfo = { address: "Fake Street 123" };
+
+  person.updateInfo(newInfo);
+
+  expect(person.address).toBe("Fake Street 123");
+});

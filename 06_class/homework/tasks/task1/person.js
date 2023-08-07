@@ -5,18 +5,25 @@ const setWritableDescriptor = (obj, key, value) => {
   });
 };
 
+const isWritable = (obj, key) => {
+  if (Object.getOwnPropertyDescriptor(obj, key).writable == true) return true;
+  return false;
+};
+
 const person = {
   firstName: "John",
   lastName: "Doe",
   age: 30,
   email: "john.doe@example.com",
   updateInfo: (newInfo) => {
-    Object.keys(person).forEach((key) => {
+    const keys = Object.getOwnPropertyNames(person); // this way I cant get non enumerable properties
+    keys.forEach((key) => {
       if (Object.keys(newInfo).includes(key)) {
         // If a newFinfo property is not in person, we ignore it
-        setWritableDescriptor(person, key, true);
+        if (!isWritable(person, key))
+          // if property is onlyRead, throws error
+          throw new Error("Cannot update read only properties.");
         person[key] = newInfo[key];
-        setWritableDescriptor(person, key, false);
       }
     });
   },
