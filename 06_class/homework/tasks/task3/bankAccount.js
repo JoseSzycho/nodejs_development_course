@@ -63,9 +63,10 @@ const bankAccount = {
       bankAccount2
     );
 
-    const currentAccountNewBalance = currentAccount._balance - valueToTransfer;
-    checkForNegativeBalance(currentAccountNewBalance); // If balance will be negative, throw an erro
-    currentAccount.balance = currentAccountNewBalance;
+    // Cannot make transfer if valueToTransfer > currentAccount balance
+    checkForNegativeBalance(currentAccount._balance - valueToTransfer); // if negative, valueTo Transfer > currentAccount._balance, throws error
+
+    currentAccount.balance = currentAccount._balance - valueToTransfer;
     targetAccount.balance = targetAccount._balance + valueToTransfer;
   },
 };
