@@ -1,0 +1,15 @@
+{
+  "name": "nodejs_development_course",
+  "version": "1.0.0",
+  "description": "In this repository the notes, homeworks and tasks carried out will be stored.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.6.2"
+  }
+}
