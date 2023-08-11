@@ -69,4 +69,64 @@ If an inner `try` block does not have a corresponding `catch` block:
 
 For more information, see nested try-blocks on the try...catch reference page.
 
+## JavaScript automatic semicolon insertion
+
+In javascript, the use of the semicolon is optional, and in cases where we omit them, JavaScript uses the Automatic Semicolon Insertion (ASI) and assumes a “;” in some places in your JS code, even if you didn’t write one there.
+
+JavaScript does this because if we omit a required “;” our program would fail, but sometimes this javascript behavior then does unwanted things.
+
+### Rules 
+
+1. When next line starts from `}`
+2. in the end of a program
+3. in the end of line with return
+4. in the end of line with break
+5. in the end of line with throw
+6. in the end of line with continue
+7. if next line break current code
+
+### Situations where does not work as espected
+
+```js
+// Example 1
+const a = "hey"
+const b = "hey"
+const str = a + " " + b
+["h", "e", "y"].map(x=> x.toUpperCase)
+
+//the problem is that b wil be in real const str = a + " " + b["h", "e", "y"].map(x=> x.toUpperCase)
+
+// Example 2
+const fn = () => {
+	return // => error becaouse a semicolon will be added here
+	{
+	a: 42
+	}
+}
+
+fn().a // undefined
+
+// Example 3
+1+1
+-1 +1 === 0 ? alert(0) : alert(2) // => alert(2)
+
+```
+
+## Single cuote vs double cuote
+
+There is only one difference in the usage of single and double quotes, and it comes down to what quote character you need to escape using the backslash character (\): \’ or \”. Each type of quote should escape its own type.
+
+```js
+// Examples
+
+const newLine = 'this is the first line \n This is a second'
+
+const str = 'You can\'t'; // the \ indicantes it doest finish in can
+
+const str = "You can't" // it works
+const str = 'this is a quote: "..." '; // it works
+
+const es6 =  `A string
+on multiple lines` // we ca use multi lines for writing
+```
 
