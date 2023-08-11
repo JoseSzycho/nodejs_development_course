@@ -130,3 +130,48 @@ const es6 =  `A string
 on multiple lines` // we ca use multi lines for writing
 ```
 
+## Template literals
+
+Template literals are literals delimited with backtick `(`)` characters, allowing for __multi-line strings__, __string interpolation__ with embedded expressions, and special constructs called __tagged templates__.
+
+__Examples: __
+
+```js
+
+// Multi-line and string interpolation
+const a = 5;
+const b = 10;
+console.log(`Fifteen is ${a + b} and
+not ${2 * a + b}.`); // ${2 * a + b} is the interpolation. You dont have to + ..... + 
+// "Fifteen is 15 and
+// not 20."
+```
+
+### Tagged templates
+
+A more advanced form of template literals are tagged templates.
+
+Tags allow you to parse template literals with a function. The first argument of a tag function contains an array of string values. The remaining arguments are related to the expressions.
+
+```js
+// Example
+
+const person = "Mike";
+const age = 28;
+
+function myTag(strings, personExp, ageExp) {
+  const str0 = strings[0]; // "That "
+  const str1 = strings[1]; // " is a "
+  const str2 = strings[2]; // "."
+
+  const ageStr = ageExp > 99 ? "centenarian" : "youngster";
+
+  // We can even return a string built using a template literal
+  return `${str0}${personExp}${str1}${ageStr}${str2}`;
+}
+
+const output = myTag`That ${person} is a ${age}.`;
+
+console.log(output);
+// That Mike is a youngster.
+```
