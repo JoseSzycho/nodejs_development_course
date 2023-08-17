@@ -27,7 +27,7 @@ const alertMessage = (delay) => alert(`You waited ${delay} ms till the last time
 const debouncedAlert = debounce(alertMessage, delay);
 
 document.addEventListener("DOMContentLoaded", function() {
-    var textBox = document.getElementById("textBox");
+    const textBox = document.getElementById("textBox");
     textBox.addEventListener("input", () => debouncedAlert(delay));
 });
 </script>
