@@ -1,4 +1,4 @@
-const localize = require("../tasks/task1");
+const localize = require("../tasks/task1/task1");
 
 const translations = {
   en: {

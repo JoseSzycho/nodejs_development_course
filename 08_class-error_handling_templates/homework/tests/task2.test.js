@@ -1,4 +1,4 @@
-const { highlight, highlightKeywords } = require("../tasks/task2");
+const { highlight, highlightKeywords } = require("../tasks/task2/task2");
 
 test("Expect errror if template is not a string", () => {
   const keywords = ["JavaScript", "template", "tagged"];

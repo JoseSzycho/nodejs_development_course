@@ -1,4 +1,4 @@
-const multiline = require("../tasks/task3");
+const multiline = require("../tasks/task3/task3");
 
 test("Expect error if expression is not an string", () => {
   expect(() => multiline`${3}`).toThrow("Input must be a string.");
