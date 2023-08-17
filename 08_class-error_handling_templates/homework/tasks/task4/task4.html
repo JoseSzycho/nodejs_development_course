@@ -8,7 +8,13 @@
 
 /// TASK 4 CODE HERE
 const debounce = (func, delay) => {
+
+    // Invalid input error check
+    if(!(delay >= 0) ) throw new Error("Delay is not valid.");
+    if(!(typeof func == "function")) throw new Error("Function is not valid.");
+
     let timer; // stores the call
+    
     return (...args) => {
         clearTimeout(timer); // reset the time out time
         timer = setTimeout(() => func(...args), delay); // setting call
