@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Text Box Alert</title>
+<script>
+
+/// TASK 5 CODE HERE
+const throttle = (func, delay) => {
+
+    // Invalid input error check
+    if(!(delay >= 0) ) throw new Error("Delay is not valid.");
+    if(!(typeof func == "function")) throw new Error("Function is not valid.");
+
+    let canExecute = true; // If true, we can execute function
+
+    return (...args) => {
+        if(!canExecute) return; // If cannot execute, return
+
+        func(...args); // Execute functions
+        canExecute = false; // to avoid executing the function
+        setTimeout(() => canExecute = true, delay) // After the delay, we can execute
+    }
+}
+/// TASK 5 CODE HERE
+
+const delay = 1000;
+const consoleMessage = (el) => console.log(el);
+const throttledConsoleMessage = throttle(consoleMessage, delay);
+
+
+window.addEventListener("click", () => throttledConsoleMessage(`Function executed at most one every ${delay} ms.`));
+
+</script>
+</head>
+<body>
+<p>Open console and click over the DOM.</p>
+</body>
+</html>
