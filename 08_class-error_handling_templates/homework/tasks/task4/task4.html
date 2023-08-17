@@ -28,7 +28,7 @@ const debouncedAlert = debounce(alertMessage, delay);
 
 document.addEventListener("DOMContentLoaded", function() {
     var textBox = document.getElementById("textBox");
-    textBox.addEventListener("keyup", () => debouncedAlert(delay));
+    textBox.addEventListener("input", () => debouncedAlert(delay));
 });
 </script>
 </head>
