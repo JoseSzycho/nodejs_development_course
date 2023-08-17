@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Text Box Alert</title>
+<script>
+
+/// TASK 4 CODE HERE
+const debounce = (func, delay) => {
+    let timer; // stores the call
+    return (...args) => {
+        clearTimeout(timer); // reset the time out time
+        timer = setTimeout(() => func(...args), delay); // setting call
+    }
+}
+/// TASK 4 CODE HERE
+
+const delay = 2000; // delay for debounce
+const alertMessage = (delay) => alert(`You waited ${delay} ms till the last time you pressed a key.`); // calback
+const debouncedAlert = debounce(alertMessage, delay);
+
+document.addEventListener("DOMContentLoaded", function() {
+    var textBox = document.getElementById("textBox");
+    textBox.addEventListener("keyup", () => debouncedAlert(delay));
+});
+</script>
+</head>
+<body id=>
+<p>Write something and and alert will appear 2 seconds after you pressed the last key.</p>
+<input type="text" id="textBox">
+</body>
+</html>
