@@ -20,7 +20,10 @@ const curry = (func, arity) => {
     // It is difficult to check if "el" is a valid argument,
     // as we do not know the shape of the func sent by the user
 
-    // Storing call argument
+    // Skips if a missing argument
+    if(el === "_") return toCurry;
+
+    // Storing called argument
     args.push(el);
 
     // If all arguments have been stored

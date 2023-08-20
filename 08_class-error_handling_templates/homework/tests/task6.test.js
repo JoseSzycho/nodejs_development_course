@@ -36,3 +36,22 @@ test("Expect curried sum to work", () => {
 
   expect(result).toBe(5);
 });
+
+
+test("Expect curried multiplication with missing arguments to work", () => {
+  function multiply(a, b, c) {
+    return a * b * c;
+  }
+
+  const curriedMultiply = curry(multiply, 3);
+
+  const step0 = curriedMultiply("_"); 
+  const step1 = curriedMultiply(2); 
+  const step2 = step1("_"); 
+  const step3 = step2("_"); 
+  const step4 = step3(3); 
+  const step5 = step3("_"); 
+  const result = step5(4); 
+
+  expect(result).toBe(24);
+});
