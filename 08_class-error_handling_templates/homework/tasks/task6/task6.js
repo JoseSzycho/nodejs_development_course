@@ -27,7 +27,7 @@ const curry = (func, arity) => {
     args.push(el);
 
     // If all arguments have been stored
-    if (args.length == arity) {
+    if (args.length === arity) {
       // Evaluate function and return result
       return func(...args);
     }
