@@ -1,5 +1,15 @@
 const { generateSortedArray } = require("../utils/generateSortedArray");
 
+test("Expect error if order or length are not valid inptus", () => {
+    // Error if not valid order
+    expect(() => generateSortedArray(5, "rand")).toThrow("Not a valid sorting order.");
+    // Error if not valid length
+    expect(() => generateSortedArray("a", "ascending")).toThrow("Not a valid length.");
+    expect(() => generateSortedArray(NaN, "ascending")).toThrow("Not a valid length.");
+    expect(() => generateSortedArray(-1, "ascending")).toThrow("Not a valid length.");
+    expect(() => generateSortedArray("5", "ascending")).toThrow("Not a valid length.");
+})
+
 test("Expect increasing sorted arrays to be created", () => {
   expect(generateSortedArray(0, "ascending")).toEqual([]);
   expect(generateSortedArray(1, "ascending")).toEqual([0]);
