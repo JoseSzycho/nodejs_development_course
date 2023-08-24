@@ -8,9 +8,9 @@ const { plotResults } = require("./utils/plotResults");
 const { sortMethod } = require("./utils/sortMethod");
 
 // To be modified by user
-const maxArrayLength = 7000; // the bigger, the most result we obtain, higer execution time
+const maxArrayLength = 20000; // the bigger, the most result we obtain, higer execution time
 const iterationsForAverage = 10; // the bigger, the smoother the plot will be, higher the execution time
-const multiplier = 500; // the bigger, the fastest the script will be executed, but loosing presicion
+const multiplier = 1000; // the bigger, the fastest the script will be executed, but loosing presicion
 // To be modified by user
 
 // Callback for returing average sort time
