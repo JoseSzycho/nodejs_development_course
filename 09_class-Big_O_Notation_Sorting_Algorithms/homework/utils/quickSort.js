@@ -6,8 +6,9 @@ const quickSort = (unsortedArray) => {
   // If array is already sorted, we return it
   if (array.length == 0) return array; // Recursion exit condition
 
-  // Settig pivot as the last array element
-  const arrayPivot = array.pop();
+  // Settig pivot as and random element of array
+  const randomIndex = Math.trunc(Math.random() * array.length);
+  const arrayPivot = array.splice(randomIndex, 1)[0];
 
   // Iterating over all array and separate the array in left
   // and right part
