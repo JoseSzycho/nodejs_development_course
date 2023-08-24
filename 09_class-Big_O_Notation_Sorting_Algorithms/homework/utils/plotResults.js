@@ -1,30 +1,24 @@
 const nodeplotlib = require("nodeplotlib");
 
-const plotResults = (
-  xAxis,
-  bubbleExecutionTime,
-  mergeExecutionTime,
-  quickExecutionTime,
-  title
-) => {
+const plotResults = (arrayTime, xAxis, sortObjects, title) => {
   const data = [
     {
       x: xAxis,
-      y: bubbleExecutionTime,
+      y: sortObjects[0][arrayTime],
       type: "line",
-      name: "Bubble Sort",
+      name: sortObjects[0].title,
     },
     {
       x: xAxis,
-      y: mergeExecutionTime,
+      y: sortObjects[1][arrayTime],
       type: "line",
-      name: "Merge Sort",
+      name: sortObjects[1].title,
     },
     {
       x: xAxis,
-      y: quickExecutionTime,
+      y: sortObjects[2][arrayTime],
       type: "line",
-      name: "Quick Sort",
+      name: sortObjects[2].title,
     },
   ];
 
