@@ -3,22 +3,15 @@ const { mergeSort } = require("./utils/mergeSort");
 const { quickSort } = require("./utils/quickSort");
 const { generateSortedArray } = require("./utils/generateSortedArray");
 const { generateRandomArray } = require("./utils/generateRandomArray");
+const { averageSortTime } = require("./utils/averageSortTime");
+const { plotResults } = require("./utils/plotResults");
 
-// Returns the average sort time given an array, sort algorithm
-// and number of iterations for calculating the average time
-const averageSortTime = (array, sortAlgorithm, iterations) => {
-  const startTime = Date.now();
+// To be modified by user
+const maxArrayLength = 100; // the bigger, the most result we obtain, higer execution time
+const iterationsForAverage = 10000; // the bigger, the smoother the plot will be, higher the execution time
+const multiplier = 3; // the bigger, the fastest the script will be executed, but loosing presicion
 
-  for (let i = 0; i < iterations; i++) {
-    const sortedArray = sortAlgorithm([...array]);
-  }
-
-  const averageExecutionTime = (Date.now() - startTime) / iterations;
-  return averageExecutionTime;
-};
-
-const maxArrayLength = 100;
-const iterationsForAverage = 1;
+const xAxis = [];
 
 // 1. Stores average execution time for each method when
 // ascending ordered array is sorted
@@ -38,7 +31,14 @@ const bubbleRandomExecutionTime = [];
 const mergeRandomExecutionTime = [];
 const quickRandomExecutionTime = [];
 
-for (let i = 2; i < maxArrayLength; i++) {
+// Create different arrays from length = 2 to length < maxArrayLength
+// For each method and each array length, stores the average time execution
+for (let i = 2; i < maxArrayLength; i = i + multiplier) {
+  // The multiplier is used for making the execution faster, as
+  // there is not big difference in the executions time when incresing i by 1.
+
+  xAxis.push(i); // Getting x-axis value
+
   /* // 1. Getting executions time in ascending order array
   const ascendingArray = generateSortedArray(i, "ascending");
   bubbleAscendingExecutionTime.push(
@@ -65,9 +65,9 @@ for (let i = 2; i < maxArrayLength; i++) {
 
   // 3. Getting executions time in random array
   const randomArray = generateRandomArray(i);
-  bubbleRandomExecutionTime.push(
+/*   bubbleRandomExecutionTime.push(
     averageSortTime(randomArray, bubbleSort, iterationsForAverage)
-  );
+  ); */
   mergeRandomExecutionTime.push(
     averageSortTime(randomArray, mergeSort, iterationsForAverage)
   );
@@ -76,21 +76,54 @@ for (let i = 2; i < maxArrayLength; i++) {
   );
 }
 
-const nodeplotlib = require('nodeplotlib');
+// Ploting the three methods results for each array scenario
 
-const data = [
-  {
-    x: [1, 2, 3, 4],
-    y: [10, 15, 13, 17],
-    type: 'line'
-  }
-];
+plotResults(
+  xAxis,
+  bubbleAscendingExecutionTime,
+  mergeAscendingExecutionTime,
+  quickAscendingExecutionTime,
+  "Algorithm comparation with ascending sorted arrays"
+);
 
-const layout = {
-  title: 'Simple Line Plot',
-  xaxis: { title: 'X-axis' },
-  yaxis: { title: 'Y-axis' }
-};
+plotResults(
+  xAxis,
+  bubbleDescendingExecutionTime,
+  mergeDescendingExecutionTime,
+  quickDescendingExecutionTime,
+  "Algorithm comparation with descending sorted arrays"
+);
 
-// Create a plot using Python's matplotlib
-nodeplotlib.plot(data, layout);
+plotResults(
+  xAxis,
+  bubbleRandomExecutionTime,
+  mergeRandomExecutionTime,
+  quickRandomExecutionTime,
+  "Algorithm comparation with random arrays"
+);
+
+// Ploting results merge vs quick sort algorithms
+
+plotResults(
+  xAxis,
+  [],
+  mergeAscendingExecutionTime,
+  quickAscendingExecutionTime,
+  "Algorithm comparation with ascending sorted arrays"
+);
+
+plotResults(
+  xAxis,
+  [],
+  mergeDescendingExecutionTime,
+  quickDescendingExecutionTime,
+  "Algorithm comparation with descending sorted arrays"
+);
+
+plotResults(
+  xAxis,
+  [],
+  mergeRandomExecutionTime,
+  quickRandomExecutionTime,
+  "Algorithm comparation with random arrays"
+);
