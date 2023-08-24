@@ -5,12 +5,13 @@ const { generateSortedArray } = require("./utils/generateSortedArray");
 const { generateRandomArray } = require("./utils/generateRandomArray");
 const { averageSortTime } = require("./utils/averageSortTime");
 const { plotResults } = require("./utils/plotResults");
+const { generateReport } = require("./utils/generateReport");
 const { sortMethod } = require("./utils/sortMethod");
 
 // To be modified by user
 const maxArrayLength = 20000; // the bigger, the most result we obtain, higer execution time
 const iterationsForAverage = 10; // the bigger, the smoother the plot will be, higher the execution time
-const multiplier = 1000; // the bigger, the fastest the script will be executed, but loosing presicion
+const multiplier = 2001; // the bigger, the fastest the script will be executed, but loosing presicion
 // To be modified by user
 
 // Callback for returing average sort time
@@ -76,3 +77,7 @@ plotResults(
   sortObjects,
   "Algorithm comparation with random arrays"
 );
+
+// Generatin reports
+
+generateReport("ascending", "ascendingTimes", sortObjects, xAxis);
