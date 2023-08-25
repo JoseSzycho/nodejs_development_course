@@ -19,10 +19,11 @@ const quick = new sortMethod("QuickSort", quickSort);
 const xAxis = [];
 
 // To be modified by user
-const maxArrayLength = 300000; // the bigger, the most results we obtain, higer execution time
+const maxArrayLength = 500; // the bigger, the most results we obtain, higer execution time
 const iterationsForAverage = 1; // the bigger, the smoother the plot will be, higher the execution time
-const multiplier = 50000; // the bigger, the fastest the script will be executed, but loosing accuracy
-const sortObjects = [bubble, quick, merge]; // Modify the array for the sort method you want to analyze
+const iterationsForRandom = 10000; // how many random arrays are going to be sorted for each array length for calculating sort time.
+const multiplier = 10; // the bigger, the fastest the script will be executed, but loosing accuracy
+const sortObjects = [merge, quick]; // Modify the array for the sort method you want to analyze
 // To be modified by user
 
 // Callback for returing average sort time
@@ -50,8 +51,19 @@ for (let i = 2; i < maxArrayLength; i = i + multiplier) {
   sortObjects.forEach(getAverageTime("descendingTimes", descengingArray));
 
   // 3. Getting executions time in random arrays
-  const randomArray = generateRandomArray(i);
-  sortObjects.forEach(getAverageTime("randomTimes", randomArray));
+  // (it stores the average of sorting multiple random arrays of same length)
+  sortObjects.forEach((el) => {
+    // For each sorth method
+    const sortTimes = [];
+    for (let j = 0; j < iterationsForRandom; j++) {
+      // Creating certain number of random arrays and storing 
+      // its sort time
+      const randomArray = generateRandomArray(i);
+      sortTimes.push(averageSortTime(randomArray, el.sortMethod, 1));
+    }
+    const averageRandomTime = sortTimes.reduce((acc, el) => acc + el, 0) / iterationsForRandom;
+    el.randomTimes.push(averageRandomTime); // saving sort time average
+  });
 
   // 1. , 2. and 3. could be joined in only one for each with some
   // minor changes, but this way is more redeable

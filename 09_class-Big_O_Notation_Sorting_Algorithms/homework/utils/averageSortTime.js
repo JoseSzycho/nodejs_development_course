@@ -1,3 +1,4 @@
+
 // Returns the average sort time given an array, sort algorithm
 // and number of iterations for calculating the average time
 const averageSortTime = (array, sortAlgorithm, iterations) => {
