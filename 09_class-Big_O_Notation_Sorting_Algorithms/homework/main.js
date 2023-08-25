@@ -1,17 +1,28 @@
-const { bubbleSort } = require("./utils/bubbleSort");
-const { mergeSort } = require("./utils/mergeSort");
-const { quickSort } = require("./utils/quickSort");
-const { generateSortedArray } = require("./utils/generateSortedArray");
-const { generateRandomArray } = require("./utils/generateRandomArray");
-const { averageSortTime } = require("./utils/averageSortTime");
-const { plotResults } = require("./utils/plotResults");
-const { generateReport } = require("./utils/generateReport");
-const { sortMethod } = require("./utils/sortMethod");
+const {
+  bubbleSort,
+  mergeSort,
+  quickSort,
+  generateSortedArray,
+  generateRandomArray,
+  averageSortTime,
+  plotResults,
+  generateReport,
+  sortMethod,
+} = require("./exports");
+
+// Creating instance for each sort method
+const bubble = new sortMethod("BubbleSort", bubbleSort);
+const merge = new sortMethod("MergeSort", mergeSort);
+const quick = new sortMethod("QuickSort", quickSort);
+
+// Stores the x axis for plotting results
+const xAxis = [];
 
 // To be modified by user
-const maxArrayLength = 20000; // the bigger, the most result we obtain, higer execution time
-const iterationsForAverage = 10; // the bigger, the smoother the plot will be, higher the execution time
-const multiplier = 2001; // the bigger, the fastest the script will be executed, but loosing presicion
+const maxArrayLength = 300000; // the bigger, the most results we obtain, higer execution time
+const iterationsForAverage = 1; // the bigger, the smoother the plot will be, higher the execution time
+const multiplier = 50000; // the bigger, the fastest the script will be executed, but loosing accuracy
+const sortObjects = [bubble, quick, merge]; // Modify the array for the sort method you want to analyze
 // To be modified by user
 
 // Callback for returing average sort time
@@ -21,15 +32,6 @@ const getAverageTime = (sortTimeArray, array) => {
       averageSortTime(array, el.sortMethod, iterationsForAverage)
     ); // push the average sort time into the corresponding property
 };
-
-// Creating instance for each sort method
-const bubble = new sortMethod("Bubble Sort", bubbleSort);
-const merge = new sortMethod("Merge Sort", mergeSort);
-const quick = new sortMethod("Quick Sort", quickSort);
-const sortObjects = [bubble, merge, quick];
-
-// Stores the x axis for plotting results
-const xAxis = [];
 
 // Create different arrays from length = 2 to length < maxArrayLength
 // For each sort method and each array length, stores the average time execution
@@ -55,8 +57,8 @@ for (let i = 2; i < maxArrayLength; i = i + multiplier) {
   // minor changes, but this way is more redeable
 }
 
-// Ploting the three methods results for each array scenario
-
+// Ploting the sort methods results for each array scenario
+// Comment the plot you do not want to plot
 plotResults(
   "ascendingTimes",
   xAxis,
@@ -78,6 +80,8 @@ plotResults(
   "Algorithm comparation with random arrays"
 );
 
-// Generatin reports
-
+// Generating reports
+// Comment the report you do not want to show
 generateReport("ascending", "ascendingTimes", sortObjects, xAxis);
+generateReport("descending", "descendingTimes", sortObjects, xAxis);
+generateReport("random", "randomTimes", sortObjects, xAxis);

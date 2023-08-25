@@ -1,33 +1,26 @@
 const nodeplotlib = require("nodeplotlib");
 
 const plotResults = (arrayTime, xAxis, sortObjects, title) => {
-  const data = [
-    {
-      x: xAxis,
-      y: sortObjects[0][arrayTime],
-      type: "line",
-      name: sortObjects[0].title,
-    },
-    {
-      x: xAxis,
-      y: sortObjects[1][arrayTime],
-      type: "line",
-      name: sortObjects[1].title,
-    },
-    {
-      x: xAxis,
-      y: sortObjects[2][arrayTime],
-      type: "line",
-      name: sortObjects[2].title,
-    },
-  ];
+  const data = [];
 
+  // Push data of each sorth method for later plot
+  for (let i = 0; i < sortObjects.length; i++) {
+    data.push({
+      x: xAxis,
+      y: sortObjects[i][arrayTime],
+      type: "line",
+      name: sortObjects[i].title,
+    });
+  }
+
+  // Setting layout
   const layout = {
     title: title,
     xaxis: { title: "Length of array" },
     yaxis: { title: "Time execution [ms]" },
   };
 
+  // Ploting data
   nodeplotlib.plot(data, layout);
 };
 
