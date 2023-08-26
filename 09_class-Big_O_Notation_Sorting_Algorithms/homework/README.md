@@ -57,7 +57,7 @@ As the [main code](./main.js) execution time might take several minutes to execu
 
 The next methodology was taken.
 
-**General behavior of the sort methods:**
+#### General behavior of the sort methods:
 
 Configure the user input in the following way:
 
