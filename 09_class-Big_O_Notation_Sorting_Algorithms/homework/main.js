@@ -19,11 +19,11 @@ const quick = new sortMethod("QuickSort", quickSort);
 const xAxis = [];
 
 // To be modified by user
-const maxArrayLength = 80000; // the bigger, the most results we obtain, higer execution time
-const iterationsForAverage = 4; // the bigger, the smoother the plot will be, higher the execution time
-const iterationsForRandom = 4; // how many random arrays are going to be sorted for each array length for calculating sort time.
-const multiplier = 8000; // the bigger, the fastest the script will be executed, but loosing accuracy
-const sortObjects = [merge, quick]; // Modify the array for the sort method you want to analyze
+const maxArrayLength = 300; // the bigger, the most results we obtain, higer execution time
+const iterationsForAverage =10000; // the bigger, the smoother the plot will be, higher the execution time
+const iterationsForRandom = 10000; // how many random arrays are going to be sorted for each array length for calculating sort time.
+const multiplier = 5; // the bigger, the fastest the script will be executed, but loosing accuracy
+const sortObjects = [bubble, merge, quick]; // Modify the array for the sort method you want to analyze
 // To be modified by user
 
 // Callback for returing average sort time

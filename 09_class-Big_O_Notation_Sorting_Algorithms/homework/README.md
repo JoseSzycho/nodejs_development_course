@@ -11,6 +11,7 @@ In this short report, an analysis of the next three sorting algorithms will be p
 The final objective is to achieve the following results:
 
 - Execution time of each sorting algorithm for different array types and different array lengths.
+- Array length at which Quick Sort becomes the slowest method
 - Array length at which Quick Sort and Merge Sort start to outperform Bubble Sort consistently
 - Why quick sort is faster than merge sort
 
@@ -56,8 +57,7 @@ As the [main code](./main.js) execution time might take several minutes to execu
 
 The next methodology was taken.
 
-
-**General behavior of the sort methods:** 
+**General behavior of the sort methods:**
 
 Configure the user input in the following way:
 
@@ -96,3 +96,101 @@ const sortObjects = [merge, quick]; // IMPORTANT NOTE: bubble sort method is rem
 This configuration will give a good approach to the general behavior of both methods.
 
 Repeat steps as the bubble sort behavior for each array type scenario to know at which array length quick sort starts to be faster.
+
+## Results
+
+In this section, the results for different user configuration scenarios will be shown.
+
+### General behavior of bubble, merge and quick sort methods
+
+Further analysis between the merge and quick sort methods will be made over the next sections, as the quick sort method becomes faster after a certain array length.
+
+```js
+// User configuration
+const maxArrayLength = 2000;
+const iterationsForAverage = 100;
+const iterationsForRandom = 100;
+const multiplier = 100;
+const sortObjects = [bubble, merge, quick];
+```
+
+**Ascending sorted arrays**
+
+<p align="center">
+<img src ="./images/general_behavior_ascending.png">
+</p>
+
+- **Best performance:** Bubble sort method
+- **Middle performance:** Merge sort method
+- **Worst performance:** Quick sort method
+
+**Descending sorted arrays**
+
+<p align="center">
+<img src ="./images/general_behavior_descending.png">
+</p>
+
+- **Best performance:** Merge sort method
+- **Middle performance:** Quick sort method
+- **Worst performance:** Bubble sort method
+
+**Random sorted arrays**
+
+<p align="center">
+<img src ="./images/general_behavior_random.png">
+</p>
+
+- **Best performance:** Quick sort method
+- **Middle performance:** Merge sort method
+- **Worst performance:** Bubble sort method
+
+### Behavior of bubble sort method
+
+In this section results focusing on the bubble sort method against merge and quick sort method will be presented.
+
+```js
+// User configuration
+const maxArrayLength = 300;
+const iterationsForAverage = 10000;
+const iterationsForRandom = 10000;
+const multiplier = 5;
+const sortObjects = [bubble, merge, quick];
+```
+
+**Ascending sorted arrays**
+
+<p align="center">
+<img src ="./images/bubble_ascending.png">
+</p>
+
+The Bubble sort method is the fastest. A tendency is presented that this method is the fastest no matter the array length.
+
+**Descending sorted arrays**
+
+<p align="center">
+<img src ="./images/bubble_descending.png">
+</p>
+
+<p align="center">
+<img src ="./images/bubble_descending_table.png">
+</p>
+
+- The Bubble sort algorithm becomes slower than the merge sort method when the array length is 142 +-5.
+
+- The Bubble sort algorithm becomes slower than the quick sort method when the array length is 202 +-5.
+
+**Random sorted arrays**
+
+<p align="center">
+<img src ="./images/bubble_random.png">
+</p>
+
+<p align="center">
+<img src ="./images/bubble_random_table.png">
+</p>
+
+- The Bubble sort algorithm becomes slower than the quick sort method when the array length is in the range of 177 to 187.
+
+- The Bubble sort algorithm becomes slower than the merge sort method when the array length is in the range of 212 to 227.
+
+### Merge sort method versus Quick sort method
