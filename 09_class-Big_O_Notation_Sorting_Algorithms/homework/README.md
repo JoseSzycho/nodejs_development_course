@@ -194,6 +194,7 @@ The Bubble sort method is the fastest. A tendency is presented that this method 
 ### Merge sort method versus Quick sort method
 
 #### Ascending sorted arrays
+
 ```js
 // User configuration
 const maxArrayLength = 3500;
@@ -202,6 +203,7 @@ const iterationsForRandom = 1;
 const multiplier = 200;
 const sortObjects = [merge, quick];
 ```
+
 <p align="center">
 <img src ="./images/merge_quick_ascending.png">
 </p>
@@ -210,8 +212,8 @@ const sortObjects = [merge, quick];
 <img src ="./images/merge_quick_ascending_table.png">
 </p>
 
- - The Merge sort algorithm is faster for array length minor than 2402 +- 200.
- - The Quick sort algorithm is faster for array lengths equal to and bigger than 2402 +- 200.
+- The Merge sort algorithm is faster for array length minor than 2402 +- 200.
+- The Quick sort algorithm is faster for array lengths equal to and bigger than 2402 +- 200.
 
 #### Descending sorted arrays
 
@@ -232,8 +234,8 @@ const sortObjects = [merge, quick];
 <img src ="./images/merge_quick_descending_table.png">
 </p>
 
- - The Merge sort algorithm is faster for array length minor than 2202 +- 200.
- - The Quick sort algorithm is faster for array lengths equal to and bigger than 2002 +- 200.
+- The Merge sort algorithm is faster for array length minor than 2202 +- 200.
+- The Quick sort algorithm is faster for array lengths equal to and bigger than 2002 +- 200.
 
 #### Random sorted array
 
@@ -254,13 +256,24 @@ const sortObjects = [merge, quick];
 <img src ="./images/merge_quick_random_table.png">
 </p>
 
- - The Merge sort algorithm is faster for array length minor than 97 +-5.
- - The Quick sort algorithm is faster for array lengths equal to and bigger than 97 +-5.
+- The Merge sort algorithm is faster for array length minor than 97 +-5.
+- The Quick sort algorithm is faster for array lengths equal to and bigger than 97 +-5.
 
- ## Conclusions
+## Conclusions
 
 Further statistical analyses with more complex tools should be done having concrete conclusions.
 
 In terms of subjective conclusions we can make the following affirmations:
 
-1. If we are sure the big majority of arrays will be sorted,
+- **When to use the bubble sort method**;
+1. If we expect the majority of arrays will be sorted.
+2. If we expect the majority of arrays will be in the worst scenario and the array lengths are less than 142 +- 5.
+3. If we expect the majority of arrays will be random and the array lengths are less than 177.
+
+- **When to use the merge sort method**;
+1. If we are sure the majority of arrays will be in the worst scenario and the array lengths are less than 2202 +- 200.
+2. If we expect the majority of arrays will be random and the array lengths are less than 97 +- 5.
+
+- **When to use the quick sort method**;
+1. If we are sure the majority of arrays will be in the worst scenario and the array lengths are more than 2202 +- 200.
+2. If we expect the majority of arrays will be random and the array lengths are more than 97 +- 5.
