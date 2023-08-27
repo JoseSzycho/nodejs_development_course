@@ -9,6 +9,7 @@ const {
   generateReport,
   sortMethod,
 } = require("./exports");
+const { checkInputError } = require("./utils/checkInputError");
 
 // Creating instance for each sort method
 const bubble = new sortMethod("BubbleSort", bubbleSort);
@@ -19,12 +20,19 @@ const quick = new sortMethod("QuickSort", quickSort);
 const xAxis = [];
 
 // To be modified by user
-const maxArrayLength = 4000; // the bigger, the most results we obtain, higer execution time
-const iterationsForAverage = 100; // the bigger, the smoother the plot will be, higher the execution time
-const iterationsForRandom = 100; // how many random arrays are going to be sorted for each array length for calculating sort time.
-const multiplier = 100; // the bigger, the fastest the script will be executed, but loosing accuracy
+const maxArrayLength = 8000; // the bigger, the most results we obtain, higer execution time
+const iterationsForAverage = 25; // the bigger, the smoother the plot will be, higher the execution time
+const iterationsForRandom = 25; // how many random arrays are going to be sorted for each array length for calculating sort time.
+const multiplier = 800; // the bigger, the fastest the script will be executed, but loosing accuracy
 const sortObjects = [bubble, merge, quick]; // Modify the array for the sort method you want to analyze
 // To be modified by user
+
+checkInputError(
+  maxArrayLength,
+  iterationsForAverage,
+  iterationsForRandom,
+  multiplier
+);
 
 // Callback for returing average sort time
 const getAverageTime = (sortTimeArray, array) => {

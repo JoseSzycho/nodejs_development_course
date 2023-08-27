@@ -6,6 +6,7 @@ const { generateRandomArray } = require("./utils/generateRandomArray");
 const { averageSortTime } = require("./utils/averageSortTime");
 const { plotResults } = require("./utils/plotResults");
 const { generateReport } = require("./utils/generateReport");
+const { checkInputErrors } = require("./utils/checkInputError");
 const { sortMethod } = require("./utils/sortMethod");
 
 module.exports = {
@@ -17,5 +18,6 @@ module.exports = {
   averageSortTime,
   plotResults,
   generateReport,
+  checkInputErrors,
   sortMethod,
 };
