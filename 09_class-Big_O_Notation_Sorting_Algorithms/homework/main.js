@@ -19,11 +19,11 @@ const quick = new sortMethod("QuickSort", quickSort);
 const xAxis = [];
 
 // To be modified by user
-const maxArrayLength = 300; // the bigger, the most results we obtain, higer execution time
-const iterationsForAverage =10000; // the bigger, the smoother the plot will be, higher the execution time
-const iterationsForRandom = 10000; // how many random arrays are going to be sorted for each array length for calculating sort time.
-const multiplier = 5; // the bigger, the fastest the script will be executed, but loosing accuracy
-const sortObjects = [bubble, merge, quick]; // Modify the array for the sort method you want to analyze
+const maxArrayLength = 3500; // the bigger, the most results we obtain, higer execution time
+const iterationsForAverage = 6000; // the bigger, the smoother the plot will be, higher the execution time
+const iterationsForRandom = 1; // how many random arrays are going to be sorted for each array length for calculating sort time.
+const multiplier = 200; // the bigger, the fastest the script will be executed, but loosing accuracy
+const sortObjects = [merge, quick]; // Modify the array for the sort method you want to analyze
 // To be modified by user
 
 // Callback for returing average sort time
@@ -56,12 +56,13 @@ for (let i = 2; i < maxArrayLength; i = i + multiplier) {
     // For each sorth method
     const sortTimes = [];
     for (let j = 0; j < iterationsForRandom; j++) {
-      // Creating certain number of random arrays and storing 
+      // Creating certain number of random arrays and storing
       // its sort time
       const randomArray = generateRandomArray(i);
       sortTimes.push(averageSortTime(randomArray, el.sortMethod, 1));
     }
-    const averageRandomTime = sortTimes.reduce((acc, el) => acc + el, 0) / iterationsForRandom;
+    const averageRandomTime =
+      sortTimes.reduce((acc, el) => acc + el, 0) / iterationsForRandom;
     el.randomTimes.push(averageRandomTime); // saving sort time average
   });
 
