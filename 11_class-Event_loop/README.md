@@ -5,11 +5,6 @@
 
 3. https://amplication.com/blog/nodejs-asynchronous-flow-control-and-event-loop
 
-There are many interpretations, we will take one.
-
-It is a reactor pattern.
-
-We will see how the reactor reactor works.
 
 ## Client server arquitecture
 
