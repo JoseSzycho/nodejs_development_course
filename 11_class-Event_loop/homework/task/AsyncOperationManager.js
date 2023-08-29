@@ -49,29 +49,29 @@ const nextTickCallback = consoleCallback("NextTick operation executed.");
 const immediateCallback = consoleCallback("Immediate operation executed.");
 
 for (let i = 0; i < 2; i++) {
-  console.log(`Loop number ${i+1}.`);
   AsyncOperationManager.scheduleImmediate(immediateCallback); // push callback to "Check phase queue"
   AsyncOperationManager.simulateAsyncOperation(noDelayedAsyncCallback, noDelay); // push callback to "Check timers queue"
   AsyncOperationManager.simulateAsyncOperation(delayedAsyncCallback, someDelay); // push callback to "Check timers queue"
   AsyncOperationManager.executeNextTick(nextTickCallback); // push callback to "NextTick queue"
+  console.log(`Loop number ${i+1}.`);
 }
 
 /* With out previous knowledge of event loop, we would expect the console
 output to be:
 
 <- START FIRST LOOP ->
-    Loop number 1.
     Immediate operation executed.
     Async operation completed after a minimum of 0 ms.
     Async operation completed after a minimum of 1000 ms.
     NextTick operation executed.
+    Loop number 1.
 <-FINISH FIRST LOOP ->
 <- START SECOND LOOP ->
-    Loop number 2.
     Immediate operation executed.
     Async operation completed after a minimum of 0 ms.
     Async operation completed after a minimum of 1000 ms.
     NextTick operation executed.
+    Loop number 2.
 <- FINISH SECOND LOOP ->
 
 But, in fact, this is wrong, as the asynchronous tasks behaves
