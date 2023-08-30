@@ -7,7 +7,8 @@ class AsyncOperationManager {
     (the "timers phase"), but it is expected to be executed after the 
     "nextTick queue", even if the delay is 0, as the nextTick queue 
     and other microtasks executes their queue after each event loop 
-    phase.*/
+    phase. If the delay is big enough, the operations with this delay
+    will be executed at last.*/
     setTimeout(callback, delay);
   }
 
@@ -53,7 +54,6 @@ for (let i = 0; i < 2; i++) {
   AsyncOperationManager.simulateAsyncOperation(noDelayedAsyncCallback, noDelay); // push callback to "Check timers queue"
   AsyncOperationManager.simulateAsyncOperation(delayedAsyncCallback, someDelay); // push callback to "Check timers queue"
   AsyncOperationManager.executeNextTick(nextTickCallback); // push callback to "NextTick queue"
-  console.log(`Loop number ${i+1}.`);
 }
 
 /* With out previous knowledge of event loop, we would expect the console
@@ -64,14 +64,12 @@ output to be:
     Async operation completed after a minimum of 0 ms.
     Async operation completed after a minimum of 1000 ms.
     NextTick operation executed.
-    Loop number 1.
 <-FINISH FIRST LOOP ->
 <- START SECOND LOOP ->
     Immediate operation executed.
     Async operation completed after a minimum of 0 ms.
     Async operation completed after a minimum of 1000 ms.
     NextTick operation executed.
-    Loop number 2.
 <- FINISH SECOND LOOP ->
 
 But, in fact, this is wrong, as the asynchronous tasks behaves
@@ -85,21 +83,15 @@ These phases are:
 - Check phase: * our scheduleImmediate method tasks are queued here * 
 - Close phase
 
-And there are two special blocks that executes before each phases
+And there are two special blocks that executes before each of the phase
 mentioned before, these blocks are:
 - NextTick Queue: * our  executeNextTick method tasks are queued here *
 - Other microtasks queue
 
 EXPLAINING HOW THE CONSOLE WILL BEHAVE.
 
-- Before executing the asynchronous callbacks, the call stack must 
-be empty, so the next messages will be printed.
-
-    Loop number 1.
-    Loop number 2.
-
-- Next, the NextTick queue have the priority, as it executes its
-queued call backs before each phase. The next messages will be printed.
+- The NextTick queue have the priority, as it executes its
+queued callbacks before each phase. The next messages will be printed.
 
     NextTick operation executed.
     NextTick operation executed.
@@ -128,14 +120,12 @@ to be printed:
 
 So, combining all the console prints, this is the output we will get:
 
-    Loop number 1.
-    Loop number 2.
     NextTick operation executed.
     NextTick operation executed.
-    Immediate operation executed.
-    Immediate operation executed.
     Async operation completed after a minimum of 0 ms.
     Async operation completed after a minimum of 0 ms.
+    Immediate operation executed.
+    Immediate operation executed.
     Async operation completed after a minimum of 1000 ms.
     Async operation completed after a minimum of 1000 ms.
 */
