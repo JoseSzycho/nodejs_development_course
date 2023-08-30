@@ -129,5 +129,3 @@ So, combining all the console prints, this is the output we will get:
     Async operation completed after a minimum of 1000 ms.
     Async operation completed after a minimum of 1000 ms.
 */
-
-
