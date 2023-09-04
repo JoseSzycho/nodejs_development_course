@@ -1,32 +1,5 @@
 # Class 13 - Classes and oriented object programming
 
-## Table of content
-
-<!-- TOC -->
-
-- [Class 13 - Classes and oriented object programming](#class-13---classes-and-oriented-object-programming)
-    - [Table of content](#table-of-content)
-    - [Defining classes](#defining-classes)
-    - [Class body](#class-body)
-    - [Constructor](#constructor)
-    - [Methods](#methods)
-    - [Static methods and fields](#static-methods-and-fields)
-    - [Fields declarations](#fields-declarations)
-    - [Private class features.](#private-class-features)
-        - [super](#super)
-    - [instance of](#instance-of)
-    - [How to name variables without using spaces](#how-to-name-variables-without-using-spaces)
-        - [PascalCase UpperCamelCase:](#pascalcase-uppercamelcase)
-        - [CamelCase lowerCamelCase:](#camelcase-lowercamelcase)
-        - [Snake_case snake_case:](#snake_case-snake_case)
-        - [Kebab-case kebab-case:](#kebab-case-kebab-case)
-    - [Object-oriented programming](#object-oriented-programming)
-    - [Composition of objects](#composition-of-objects)
-    - [Singleton](#singleton)
-    - [More patter designs](#more-patter-designs)
-
-<!-- /TOC -->
-
 **Classes are a template/schema for creating objects**, they are **NOT entities**. They encapsulate data with code to work on that data. Classes in JS are **built on prototypes** but also have some syntax and semantics that are unique to classes.
 
 An entity typically refers to a data structure or object that represents some real-world entity or concept.
@@ -46,29 +19,7 @@ class Rectangle {
 
 // Expression; the class is anonymous but assigned to a variable
 const Rectangle = class {
-<!-- TOC -->
-
-- [Class 13 - Classes and oriented object programming](#class-13---classes-and-oriented-object-programming)
-    - [Defining classes](#defining-classes)
-    - [Class body](#class-body)
-    - [Constructor](#constructor)
-    - [Methods](#methods)
-    - [Static methods and fields](#static-methods-and-fields)
-    - [Fields declarations](#fields-declarations)
-    - [Private class features.](#private-class-features)
-        - [super](#super)
-    - [instance of](#instance-of)
-    - [How to name variables without using spaces](#how-to-name-variables-without-using-spaces)
-        - [PascalCase UpperCamelCase:](#pascalcase-uppercamelcase)
-        - [CamelCase lowerCamelCase:](#camelcase-lowercamelcase)
-        - [Snake_case snake_case:](#snake_case-snake_case)
-        - [Kebab-case kebab-case:](#kebab-case-kebab-case)
-    - [Object-oriented programming](#object-oriented-programming)
-    - [Composition of objects](#composition-of-objects)
-    - [Singleton](#singleton)
-    - [More patter designs](#more-patter-designs)
-
-<!-- /TOC -->  constructor(height, width) {
+  constructor(height, width) {
     this.height = height;
     this.width = width;
   }
@@ -234,32 +185,18 @@ const myUser = new User("Anna");
 
 myUser.name; // => Anna
 myUser.getName(); // => Anna
-<!-- TOC -->
+user.#name; // =>  error
+```
 
-- [Class 13 - Classes and oriented object programming](#class-13---classes-and-oriented-object-programming)
-    - [Defining classes](#defining-classes)
-    - [Class body](#class-body)
-    - [Constructor](#constructor)
-    - [Methods](#methods)
-    - [Static methods and fields](#static-methods-and-fields)
-    - [Fields declarations](#fields-declarations)
-    - [Private class features.](#private-class-features)
-    - [instance of](#instance-of)
-    - [How to name variables without using spaces](#how-to-name-variables-without-using-spaces)
-        - [PascalCase UpperCamelCase:](#pascalcase-uppercamelcase)
-        - [CamelCase lowerCamelCase:](#camelcase-lowercamelcase)
-        - [Snake_case snake_case:](#snake_case-snake_case)
-        - [Kebab-case kebab-case:](#kebab-case-kebab-case)
-    - [Object-oriented programming](#object-oriented-programming)
-    - [Composition of objects](#composition-of-objects)
-    - [Singleton](#singleton)
-    - [More patter designs](#more-patter-designs)
+## Inheritance
 
-<!-- /TOC -->ton](#singleton)
-    - [More patter designs](#more-patter-designs)
+It works equally as prototype inheritance.
 
-<!-- /TOC -->
-<!-- /TOC -->
+### extends
+
+The `extends` keyword is used in class declarations or class expressions to create a class as a child of another constructor (either a class or a function).
+
+```js
 // Syntax
 class Child extends Parent {}
 
@@ -455,5 +392,4 @@ console.log(singletonInstance1.publicProperty); // "I am a public property"
 ```
 
 ## More patter designs
-
 https://refactoring.guru/design-patterns/catalog
