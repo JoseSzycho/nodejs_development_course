@@ -1,7 +1,7 @@
 const { chainPromises } = require("../tasks/task3");
 
-test("Expect chainPromises to throw error", async () => {
-  await expect(() => chainPromises(4)).rejects.toThrow(
+test("Expect chainPromises to throw error",  () => {
+  expect(() => chainPromises(4)).toThrow(
     "Only accepts array of function promises."
   );
 });
