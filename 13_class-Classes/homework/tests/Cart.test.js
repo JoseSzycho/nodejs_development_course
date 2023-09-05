@@ -2,18 +2,6 @@ const { Cart } = require("../classes/Cart");
 const { User } = require("../classes/User");
 const { Book } = require("../classes/Book");
 
-// Creating instances of User for testing
-const testUser1 = new User()
-  .withName("Test Name")
-  .withEmail("Test email")
-  .withID("ID number");
-
-test("Expect user to be set", () => {
-  const testUserCart1 = new Cart().withUser(testUser1);
-  // Expect reference to be the same
-  expect(testUserCart1.user).toBe(testUser1);
-});
-
 test("Expect cart total price to be calculated.", () => {
   const testBook1 = new Book()
     .withTitle("Test Title1")
@@ -29,7 +17,7 @@ test("Expect cart total price to be calculated.", () => {
     .withPrice(2)
     .withAvailability(2);
 
-  const testUserCart1 = new Cart().withUser(testUser1);
+  const testUserCart1 = new Cart();
 
   testUserCart1.addBook(testBook1);
   testUserCart1.addBook(testBook2);
@@ -69,7 +57,7 @@ describe("Testing adding books and removing books from cart", () => {
     .withPrice("Price4")
     .withAvailability(1);
   // Creating Cart for testing
-  const testUserCart1 = new Cart().withUser(testUser1);
+  const testUserCart1 = new Cart();
 
   test("Expect books to be added.", () => {
     // Adding one book
