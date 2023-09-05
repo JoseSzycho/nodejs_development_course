@@ -1,21 +1,20 @@
 class User {
   constructor() {
-    this.user = {};
+    this.name;
+    this.email;
+    this.ID;
   }
   withName(name) {
-    this.user.name = name;
+    this.name = name;
     return this;
   }
   withEmail(email) {
-    this.user.email = email;
+    this.email = email;
     return this;
   }
   withID(ID) {
-    this.user.ID = ID;
+    this.ID = ID;
     return this;
-  }
-  create() {
-    return this.user;
   }
 }
 

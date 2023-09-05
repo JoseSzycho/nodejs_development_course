@@ -1,30 +1,31 @@
 class Book {
   constructor() {
-    this.book = {};
+    this.title;
+    this.author;
+    this.ISBN;
+    this.price;
+    this.availability;
   }
   withTitle(title) {
-    this.book.title = title;
+    this.title = title;
     return this;
   }
   withAuthor(author) {
-    this.book.author = author;
+    this.author = author;
     return this;
   }
   withISBN(ISBN) {
-    this.book.ISBN = ISBN;
+    this.ISBN = ISBN;
     return this;
   }
   withPrice(price) {
-    this.book.price = price;
+    this.price = price;
     return this;
   }
   withAvailability(availability) {
-    this.book.availability = availability;
+    this.availability = availability;
     return this;
-  }
-  create() {
-    return this.book;
   }
 }
 
-module.exports = {Book};
+module.exports = { Book };
