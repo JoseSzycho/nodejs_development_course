@@ -24,9 +24,9 @@ class Order {
             `);
   }
   #cleanUserCart() {
-    this.user.cart.booksList.array.forEach((book) => {
-      this.user.cart.removeBook(book);
-    });
+    const userCart = this.user.cart;
+    const booksList = [...userCart.booksList];
+    booksList.forEach((book) => userCart.removeBook(book));
   }
 
   cancel() {
