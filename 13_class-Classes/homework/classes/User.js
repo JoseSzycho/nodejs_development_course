@@ -1,8 +1,11 @@
+const { Cart } = require("../classes/Cart");
+
 class User {
   constructor() {
     this.name;
     this.email;
     this.ID;
+    this.cart = new Cart();
   }
   withName(name) {
     this.name = name;
