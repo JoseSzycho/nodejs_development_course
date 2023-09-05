@@ -6,6 +6,7 @@ class Cart {
 
   withUser(user) {
     this.user = user;
+    return this;
   }
 
   addBook(book) {
