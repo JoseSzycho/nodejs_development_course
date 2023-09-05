@@ -34,3 +34,5 @@ class Cart {
     return totalPrice;
   }
 }
+
+module.exports = { Cart };
