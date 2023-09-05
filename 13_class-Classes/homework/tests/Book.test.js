@@ -6,8 +6,7 @@ test("Expect new instance of book to have correct property values", () => {
     .withAuthor("Test Author")
     .withISBN("ISBN Number")
     .withPrice("Price")
-    .withAvailability("Available")
-    .create();
+    .withAvailability("Available");
 
   expect(testBook).toEqual({
     title: "Test Title",
