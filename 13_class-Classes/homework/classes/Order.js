@@ -7,7 +7,8 @@ class Order {
     return this;
   }
   show() {
-    const booksNames = this.user.cart.booksList.map((book) => book.title);
+    const userCart = this.user.cart;
+    const booksNames = userCart.booksList.map((book) => book.title);
     console.log(`
         User information:
             - name: ${this.user.name}
@@ -16,7 +17,26 @@ class Order {
 
         Book/s to purchase: 
             - ${booksNames.join(`
-            - `)}`);
+            - `)}
+            
+        Total price:
+            - PLN ${userCart.calculateTotalPrice()}   
+            `);
+  }
+  #cleanUserCart() {
+    this.user.cart.booksList.array.forEach((book) => {
+      this.user.cart.removeBook(book);
+    });
+  }
+
+  cancel() {
+    this.#cleanUserCart();
+    console.log("Order have been cancelled.");
+  }
+
+  execute() {
+    this.#cleanUserCart();
+    console.log("Your order has been placed.");
   }
 }
 
