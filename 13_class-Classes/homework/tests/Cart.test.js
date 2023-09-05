@@ -1,5 +1,4 @@
 const { Cart } = require("../classes/Cart");
-const { User } = require("../classes/User");
 const { Book } = require("../classes/Book");
 
 test("Expect cart total price to be calculated.", () => {
