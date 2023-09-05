@@ -1,6 +1,5 @@
 const { Book } = require("../classes/Book");
 const { Cart } = require("../classes/Cart");
-const { User } = require("../classes/User");
 
 test("Expect new instance of book to have correct property values", () => {
   const testBook = new Book()
@@ -20,12 +19,7 @@ test("Expect new instance of book to have correct property values", () => {
 });
 
 describe("Expect books availability to be updated correctly. Availability = 2", () => {
-  const testUser = new User()
-    .withName("Test Name")
-    .withEmail("Test email")
-    .withID("ID number");
-
-  const testUserCart = new Cart().withUser(testUser);
+  const testUserCart = new Cart();
 
   const testBook = new Book()
     .withTitle("Test Title")
