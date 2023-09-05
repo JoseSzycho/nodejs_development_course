@@ -4,6 +4,10 @@ class Cart {
     this.booksList = [];
   }
 
+  withUser(user) {
+    this.user = user;
+  }
+
   addBook(book) {
     if (book.availability > 0) {
       book.availability -= 1;
