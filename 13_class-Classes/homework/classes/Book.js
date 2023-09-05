@@ -16,9 +16,11 @@ class Book {
   }
   withPrice(price) {
     this.book.price = price;
+    return this;
   }
   withAvailability(availability) {
     this.book.availability = availability;
+    return this;
   }
   create() {
     return this.book;
