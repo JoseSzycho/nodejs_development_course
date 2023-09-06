@@ -45,7 +45,7 @@ class Order {
   place() {
     const userCart = this.user.cart;
     if (userCart.booksList === [])
-      throw new Error("Cannot place and empty order.");
+      console.log("Order cannot been placed. Empty cart.");
     this.#cleanUserCart();
     console.log("Your order has been placed.");
   }
