@@ -19,7 +19,7 @@ class Book {
   }
   withAuthor(author) {
     const authorPattern = /^[A-Za-z\s'-]+$/;
-    if (!authorPattern.test(author)) throw new Error("Name is not valid.");
+    if (!authorPattern.test(author)) throw new Error("Author is not valid.");
     this.author = author;
     return this;
   }
