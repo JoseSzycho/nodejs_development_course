@@ -2,12 +2,31 @@ const { User } = require("../classes/User");
 const { Cart } = require("../classes/Cart");
 const { Book } = require("../classes/Book");
 
-test("Expect new instance of book to have correct property values", () => {
-  const testUser = new User()
+let testUser;
+let testBook1;
+let testBook2;
+beforeEach(() => {
+  testUser = new User()
     .withName("Test Name")
     .withEmail("Test email")
     .withID("ID number");
 
+  testBook2 = new Book()
+    .withTitle("Test Title")
+    .withAuthor("Test Author")
+    .withISBN("ISBN Number")
+    .withPrice(5)
+    .withAvailability(2);
+
+  testBook1 = new Book()
+    .withTitle("Test Title")
+    .withAuthor("Test Author")
+    .withISBN("ISBN Number")
+    .withPrice(7)
+    .withAvailability(2);
+});
+
+test("Expect new instance of book to have correct property values", () => {
   expect(testUser).toEqual({
     name: "Test Name",
     email: "Test email",
@@ -17,25 +36,6 @@ test("Expect new instance of book to have correct property values", () => {
 });
 
 describe("Expect add and remove books to update Book object", () => {
-  const testBook1 = new Book()
-    .withTitle("Test Title")
-    .withAuthor("Test Author")
-    .withISBN("ISBN Number")
-    .withPrice(1)
-    .withAvailability(2);
-
-  const testBook2 = new Book()
-    .withTitle("Test Title")
-    .withAuthor("Test Author")
-    .withISBN("ISBN Number")
-    .withPrice(5)
-    .withAvailability(2);
-
-  const testUser = new User()
-    .withName("Test Name")
-    .withEmail("Test email")
-    .withID("ID number");
-
   test("Expect testBook1 to update quantity", () => {
     testUser.cart.addBook(testBook1);
     expect(testBook1.availability).toBe(1);
