@@ -13,19 +13,24 @@ class Order {
   show() {
     const userCart = this.user.cart;
     const booksNames = userCart.booksList.map((book) => book.title);
-    console.log(`
-        User information:
-            - name: ${this.user.name}
-            - email: ${this.user.email}
-            - ID: ${this.user.ID}
+    console.log(booksNames);
+    if (booksNames.length === 0) {
+      console.log("Cart is empty.");
+    } else {
+      console.log(`
+      User information:
+          - name: ${this.user.name}
+          - email: ${this.user.email}
+          - ID: ${this.user.ID}
 
-        Book/s to purchase: 
-            - ${booksNames.join(`
-            - `)}
-            
-        Total price:
-            - PLN ${userCart.calculateTotalPrice()}   
-            `);
+      Book/s to purchase: 
+          - ${booksNames.join(`
+          - `)}
+          
+      Total price:
+          - PLN ${userCart.calculateTotalPrice()}   
+          `);
+    }
   }
   #cleanUserCart() {
     const userCart = this.user.cart;
