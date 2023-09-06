@@ -1,6 +1,11 @@
 class Cart {
+  #booksList;
   constructor() {
-    this.booksList = [];
+    this.#booksList = [];
+  }
+
+  get booksList() {
+    return this.#booksList;
   }
 
   addBook(book) {
