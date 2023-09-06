@@ -2,15 +2,10 @@ const { User } = require("../classes/User");
 const { Order } = require("../classes/Order");
 const { Book } = require("../classes/Book");
 
-let testUser;
 let testBook1;
 let testBook2;
 
 beforeEach(() => {
-  testUser = new User()
-    .withName("Test Name")
-    .withEmail("Test email")
-    .withID("ID number");
   testBook1 = new Book()
     .withTitle("Test Title 1")
     .withAuthor("Test Author")
@@ -27,6 +22,11 @@ beforeEach(() => {
 });
 
 test("Expect order to be shown", () => {
+  const testUser = new User()
+    .withName("Test Name")
+    .withEmail("Test email")
+    .withID("ID number 1");
+
   testUser.cart.addBook(testBook1);
   testUser.cart.addBook(testBook2);
 
@@ -35,6 +35,11 @@ test("Expect order to be shown", () => {
 });
 
 test("Expect order to be executed and cart to be cleaned up", () => {
+  const testUser = new User()
+    .withName("Test Name")
+    .withEmail("Test email")
+    .withID("ID number 2");
+
   testUser.cart.addBook(testBook1);
   testUser.cart.addBook(testBook2);
 
@@ -45,6 +50,11 @@ test("Expect order to be executed and cart to be cleaned up", () => {
 });
 
 test("Expect order to be cancelled and cart to be cleaned up", () => {
+  const testUser = new User()
+    .withName("Test Name")
+    .withEmail("Test email")
+    .withID("ID number 3");
+
   testUser.cart.addBook(testBook1);
   testUser.cart.addBook(testBook2);
 
