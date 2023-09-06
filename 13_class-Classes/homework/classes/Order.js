@@ -1,8 +1,12 @@
+const { User } = require("../classes/User");
+
 class Order {
   constructor() {
     this.user;
   }
   withUser(user) {
+    if (!(user.constructor === User))
+      throw new Error("User input is not valid.");
     this.user = user;
     return this;
   }
