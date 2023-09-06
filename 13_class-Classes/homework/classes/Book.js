@@ -28,7 +28,7 @@ class Book {
     return this;
   }
   withPrice(price) {
-    if (price > 0 && typeof price != "number")
+    if (price < 0 || typeof price != "number")
       throw new Error("Invalid book price.");
     this.price = price;
     return this;

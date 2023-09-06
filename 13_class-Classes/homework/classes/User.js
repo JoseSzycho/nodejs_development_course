@@ -20,6 +20,9 @@ class User {
   }
 
   withName(name) {
+    const namePattern = /^[A-Za-z\s'-]+$/;
+    if (!namePattern.test(name))
+      throw new Error("Name is not valid.");
     this.name = name;
     return this;
   }
