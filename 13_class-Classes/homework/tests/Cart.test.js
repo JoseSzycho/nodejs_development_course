@@ -14,28 +14,28 @@ beforeEach(() => {
 
   testBook1 = new Book()
     .withTitle("Test Title1")
-    .withAuthor("Test Author1")
+    .withAuthor("Test Author")
     .withISBN("ISBN Number1")
     .withPrice(5)
     .withAvailability(5);
 
   testBook2 = new Book()
     .withTitle("Test Title2")
-    .withAuthor("Test Author2")
+    .withAuthor("Test Author")
     .withISBN("ISBN Number2")
     .withPrice(2)
     .withAvailability(2);
 
   testBook3 = new Book()
     .withTitle("Test Title3")
-    .withAuthor("Test Author3")
+    .withAuthor("Test Author")
     .withISBN("ISBN Number3")
     .withPrice(5)
     .withAvailability(1);
 
   testBook4 = new Book()
     .withTitle("Test Title4")
-    .withAuthor("Test Author4")
+    .withAuthor("Test Author")
     .withISBN("ISBN Number4")
     .withPrice(2)
     .withAvailability(0);
