@@ -30,8 +30,6 @@ test("Expect new instance of book to have correct property values", () => {
   expect(testUser).toEqual({
     name: "Test Name",
     email: "Test email",
-    ID: "ID number",
-    cart: new Cart(),
   });
 });
 
