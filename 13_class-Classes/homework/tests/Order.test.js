@@ -2,26 +2,31 @@ const { User } = require("../classes/User");
 const { Order } = require("../classes/Order");
 const { Book } = require("../classes/Book");
 
-const testBook1 = new Book()
-  .withTitle("Test Title 1")
-  .withAuthor("Test Author")
-  .withISBN("ISBN Number")
-  .withPrice(1)
-  .withAvailability(20);
+let testUser;
+let testBook1;
+let testBook2;
 
-const testBook2 = new Book()
-  .withTitle("Test Title 2")
-  .withAuthor("Test Author")
-  .withISBN("ISBN Number")
-  .withPrice(10)
-  .withAvailability(20);
-
-test("Expect order to be shown", () => {
-  const testUser = new User()
+beforeEach(() => {
+  testUser = new User()
     .withName("Test Name")
     .withEmail("Test email")
     .withID("ID number");
+  testBook1 = new Book()
+    .withTitle("Test Title 1")
+    .withAuthor("Test Author")
+    .withISBN("ISBN Number")
+    .withPrice(1)
+    .withAvailability(20);
 
+  testBook2 = new Book()
+    .withTitle("Test Title 2")
+    .withAuthor("Test Author")
+    .withISBN("ISBN Number")
+    .withPrice(10)
+    .withAvailability(20);
+});
+
+test("Expect order to be shown", () => {
   testUser.cart.addBook(testBook1);
   testUser.cart.addBook(testBook2);
 
@@ -30,11 +35,6 @@ test("Expect order to be shown", () => {
 });
 
 test("Expect order to be executed and cart to be cleaned up", () => {
-  const testUser = new User()
-    .withName("Test Name")
-    .withEmail("Test email")
-    .withID("ID number");
-
   testUser.cart.addBook(testBook1);
   testUser.cart.addBook(testBook2);
 
@@ -45,17 +45,11 @@ test("Expect order to be executed and cart to be cleaned up", () => {
 });
 
 test("Expect order to be cancelled and cart to be cleaned up", () => {
-    const testUser = new User()
-      .withName("Test Name")
-      .withEmail("Test email")
-      .withID("ID number");
-  
-    testUser.cart.addBook(testBook1);
-    testUser.cart.addBook(testBook2);
-  
-    const testOrder = new Order().withUser(testUser);
-    expect(testUser.cart.booksList).toEqual([testBook1, testBook2]);
-    testOrder.cancel();
-    expect(testUser.cart.booksList).toEqual([]);
-  });
-  
+  testUser.cart.addBook(testBook1);
+  testUser.cart.addBook(testBook2);
+
+  const testOrder = new Order().withUser(testUser);
+  expect(testUser.cart.booksList).toEqual([testBook1, testBook2]);
+  testOrder.cancel();
+  expect(testUser.cart.booksList).toEqual([]);
+});
