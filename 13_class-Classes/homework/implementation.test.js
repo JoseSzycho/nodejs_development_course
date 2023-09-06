@@ -28,7 +28,7 @@ describe("Implementation example.", () => {
 
   const book3 = new Book()
     .withTitle("Book title 3")
-    .withAuthor("Book author Tthree")
+    .withAuthor("Book author Three")
     .withISBN("ISBN Number 3")
     .withPrice(3)
     .withAvailability(3);
@@ -67,6 +67,11 @@ describe("Implementation example.", () => {
     }).toThrow("User ID already used.");
   });
 
+  /*******************************************/
+  /*------Creating some order instances------*/
+  let user1Order = new Order().withUser(user1);
+  let user2Order = new Order().withUser(user2);
+
   /*********************************************************/
   /*------Simulating users adding books to their cart------*/
 
@@ -96,14 +101,14 @@ describe("Implementation example.", () => {
   });
 
   /*********************************************/
-  /*------Seeing Books instances behavior*------/
+  /*------Seeing Books instances behavior------*/
 
   /* When the book instances where created, these was each availability:
   book1.availability: 1 , but after one is taken by user1
   book1.availability: 2 , but after one unit is taken by user1
   book1.availability: 3 , but after one unit is taken by user1
 
-  user2 toke some books, but he have all of them back.
+  user2 toke some books, but he gave all of them back.
   */
 
   // Checking book1, book2 and book3 quantities to be correct.
@@ -115,5 +120,62 @@ describe("Implementation example.", () => {
   });
   test("Expect book3 quantity to be 2", () => {
     expect(book3.availability).toBe(2);
+  });
+
+  /**********************************/
+  /*------Showing cart content------*/
+
+  // user1 added book1 (PLN 1), book2 (PLN 2), book3 (PLN 3)
+  test("Expect user1 cart total price to be 6", () => {
+    expect(user1.cart.calculateTotalPrice()).toBe(6);
+  });
+
+  test("Expect user1 cart to be shown.", () => {
+    user1Order.show(); /* console:
+            User information:
+                - name: Test User One
+                - email: test@user1.com
+                - ID: 1
+    
+            Book/s to purchase: 
+                - Book title 1
+                - Book title 2
+                - Book title 3
+                
+            Total price:
+                - PLN 6
+    */
+  });
+
+  // user2 do not have any book on its cart
+  test("Expect user1 cart total price to be 0", () => {
+    expect(user2.cart.calculateTotalPrice()).toBe(0);
+  });
+
+  test("Expect user1 cart to be shown.", () => {
+    user2Order.show(); // console: Cart is empty.
+  });
+
+  /*****************************/
+  /*------Placing an order------*/
+
+  // user1 have three books on its cart, he is able to place the order
+  test("Expect user1 order to be placed.", () => {
+    user1Order.place(); // console: "Your order has been placed"
+    user1Order = null;
+  });
+
+  // user2 have an empty cart, he cannot place an order.
+  test("Expect user2 order to not be placed.", () => {
+    user2Order.place(); // console: "Your oder has been placed"
+  });
+
+  /**********************************************/
+  /*------User cart after placing an order------*/
+
+  // As the order have been placed, the user1 cart
+  // must be empty, as he already purchased the books
+  test("Expect user1 cart bookList  to be empty.", () => {
+    expect(user1.cart.booksList).toEqual([]);
   });
 });
