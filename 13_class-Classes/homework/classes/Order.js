@@ -13,7 +13,6 @@ class Order {
   show() {
     const userCart = this.user.cart;
     const booksNames = userCart.booksList.map((book) => book.title);
-    console.log(booksNames);
     if (booksNames.length === 0) {
       console.log("Cart is empty.");
     } else {
