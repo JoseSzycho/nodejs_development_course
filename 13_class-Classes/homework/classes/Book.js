@@ -21,10 +21,15 @@ class Book {
     return this;
   }
   withISBN(ISBN) {
+    /* We could add ISBN verification, but there are two
+    different ISBN identification and it will complicate
+    the tests if we add this. */
     this.ISBN = ISBN;
     return this;
   }
   withPrice(price) {
+    if (price > 0 && typeof price != "number")
+      throw new Error("Invalid book price.");
     this.price = price;
     return this;
   }
