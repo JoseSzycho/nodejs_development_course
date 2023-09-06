@@ -30,14 +30,14 @@ beforeEach(() => {
     .withTitle("Test Title3")
     .withAuthor("Test Author3")
     .withISBN("ISBN Number3")
-    .withPrice("Price3")
+    .withPrice(5)
     .withAvailability(1);
 
   testBook4 = new Book()
     .withTitle("Test Title4")
     .withAuthor("Test Author4")
     .withISBN("ISBN Number4")
-    .withPrice("Price4")
+    .withPrice(2)
     .withAvailability(0);
 });
 

@@ -8,7 +8,7 @@ beforeAll(() => {
     .withTitle("Test Title")
     .withAuthor("Test Author")
     .withISBN("ISBN Number")
-    .withPrice("Price")
+    .withPrice(2)
     .withAvailability(2);
 
   testUserCart = new Cart();
@@ -19,7 +19,7 @@ test("Expect new instance of book to have correct property values", () => {
     title: "Test Title",
     author: "Test Author",
     ISBN: "ISBN Number",
-    price: "Price",
+    price: 2,
     availability: 2,
   });
 });
