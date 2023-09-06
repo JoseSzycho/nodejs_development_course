@@ -3,6 +3,7 @@ const { Cart } = require("../classes/Cart");
 class User {
   #ID;
   #cart;
+  static #IDList = new Set();
   constructor() {
     this.name;
     this.email;
@@ -17,7 +18,7 @@ class User {
   get cart() {
     return this.#cart;
   }
-  
+
   withName(name) {
     this.name = name;
     return this;
@@ -27,6 +28,8 @@ class User {
     return this;
   }
   withID(ID) {
+    if (User.#IDList.has(ID)) throw new Error("User ID already used.");
+    User.#IDList.add(ID);
     this.#ID = ID;
     return this;
   }
