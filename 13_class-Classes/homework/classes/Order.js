@@ -34,7 +34,7 @@ class Order {
     console.log("Order have been cancelled.");
   }
 
-  execute() {
+  place() {
     this.#cleanUserCart();
     console.log("Your order has been placed.");
   }

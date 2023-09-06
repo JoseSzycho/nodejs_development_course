@@ -45,7 +45,7 @@ test("Expect order to be executed and cart to be cleaned up", () => {
 
   const testOrder = new Order().withUser(testUser);
   expect(testUser.cart.booksList).toEqual([testBook1, testBook2]);
-  testOrder.execute();
+  testOrder.place();
   expect(testUser.cart.booksList).toEqual([]);
 });
 
