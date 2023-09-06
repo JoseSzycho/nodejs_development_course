@@ -1,9 +1,10 @@
 const { Cart } = require("../classes/Cart");
 
+// Template that represents a user
 class User {
   #ID;
   #cart;
-  static #IDList = new Set();
+  static #IDList = new Set(); // Stores ID to prevent duplicated users
   constructor() {
     this.name;
     this.email;
@@ -11,14 +12,17 @@ class User {
     this.#cart = new Cart();
   }
 
+  // Returns ID
   get ID() {
     return this.#ID;
   }
 
+  // Returns cart
   get cart() {
     return this.#cart;
   }
 
+  // Sets name after a verification
   withName(name) {
     const namePattern = /^[A-Za-z\s'-]+$/;
     if (!namePattern.test(name))
