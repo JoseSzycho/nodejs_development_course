@@ -24,6 +24,10 @@ class User {
     return this;
   }
   withEmail(email) {
+    // Basic email pattern. rfc2822 stands for complete pattern.
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(email))
+      throw new Error("E-mail address is not valid.");
     this.email = email;
     return this;
   }
