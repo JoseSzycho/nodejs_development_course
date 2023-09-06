@@ -1,33 +1,30 @@
 const { Book } = require("../classes/Book");
 const { Cart } = require("../classes/Cart");
 
-test("Expect new instance of book to have correct property values", () => {
-  const testBook = new Book()
-    .withTitle("Test Title")
-    .withAuthor("Test Author")
-    .withISBN("ISBN Number")
-    .withPrice("Price")
-    .withAvailability("Available");
-
-  expect(testBook).toEqual({
-    title: "Test Title",
-    author: "Test Author",
-    ISBN: "ISBN Number",
-    price: "Price",
-    availability: "Available",
-  });
-});
-
-describe("Expect books availability to be updated correctly. Availability = 2", () => {
-  const testUserCart = new Cart();
-
-  const testBook = new Book()
+let testBook;
+let testUserCart;
+beforeAll(() => {
+  testBook = new Book()
     .withTitle("Test Title")
     .withAuthor("Test Author")
     .withISBN("ISBN Number")
     .withPrice("Price")
     .withAvailability(2);
 
+  testUserCart = new Cart();
+});
+
+test("Expect new instance of book to have correct property values", () => {
+  expect(testBook).toEqual({
+    title: "Test Title",
+    author: "Test Author",
+    ISBN: "ISBN Number",
+    price: "Price",
+    availability: 2,
+  });
+});
+
+describe("Expect books availability to be updated correctly. Availability = 2", () => {
   test("Expect testBook availability to be 2", () => {
     expect(testBook.availability).toBe(2);
   });

@@ -1,3 +1,4 @@
+// Template that represents a book
 class Book {
   constructor() {
     this.title;
@@ -6,6 +7,11 @@ class Book {
     this.price;
     this.availability;
   }
+  /* All the methods bellow are used for setting the 
+  class properties. This pattern is used for getting 
+  better code readability and a better verbose syntax
+  */
+
   withTitle(title) {
     this.title = title;
     return this;
