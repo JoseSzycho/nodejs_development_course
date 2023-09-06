@@ -13,10 +13,13 @@ class Book {
   */
 
   withTitle(title) {
+    if (typeof title != "string") throw new Error("Invalid book title.");
     this.title = title;
     return this;
   }
   withAuthor(author) {
+    const authorPattern = /^[A-Za-z\s'-]+$/;
+    if (!authorPattern.test(author)) throw new Error("Name is not valid.");
     this.author = author;
     return this;
   }
@@ -34,6 +37,8 @@ class Book {
     return this;
   }
   withAvailability(availability) {
+    if (availability < 0 || typeof availability != "number")
+      throw new Error("Invalid book availability.");
     this.availability = availability;
     return this;
   }
