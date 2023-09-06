@@ -24,7 +24,7 @@ beforeEach(() => {
 test("Expect order to be shown", () => {
   const testUser = new User()
     .withName("Test Name")
-    .withEmail("Test email")
+    .withEmail("testemail@gmail.com")
     .withID("ID number 1");
 
   testUser.cart.addBook(testBook1);
@@ -37,7 +37,7 @@ test("Expect order to be shown", () => {
 test("Expect order to be executed and cart to be cleaned up", () => {
   const testUser = new User()
     .withName("Test Name")
-    .withEmail("Test email")
+    .withEmail("testemail@gmail.com")
     .withID("ID number 2");
 
   testUser.cart.addBook(testBook1);
@@ -52,7 +52,7 @@ test("Expect order to be executed and cart to be cleaned up", () => {
 test("Expect order to be cancelled and cart to be cleaned up", () => {
   const testUser = new User()
     .withName("Test Name")
-    .withEmail("Test email")
+    .withEmail("testemail@gmail.com")
     .withID("ID number 3");
 
   testUser.cart.addBook(testBook1);
