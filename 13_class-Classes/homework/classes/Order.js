@@ -51,7 +51,7 @@ class Order {
           - PLN ${totalPrice}   
           `);
 
-      if (discount > 0 && discount < 100) {
+      if (discount > 0 && discount <= 100) {
         console.log(`
       Total price with discount:
           - PLN ${totalPrice - totalPrice * (discount / 100)}
