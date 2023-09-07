@@ -60,6 +60,13 @@ class Cart {
 
     return totalPrice;
   }
+
+  /**
+   * Remove all books from books list
+   */
+  cleanBookList() {
+    this.#booksList = [];
+  }
 }
 
 module.exports = { Cart };
