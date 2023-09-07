@@ -113,85 +113,124 @@ class Navigation {
     this.userInput.question("\nEnter option: ", (option) => {
       // user input validation
       if (option < 1 || option > this.users.length) {
+        // Invalid input
         console.log("Invalid option.");
         this.mainMenu();
       } else {
+        // Valid input
         this.actualUser = this.users[option - 1];
         console.log(`\nYour selected user ID: ${this.actualUser.ID}`);
         this.mainMenu();
       }
     });
   }
-
+  /**
+   * // Shows the books that are for sale
+   * @param {boolean} flag - If true, skips calling to mainMenu(), so it can
+   * be used with others methods
+   */
   booksOnSale(flag = false) {
     console.log("\nThe books on sale are: ");
+    // Printing books
     for (let i = 0; i < this.books.length; i++) {
       console.log(`\nBook ${i + 1}`);
       this.showBook(this.books[i]);
     }
     if (flag === false) this.mainMenu();
   }
+  /**
+   * Search for a specific book by its exact title.
+   */
   searchBook() {
+    // User input for book title
     this.userInput.question("\nEnter book title: ", (bookTitle) => {
+      // Searching if book is found
       const book = this.books.filter((book) => book.title === bookTitle);
       if (book[0] === undefined) {
+        // If not found
         console.log("\nBook not found.");
       } else {
+        // If found
         console.log("\nBook found");
         this.showBook(book[0]);
       }
       this.mainMenu();
     });
   }
+  /**
+   * Methods that adds a book to the cart
+   */
   addBook() {
     console.log("\n Select the book number to add to cart");
+    // Shows books on sale
     this.booksOnSale(true);
 
+    // User input
     this.userInput.question("\nEnter option:", (option) => {
       console.log("");
       if (option < 1 || option > this.books.length) {
+        // If book is not in sale
         console.log("Invalid option.");
         this.mainMenu();
       } else {
+        // If book is in sale, we add it to the users cart.
         this.actualUser.cart.addBook(this.books[option - 1]);
         this.mainMenu();
       }
     });
   }
+  /**
+   * Removes a book from user cart
+   */
   removeBook() {
+    // Shorthand for getting user cart
     const actualUserCart = this.actualUser.cart;
     if (actualUserCart.booksList.length === 0) {
+      // If cart is empty
       console.log("\n Cart is empty.");
       this.mainMenu();
       return;
     }
 
-    console.log("\n Select the book number to remove from cart");
+    // If cart is not empty
 
+    console.log("\n Select the book number to remove from cart");
+    // Showing users cart books
     for (let i = 0; i < actualUserCart.booksList.length; i++) {
       console.log(`\nBook ${i + 1}`);
       this.showBook(actualUserCart.booksList[i]);
     }
-
+    // User input to decide which book to delete
     this.userInput.question("\nEnter option: ", (option) => {
       console.log("");
       if (option < 1 || option > actualUserCart.booksList.length) {
+        // If it does not have the book
         console.log("Invalid option.");
         this.mainMenu();
       } else {
+        // If it have the book
         const book = actualUserCart.booksList[option - 1];
         actualUserCart.removeBook(book);
         this.mainMenu();
       }
     });
   }
-
+  /**
+   * Shows the user cart and total amount. This is only
+   * representative, that is why we create the order instance
+   * for later deleting the reference
+   */
   showOrder() {
     let order = new Order().withUser(this.actualUser);
     order.show();
-    order = null;
+    order = null; // Delete reference
     this.mainMenu();
   }
+  /**
+   * Shows the user cart and total amount and place the
+   * order. This is only representative, that is why we
+   * create the order instance for later deleting the reference
+   */
   placeOrder() {
     let order = new Order().withUser(this.actualUser);
     order.show();
@@ -199,27 +238,44 @@ class Navigation {
     order = null;
     this.mainMenu();
   }
+  /**
+   * Shows the user cart and total amount and place the
+   * order with a discount in %. This is only representative,
+   * that is why we create the order instance for later
+   * deleting the reference
+   */
   placeDiscountedOrder() {
+    // Expecting user input for discount
     this.userInput.question("\nEnter discount in %: ", (discount) => {
       if (discount < 0 || discount > 100) {
+        // If discount is out of range
         console.log("Invalid discount.");
         this.mainMenu();
       } else {
+        // If discount is in range
         let order = new Order().withUser(this.actualUser);
-        order.show(discount);
+        order.show(discount); // Shows order with the applied discount
         order.place();
         order = null;
         this.mainMenu();
       }
     });
   }
+  /**
+   * Cancel the user order. It removes the books from its
+   * cart and returns the availability for each book.
+   */
   cancelOrder() {
     let order = new Order().withUser(this.actualUser);
     order.cancel();
     order = null;
     this.mainMenu();
   }
-
+  /**
+   * Prints the book information. Used as an auxiliary
+   * method for other methods.
+   * @param {Book} book - The book to print.
+   */
   showBook(book) {
     console.log(`
       Title: ${book.title}
