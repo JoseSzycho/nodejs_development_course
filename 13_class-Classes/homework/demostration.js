@@ -15,5 +15,9 @@ const booksData = db.getBooks();
 const users = getUsersObjects(usersData, User);
 const books = getBooksObjects(booksData, Book);
 
-Navigation.menu1()
-Navigation.menu2()
+const navigation = new Navigation()
+  .withUsers(users)
+  .withBooks(books)
+  .withActualUser(users[0]);
+
+navigation.mainMenu();
