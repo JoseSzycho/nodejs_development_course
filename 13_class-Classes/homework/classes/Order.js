@@ -1,11 +1,17 @@
 const { User } = require("../classes/User");
 
-// Template thar represents an order
+/**
+ * Class that represents an order
+ */
 class Order {
   constructor() {
     this.user;
   }
-  // Sets the user after a verification
+  /**
+   * Sets the user
+   * @param {User} user - The user
+   * @returns {this} - Reference to the order class
+   */
   withUser(user) {
     // Checking if a valid user
     if (!(user.constructor === User))
@@ -14,8 +20,12 @@ class Order {
     this.user = user;
     return this;
   }
-  // Shows the user cart
-  show() {
+  /**
+   * Shows the cart list with total price and
+   * apply discount to total price if there is.
+   * @param {number} discount - The discount
+   */
+  show(discount = null) {
     // Short hand for access to user cart
     const userCart = this.user.cart;
     // Getting books titles from user cart
@@ -26,6 +36,7 @@ class Order {
       console.log("Cart is empty.");
     } else {
       // If there are book names
+      const totalPrice = userCart.calculateTotalPrice();
       console.log(`
       User information:
           - name: ${this.user.name}
@@ -37,12 +48,21 @@ class Order {
           - `)}
           
       Total price:
-          - PLN ${userCart.calculateTotalPrice()}   
+          - PLN ${totalPrice}   
           `);
+
+      if (discount > 0 && discount < 100) {
+        console.log(`
+      Total price with discount:
+          - PLN ${totalPrice - totalPrice * (discount / 100)}
+          `);
+      }
     }
   }
 
-  // Cancels a order
+  /**
+   * Remove all books from user cart
+   */
   cancel() {
     // Short hand for access to user cart
     const userCart = this.user.cart;
@@ -53,7 +73,9 @@ class Order {
     console.log("Order have been cancelled.");
   }
 
-  // Place a order
+  /**
+   * Place order in a representative way
+   */
   place() {
     // Short hand for access to user cart
     const userCart = this.user.cart;
