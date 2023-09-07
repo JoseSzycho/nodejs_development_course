@@ -30,7 +30,7 @@ class DataBase {
   #loadData(desiredData) {
     try {
       // Reading database file
-      const data = fs.readFileSync(this.#path, "utf-8");
+      const data = fs.readFileSync("./data_base/data.json", "utf-8");
       // Returns parsed data, filtered by desired data and converted to array.
       return JSON.parse(data)[desiredData].map((el) => el);
     } catch (error) {
