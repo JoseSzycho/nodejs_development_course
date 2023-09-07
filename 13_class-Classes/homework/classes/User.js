@@ -50,7 +50,7 @@ class User {
   /**
    * Sets the user email address
    * @param {string} email The user email
-   * @returns The class reference
+   * @returns {this} The class reference
    */
   withEmail(email) {
     // Basic email pattern. rfc2822 stands for complete pattern.
@@ -65,7 +65,7 @@ class User {
   /**
    * Sets the users ID
    * @param {string} ID The user ID
-   * @returns The class reference
+   * @returns {this} The class reference
    */
   withID(ID) {
     // Checking for valid input ID
