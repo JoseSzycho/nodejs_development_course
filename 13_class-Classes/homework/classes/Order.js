@@ -61,7 +61,8 @@ class Order {
   }
 
   /**
-   * Remove all books from user cart
+   * Remove all books from user cart and recovery the
+   * availability of the books.
    */
   cancel() {
     // Short hand for access to user cart
@@ -74,7 +75,8 @@ class Order {
   }
 
   /**
-   * Place order in a representative way
+   * Place order in a representative way, then it
+   * removes the books from user cart.
    */
   place() {
     // Short hand for access to user cart
