@@ -14,7 +14,8 @@ class Cart {
   }
 
   /**
-   * Adds a book to the cart
+   * Adds a book to the cart and updates 
+   * the book availability
    * @param {Book} book - The book
    */
   addBook(book) {
@@ -30,7 +31,8 @@ class Cart {
   }
 
   /**
-   * Removes a book from the cart
+   * Removes a book from the cart and updates 
+   * the book availability
    * @param {Book} book - The book
    */
   removeBook(book) {
