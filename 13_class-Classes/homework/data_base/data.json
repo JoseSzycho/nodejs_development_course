@@ -1,0 +1,39 @@
+{
+  "users": [
+    { "name": "User One", "email": "email1@test.com", "ID": "ID1" },
+    { "name": "User Two", "email": "email2@test.com", "ID": "ID2" },
+    { "name": "User Three", "email": "email3@test.com", "ID": "ID3" },
+    { "name": "User Four", "email": "email4@test.com", "ID": "ID4" },
+    { "name": "User Four", "email": "email4@test.com", "ID": "ID4" }
+  ],
+  "books": [
+    {
+      "title": "Title",
+      "author": "Author Name A",
+      "ISBN": "ISBN1",
+      "price": 1,
+      "availability": 1
+    },
+    {
+      "title": "Title 2",
+      "author": "Author Name B",
+      "ISBN": "ISBN2",
+      "price": 2,
+      "availability": 2
+    },
+    {
+      "title": "Title 3",
+      "author": "Author Name C",
+      "ISBN": "ISBN3",
+      "price": 3,
+      "availability": 3
+    },
+    {
+      "title": "Title 4",
+      "author": "Author Name D",
+      "ISBN": "ISBN4",
+      "price": 4,
+      "availability": 4
+    }
+  ]
+}
