@@ -41,19 +41,15 @@ class Order {
           `);
     }
   }
-  // Clean user cart
-  #cleanUserCart() {
+
+  // Cancels a order
+  cancel() {
     // Short hand for access to user cart
     const userCart = this.user.cart;
     // Creating array with all books from user cart
     const booksList = [...userCart.booksList];
     // Removing the books from the user cart
     booksList.forEach((book) => userCart.removeBook(book));
-  }
-
-  // Cancels a order
-  cancel() {
-    this.#cleanUserCart(); // Remove all books from user cart
     console.log("Order have been cancelled.");
   }
 
@@ -67,7 +63,8 @@ class Order {
       console.log("Order cannot been placed. Empty cart.");
     } else {
       // If there are books on the cart
-      this.#cleanUserCart(); // Remove all books from user cart
+      // Removing the books from the user cart
+      userCart.cleanBookList();
       console.log("Your order has been placed.");
     }
   }
