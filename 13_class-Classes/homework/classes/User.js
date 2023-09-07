@@ -1,8 +1,5 @@
 const { Cart } = require("../classes/Cart");
-
-/**
- * Class representing an user
- * */
+/** Class that represents a user*/
 class User {
   #ID;
   #cart;
@@ -16,7 +13,7 @@ class User {
 
   /**
    * Gets the user ID
-   * @returns {string} The user ID
+   * @returns {string} - The user ID
    */
   get ID() {
     return this.#ID;
@@ -24,7 +21,7 @@ class User {
 
   /**
    * Gets the user cart
-   * @returns {Cart} The user cart
+   * @returns {Cart} - The user cart
    */
   get cart() {
     return this.#cart;
@@ -32,8 +29,8 @@ class User {
 
   /**
    * Sets the user name
-   * @param {string} name The user name
-   * @returns {this} The class reference
+   * @param {string} name - The user name
+   * @returns {this} - The class reference
    */
   withName(name) {
     /* Basic pattern for names. It can cause problems for
@@ -49,8 +46,8 @@ class User {
 
   /**
    * Sets the user email address
-   * @param {string} email The user email
-   * @returns {this} The class reference
+   * @param {string} email - The user email
+   * @returns {this} - The class reference
    */
   withEmail(email) {
     // Basic email pattern. rfc2822 stands for complete pattern.
@@ -64,8 +61,8 @@ class User {
   }
   /**
    * Sets the users ID
-   * @param {string} ID The user ID
-   * @returns {this} The class reference
+   * @param {string} ID - The user ID
+   * @returns {this} - The class reference
    */
   withID(ID) {
     // Checking for valid input ID

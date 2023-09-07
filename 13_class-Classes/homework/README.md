@@ -1,79 +1,49 @@
-<a name="User"></a>
+<a name="Cart"></a>
 
-## User
+## Cart
+Class that represents a cart
 
-Class representing an user
+**Kind**: global class  
 
-```js
-// Use example
-const book1 = new Book()
-  .withTitle("Book title 1")
-  .withAuthor("Book author One")
-  .withISBN("ISBN Number 1")
-  .withPrice(1)
-  .withAvailability(1);
-```
+* [Cart](#Cart)
+    * [.booksList](#Cart+booksList) ⇒ <code>Array</code>
+    * [.addBook(book)](#Cart+addBook)
+    * [.removeBook(book)](#Cart+removeBook)
+    * [.calculateTotalPrice()](#Cart+calculateTotalPrice) ⇒ <code>number</code>
 
-**Kind**: global class
+<a name="Cart+booksList"></a>
 
-- [User](#User)
-  - [.ID](#User+ID) ⇒ <code>string</code>
-  - [.cart](#User+cart) ⇒ <code>Cart</code>
-  - [.withName(name)](#User+withName) ⇒ <code>this</code>
-  - [.withEmail(email)](#User+withEmail) ⇒ <code>this</code>
-  - [.withID(ID)](#User+withID) ⇒ <code>this</code>
+### cart.booksList ⇒ <code>Array</code>
+Gets the book list
 
-<a name="User+ID"></a>
+**Kind**: instance property of [<code>Cart</code>](#Cart)  
+**Returns**: <code>Array</code> - - The book list  
+<a name="Cart+addBook"></a>
 
-### user.ID ⇒ <code>string</code>
+### cart.addBook(book)
+Adds a book to the cart
 
-Gets the user ID
+**Kind**: instance method of [<code>Cart</code>](#Cart)  
 
-**Kind**: instance property of [<code>User</code>](#User)  
-**Returns**: <code>string</code> - The user ID  
-<a name="User+cart"></a>
+| Param | Type | Description |
+| --- | --- | --- |
+| book | <code>Book</code> | The book |
 
-### user.cart ⇒ <code>Cart</code>
+<a name="Cart+removeBook"></a>
 
-Gets the user cart
+### cart.removeBook(book)
+Removes a book from the cart
 
-**Kind**: instance property of [<code>User</code>](#User)  
-**Returns**: <code>Cart</code> - The user cart  
-<a name="User+withName"></a>
+**Kind**: instance method of [<code>Cart</code>](#Cart)  
 
-### user.withName(name) ⇒ <code>this</code>
+| Param | Type | Description |
+| --- | --- | --- |
+| book | <code>Book</code> | The book |
 
-Sets the user name
+<a name="Cart+calculateTotalPrice"></a>
 
-**Kind**: instance method of [<code>User</code>](#User)  
-**Returns**: <code>this</code> - The class reference
+### cart.calculateTotalPrice() ⇒ <code>number</code>
+Calculates the total price of all the books in the cart
 
-| Param | Type                | Description   |
-| ----- | ------------------- | ------------- |
-| name  | <code>string</code> | The user name |
-
-<a name="User+withEmail"></a>
-
-### user.withEmail(email) ⇒ <code>this</code>
-
-Sets the user email address
-
-**Kind**: instance method of [<code>User</code>](#User)  
-**Returns**: <code>this</code> - The class reference
-
-| Param | Type                | Description    |
-| ----- | ------------------- | -------------- |
-| email | <code>string</code> | The user email |
-
-<a name="User+withID"></a>
-
-### user.withID(ID) ⇒ <code>this</code>
-
-Sets the users ID
-
-**Kind**: instance method of [<code>User</code>](#User)  
-**Returns**: <code>this</code> - The class reference
-
-| Param | Type                | Description |
-| ----- | ------------------- | ----------- |
-| ID    | <code>string</code> | The user ID |
+**Kind**: instance method of [<code>Cart</code>](#Cart)  
+**Returns**: <code>number</code> - - The total price 

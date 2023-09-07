@@ -1,16 +1,22 @@
-// Template that represents a shopping cart
+/**Class that represents a cart */
 class Cart {
   #booksList;
   constructor() {
     this.#booksList = [];
   }
 
-  // Returns booksList
+  /**
+   * Gets the book list
+   * @returns {Array} - The book list
+   */
   get booksList() {
     return this.#booksList;
   }
 
-  // Adds a book after a verification
+  /**
+   * Adds a book to the cart
+   * @param {Book} book - The book
+   */
   addBook(book) {
     if (book.availability > 0) {
       // If the book is available
@@ -23,7 +29,10 @@ class Cart {
     }
   }
 
-  // Removes a book after a verification
+  /**
+   * Removes a book from the cart
+   * @param {Book} book - The book
+   */
   removeBook(book) {
     // Searching for the book index in the list
     const index = this.booksList.indexOf(book);
@@ -39,7 +48,10 @@ class Cart {
     }
   }
 
-  // Calculates the total price of the cart
+  /**
+   * Calculates the total price of all the books in the cart
+   * @returns {number} - The total price
+   */
   calculateTotalPrice() {
     const totalPrice = this.booksList.reduce(
       (acc, book) => acc + book.price,

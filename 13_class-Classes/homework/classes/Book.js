@@ -1,4 +1,4 @@
-// Template that represents a book
+/** Class that represents a book */
 class Book {
   constructor() {
     this.title;
@@ -12,7 +12,11 @@ class Book {
   better code readability and a better verbose syntax
   */
 
-  // Sets the title after a verification
+  /**
+   * Sets the book title
+   * @param {string} title - The title
+   * @returns {this} - The class reference
+   */
   withTitle(title) {
     // Checking if a valid title
     if (typeof title != "string") throw new Error("Invalid book title.");
@@ -21,7 +25,11 @@ class Book {
     return this;
   }
 
-  // Sets the author after a verification
+  /**
+   * Sets the book author
+   * @param {*} author - The author
+   * @returns {this} - The class reference
+   */
   withAuthor(author) {
     /* Basic pattern for names. It can cause problems for
     some languages */
@@ -34,7 +42,11 @@ class Book {
     return this;
   }
 
-  // Sets the ISBN
+  /**
+   * Sets the book ISBN with no verification, for easier implementation.
+   * @param {*} ISBN - The ISBN
+   * @returns {this} - The class reference
+   */
   withISBN(ISBN) {
     /* We could add ISBN verification, but there are two
     different ISBN identification and it will complicate
@@ -43,7 +55,11 @@ class Book {
     return this;
   }
 
-  // Sets the price after a verification
+  /**
+   * Sets the book price
+   * @param {number} price - The price
+   * @returns {this} - The class reference
+   */
   withPrice(price) {
     // Checking for valid price
     if (price < 0 || typeof price != "number")
@@ -53,7 +69,11 @@ class Book {
     return this;
   }
 
-  // Sets the availability after a verification
+  /**
+   * Sets the availability of the book
+   * @param {*} availability - The availability
+   * @returns {this} - The class reference
+   */
   withAvailability(availability) {
     // Checking for valid availability
     if (availability < 0 || typeof availability != "number")
