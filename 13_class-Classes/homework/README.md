@@ -1,20 +1,32 @@
 <a name="User"></a>
 
 ## User
+
 Class representing an user
 
-**Kind**: global class  
+```js
+// Use example
+const book1 = new Book()
+  .withTitle("Book title 1")
+  .withAuthor("Book author One")
+  .withISBN("ISBN Number 1")
+  .withPrice(1)
+  .withAvailability(1);
+```
 
-* [User](#User)
-    * [.ID](#User+ID) ⇒ <code>string</code>
-    * [.cart](#User+cart) ⇒ <code>Cart</code>
-    * [.withName(name)](#User+withName) ⇒ <code>this</code>
-    * [.withEmail(email)](#User+withEmail) ⇒ <code>this</code>
-    * [.withID(ID)](#User+withID) ⇒ <code>this</code>
+**Kind**: global class
+
+- [User](#User)
+  - [.ID](#User+ID) ⇒ <code>string</code>
+  - [.cart](#User+cart) ⇒ <code>Cart</code>
+  - [.withName(name)](#User+withName) ⇒ <code>this</code>
+  - [.withEmail(email)](#User+withEmail) ⇒ <code>this</code>
+  - [.withID(ID)](#User+withID) ⇒ <code>this</code>
 
 <a name="User+ID"></a>
 
 ### user.ID ⇒ <code>string</code>
+
 Gets the user ID
 
 **Kind**: instance property of [<code>User</code>](#User)  
@@ -22,6 +34,7 @@ Gets the user ID
 <a name="User+cart"></a>
 
 ### user.cart ⇒ <code>Cart</code>
+
 Gets the user cart
 
 **Kind**: instance property of [<code>User</code>](#User)  
@@ -29,35 +42,38 @@ Gets the user cart
 <a name="User+withName"></a>
 
 ### user.withName(name) ⇒ <code>this</code>
+
 Sets the user name
 
 **Kind**: instance method of [<code>User</code>](#User)  
-**Returns**: <code>this</code> - The class reference  
+**Returns**: <code>this</code> - The class reference
 
-| Param | Type | Description |
-| --- | --- | --- |
-| name | <code>string</code> | The user name |
+| Param | Type                | Description   |
+| ----- | ------------------- | ------------- |
+| name  | <code>string</code> | The user name |
 
 <a name="User+withEmail"></a>
 
 ### user.withEmail(email) ⇒ <code>this</code>
+
 Sets the user email address
 
 **Kind**: instance method of [<code>User</code>](#User)  
-**Returns**: <code>this</code> - The class reference  
+**Returns**: <code>this</code> - The class reference
 
-| Param | Type | Description |
-| --- | --- | --- |
+| Param | Type                | Description    |
+| ----- | ------------------- | -------------- |
 | email | <code>string</code> | The user email |
 
 <a name="User+withID"></a>
 
 ### user.withID(ID) ⇒ <code>this</code>
+
 Sets the users ID
 
 **Kind**: instance method of [<code>User</code>](#User)  
-**Returns**: <code>this</code> - The class reference  
+**Returns**: <code>this</code> - The class reference
 
-| Param | Type | Description |
-| --- | --- | --- |
-| ID | <code>string</code> | The user ID |
+| Param | Type                | Description |
+| ----- | ------------------- | ----------- |
+| ID    | <code>string</code> | The user ID |
