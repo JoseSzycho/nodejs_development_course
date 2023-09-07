@@ -3,82 +3,76 @@
 <a name="Book"></a>
 
 ## Book
-
 Class that represents a book
 
-**Kind**: global class
+**Kind**: global class  
 
-- [Book](#Book)
-  - [.withTitle(title)](#Book+withTitle) ⇒ <code>this</code>
-  - [.withAuthor(author)](#Book+withAuthor) ⇒ <code>this</code>
-  - [.withISBN(ISBN)](#Book+withISBN) ⇒ <code>this</code>
-  - [.withPrice(price)](#Book+withPrice) ⇒ <code>this</code>
-  - [.withAvailability(availability)](#Book+withAvailability) ⇒ <code>this</code>
+* [Book](#Book)
+    * [.withTitle(title)](#Book+withTitle) ⇒ <code>this</code>
+    * [.withAuthor(author)](#Book+withAuthor) ⇒ <code>this</code>
+    * [.withISBN(ISBN)](#Book+withISBN) ⇒ <code>this</code>
+    * [.withPrice(price)](#Book+withPrice) ⇒ <code>this</code>
+    * [.withAvailability(availability)](#Book+withAvailability) ⇒ <code>this</code>
 
 <a name="Book+withTitle"></a>
 
 ### book.withTitle(title) ⇒ <code>this</code>
-
 Sets the book title
 
 **Kind**: instance method of [<code>Book</code>](#Book)  
-**Returns**: <code>this</code> - - The class reference
+**Returns**: <code>this</code> - - The class reference  
 
-| Param | Type                | Description |
-| ----- | ------------------- | ----------- |
-| title | <code>string</code> | The title   |
+| Param | Type | Description |
+| --- | --- | --- |
+| title | <code>string</code> | The title |
 
 <a name="Book+withAuthor"></a>
 
 ### book.withAuthor(author) ⇒ <code>this</code>
-
 Sets the book author
 
 **Kind**: instance method of [<code>Book</code>](#Book)  
-**Returns**: <code>this</code> - - The class reference
+**Returns**: <code>this</code> - - The class reference  
 
-| Param  | Type            | Description |
-| ------ | --------------- | ----------- |
-| author | <code>\*</code> | The author  |
+| Param | Type | Description |
+| --- | --- | --- |
+| author | <code>string</code> | The author |
 
 <a name="Book+withISBN"></a>
 
 ### book.withISBN(ISBN) ⇒ <code>this</code>
-
 Sets the book ISBN with no verification, for easier implementation.
 
 **Kind**: instance method of [<code>Book</code>](#Book)  
-**Returns**: <code>this</code> - - The class reference
+**Returns**: <code>this</code> - - The class reference  
 
-| Param | Type            | Description |
-| ----- | --------------- | ----------- |
-| ISBN  | <code>\*</code> | The ISBN    |
+| Param | Type | Description |
+| --- | --- | --- |
+| ISBN | <code>string</code> | The ISBN |
 
 <a name="Book+withPrice"></a>
 
 ### book.withPrice(price) ⇒ <code>this</code>
-
 Sets the book price
 
 **Kind**: instance method of [<code>Book</code>](#Book)  
-**Returns**: <code>this</code> - - The class reference
+**Returns**: <code>this</code> - - The class reference  
 
-| Param | Type                | Description |
-| ----- | ------------------- | ----------- |
-| price | <code>number</code> | The price   |
+| Param | Type | Description |
+| --- | --- | --- |
+| price | <code>number</code> | The price |
 
 <a name="Book+withAvailability"></a>
 
 ### book.withAvailability(availability) ⇒ <code>this</code>
-
 Sets the availability of the book
 
 **Kind**: instance method of [<code>Book</code>](#Book)  
-**Returns**: <code>this</code> - - The class reference
+**Returns**: <code>this</code> - - The class reference  
 
-| Param        | Type            | Description      |
-| ------------ | --------------- | ---------------- |
-| availability | <code>\*</code> | The availability |
+| Param | Type | Description |
+| --- | --- | --- |
+| availability | <code>number</code> | The availability |
 
 <a name="Cart"></a>
 

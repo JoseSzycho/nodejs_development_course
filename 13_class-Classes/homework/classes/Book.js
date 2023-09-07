@@ -27,7 +27,7 @@ class Book {
 
   /**
    * Sets the book author
-   * @param {*} author - The author
+   * @param {string} author - The author
    * @returns {this} - The class reference
    */
   withAuthor(author) {
@@ -44,13 +44,14 @@ class Book {
 
   /**
    * Sets the book ISBN with no verification, for easier implementation.
-   * @param {*} ISBN - The ISBN
+   * @param {string} ISBN - The ISBN
    * @returns {this} - The class reference
    */
   withISBN(ISBN) {
     /* We could add ISBN verification, but there are two
     different ISBN identification and it will complicate
     the tests if we add this. */
+    if(typeof ISBN != "string") throw new Error("ISBN is not valid.")
     this.ISBN = ISBN;
     return this;
   }
@@ -71,7 +72,7 @@ class Book {
 
   /**
    * Sets the availability of the book
-   * @param {*} availability - The availability
+   * @param {number} availability - The availability
    * @returns {this} - The class reference
    */
   withAvailability(availability) {
