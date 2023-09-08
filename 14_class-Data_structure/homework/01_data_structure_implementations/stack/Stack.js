@@ -33,14 +33,17 @@ class Stack {
    * @returns {*} The element
    */
   pop() {
+    // Checking if stack is empty
+    if (this.#index === -1) return undefined;
+    
     const lastEl = this.#stack[this.#index];
     delete this.#stack[this.#index];
-    if (this.#index != -1) this.#index -= 1;
+    this.#index -= 1;
     return lastEl;
   }
   /**
    * Returns the last element from the stack.
-   * 
+   *
    * It works by returning the property value corresponding
    * to current stack index.
    * @returns {*} The element
