@@ -1,14 +1,21 @@
 /**
  * Converts array of object into array of Book instance
- * @param {Array} booksData - The books data
- * @param {Book} Book - The Book class
- * @returns {Array} - The array containing the books instance
+ * @param {Array} booksData The books data
+ * @param {Book} Book The Book class
+ * @param {ActionBook} ActionBook The Action Book Class
+ * @param {ThrillerBook} ThrillerBook The Thriller Book Class
+ * @returns {Array} The array containing the books instance
  */
-const getBooksObjects = (booksData, Book) => {
-  // Creating Book instance for each object
+const getBooksObjects = (booksData, Book, ActionBook, ThrillerBook) => {
+  // Creating Book instance for each type of Book
   const importedBooks = booksData.map((book) => {
     try {
-      return new Book()
+      let BookType;
+      if (book.category === null) BookType = Book;
+      if (book.category === "action") BookType = ActionBook;
+      if (book.category === "thriller") BookType = ThrillerBook;
+
+      return new BookType()
         .withTitle(book.title)
         .withAuthor(book.author)
         .withISBN(book.ISBN)
