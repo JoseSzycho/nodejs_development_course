@@ -10,7 +10,7 @@
     {
       "title": "Title",
       "author": "Author Name A",
-      "category": "null",
+      "category": null,
       "ISBN": "ISBN1",
       "price": 1,
       "availability": 1
@@ -18,7 +18,7 @@
     {
       "title": "Title 2",
       "author": "Author Name B",
-      "category": "null",
+      "category": null,
       "ISBN": "ISBN2",
       "price": 2,
       "availability": 2
@@ -26,7 +26,7 @@
     {
       "title": "Title 3",
       "author": "Author Name C",
-      "category": "fiction",
+      "category": "action",
       "ISBN": "ISBN3",
       "price": 3,
       "availability": 3
@@ -34,7 +34,7 @@
     {
       "title": "Title 4",
       "author": "Author Name D",
-      "category": "non-fiction",
+      "category": "thriller",
       "ISBN": "ISBN4",
       "price": 4,
       "availability": 4
