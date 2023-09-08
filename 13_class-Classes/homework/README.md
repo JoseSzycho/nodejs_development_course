@@ -517,3 +517,29 @@ method for other methods.
 | Param | Type              | Description        |
 | ----- | ----------------- | ------------------ |
 | book  | <code>Book</code> | The book to print. |
+
+<a name="getBooksObjects"></a>
+
+## getBooksObjects(booksData, Book) ⇒ <code>Array</code>
+Converts array of object into array of Book instance
+
+**Kind**: global function  
+**Returns**: <code>Array</code> - - The array containing the books instance  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| booksData | <code>Array</code> | The books data |
+| Book | <code>Book</code> | The Book class |
+
+<a name="getUsersObjects"></a>
+
+## getUsersObjects(usersData, User) ⇒ <code>Array</code>
+Converts array of object into array of User instance
+
+**Kind**: global function  
+**Returns**: <code>Array</code> - - The array containing the users instance  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| usersData | <code>Array</code> | The users data |
+| User | <code>User</code> | The User class |
