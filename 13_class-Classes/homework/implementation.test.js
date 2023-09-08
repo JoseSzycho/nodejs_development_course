@@ -8,6 +8,8 @@ demonstrate how classes interact between them selves. */
 const { User } = require("./classes/User");
 const { Order } = require("./classes/Order");
 const { Book } = require("./classes/Book");
+const { ActionBook } = require("./classes/ActionBook");
+const { ThrillerBook } = require("./classes/ThrillerBook");
 
 describe("Implementation example.", () => {
   /******************************************/
@@ -19,14 +21,14 @@ describe("Implementation example.", () => {
     .withPrice(1)
     .withAvailability(1);
 
-  const book2 = new Book()
+  const book2 = new ActionBook()
     .withTitle("Book title 2")
     .withAuthor("Book author Two")
     .withISBN("ISBN Number 2")
     .withPrice(2)
     .withAvailability(2);
 
-  const book3 = new Book()
+  const book3 = new ThrillerBook()
     .withTitle("Book title 3")
     .withAuthor("Book author Three")
     .withISBN("ISBN Number 3")
@@ -75,17 +77,20 @@ describe("Implementation example.", () => {
   /*********************************************************/
   /*------Simulating users adding books to their cart------*/
 
+  // Please observe how these three books are threated the same way
+  // but console shows different messages, this is thanks to polymorphism.
+
   test("Expect user1 to have book1, book2 and book3 on the cart.", () => {
     // user1 adds book1 and book2
-    user1.cart.addBook(book1); // console: Book added to the cart.
-    user1.cart.addBook(book2); // console: Book added to the cart.
-    user1.cart.addBook(book3); // console: Book added to the cart.
+    user1.cart.addBook(book1); // console: Book added to the cart. <Extra message>
+    user1.cart.addBook(book2); // console: Book added to the cart. <Extra message>
+    user1.cart.addBook(book3); // console: Book added to the cart. <Extra message>
     expect(user1.cart.booksList).toEqual([book1, book2, book3]);
   });
 
   test("Expect user2 to have book2 on the cart.", () => {
     // user2 adds book2 and try to add book1
-    user2.cart.addBook(book2); // console: Book added to the cart.
+    user2.cart.addBook(book2); // console: Book added to the cart. <Extra message>
     user2.cart.addBook(book1); // console: Book is not available.
     expect(user2.cart.booksList).toEqual([book2]);
   });
