@@ -1,77 +1,123 @@
+## Implementation
+
+Please see `./implementation.test.js` or [click here](./implementation.test.js) to see a implementation-like file.
+
+This file **shows** a basic **implementation** case example of the **Online Bookstore**, where different jest test will be implemented in different steps of the code to show and demonstrate how classes interact between them selves.
+
+**1.** User, Books and Order objects will be created
+
+**2.** Different users will add / remove books and it will be shown how this movements affects the books availability.
+
+**3.** Orders will be placed and cancelled, and it will be shown hows this actions modify other objects states.
+
+## Demonstration
+
+Please execute `./demostration` or [click here to go to code](./demostration.js).
+
+**Be sure your path is `~/nodejs_development_course/13_class-Classes/homework$ ` before executing the code, or data base will throw and error.** 
+Data base data can be modified  from `./data_base/data.json`.
+
+The next interactive scenario will be presented in the terminal console.
+
+```
+--------MAIN MENU--------
+      1. Change user
+      2. Show books on sale
+      3. Search book
+      4. Add book to cart
+      5. Remove book from cart
+      6. Show order
+      7. Place order
+      8. Place order with discount
+      9. Cancel order
+```
+- Four users will be loaded
+- For books will be loaded
+
+Interaction between objects can be made by changing users, adding / removing books from each and more.
+
+__Interaction between objects__ can bee seen by looking at books availability changes (__option 2. Shows books on sale__) after any order is cancelled or book is added or removed from user.
+
 # Code documentation
 
 <a name="Book"></a>
 
 ## Book
+
 Class that represents a book
 
-**Kind**: global class  
+**Kind**: global class
 
-* [Book](#Book)
-    * [.withTitle(title)](#Book+withTitle) ⇒ <code>this</code>
-    * [.withAuthor(author)](#Book+withAuthor) ⇒ <code>this</code>
-    * [.withISBN(ISBN)](#Book+withISBN) ⇒ <code>this</code>
-    * [.withPrice(price)](#Book+withPrice) ⇒ <code>this</code>
-    * [.withAvailability(availability)](#Book+withAvailability) ⇒ <code>this</code>
+- [Book](#Book)
+  - [.withTitle(title)](#Book+withTitle) ⇒ <code>this</code>
+  - [.withAuthor(author)](#Book+withAuthor) ⇒ <code>this</code>
+  - [.withISBN(ISBN)](#Book+withISBN) ⇒ <code>this</code>
+  - [.withPrice(price)](#Book+withPrice) ⇒ <code>this</code>
+  - [.withAvailability(availability)](#Book+withAvailability) ⇒ <code>this</code>
 
 <a name="Book+withTitle"></a>
 
 ### book.withTitle(title) ⇒ <code>this</code>
+
 Sets the book title
 
 **Kind**: instance method of [<code>Book</code>](#Book)  
-**Returns**: <code>this</code> - - The class reference  
+**Returns**: <code>this</code> - - The class reference
 
-| Param | Type | Description |
-| --- | --- | --- |
-| title | <code>string</code> | The title |
+| Param | Type                | Description |
+| ----- | ------------------- | ----------- |
+| title | <code>string</code> | The title   |
 
 <a name="Book+withAuthor"></a>
 
 ### book.withAuthor(author) ⇒ <code>this</code>
+
 Sets the book author
 
 **Kind**: instance method of [<code>Book</code>](#Book)  
-**Returns**: <code>this</code> - - The class reference  
+**Returns**: <code>this</code> - - The class reference
 
-| Param | Type | Description |
-| --- | --- | --- |
-| author | <code>string</code> | The author |
+| Param  | Type                | Description |
+| ------ | ------------------- | ----------- |
+| author | <code>string</code> | The author  |
 
 <a name="Book+withISBN"></a>
 
 ### book.withISBN(ISBN) ⇒ <code>this</code>
+
 Sets the book ISBN with no verification, for easier implementation.
 
 **Kind**: instance method of [<code>Book</code>](#Book)  
-**Returns**: <code>this</code> - - The class reference  
+**Returns**: <code>this</code> - - The class reference
 
-| Param | Type | Description |
-| --- | --- | --- |
-| ISBN | <code>string</code> | The ISBN |
+| Param | Type                | Description |
+| ----- | ------------------- | ----------- |
+| ISBN  | <code>string</code> | The ISBN    |
 
 <a name="Book+withPrice"></a>
 
 ### book.withPrice(price) ⇒ <code>this</code>
+
 Sets the book price
 
 **Kind**: instance method of [<code>Book</code>](#Book)  
-**Returns**: <code>this</code> - - The class reference  
+**Returns**: <code>this</code> - - The class reference
 
-| Param | Type | Description |
-| --- | --- | --- |
-| price | <code>number</code> | The price |
+| Param | Type                | Description |
+| ----- | ------------------- | ----------- |
+| price | <code>number</code> | The price   |
 
 <a name="Book+withAvailability"></a>
 
 ### book.withAvailability(availability) ⇒ <code>this</code>
+
 Sets the availability of the book
 
 **Kind**: instance method of [<code>Book</code>](#Book)  
-**Returns**: <code>this</code> - - The class reference  
+**Returns**: <code>this</code> - - The class reference
 
-| Param | Type | Description |
-| --- | --- | --- |
+| Param        | Type                | Description      |
+| ------------ | ------------------- | ---------------- |
 | availability | <code>number</code> | The availability |
 
 <a name="Cart"></a>
