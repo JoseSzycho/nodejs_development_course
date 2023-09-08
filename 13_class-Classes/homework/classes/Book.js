@@ -3,6 +3,7 @@ class Book {
   constructor() {
     this.title;
     this.author;
+    this.category = null;
     this.ISBN;
     this.price;
     this.availability;
