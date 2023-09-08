@@ -178,4 +178,29 @@ describe("Implementation example.", () => {
   test("Expect user1 cart bookList  to be empty.", () => {
     expect(user1.cart.booksList).toEqual([]);
   });
+
+  /*************************************/
+  /*------User canceling an order------*/
+
+  // As an order is canceled, the books must be removed
+  // from the user cart, and the books should update the
+  // same quantity
+
+  test("Expect book 3 to be have availability of 2", () => {
+    expect(book3.availability).toBe(2);
+  });
+
+  test("Expect user2 to add book3 and expect book3 availability to be 1", () => {
+    user2.cart.addBook(book3);
+    expect(book3.availability).toBe(1);
+  });
+
+  test("Expect user2 to cancel order and expect book3 availability to be 2", () => {
+    user2Order.cancel();
+    expect(book3.availability).toBe(2);
+  });
+
+  test("Expect user2 car to be empty", () => {
+    expect(user2.cart.booksList.length).toBe(0);
+  });
 });
