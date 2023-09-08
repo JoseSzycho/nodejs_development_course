@@ -1,3 +1,4 @@
+
 # Class 13 - Classes and oriented object programming
 
 **Classes are a template/schema for creating objects**, they are **NOT entities**. They encapsulate data with code to work on that data. Classes in JS are **built on prototypes** but also have some syntax and semantics that are unique to classes.
@@ -460,7 +461,6 @@ class Order {
 }
 
 // Instantiate objects and simulate bookstore interactions...
-
 ```
 
 ### Bonus (Optional)
