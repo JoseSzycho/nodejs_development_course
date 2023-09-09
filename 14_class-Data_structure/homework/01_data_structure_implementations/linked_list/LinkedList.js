@@ -28,13 +28,13 @@ class LinkedList {
     currentNode.nextNode = newNode;
   }
   insertAfter(targetNode, dataToAdd) {
-    const previousNode = this.searchData(targetNode);
+    const previousNode = this.searchNode(targetNode);
 
     const newNode = new Node(dataToAdd);
     newNode.nextNode = previousNode.nextNode;
     previousNode.nextNode = newNode;
   }
-  searchData(data) {
+  searchNode(data) {
     let currentNode = this.firstNode;
 
     while (currentNode != null) {
@@ -77,6 +77,26 @@ class LinkedList {
     }
 
     actualNode.nextNode = null;
+  }
+  deleteNode(data) {
+    if (this.firstNode === null) return;
+
+    let actualNode = this.firstNode;
+    let nextNode = this.firstNode.nextNode;
+
+    if (actualNode.data === data) {
+      this.deleteFront();
+      return;
+    }
+
+    do {
+      if (nextNode.data === data) {
+        actualNode.nextNode = nextNode.nextNode;
+        return;
+      }
+      actualNode = nextNode;
+      nextNode = nextNode.nextNode;
+    } while (nextNode != null);
   }
 }
 
