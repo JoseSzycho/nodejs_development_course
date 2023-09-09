@@ -17,6 +17,27 @@ In computing it can be used for:
 - pop an element: O(1)
 - peek an element: O(1)
 
+## Use example
+
+```js
+// Importing class
+const { Stack } = require("./Stack");
+
+// Creating a stack instance
+const stack = new Stack();
+
+// Adding values to stack
+stack.push(1);
+stack.push(2);
+stack.push(3);
+
+// Obtaining values from stack
+console.log(stack.pop()); // 3
+console.log(stack.pop()); // 2
+console.log(stack.pop()); // 1
+console.log(stack.pop()); // undefined
+```
+
 # Code documentation
 
 ## Stack
