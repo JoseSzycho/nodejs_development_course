@@ -19,22 +19,40 @@ class LinkedList {
       this.firstNode = new Node(data);
       return;
     }
-    const currentNode = this.firstNode;
+    let currentNode = this.firstNode;
     const newNode = new Node(data);
-    
+
     while (currentNode.nextNode != null) {
       currentNode = currentNode.nextNode;
     }
     currentNode.nextNode = newNode;
   }
+  insertAfter(targetNode, dataToAdd) {
+    const previousNode = this.searchData(targetNode);
+
+    const newNode = new Node(dataToAdd);
+    newNode.nextNode = previousNode.nextNode;
+    previousNode.nextNode = newNode;
+  }
   searchData(data) {
     let currentNode = this.firstNode;
-    do {
-      if (currentNode.data === data) return true;
-      currentNode = currentNode.nextNode;
-    } while (currentNode.nextNode != null);
 
-    return false;
+    while (currentNode != null) {
+      if (currentNode.data === data) return currentNode;
+      currentNode = currentNode.nextNode;
+    }
+
+    throw new Error("Node with this data is not present in the linked list.");
+  }
+  getData() {
+    let currentNode = this.firstNode;
+    const data = [];
+    while (currentNode != null) {
+      data.push(currentNode.data);
+      console.log(data)
+      currentNode = currentNode.nextNode;
+    }
+    return [...data];
   }
 }
 
