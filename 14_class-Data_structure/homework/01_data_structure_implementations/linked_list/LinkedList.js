@@ -49,10 +49,34 @@ class LinkedList {
     const data = [];
     while (currentNode != null) {
       data.push(currentNode.data);
-      console.log(data)
       currentNode = currentNode.nextNode;
     }
     return [...data];
+  }
+  deleteFront() {
+    if (this.firstNode === null) return;
+    if (this.firstNode.nextNode === null) {
+      this.firstNode = null;
+      return;
+    }
+
+    this.firstNode = this.firstNode.nextNode;
+  }
+  deleteRear() {
+    if (this.firstNode === null) return;
+    if (this.firstNode.nextNode === null) {
+      this.firstNode = null;
+      return;
+    }
+    let actualNode = this.firstNode;
+    let nextNode = this.firstNode.nextNode;
+
+    while (nextNode.nextNode != null) {
+      actualNode = nextNode;
+      nextNode = nextNode.nextNode;
+    }
+
+    actualNode.nextNode = null;
   }
 }
 

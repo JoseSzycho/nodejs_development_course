@@ -60,7 +60,6 @@ describe("LinkedList class tests", () => {
         linkedList.insertFront(i);
       }
 
-      console.log(linkedList);
       expect(linkedList.firstNode.data).toBe(5);
       expect(linkedList.firstNode.nextNode.data).toBe(4);
       expect(linkedList.firstNode.nextNode.nextNode.data).toBe(3);
@@ -161,6 +160,74 @@ describe("LinkedList class tests", () => {
       linkedList.insertAfter(1, 9); // list = [4, 5, 1, 9 1, 3, 2, 6, 7, 8]
 
       expect(linkedList.getData()).toEqual([4, 5, 1, 9, 1, 3, 2, 6, 7, 8]);
+    });
+
+    describe("Testing searchData method", () => {
+      test("Expect data to not be found", () => {
+        expect(() => linkedList.searchData(1)).toThrow(
+          "Node with this data is not present in the linked list."
+        );
+        linkedList.insertRear(1);
+        expect(() => linkedList.searchData(2)).toThrow(
+          "Node with this data is not present in the linked list."
+        );
+      });
+
+      test("Expect data to be found", () => {
+        linkedList.insertRear(1);
+        linkedList.insertRear(2);
+        linkedList.insertRear(3);
+        expect(linkedList.searchData(1).data).toBe(1);
+        expect(linkedList.searchData(2).data).toBe(2);
+        expect(linkedList.searchData(3).data).toBe(3);
+      });
+    });
+  });
+
+  describe("Tests for deleteFront method", () => {
+    test("Expect node to be deleted and first node to be null if list is empty", () => {
+      linkedList.deleteFront();
+      expect(linkedList.firstNode).toBe(null);
+      for (let i = 0; i < 4; i++) {
+        linkedList.insertRear(i);
+      }
+
+      expect(linkedList.getData()).toEqual([0, 1, 2, 3]);
+      linkedList.deleteFront();
+      expect(linkedList.getData()).toEqual([1, 2, 3]);
+      linkedList.deleteFront();
+      expect(linkedList.getData()).toEqual([2, 3]);
+      linkedList.deleteFront();
+      expect(linkedList.getData()).toEqual([3]);
+      linkedList.deleteFront();
+      expect(linkedList.getData()).toEqual([]);
+      linkedList.deleteFront();
+      expect(linkedList.getData()).toEqual([]);
+      linkedList.insertFront(1);
+      expect(linkedList.getData()).toEqual([1]);
+    });
+  });
+
+  describe("Tests for deleteRear method", () => {
+    test("Expect node to be deleted and first node to be null if list is empty", () => {
+      linkedList.deleteRear();
+      expect(linkedList.firstNode).toBe(null);
+      for (let i = 0; i < 4; i++) {
+        linkedList.insertRear(i);
+      }
+      expect(linkedList.getData()).toEqual([0, 1, 2, 3]);
+      linkedList.deleteRear();
+      expect(linkedList.getData()).toEqual([0, 1, 2]);
+      linkedList.deleteRear();
+      expect(linkedList.getData()).toEqual([0, 1]);
+      linkedList.deleteRear();
+      expect(linkedList.getData()).toEqual([0]);
+      linkedList.deleteRear();
+      expect(linkedList.getData()).toEqual([]);
+      linkedList.deleteRear();
+      linkedList.insertRear(1);
+      linkedList.deleteRear();
+      expect(linkedList.firstNode).toBe(null);
     });
   });
 });
