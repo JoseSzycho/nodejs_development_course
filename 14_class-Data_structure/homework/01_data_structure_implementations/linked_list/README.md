@@ -56,7 +56,9 @@ console.log(linkedList.getData()); // []
 
 ## Node
 
-to another node, so a linked list can be created. to point
+Class that creates a node structure with any kind of data.
+This structure is needed as #nextNode can be used to point
+to another node, so a linked list can be created.
 
 **Kind**: global class
 
@@ -94,8 +96,6 @@ Sets #nextNode with a new Node / null after a a input check
 | ----- | -------------------------- | ----------- |
 | node  | [<code>Node</code>](#Node) | The Node    |
 
-<a name="LinkedList"></a>
-
 ## LinkedList
 
 Class that handles a linked list structure made with Nodes.
@@ -132,74 +132,149 @@ of the list at the new Node, and then set the new node as the first element.
 | ----- | --------------- | ----------- |
 | data  | <code>\*</code> | The data    |
 
-<a name="LinkedList+insertRear"></a>
+<a name="LinkedList"></a>
 
-### linkedList.insertRear(data)
+## LinkedList
+Class that handles a linked list structure made with Nodes.
 
-new node.the node, we set this last nextNode property to point thend
+**Kind**: global class
+
+* [LinkedList](#LinkedList)
+    * [.firstNode](#LinkedList+firstNode) ⇒ <code>Node</code>
+    * [.insertFront(data)](#LinkedList+insertFront)
+    * [.insertRear(data)](#LinkedList+insertRear)
+    * [.insertAfter(targetNode, dataToAdd)](#LinkedList+insertAfter)
+    * [.searchNode(data)](#LinkedList+searchNode) ⇒ <code>Node</code>
+    * [.getData()](#LinkedList+getData) ⇒ <code>Array</code>
+    * [.deleteFront()](#LinkedList+deleteFront)
+    * [.deleteRear()](#LinkedList+deleteRear)
+    * [.deleteNode(data)](#LinkedList+deleteNode)
+
+<a name="LinkedList+firstNode"></a>
+
+### linkedList.firstNode ⇒ <code>Node</code>
+Return first node, for testing purposes
+
+**Kind**: instance property of [<code>LinkedList</code>](#LinkedList)
+**Returns**: <code>Node</code> - The node
+<a name="LinkedList+insertFront"></a>
+
+### linkedList.insertFront(data)
+Inserts a new node with data in front of the linked list.
+
+It works by creating a new Node with the data.
+If the linked list is empty, this node is stored as the first node.
+If the linked list is not empty, we store the actual first node
+of the list at the new Node, and then set the new node as the first element.
 
 **Kind**: instance method of [<code>LinkedList</code>](#LinkedList)
 
-| Param | Type            | Description |
-| ----- | --------------- | ----------- |
-| data  | <code>\*</code> | The data    |
+| Param | Type | Description |
+| --- | --- | --- |
+| data | <code>\*</code> | The data |
+
+<a name="LinkedList+insertRear"></a>
+
+### linkedList.insertRear(data)
+Inserts a new node with data at the of the list.
+
+It works by creating a new Node with the data.
+If the linked list is empty, this node is stored as the first node.
+
+If the list is not empty, we go through the linked list till we find
+a node with nextNode = null, this indicates that is the last node.
+To store the node, we set this last nextNode property to point the
+new node.
+
+**Kind**: instance method of [<code>LinkedList</code>](#LinkedList)
+
+| Param | Type | Description |
+| --- | --- | --- |
+| data | <code>\*</code> | The data |
 
 <a name="LinkedList+insertAfter"></a>
 
 ### linkedList.insertAfter(targetNode, dataToAdd)
+Inserts a node after a target node position. If target node
+is not in the list, an error is thrown.
 
-of the targetNode and the targetNode.nextNode.ositioned in the middle
+It works by checking if the target node is in the linked list.
+If the target node is found, the new node is positioned in the middle
+of the targetNode and the targetNode.nextNode.
 
 **Kind**: instance method of [<code>LinkedList</code>](#LinkedList)
 
-| Param      | Type            | Description                    |
-| ---------- | --------------- | ------------------------------ |
-| targetNode | <code>\*</code> | The target node                |
-| dataToAdd  | <code>\*</code> | The data to create a node with |
+| Param | Type | Description |
+| --- | --- | --- |
+| targetNode | <code>\*</code> | The target node |
+| dataToAdd | <code>\*</code> | The data to create a node with |
 
 <a name="LinkedList+searchNode"></a>
 
 ### linkedList.searchNode(data) ⇒ <code>Node</code>
+Search if a node with certain data is stored in the linked list. If found,
+the node is returned, if not, an error is thrown.
 
-we find a node with a data match, after that we return the node.isted till
+It works by taking the first node, then we go throw the linked listed till
+we find a node with a data match, after that we return the node.
 
 **Kind**: instance method of [<code>LinkedList</code>](#LinkedList)
 **Returns**: <code>Node</code> - - The node
 
-| Param | Type            | Description |
-| ----- | --------------- | ----------- |
-| data  | <code>\*</code> | The data    |
+| Param | Type | Description |
+| --- | --- | --- |
+| data | <code>\*</code> | The data |
 
 <a name="LinkedList+getData"></a>
 
 ### linkedList.getData() ⇒ <code>Array</code>
+Returns the all the nodes data in a array shape. Used for testing purposes.
 
-data element into the array.ty array, then it goes through the list pushing each
+It works by creating and empty array, then it goes through the list pushing each
+data element into the array.
 
 **Kind**: instance method of [<code>LinkedList</code>](#LinkedList)
 **Returns**: <code>Array</code> - - The data
 <a name="LinkedList+deleteFront"></a>
 
 ### linkedList.deleteFront()
+Delete the first node in the linked list.
 
+It works by checking two scenarios.
+First one: if the list is empty, we do nothing
+Second one: if there are one or more elements, we make
 the first node to point to its nextNode, so the reference is lost.
 
 **Kind**: instance method of [<code>LinkedList</code>](#LinkedList)
 <a name="LinkedList+deleteRear"></a>
 
 ### linkedList.deleteRear()
+Delete the last node of the list.
 
-null, so we lost the reference of the last node.lNode.nextNode to be
+It works by checking for three possibles scenarios.
+The first one: if the list is empty, we do nothing.
+The second one: if there is only one node, we delete it.
+The third one: if there is more than one node, we loop till the
+end of the list storing the actual node and the next node. If
+the next node is the last one, we make the actualNode.nextNode to be
+null, so we lost the reference of the last node.
 
 **Kind**: instance method of [<code>LinkedList</code>](#LinkedList)
 <a name="LinkedList+deleteNode"></a>
 
 ### linkedList.deleteNode(data)
+Deletes the first node that stores a given data.
 
+It works by looking for three possible scenarios.
+The first one: linked list is empty, we do nothing.
+The second one: the node is in the first position, so we delete it.
+The third one: the node is in the middle or last position. So we work
+looping throw the actual node and the next node. If the next node
+matches with the data of the node to delete, we remove the next node
 from the list by making the actualNode to point to the nextNode.nextNode.
 
 **Kind**: instance method of [<code>LinkedList</code>](#LinkedList)
 
-| Param | Type            | Description |
-| ----- | --------------- | ----------- |
-| data  | <code>\*</code> | The data    |
+| Param | Type | Description |
+| --- | --- | --- |
+| data | <code>\*</code> | The data |

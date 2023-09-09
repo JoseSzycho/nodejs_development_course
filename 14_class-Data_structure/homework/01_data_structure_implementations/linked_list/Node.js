@@ -7,7 +7,7 @@ class Node {
   #nextNode;
 
   /**
-   * Initialize the node with certain data.
+   *Initialize the node with certain data.
    * @param {*} data The data
    */
   constructor(data) {

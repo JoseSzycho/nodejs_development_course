@@ -12,6 +12,7 @@ class LinkedList {
   }
   /**
    * Return first node, for testing purposes
+   * @returns {Node} The node
    */
   get firstNode() {
     return this.#firstNode;
@@ -161,6 +162,7 @@ class LinkedList {
    * end of the list storing the actual node and the next node. If
    * the next node is the last one, we make the actualNode.nextNode to be
    * null, so we lost the reference of the last node.
+   * 
    */
   deleteRear() {
     // If list is empty
