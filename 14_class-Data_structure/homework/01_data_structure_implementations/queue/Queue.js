@@ -48,7 +48,7 @@ class Queue {
    *
    * It works be returning the property value of the queue
    * corresponding to the oldestIndex property.
-   * @returns
+   * @returns {*} The element
    */
   peek() {
     return this.#queue[this.#oldestIndex];
