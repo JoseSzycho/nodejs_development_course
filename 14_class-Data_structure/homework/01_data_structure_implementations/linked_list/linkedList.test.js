@@ -162,13 +162,13 @@ describe("LinkedList class tests", () => {
       expect(linkedList.getData()).toEqual([4, 5, 1, 9, 1, 3, 2, 6, 7, 8]);
     });
 
-    describe("Testing searchData method", () => {
+    describe("Testing searchNode method", () => {
       test("Expect data to not be found", () => {
-        expect(() => linkedList.searchData(1)).toThrow(
+        expect(() => linkedList.searchNode(1)).toThrow(
           "Node with this data is not present in the linked list."
         );
         linkedList.insertRear(1);
-        expect(() => linkedList.searchData(2)).toThrow(
+        expect(() => linkedList.searchNode(2)).toThrow(
           "Node with this data is not present in the linked list."
         );
       });
@@ -177,9 +177,9 @@ describe("LinkedList class tests", () => {
         linkedList.insertRear(1);
         linkedList.insertRear(2);
         linkedList.insertRear(3);
-        expect(linkedList.searchData(1).data).toBe(1);
-        expect(linkedList.searchData(2).data).toBe(2);
-        expect(linkedList.searchData(3).data).toBe(3);
+        expect(linkedList.searchNode(1).data).toBe(1);
+        expect(linkedList.searchNode(2).data).toBe(2);
+        expect(linkedList.searchNode(3).data).toBe(3);
       });
     });
   });
@@ -202,9 +202,7 @@ describe("LinkedList class tests", () => {
       linkedList.deleteFront();
       expect(linkedList.getData()).toEqual([]);
       linkedList.deleteFront();
-      expect(linkedList.getData()).toEqual([]);
-      linkedList.insertFront(1);
-      expect(linkedList.getData()).toEqual([1]);
+      expect(linkedList.firstNode).toBe(null);
     });
   });
 
@@ -227,6 +225,36 @@ describe("LinkedList class tests", () => {
       linkedList.deleteRear();
       linkedList.insertRear(1);
       linkedList.deleteRear();
+      expect(linkedList.firstNode).toBe(null);
+    });
+  });
+
+  describe("Test for deleteNode by data", () => {
+    test("Expect node to be deleted and first node to be null if list is empty", () => {
+      linkedList.deleteNode(1);
+      expect(linkedList.firstNode).toBe(null);
+      for (let i = 0; i < 7; i++) {
+        linkedList.insertRear(i);
+      }
+      expect(linkedList.getData()).toEqual([0, 1, 2, 3, 4, 5, 6]);
+      linkedList.deleteNode(4);
+      expect(linkedList.getData()).toEqual([0, 1, 2, 3, 5, 6]);
+      linkedList.deleteNode(0);
+      linkedList.deleteNode(10);
+      expect(linkedList.getData()).toEqual([1, 2, 3, 5, 6]);
+      linkedList.deleteNode(2);
+      expect(linkedList.getData()).toEqual([1, 3, 5, 6]);
+      linkedList.deleteNode(3);
+      linkedList.deleteNode(10);
+      expect(linkedList.getData()).toEqual([1, 5, 6]);
+      linkedList.deleteNode(1);
+      expect(linkedList.getData()).toEqual([5, 6]);
+      linkedList.deleteNode(6);
+      expect(linkedList.getData()).toEqual([5]);
+      linkedList.deleteNode(5);
+      expect(linkedList.getData()).toEqual([]);
+      linkedList.deleteNode(5);
+      linkedList.deleteNode(5);
       expect(linkedList.firstNode).toBe(null);
     });
   });
