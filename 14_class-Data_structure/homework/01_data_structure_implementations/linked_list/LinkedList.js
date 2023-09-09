@@ -139,7 +139,7 @@ class LinkedList {
    * First one: if the list is empty, we do nothing
    * Second one: if there are one or more elements, we make
    * the first node to point to its nextNode, so the reference is lost.
-   * @returns
+   * 
    */
   deleteFront() {
     // Checking for empty list
