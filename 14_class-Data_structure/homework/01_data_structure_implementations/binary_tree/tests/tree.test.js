@@ -4,7 +4,7 @@ let tree;
 const data = [5, 10, 7, 12, 8, 2, 1, 3, 4, 9];
 const originalConsoleLog = console.log;
 beforeEach(() => {
-  //console.log = () => {};
+  console.log = () => {};
   tree = new Tree();
   data.forEach((el) => tree.insertNode(el));
 });
@@ -36,5 +36,21 @@ describe("Testing findNode() method", () => {
   test("Expect node to not be found", () => {
     expect(tree.findNode(99)).toBe(false);
     expect(tree.findNode(0)).toBe(false);
+  });
+
+  describe("Testing traversing tree methods", () => {
+    test("Expect data to be returned in in-order", () => {
+      const inOrderData = [1, 2, 3, 4, 5, 7, 8, 9, 10, 12];
+      expect(tree.inOrder()).toEqual(inOrderData);
+    });
+    test("Expect data to be returned in pre-order", () => {
+      const preOrderData = [5, 2, 1, 3, 4, 10, 7, 8, 9, 12];
+      expect(tree.preOrder()).toEqual(preOrderData);
+    });
+    test("Expect data to be returned in post-order", () => {
+      const postOrderData = [1
+    , 4, 3, 2, 9, 8, 7, 12, 10, 5];
+      expect(tree.postOrder()).toEqual(postOrderData);
+    });
   });
 });
