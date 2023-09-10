@@ -52,6 +52,29 @@ class Tree {
     console.log("Node not found.");
     return false;
   }
+
+  inOrder(node = this.root, data = []) {
+    if (node === null) return;
+    this.inOrder(node.left, data);
+    data.push(node.data);
+    this.inOrder(node.right, data);
+    console.log(data);
+    return data;
+  }
+  preOrder(node = this.root, data = []) {
+    if (node === null) return;
+    data.push(node.data);
+    this.preOrder(node.left, data);
+    this.preOrder(node.right, data);
+    return data;
+  }
+  postOrder(node = this.root, data = []) {
+    if (node === null) return;
+    this.postOrder(node.left, data);
+    this.postOrder(node.right, data);
+    data.push(node.data);
+    return data;
+  }
 }
 
 module.exports = { Tree };
