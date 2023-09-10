@@ -1,13 +1,5 @@
 /**
  * Class that represents a node
- *
- * It contains:
- *
- * - #data property: stores validated data
- * 
- * - #right property: stores a new node with major data value
- * 
- * - #left property: stores a new node with minor data value
  */
 class Node {
   #left;
