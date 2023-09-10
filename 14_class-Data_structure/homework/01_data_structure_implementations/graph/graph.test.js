@@ -6,6 +6,17 @@ beforeEach(() => {
   // Create a spy on console.log
   consoleLog = jest.spyOn(console, "log");
   graph = new Graph();
+  bigGraph = new Graph();
+
+  for (let j = 0; j < 10; j++) {
+    bigGraph.addVertex(j);
+  }
+
+  for (let i = 0; i < 10; i++) {
+    for (let j = 0; j < 10; j++) {
+      bigGraph.addEdge(i, j);
+    }
+  }
 });
 
 describe("Testing addVertex() method", () => {
@@ -52,3 +63,54 @@ describe("Testing addEdge() method", () => {
     // Inspected visually with console log and all add added, with out duplications.
   });
 });
+
+describe("Testing breathFirstSearch() method", () => {
+  test("Expect to throw error if there is a method with no edges", () => {
+    graph.addVertex(1);
+    graph.addVertex(2);
+    graph.addVertex(3);
+    graph.addEdge(1, 2);
+
+    expect(() => graph.breathFirstSearch(10)).toThrow(
+      "Vertex 3 do not have edges."
+    );
+  });
+
+  test("Expect to find element", () => {
+    expect(bigGraph.breathFirstSearch(9)).toBe(true);
+  });
+
+  test("Expect to find element", () => {
+    expect(bigGraph.breathFirstSearch(9)).toBe(true);
+  });
+
+  test("Expect to not find element", () => {
+    expect(bigGraph.breathFirstSearch(10)).toBe(false);
+  });
+});
+
+describe("Testing depthFirstSearch() method", () => {
+    test("Expect to throw error if there is a method with no edges", () => {
+      graph.addVertex(1);
+      graph.addVertex(2);
+      graph.addVertex(3);
+      graph.addEdge(1, 2);
+  
+      expect(() => graph.depthFirstSearch(10)).toThrow(
+        "Vertex 3 do not have edges."
+      );
+    });
+  
+    test("Expect to find element", () => {
+      expect(bigGraph.depthFirstSearch(9)).toBe(true);
+    });
+  
+    test("Expect to find element", () => {
+      expect(bigGraph.depthFirstSearch(9)).toBe(true);
+    });
+  
+    test("Expect to not find element", () => {
+      expect(bigGraph.depthFirstSearch(10)).toBe(false);
+    });
+  });
+  
