@@ -30,6 +30,28 @@ class Tree {
     }
 
     if (value > node.data) this.insertNode(value, node.right);
-    if (value < node.data) this.insertNode(value, value.left);
+    if (value < node.data) this.insertNode(value, node.left);
+  }
+
+  findNode(value, node = this.root) {
+    if (node === null) {
+      console.log("Node not found.");
+      return false;
+    }
+
+    if (value === node.data) {
+      console.log("Node found.");
+      return true;
+    }
+
+    if (value > node.data && node.right != null)
+      return this.findNode(value, node.right);
+    if (value < node.data && node.left != null)
+      return this.findNode(value, node.left);
+
+    console.log("Node not found.");
+    return false;
   }
 }
+
+module.exports = { Tree };
