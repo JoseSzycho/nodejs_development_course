@@ -32,25 +32,54 @@ class Graph {
     if (!vertices.has(toVertex))
       console.log(`${toVertex} is not in the graph.`);
   }
-  depthFirstSearch(dataToFind) {
+
+  #checkForLonelyVertex() {
     const edge = this.edges;
     const vertexWithEdge = Object.getOwnPropertyNames(edge);
     vertexWithEdge.forEach((vertex) => {
       if (edge[vertex].size === 0)
         throw new Error(`Vertex ${vertex} do not have edges.`);
     });
-
-    const stack = [];
+  }
+  breathFirstSearch(dataToFind) {
+    this.#checkForLonelyVertex();
+    const edge = this.edges;
+    const queue = [];
     const visited = new Set();
-    edge[this.root].forEach((el) => stack.push(el));
+    edge[this.root].forEach((el) => queue.push(el));
 
     do {
-      if (stack.length === 0) return false;
-      const actualNode = stack.shift();
+      if (queue.length === 0) return false;
+      const actualNode = queue.shift();
       if (visited.has(actualNode)) continue;
       visited.add(actualNode);
       if (actualNode === dataToFind) return true;
-      edge[actualNode].forEach((el) => stack.push(el));
+      edge[actualNode].forEach((el) => queue.push(el));
+    } while (true);
+  }
+  depthFirstSearch(dataToFind) {
+    this.#checkForLonelyVertex();
+    const edge = this.edges;
+    const stack = [];
+    const visited = new Set();
+    stack.push(this.root);
+    visited.add(this.root);
+
+    do {
+      if (stack.length === 0) return false;
+      const lastStackEl = stack[stack.length - 1];
+      if (lastStackEl === dataToFind) return true;
+      let nextNode = null;
+      edge[lastStackEl].forEach((el) => {
+        if (!visited.has(el)) nextNode = el;
+      });
+      if (nextNode != null) {
+        stack.push(nextNode);
+        visited.add(nextNode);
+        console.log(nextNode);
+        continue;
+      }
+      stack.pop();
     } while (true);
   }
 }
