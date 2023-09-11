@@ -4,6 +4,15 @@
 
 This algorithm is used for detecting if a linked list have a cycle.
 
+The algorithm consists of traversing the list with two pointers, a slow pointer and a fast pointer.
+
+- The slow pointer starts at the beginning of the linked list
+- The fast pointer starts at the next of the slow pointer
+
+The algorithm traverse the list with these two pointers, with the difference that the slow pointer goes one next node at a time, while the fast pointer goes next two node at a time.
+
+**It is demonstrated that if both pointers are equal at some position, that the linked list has a cycle.**
+
 ## Time complexity
 
 - hasCycle: O(N)
