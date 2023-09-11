@@ -23,7 +23,7 @@ class Cart {
       // If the book is available
       book.availability -= 1; // Decrease book count
       this.booksList.push(book); // Store book in the cart
-      console.log(`Book "${book.title}" added to the cart.`);
+      console.log(`Book "${book.title}" added to the cart. ${book.advice()}`);
     } else {
       // If the book is not available
       console.log("Book is not available.");

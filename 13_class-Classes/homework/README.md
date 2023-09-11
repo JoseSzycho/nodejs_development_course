@@ -4,9 +4,9 @@ Please see `./implementation.test.js` or [click here](./implementation.test.js) 
 
 This file **shows** a basic **implementation** case example of the **Online Bookstore**, where different jest test will be implemented in different steps of the code to show and demonstrate how classes interact between them selves.
 
-**1.** User, Books and Order objects will be created
+**1.** User, Books (using polymorphism) and Order objects will be created
 
-**2.** Different users will add / remove books and it will be shown how this movements affects the books availability.
+**2.** Different users will add / remove books and it will be shown how this movements affects the books availability and how different book types are handled the same way.
 
 **3.** Orders will be placed and cancelled, and it will be shown hows this actions modify other objects states.
 
@@ -14,8 +14,8 @@ This file **shows** a basic **implementation** case example of the **Online Book
 
 Please execute `./demostration` or [click here to go to code](./demostration.js).
 
-**Be sure your path is `~/nodejs_development_course/13_class-Classes/homework$ ` before executing the code, or data base will throw and error.** 
-Data base data can be modified  from `./data_base/data.json`.
+**Be sure your path is `~/nodejs_development_course/13_class-Classes/homework$ ` before executing the code, or data base will throw and error.**
+Data base data can be modified from `./data_base/data.json`.
 
 The next interactive scenario will be presented in the terminal console.
 
@@ -31,12 +31,13 @@ The next interactive scenario will be presented in the terminal console.
       8. Place order with discount
       9. Cancel order
 ```
+
 - Four users will be loaded
 - For books will be loaded
 
 Interaction between objects can be made by changing users, adding / removing books from each and more.
 
-__Interaction between objects__ can bee seen by looking at books availability changes (__option 2. Shows books on sale__) after any order is cancelled or book is added or removed from user.
+**Interaction between objects** can bee seen by looking at books availability changes (**option 2. Shows books on sale**) after any order is cancelled or book is added or removed from user.
 
 # Code documentation
 
@@ -54,6 +55,7 @@ Class that represents a book
   - [.withISBN(ISBN)](#Book+withISBN) ⇒ <code>this</code>
   - [.withPrice(price)](#Book+withPrice) ⇒ <code>this</code>
   - [.withAvailability(availability)](#Book+withAvailability) ⇒ <code>this</code>
+  - [.advice()](#Book+advice) ⇒ <code>string</code>
 
 <a name="Book+withTitle"></a>
 
@@ -119,6 +121,49 @@ Sets the availability of the book
 | Param        | Type                | Description      |
 | ------------ | ------------------- | ---------------- |
 | availability | <code>number</code> | The availability |
+
+<a name="Book+advice"></a>
+
+### book.advice() ⇒ <code>string</code>
+
+Returns an advice for people buying this book
+
+**Kind**: instance method of [<code>Book</code>](#Book)  
+**Returns**: <code>string</code> - The advice
+
+<a name="ActionBook"></a>
+
+## ActionBook ⇐ <code>Book</code>
+
+Class that represents an action book
+
+**Kind**: global class  
+**Extends**: <code>Book</code>  
+<a name="ActionBook+advice"></a>
+
+### actionBook.advice() ⇒ <code>string</code>
+
+Returns an advice for the book
+
+**Kind**: instance method of [<code>ActionBook</code>](#ActionBook)  
+**Returns**: <code>string</code> - The Advice
+
+<a name="ThrillerBook"></a>
+
+## ThrillerBook ⇐ <code>Book</code>
+
+Class that represents a thriller book
+
+**Kind**: global class  
+**Extends**: <code>Book</code>  
+<a name="ThrillerBook+advice"></a>
+
+### thrillerBook.advice() ⇒ <code>string</code>
+
+Returns an advice for the book
+
+**Kind**: instance method of [<code>ThrillerBook</code>](#ThrillerBook)  
+**Returns**: <code>string</code> - The advice
 
 <a name="Cart"></a>
 
@@ -520,26 +565,30 @@ method for other methods.
 
 <a name="getBooksObjects"></a>
 
-## getBooksObjects(booksData, Book) ⇒ <code>Array</code>
+## getBooksObjects(booksData, Book, ActionBook, ThrillerBook) ⇒ <code>Array</code>
+
 Converts array of object into array of Book instance
 
 **Kind**: global function  
-**Returns**: <code>Array</code> - - The array containing the books instance  
+**Returns**: <code>Array</code> - The array containing the books instance
 
-| Param | Type | Description |
-| --- | --- | --- |
-| booksData | <code>Array</code> | The books data |
-| Book | <code>Book</code> | The Book class |
+| Param        | Type                      | Description             |
+| ------------ | ------------------------- | ----------------------- |
+| booksData    | <code>Array</code>        | The books data          |
+| Book         | <code>Book</code>         | The Book class          |
+| ActionBook   | <code>ActionBook</code>   | The Action Book Class   |
+| ThrillerBook | <code>ThrillerBook</code> | The Thriller Book Class |
 
 <a name="getUsersObjects"></a>
 
 ## getUsersObjects(usersData, User) ⇒ <code>Array</code>
+
 Converts array of object into array of User instance
 
 **Kind**: global function  
-**Returns**: <code>Array</code> - - The array containing the users instance  
+**Returns**: <code>Array</code> - - The array containing the users instance
 
-| Param | Type | Description |
-| --- | --- | --- |
+| Param     | Type               | Description    |
+| --------- | ------------------ | -------------- |
 | usersData | <code>Array</code> | The users data |
-| User | <code>User</code> | The User class |
+| User      | <code>User</code>  | The User class |

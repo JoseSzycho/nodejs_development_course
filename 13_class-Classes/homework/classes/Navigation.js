@@ -280,6 +280,7 @@ class Navigation {
     console.log(`
       Title: ${book.title}
       Author: ${book.author}
+      Category: ${book.category || "No category"}
       ISBN: ${book.ISBN}
       Price: ${book.price}
       Availability: ${book.availability}`);

@@ -3,6 +3,7 @@ class Book {
   constructor() {
     this.title;
     this.author;
+    this.category = null;
     this.ISBN;
     this.price;
     this.availability;
@@ -51,7 +52,7 @@ class Book {
     /* We could add ISBN verification, but there are two
     different ISBN identification and it will complicate
     the tests if we add this. */
-    if(typeof ISBN != "string") throw new Error("ISBN is not valid.")
+    if (typeof ISBN != "string") throw new Error("ISBN is not valid.");
     this.ISBN = ISBN;
     return this;
   }
@@ -82,6 +83,13 @@ class Book {
 
     this.availability = availability;
     return this;
+  }
+  /**
+   * Returns an advice for people buying this book
+   * @returns {string} The advice
+   */
+  advice() {
+    return "No advice for this book.";
   }
 }
 
