@@ -4,34 +4,56 @@ const {
 
 class MinMaxStack {
   #stack;
-  #maxMinStack;
+  #maxStack;
+  #minStack;
   constructor() {
     this.#stack = new Stack();
-    this.#maxMinStack = new Stack();
+    this.#maxStack = new Stack();
+    this.#minStack = new Stack();
   }
 
   push(el) {
     if (typeof el != "number") throw new Error("Input max be a number.");
 
     this.#stack.push(el);
-    if (this.#maxMinStack.peek() === undefined) {
-      this.#maxMinStack.push(el);
+    if (this.#maxStack.peek() === undefined) {
+      this.#maxStack.push(el);
+      this.#minStack.push(el);
       return;
     }
-    if (el >= this.#maxMinStack.peek()) {
-      this.#maxMinStack.push(el);
-      return;
+    this.#pushMinStack(el);
+    this.#pushMaxStack(el);
+  }
+  #pushMaxStack(el) {
+    if (el >= this.#maxStack.peek()) {
+      this.#maxStack.push(el);
+    } else {
+      const previousMaxEl = this.#maxStack.peek();
+      this.#maxStack.push(previousMaxEl);
     }
-    const previousMaxEl = this.#maxMinStack.peek();
-    this.#maxMinStack.push(el);
+  }
+  #pushMinStack(el) {
+    if (el < this.#minStack.peek()) {
+      this.#minStack.push(el);
+    } else {
+      const previousMinEl = this.#minStack.peek();
+      this.#minStack.push(previousMinEl);
+    }
   }
   pop() {
-    this.#maxMinStack.pop();
+    this.#maxStack.pop();
+    this.#minStack.pop();
     return this.#stack.pop();
   }
   peek() {
     return this.#stack.peek();
   }
+  maxValue() {
+    return this.#maxStack.peek();
+  }
+  minValue() {
+    return this.#minStack.peek();
+  }
 }
 
-const stack = new Stack();
+module.exports = { MinMaxStack };
