@@ -143,7 +143,10 @@ class Graph {
    * visited set, that stores the already visited vertex
    *  - Step 3: load the stack with the first vertex to visit and marks it
    * as visited.
-   * - Step 4: algorithm implementation.
+   * - Step 4: algorithm implementation. The algorithm works by having a visited set 
+   * (that stores the visited vertex), and a stack (that stores the next vertex to visit).
+   * It works by pushing one edge vertex at a time to the stack. Every pushed vertex
+   * is marked as visited. When 
    *
    * @param {*} dataToFind
    * @returns {Boolean} <true> if a match, <false> if not a match
