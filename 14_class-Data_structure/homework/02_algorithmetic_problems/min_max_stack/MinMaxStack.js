@@ -30,7 +30,7 @@ class MinMaxStack {
   /**
    * Push a new element into the stack.
    * @param {Number} el The element
-   * @returns
+   * @returns Nothing
    */
   push(el) {
     // If not a number, throws a error
