@@ -24,7 +24,7 @@ We can have to stack, a stack and max_stack
 In first item we push the element to both stacks.
 With other elements, we add element to stack but only add to max_Stack if element is bigger, if not, we add again the same max element. If the element is bigger, we add it to both stacks.
 
-![Alt text](image.png)
+![Alt text](./images/image.png)
 
 ### It should have next operations
 
@@ -73,15 +73,15 @@ class Node {
 
 Is good for example, if is used to add some data, in case for example the linked tree is in order. So we split the linked tree and add the value in the middle.
 
-![Alt text](image-1.png)
+![Alt text](./images/image-1.png)
 
-![Alt text](image-2.png)
+![Alt text](./images/image-2.png)
 
 ### Problems
 
 The last element point another element and makes a infinite loop.
 
-![Alt text](image-3.png)
+![Alt text](./images/image-3.png)
 
 #### Solve the problem
 
@@ -110,7 +110,7 @@ Popular data structure.
 
 **Not oriented example**
 Because edges do not have arrows, you can move from node to node in both directions.
-![Alt text](image-4.png)
+![Alt text](./images/image-4.png)
 
 **Oriented**
 They have arrows to define in which way you move.
@@ -130,7 +130,7 @@ Like a graph but with herarchy.
 - Have a root
 - Have nodes
 
-![Alt text](image-5.png)
+![Alt text](./images/image-5.png)
 
 It starts by the root. In this case: 1.
 
@@ -157,7 +157,7 @@ Binary mean that each node can have a maximum of two children.
 - Left child is lower
 - Right child is higher
 
-![Alt text](image-6.png)
+![Alt text](./images/image-6.png)
 
 Usually used for storing information. If tree is balanced is fast to find elements.
 
