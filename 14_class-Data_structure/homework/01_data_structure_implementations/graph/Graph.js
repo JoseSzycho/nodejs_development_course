@@ -146,7 +146,10 @@ class Graph {
    * - Step 4: algorithm implementation. The algorithm works by having a visited set 
    * (that stores the visited vertex), and a stack (that stores the next vertex to visit).
    * It works by pushing one edge vertex at a time to the stack. Every pushed vertex
-   * is marked as visited. When 
+   * is marked as visited. After that we repeat the process of visiting a edge vertex of the 
+   * last stack element, and pushing this visited node.
+   * The thing is that we only visits the unvisited vertex of last stack element. When we arrive a stack element
+   * that do not have any unvisited node, we remove this element from the stack and repeats the process.
    *
    * @param {*} dataToFind
    * @returns {Boolean} <true> if a match, <false> if not a match
