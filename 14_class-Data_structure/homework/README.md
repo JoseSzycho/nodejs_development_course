@@ -21,6 +21,6 @@ Further code documentation found inside the `.js` file.
 1. Min/Max Stack: `homework/02_algorithmetic_problems/min_max_stack` [or click here.](./02_algorithmetic_problems/min_max_stack)
 2. Binary Search Tree: `homework/02_algorithmetic_problems/binary_search_tree` [or click here.](./02_algorithmetic_problems/binary_search_tree)
 3. Graph Algorithms: `homework/02_algorithmetic_problems/graph_algorithms` [or click here.](./02_algorithmetic_problems/graph_algorithms)
-   - Breadth First Search: `homework/02_algorithmetic_problems/graph_algorithms/breadth_first_search` [or click here.](./02_algorithmetic_problems/graph_algorithms/breadth_first_search)
-   - Dijkstra: `homework/02_algorithmetic_problems/graph_algorithms/dijkstra` [or click here.](./02_algorithmetic_problems/graph_algorithms/dijkstra)
+   - Breadth First Search: [click here.](./02_algorithmetic_problems/graph_algorithms/breadth_first_search)
+   - Dijkstra: [click here.](./02_algorithmetic_problems/graph_algorithms/dijkstra)
 4. Linked List Cycle: `homework/02_algorithmetic_problems/linked_list_cycle` [or click here.](./02_algorithmetic_problems/linked_list_cycle)
