@@ -19,5 +19,6 @@ test("Expect path to be found", () => {
   graph.addEdge("F", "A");
   graph.addEdge("F", "C");
 
-  expect(graph.BFSShortestPath("F", "E")).toBe(["F", "A", "C", "B", "D"]);
+  console.log()
+  expect(graph.BFSShortestPath("F", "E")).toEqual(["F", "A", "C", "B", "D"]);
 });
