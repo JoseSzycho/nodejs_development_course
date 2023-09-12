@@ -2,7 +2,9 @@
 
 ## Part 1: Data Structure Implementations
 
-Each of the next data structure contains `README` with a implementation use example, real case uses in computing, time complexity for each method and detailed code documentation. Further code documentation found inside the `.js` file.
+Each of the next data structure contains `README` with a implementation use example, real case uses in computing, time complexity for each method and detailed code documentation. 
+
+Further code documentation found inside the `.js` file.
 
 1. Stack: `homework/01_data_structure_implementations/stack` [or click here.](/homework/01_data_structure_implementations/stack)
 2. Queue: `homework/01_data_structure_implementations/queue` [or click here.](/homework/01_data_structure_implementations/queue)
@@ -12,7 +14,9 @@ Each of the next data structure contains `README` with a implementation use exam
 
 ## Part 2: Algorithmic Problems
 
-Each of the algorithm contains `README` with a implementation use example, time complexity for each method and detailed code documentation. Further code documentation found inside the `.js` file.
+Each of the algorithm contains `README` with a implementation use example, time complexity for each method and detailed code documentation. 
+
+Further code documentation found inside the `.js` file.
 
 1. Min/Max Stack: `homework/02_algorithmetic_problems/min_max_stack` [or click here.](/)
 2. Binary Search Tree: `homework/02_algorithmetic_problems/binary_search_tree` [or click here.](/homework/02_algorithmetic_problems/binary_search_tree)
