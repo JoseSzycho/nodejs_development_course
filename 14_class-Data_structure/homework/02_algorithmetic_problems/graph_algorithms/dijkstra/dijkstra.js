@@ -38,3 +38,28 @@ class WeightedGraph extends Graph {
  
 }
 
+// Example usage
+const graph = new WeightedGraph();
+
+graph.addVertex("A");
+graph.addVertex("B");
+graph.addVertex("C");
+graph.addVertex("D");
+graph.addVertex("E");
+graph.addVertex("F");
+
+graph.addEdge("A", "B", 1);
+graph.addEdge("B", "E", 1);
+graph.addEdge("B", "D", 1);
+graph.addEdge("D", "E", 1);
+graph.addEdge("C", "D", 1);
+graph.addEdge("C", "A", 1);
+graph.addEdge("F", "A", 1);
+graph.addEdge("F", "C", 1);
+
+const startNode = "F";
+const endNode = "E";
+
+const path = graph.dijkstra(startNode, endNode);
+
+console.log(path)
