@@ -38,7 +38,7 @@ graph.addEdge("F", "A");
 graph.addEdge("F", "C");
 
 // Finding path
-BFSShortestPath("F", "E"); // ["F", "A", "C", "B", "D"]
+graph.BFSShortestPath("F", "E"); // ["F", "A", "C", "B", "D"]
 ```
 
 <a name="BFSGraph"></a>
