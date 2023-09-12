@@ -1,35 +1,44 @@
-# Class 1
-
-Hash functions https://samwho.dev/hashing/
+# Class 15 - REST and Hash
 
 ## Hash
 
+[Fast approach of hash.](https://www.freecodecamp.org/espanol/news/tabla-hash-en-javascript-hash-de-arreglo-asociativo-en-js/)
+
+[All the info is in this article.](https://samwho.dev/hashing/)
+
 It is a collection of keys, where each key have a collection of values.
 
-![Alt text](image.png)
+![Alt text](./images/image-9.png)
 
-hash(user) => return a key, with this key we store the user
-
-![Alt text](image-1.png)
+hash(user) => return a key, with this key we store the user information.
 
 The main idea is that is easy to calculate the hash, but with the hash is difficult to get the original data.
 
-**Very used for storing passwords**
+### Requirement for a good hash algorithm
 
-![Alt text](image-2.png)
+- Result must be in a promised range
+- Low number of collisions
+- Good avalanche effect. A change of 1 bit should change in average the 50% of the hash.
+- Good distribution between pockets
 
-We can also use hash to compare objects.
-
-We can send a big file, both client and user have the hash result, so you can hash the file and most results must be the same.
-
-Some times hash can be hacked, so we can use md5-
+### Very used for storing passwords
 
 **passwordJS** is used for password.
 
-**To make it more unpredictable**
+![Alt text](./images/image-2.png)
+
+### Use hash to compare objects
+
+We can send a big file, both client and user have the hash result, so you can hash the file and both results must be the same.
+
+Some times hash can be hacked, so we can use md5-
+
+### To make it more unpredictable
+
 hash(data, salt) => salta is some parameter make more random hash
 
-**Hash table collisions**
+### Hash table collisions
+
 Some times, hash(user1) can make the same key for hash(user2)
 
 ## Rest architecture
@@ -64,53 +73,55 @@ It is shown in the uro: http://our.api/stundes/123
 
 ### HTTP verbs
 
-The post popular are
+It defines what kind of operation to perform
 
-- GET
-- POST
-- PUT
+**There are 4 basic HTTP verbs** we use in requests to interact with resources in a REST system:
+
+- GET — retrieve a specific resource (by id) or a collection of resources
+- POST — create a new resource
+- PUT — update a specific resource (by id)
+- DELETE — remove a specific resource by id
 - PATCH
-- DELETE
 
-### Rest
+## Rest
 
-Representational State Transfer
+**Representational State Transfer**
 
 - Is not a library
 - Is not a framework
 - Is a set of rules for working for creating a architecture.
 
-**Rules and principles**
+### Rules and principles
 
-1. Client-Server architecture. Means that we separate client from server. - The disadvantage is that if server is down, client canot do nothing.
-   ![Alt text](image-3.png)
+1. **Client-Server architecture** Means that we separate client from server. - The disadvantage is that if server is down, client canot do nothing.
+   ![Alt text](./images/image-3.png)
 
-2. Stateless. For obtaining a certain data, the parameters are always the same.
+2. **Stateless**. For obtaining a certain data, the parameters are always the same.
 
-   - Advantages:
+   - **Advantages:**
 
      - Scalability. Easy for horizontal and vertical scalability
      - Time: faster, we do not have to store half data after sending
      - Easy to maintain. Testers have a easier work
      - Caching
 
-   - Disadvantages:
+   - **Disadvantages:**
 
      - Makes client more complex, as it need to store more data
      - Network issues, as we sent more information, network have to work more.
 
-   - In a fullstate, we can send first the half of the parameters, and after the we can send the last part and the server might understand what we want to obtaing and send the response.
+   - **In a fullstate**, we can send first the half of the parameters, and after the we can send the last part and the server might understand what we want to obtaing and send the response.
 
-3. Caching
-   The problem here, is tahat every time a user wants a certain weather, we must ask to the weather service.
+3. **Caching**
+   The problem here, is that every time a user wants a certain weather, we must ask to the weather service.
 
-![Alt text](image-5.png)
+![Alt text](./images/image-5.png)
 
 We can use caching for storing the data so we do not call always with the same data to weather service.
 
-![Alt text](image-6.png)
+![Alt text](./images/image-6.png)
 
-4. Hypermedia as Engine of application state (HATEOAS)
+4. **Hypermedia as Engine of application state** (HATEOAS)
 
 GET /account/123
 
@@ -139,15 +150,15 @@ GET /account/123
 }
 ```
 
-5. Layered system
+5. **Layered system**
 
 Serer can have many middleware.
 
-![Alt text](image-7.png)
+![Alt text](./images/image-7.png)
 
 Rest architecture says that a layer must only have information about the layer he sends information and about the one he receives information.
 
-6. Code on done
+6. **Code on done**
 
 It means that when our client ask for some part of the code, we can send it.
 
@@ -159,12 +170,13 @@ It means that when our client ask for some part of the code, we can send it.
 4. REST is always JSON. WRONG, we can use XML for example
 
 ### Levels of rest
+
 We do not always follow all of the principles, so there are different levels of rest to know
 wich REST is our app.
 
-- Level 0, we send data with some protocol and format of data
-- Level 1, we uses different passes for manipulation the data but no verbs logic
-- Level 2, We use verbs logic. GET, POST, etc. and we use Code on done
-- Level 4, we use HATEOAS.
+- **Level 0**, we send data with some protocol and format of data
+- **Level **1, we uses different passes for manipulation the data but no verbs logic
+- **Level 2**, We use verbs logic. GET, POST, etc. and we use Code on done
+- **Level 4**, we use HATEOAS.
 
-![Alt text](image-8.png)
+![Alt text](./images/image-8.png)
