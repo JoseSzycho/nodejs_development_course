@@ -37,3 +37,7 @@ test("Expect to get all key-values with collision", () => {
   expect(hashTable.get(collisionKey1)).toEqual(valuesInKey1);
   expect(hashTable.get(collisionKey2)).toEqual(valuesInKey2);
 });
+
+test("Expect to 'undefined' if key is not in the hash table", () => {
+  expect(hashTable.get("a")).toBe(undefined);
+});
