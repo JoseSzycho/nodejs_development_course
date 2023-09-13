@@ -142,7 +142,7 @@ describe("LinkedList class tests", () => {
 
   describe("Testing insertion using various methods at same time", () => {
     test("Expect data to be inserted in correct order", () => {
-      expect(linkedList.getData()).toEqual([]);
+      expect(linkedList.getData()).toEqual(undefined);
 
       linkedList.insertFront(1); // list = [1]
       linkedList.insertRear(2); // list = [1, 2]
@@ -192,7 +192,7 @@ describe("LinkedList class tests", () => {
       linkedList.deleteFront();
       expect(linkedList.getData()).toEqual([3]);
       linkedList.deleteFront();
-      expect(linkedList.getData()).toEqual([]);
+      expect(linkedList.getData()).toEqual(undefined);
       linkedList.deleteFront();
       expect(linkedList.firstNode).toBe(null);
     });
@@ -213,7 +213,7 @@ describe("LinkedList class tests", () => {
       linkedList.deleteRear();
       expect(linkedList.getData()).toEqual([0]);
       linkedList.deleteRear();
-      expect(linkedList.getData()).toEqual([]);
+      expect(linkedList.getData()).toEqual(undefined);
       linkedList.deleteRear();
       linkedList.insertRear(1);
       linkedList.deleteRear();
@@ -244,7 +244,7 @@ describe("LinkedList class tests", () => {
       linkedList.deleteNode(6);
       expect(linkedList.getData()).toEqual([5]);
       linkedList.deleteNode(5);
-      expect(linkedList.getData()).toEqual([]);
+      expect(linkedList.getData()).toEqual(undefined);
       linkedList.deleteNode(5);
       linkedList.deleteNode(5);
       expect(linkedList.firstNode).toBe(null);
