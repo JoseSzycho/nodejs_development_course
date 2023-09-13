@@ -6,6 +6,8 @@
 
 [All the info is in this article.](https://samwho.dev/hashing/)
 
+[Load factor and dinamyc hash table size.](https://www.scaler.com/topics/data-structures/load-factor-and-rehashing/)
+
 It is a collection of keys, where each key have a collection of values.
 
 ![Alt text](./images/image-9.png)
@@ -205,7 +207,7 @@ Your task is to explore the concepts of hash functions and hash tables, and to i
 
 ### Part 4: Documentation and Analysis
 
-1. **Documentation**: Provide clear and concise comments and documentation for your code. Explain how your custom hash function and hash table class work. 
+1. **Documentation**: Provide clear and concise comments and documentation for your code. Explain how your custom hash function and hash table class work.
 2. **Analysis**: Write a brief analysis of the performance of your custom hash function and hash table. Discuss the time complexity of key operations (insertion, retrieval, deletion) and any trade-offs you made in your implementation.
 
 ### Submission
@@ -240,7 +242,6 @@ class CustomHashTable {
 }
 
 // Create an instance of CustomHashTable and demonstrate its usage...
-
 ```
 
 ### Bonus Challenge
