@@ -23,10 +23,14 @@ class HashTable {
       linkedList.insertRear(value);
       this.#table.set(hashedKey, linkedList);
     }
+
+    return true;
   }
 
   get(key) {
     const hashedKey = this.#hash(key);
+
+    if (!this.#table.has(hashedKey)) return undefined;
 
     const value = this.#table.get(hashedKey).getData();
 
@@ -51,15 +55,8 @@ class HashTable {
 
     if (values === undefined) return false;
 
-    values.deleteNode(value);
+    return values.deleteNode(value);
   }
 }
 
-const table = new HashTable();
-
-table.insert("a", 2);
-table.insert("b", 2);
-table.insert("b", 3);
-table.insert("b", 4);
-console.log(table.deleteByKeyValue("b", 3));
-console.log(table.get("b"))
+module.exports = { HashTable };
