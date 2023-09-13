@@ -226,6 +226,11 @@ class LinkedList {
       return true;
     }
 
+    // There is no more to check
+    if (nextNode === null) {
+      return false;
+    }
+
     // Looping through the list till last node.
     do {
       // If there is a data match
