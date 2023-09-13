@@ -38,6 +38,21 @@ class HashTable {
 
     return [...value];
   }
+
+  deleteByKey(key) {
+    const hashedKey = this.#hash(key);
+    return this.#table.delete(hashedKey);
+  }
+
+  deleteByKeyValue(key, value) {
+    const hashedKey = this.#hash(key);
+
+    const values = this.#table.get(hashedKey);
+
+    if (values === undefined) return false;
+
+    values.deleteNode(value);
+  }
 }
 
 const table = new HashTable();
@@ -46,4 +61,5 @@ table.insert("a", 2);
 table.insert("b", 2);
 table.insert("b", 3);
 table.insert("b", 4);
-console.log(table.get("a"))
+console.log(table.deleteByKeyValue("b", 3));
+console.log(table.get("b"))
