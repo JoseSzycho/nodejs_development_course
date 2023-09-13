@@ -132,6 +132,11 @@ class LinkedList {
   getData() {
     let currentNode = this.#firstNode;
     const data = [];
+
+    if (currentNode === null) {
+      return undefined;
+    }
+
     while (currentNode != null) {
       // Looping through the list
       data.push(currentNode.data);
