@@ -123,7 +123,7 @@ class LinkedList {
     return undefined;
   }
   /**
-   * Returns the all the nodes data in a array shape. Used for testing purposes.
+   * Returns the all the nodes data in a array shape. Used for testing purposes. If list is empty, returns undefined.
    *
    * It works by creating and empty array, then it goes through the list pushing each
    * data element into the array.
