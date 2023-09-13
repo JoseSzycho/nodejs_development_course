@@ -28,9 +28,15 @@ class HashTable {
   get(key) {
     const hashedKey = this.#hash(key);
 
-    const value = this.#table.get(hashedKey);
+    const value = this.#table.get(hashedKey).getData();
 
-    
+    if (value === undefined) return undefined;
+
+    if (value.length === 1) {
+      return value[0];
+    }
+
+    return [...value];
   }
 }
 
@@ -40,4 +46,4 @@ table.insert("a", 2);
 table.insert("b", 2);
 table.insert("b", 3);
 table.insert("b", 4);
-table.getTable();
+console.log(table.get("a"))
