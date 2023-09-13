@@ -113,7 +113,6 @@ class LinkedList {
     while (currentNode != null) {
       if (currentNode.data === data) {
         // If there is a match
-        console.log("Node found.");
         return currentNode;
       }
       // Going to next node
