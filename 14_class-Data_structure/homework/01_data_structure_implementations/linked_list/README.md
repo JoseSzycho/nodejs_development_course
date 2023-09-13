@@ -151,7 +151,7 @@ we find a node with a data match, after that we return the node.
 <a name="LinkedList+getData"></a>
 
 ### linkedList.getData() ⇒ <code>Array</code>
-Returns the all the nodes data in a array shape. Used for testing purposes.
+Returns the all the nodes data in a array shape. Used for testing purposes. If list is empty, returns undefined.
 
 It works by creating and empty array, then it goes through the list pushing each
 data element into the array.
