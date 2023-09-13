@@ -100,13 +100,11 @@ describe("LinkedList class tests", () => {
     });
   });
   describe("Testing insertAfter method", () => {
-    test("Expect error if there is no after node", () => {
+    test("Expect false if there is no after node", () => {
       const targetNode = 5;
       const dataToAdd = 100;
 
-      expect(() => linkedList.insertAfter(targetNode, dataToAdd)).toThrow(
-        "Node with this data is not present in the linked list."
-      );
+      expect(linkedList.insertAfter(targetNode, dataToAdd)).toBe(false);
 
       linkedList.insertRear(1);
       linkedList.insertRear(2);
@@ -114,9 +112,7 @@ describe("LinkedList class tests", () => {
       linkedList.insertRear(4);
 
       expect(linkedList.getData()).toEqual([1, 2, 3, 4]);
-      expect(() => linkedList.insertAfter(targetNode, dataToAdd)).toThrow(
-        "Node with this data is not present in the linked list."
-      );
+      expect(linkedList.insertAfter(targetNode, dataToAdd)).toBe(false);
     });
 
     test("Expect data to be inserted after target node", () => {
@@ -164,13 +160,9 @@ describe("LinkedList class tests", () => {
 
     describe("Testing searchNode method", () => {
       test("Expect data to not be found", () => {
-        expect(() => linkedList.searchNode(1)).toThrow(
-          "Node with this data is not present in the linked list."
-        );
+        expect(linkedList.searchNode(1)).toBe(undefined);
         linkedList.insertRear(1);
-        expect(() => linkedList.searchNode(2)).toThrow(
-          "Node with this data is not present in the linked list."
-        );
+        expect(linkedList.searchNode(2)).toBe(undefined);
       });
 
       test("Expect data to be found", () => {
