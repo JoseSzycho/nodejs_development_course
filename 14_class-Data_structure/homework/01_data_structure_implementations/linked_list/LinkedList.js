@@ -18,13 +18,14 @@ class LinkedList {
     return this.#firstNode;
   }
   /**
-   * Inserts a new node with data in front of the linked list.
+   * Inserts a new node with data in front of the linked list. Returns true.
    *
    * It works by creating a new Node with the data.
    * If the linked list is empty, this node is stored as the first node.
    * If the linked list is not empty, we store the actual first node
    * of the list at the new Node, and then set the new node as the first element.
    * @param {*} data The data
+   * @returns {Boolean} true
    */
   insertFront(data) {
     const newNode = new Node(data);
@@ -38,7 +39,7 @@ class LinkedList {
       newNode.nextNode = this.#firstNode;
       this.#firstNode = newNode;
     }
-    console.log("Node added.");
+    return true;
   }
   /**
    * Inserts a new node with data at the of the list.
@@ -51,6 +52,7 @@ class LinkedList {
    * To store the node, we set this last nextNode property to point the
    * new node.
    * @param {*} data The data
+   * @returns {Boolean} true
    */
   insertRear(data) {
     const newNode = new Node(data);
@@ -69,35 +71,39 @@ class LinkedList {
       // Adding new node
       currentNode.nextNode = newNode;
     }
-    console.log("Node added.");
+    return true;
   }
   /**
    * Inserts a node after a target node position. If target node
-   * is not in the list, an error is thrown.
+   * is not in the list, returns false, else returns true.
    *
    * It works by checking if the target node is in the linked list.
    * If the target node is found, the new node is positioned in the middle
    * of the targetNode and the targetNode.nextNode.
    * @param {*} targetNode The target node
    * @param {*} dataToAdd The data to create a node with
+   * @returns {Boolean} true if added, false if not
    */
   insertAfter(targetNode, dataToAdd) {
     const previousNode = this.searchNode(targetNode);
 
-    const newNode = new Node(dataToAdd);
-    newNode.nextNode = previousNode.nextNode;
-    previousNode.nextNode = newNode;
+    if (previousNode != undefined) {
+      const newNode = new Node(dataToAdd);
+      newNode.nextNode = previousNode.nextNode;
+      previousNode.nextNode = newNode;
+      return true;
+    }
 
-    console.log("Node added.");
+    return false;
   }
   /**
    * Search if a node with certain data is stored in the linked list. If found,
-   * the node is returned, if not, an error is thrown.
+   * the node is returned, if not, returns undefined.
    *
    * It works by taking the first node, then we go throw the linked listed till
    * we find a node with a data match, after that we return the node.
    * @param {*} data - The data
-   * @returns {Node} - The node
+   * @returns {Node} - The node, undefined if not found
    */
   searchNode(data) {
     let currentNode = this.#firstNode;
@@ -114,7 +120,7 @@ class LinkedList {
       currentNode = currentNode.nextNode;
     }
     // If no match
-    throw new Error("Node with this data is not present in the linked list.");
+    return undefined;
   }
   /**
    * Returns the all the nodes data in a array shape. Used for testing purposes.
@@ -134,26 +140,26 @@ class LinkedList {
     return [...data];
   }
   /**
-   * Delete the first node in the linked list.
+   * Delete the first node in the linked list. Returns true if deleted, false if not (empty list)
    *
    * It works by checking two scenarios.
    * First one: if the list is empty, we do nothing
    * Second one: if there are one or more elements, we make
    * the first node to point to its nextNode, so the reference is lost.
-   * 
+   * @returns {Boolean} true if deleted, false if not.
+   *
    */
   deleteFront() {
     // Checking for empty list
     if (this.#firstNode === null) {
-      console.log("Linked list is empty.");
-      return;
+      return false;
     }
     // Deleting element
     this.#firstNode = this.#firstNode.nextNode;
-    console.log("Node deleted.");
+    return true;
   }
   /**
-   * Delete the last node of the list.
+   * Delete the last node of the list. Returns true if deleted, false if not
    *
    * It works by checking for three possibles scenarios.
    * The first one: if the list is empty, we do nothing.
@@ -162,19 +168,18 @@ class LinkedList {
    * end of the list storing the actual node and the next node. If
    * the next node is the last one, we make the actualNode.nextNode to be
    * null, so we lost the reference of the last node.
-   * 
+   *
+   * @returns {Boolean} true if deleted, false if not
    */
   deleteRear() {
     // If list is empty
     if (this.#firstNode === null) {
-      console.log("Linked list is empty.");
-      return;
+      return false;
     }
     // If there is only one node
     if (this.#firstNode.nextNode === null) {
       this.#firstNode = null;
-      console.log("Node deleted.");
-      return;
+      return true;
     }
     let actualNode = this.#firstNode;
     let nextNode = this.#firstNode.nextNode;
@@ -187,10 +192,10 @@ class LinkedList {
 
     // Deleting last node.
     actualNode.nextNode = null;
-    console.log("Node deleted.");
+    return true;
   }
   /**
-   * Deletes the first node that stores a given data.
+   * Deletes the first node that stores a given data. Returns true if deleted, false if not.
    *
    * It works by looking for three possible scenarios.
    * The first one: linked list is empty, we do nothing.
@@ -200,12 +205,12 @@ class LinkedList {
    * matches with the data of the node to delete, we remove the next node
    * from the list by making the actualNode to point to the nextNode.nextNode.
    * @param {*} data The data
+   * @returns {Boolean} true if deleted, false if not.
    */
   deleteNode(data) {
     // Empty list
     if (this.#firstNode === null) {
-      console.log("Linked list is empty.");
-      return;
+      return false;
     }
 
     let actualNode = this.#firstNode;
@@ -214,8 +219,7 @@ class LinkedList {
     // Data match in first node
     if (actualNode.data === data) {
       this.deleteFront();
-      console.log("Node deleted.");
-      return;
+      return true;
     }
 
     // Looping through the list till last node.
@@ -224,15 +228,14 @@ class LinkedList {
       if (nextNode.data === data) {
         // We delete the node
         actualNode.nextNode = nextNode.nextNode;
-        console.log("Node deleted.");
-        return;
+        return true;
       }
       // If there is no match, we continue looping.
       actualNode = nextNode;
       nextNode = nextNode.nextNode;
     } while (nextNode != null);
 
-    console.log("Node is not found.");
+    return false;
   }
 }
 
