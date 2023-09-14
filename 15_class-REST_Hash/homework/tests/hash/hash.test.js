@@ -59,3 +59,7 @@ test("Expect numbers to be hashed", () => {
   expect(hash("abcde1")).toBe(691404004693293883n);
   expect(hash("abcde2")).toBe(2404004693293883n);
 });
+
+test("Expect to throw error if argument is not a string.", () => {
+  expect(() => hash(5)).toThrow("Key must be String type.");
+});
