@@ -31,10 +31,16 @@ class HashTable {
     const hashedKey = this.#hash(key);
 
     if (this.#table.has(hashedKey)) {
+      // If hashedKey already stored, use chaining for
+      // avoiding collision. Inserts value at end of queue
       this.#table.get(hashedKey).insertRear(value);
     } else {
+      // If hashKey is not stored
+      // Create new linked list for chaining collision avoidance
       const linkedList = new LinkedList();
+      // Insert value into the linked list
       linkedList.insertRear(value);
+      // Store linked list at the hashedKey value in hash table
       this.#table.set(hashedKey, linkedList);
     }
 
@@ -49,11 +55,16 @@ class HashTable {
   get(key) {
     const hashedKey = this.#hash(key);
 
+    // If hashedKey is not in the hash table
     if (!this.#table.has(hashedKey)) return undefined;
 
+    // Getting value/s using .getData() method from linked list.
     const value = this.#table.get(hashedKey).getData();
 
+    // If the linked list do not have a stored value
     if (value === undefined) return undefined;
+
+    // Returning values
 
     if (value.length === 1) {
       return value[0];
@@ -81,10 +92,13 @@ class HashTable {
   deleteByKeyValue(key, value) {
     const hashedKey = this.#hash(key);
 
+    // Getting values from table
     const values = this.#table.get(hashedKey);
 
+    // If there are no values stores in the hashedKey
     if (values === undefined) return false;
 
+    // Deleting value using the linked list deleteNode() method
     return values.deleteNode(value);
   }
 }
