@@ -12,7 +12,7 @@ For more explanation about the algorithm please see the `Code documentation` sec
 
 ### Testing
 
-Please go to `./tests/hash/hash.test.js` or [click here](./tests/hash/hash.test.js) to see the test implementation and collision checking.
+Please go to `./tests/hash/hash.test.js` or [click here](./tests/hash/hash.test.js) to see the test file and collision checking.
 
 ## Implementing a custom Hash Table
 
@@ -38,6 +38,10 @@ For more explanation about the algorithm please see the `Code documentation` sec
 
   - with no previous collision: O(1)
   - with previous collision: O(N), being `N` the number of previous collisions.
+
+### Testing
+
+Please go to `./tests/HashTable` or [click here](./tests/HashTable) to see the test files.
 
 # Code documentation
 
