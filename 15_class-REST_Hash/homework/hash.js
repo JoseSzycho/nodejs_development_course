@@ -1,14 +1,14 @@
 /** Returns the hashed value of a given key.
  *
  * The algorithm works the next way:
- * - First step: loops throw all of the chars of the key. For each
+ * - __First step:__ loops throw all of the chars of the key. For each
  * iteration, it concatenates the previous hashedKey with the quadruple
  * of the ASCII character code of the char, in order to add some avalanche
  * effect.
- * - Second step: reverses the hashedKey to add more randomness to the hashed
+ * - __Second step:__ reverses the hashedKey to add more randomness to the hashed
  * value, as the latest number are more prone to change faster, we move them
  * to the beginning.
- * - Third step: with return the hashedKey mod a big number, for adding a
+ * - __Third step:__ with return the hashedKey mod a big number, for adding a
  * a upper limit.
  *
  * @param {String} key The key
