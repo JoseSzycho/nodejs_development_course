@@ -93,10 +93,10 @@ Class that creates and manages a hash table.
 
 ### hashTable.insert(key, value) ⇒ <code>Boolean</code>
 
-Inserts a pair of key-value in the hash table.
+Inserts a pair of key-value in the hash table. Duplicated values will not be added.
 
 **Kind**: instance method of [<code>HashTable</code>](#HashTable)  
-**Returns**: <code>Boolean</code> - **true**
+**Returns**: <code>Boolean</code> - **true** if added, **false** if not.
 
 | Param | Type                | Description |
 | ----- | ------------------- | ----------- |

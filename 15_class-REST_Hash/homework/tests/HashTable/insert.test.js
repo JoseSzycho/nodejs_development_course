@@ -30,3 +30,9 @@ test("Expect all key-values with collision to be added", () => {
 
   expect(hashTable.get(key)).toEqual(valuesInKey);
 });
+
+test("Expect key-value to not be added if value is already stored on the key", () => {
+  hashTable.insert("1", 1);
+  expect(hashTable.insert("1", 1)).toBe(false);
+  expect(hashTable.get("1")).toBe(1);
+});

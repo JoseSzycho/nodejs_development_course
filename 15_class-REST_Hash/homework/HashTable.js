@@ -22,27 +22,33 @@ class HashTable {
     return hash(key);
   }
   /**
-   * Inserts a pair of key-value in the hash table.
+   * Inserts a pair of key-value in the hash table. Duplicated values
+   * will not be added.
    * @param {String} key The key
    * @param {*} value The value
-   * @returns {Boolean} __true__
+   * @returns {Boolean} __true__ if added, __false__ if not.
    */
   insert(key, value) {
     const hashedKey = this.#hash(key);
 
     if (this.#table.has(hashedKey)) {
-      // If hashedKey already stored, use chaining for
-      // avoiding collision. Inserts value at end of queue
+      if (this.#table.get(hashedKey).searchNode(value) != undefined) {
+        // The key already have tha value, so no value is added.
+        return false;
+      }
+
+      // If hashedKey already stored, but not the value, use chaining
+      // for avoiding collision. Inserts value at end of queue
       this.#table.get(hashedKey).insertRear(value);
-    } else {
-      // If hashKey is not stored
-      // Create new linked list for chaining collision avoidance
-      const linkedList = new LinkedList();
-      // Insert value into the linked list
-      linkedList.insertRear(value);
-      // Store linked list at the hashedKey value in hash table
-      this.#table.set(hashedKey, linkedList);
+      return true;
     }
+    // If hashKey is not stored
+    // Create new linked list for chaining collision avoidance
+    const linkedList = new LinkedList();
+    // Insert value into the linked list
+    linkedList.insertRear(value);
+    // Store linked list at the hashedKey value in hash table
+    this.#table.set(hashedKey, linkedList);
 
     return true;
   }
