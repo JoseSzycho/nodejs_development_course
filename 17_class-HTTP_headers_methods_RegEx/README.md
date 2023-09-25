@@ -6,6 +6,8 @@ hacer un algoritmo que muestra en una lista desordenada, y sin ordenar que te di
 
 # HTTP methods and headers
 
+[HTTP request methods.](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods)
+
 ## Methods
 
 ### OPTIONS
