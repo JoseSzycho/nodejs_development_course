@@ -1,0 +1,3 @@
+[submodule "mongoapp-curso-docker"]
+	path = mongoapp-curso-docker
+	url = https://github.com/nschurmann/mongoapp-curso-docker
