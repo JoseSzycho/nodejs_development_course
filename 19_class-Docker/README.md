@@ -47,7 +47,7 @@ Allows you to control how many resource can a container have.
 
 ## Docker schema
 
-![Alt text](image.png)
+![Alt text](./images/image.png)
 
 ## How are they isolated
 
@@ -59,35 +59,39 @@ The namespaces guarantee rules for a container to be isolated.
 
 - File system
   - mount: show container where it will work
-- UNIX Time Sharing: isolates; 
-    - host name
-    - domain name
+- UNIX Time Sharing: isolates;
+  - host name
+  - domain name
 - process identifier (pid)
 - network
 - ipc
 - user identifiers
 
 ## Container Image
-Is a file where the application and all the environments are set up. 
-It could be a ubuntu, with some node js, code, postgress,  etc.
+
+Is a file where the application and all the environments are set up.
+It could be a ubuntu, with some node js, code, postgress, etc.
 
 ## Registry Server
+
 Is a repo where there is a lot of container images for managing versioning, names (is like npm).
+
 - Most popular: docker hub
 - Other: RedHat
 
 ## Container
+
 Is a instance of a container that is already isolated.
 
 ## Container Engine
 
 Engine that runs the container, there are many different.
+
 - Most popular: Docker, Podman
 
 ## How it works
 
-
-![Alt text](image-1.png)
+![Alt text](./images/image-1.png)
 
 ## Popular commands
 
@@ -101,14 +105,95 @@ docker ps // running containers
 docker ps -a // stop containers
 docker start <app> // start a container
 docker stop <app> // stop container
-docker rm 
+docker rm
 ```
 
 ## Bridges
+
 To connect different containers using different ports.
 
 Software layer acts as a proxy so the containers can communicate.
-![Alt text](image-2.png)
+![Alt text](./images/image-2.png)
 
 ## What to use
+
 Node dock
+aaasrqwrt
+
+## What is a image
+
+Is a package that contains all the code, configs an environment variables.
+What is important is that containers are portable and very easy to share.
+
+## What is a container
+
+They are layer of images
+
+## Where are they stored
+
+They are stored in container repositories.
+
+- Private
+- Publics
+- Docker Hub
+
+## Steps
+
+1. Download image based in linux: the package that contains all
+
+## Commands
+
+- **docker images**: shows all images
+- **docker pull image**: download latest image version
+- **docker pull image:version**: download a certain image version
+- **docker image rm image**: delete a certain image
+- **docker create image**: create a container from a image
+- **docker start containerID**: starts a container
+- **docker ps**: shows running containers
+- **docker ps -a**: shows created containers
+- **docker stop containerID**: stop a running container
+- **docker rm containerID**: delete a certain container
+- **docker create --name NAME IMAGE**: creates a container with a certain name
+- **docker logs CONTAINER**: show logs of the container
+- **docker logs --follow CONTAINER**: show logs of the container and keeps listening
+- **docker run IMAGE**
+  - download the image
+  - create the container
+  - start the container
+  - but with listening log, if we stop the log, it stops the container
+- **docker run -d IMAGE**
+  - download the image
+  - create the container
+  - start the container
+  - but with no listening log
+- **docker run --name monguito -p27017:27017 -d mongo**: we can run with more commands
+- **docker create -p27017:27017 --name monguito -e MONGO_INITDB_ROOT_USERNAME=nico -e MONGO_INITDB_ROOT_PASSWORD=password mongo**: -e indicates a environment variable
+- **docker build -t IMAGE_NAME:TAG FILE_DIRECTORY**: build a image from a docker file
+
+For mapping from the host (my computer) to the container:
+
+- **docker create -pMY_COMPUTER_PORT:CONTAINER_PORT --name NAME IMAGE** : creates a container with port mapping, with a certain name
+- **docker create -pCONTAINER_PORT --name NAME IMAGE** : creates a container but docker chose my computer incoming port
+- **docker create -p27017:27017 --name monguito --network mired -e MONGO_INITDB_ROOT_USERNAME=nico -e MONGO_INITDB_ROOT_PASSWORD=password mongo** : creates the container inside a certain network
+
+For making network between isolated containers.
+
+The container domain is the container name. For example, instead of localhost could be monguito...
+
+- **docker network ls**: show all docker networs
+- **docker network create NETWORK_NAME**: create a new network
+- **docker network rm NETOWORK_NAME**; delete network
+
+## dockerfile
+
+Contains the instructions that our container needs to be created
+
+## Pasos para crear una app
+
+![Alt text](./images/image.png)
+
+- **docker compose up** hace todos esos pasos de forma automatica a traves del archivo docker-compose.yml
+- **docker compose down** removes eveything created with adobe command
+- **docker compose -f docker-compose-dev.yml up**: creates a container from a custom docker-compose file, for creating a developer environmental, in which we can update the code and the container updates automatically.
+
+quede en la hora 1.15
