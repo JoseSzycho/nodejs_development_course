@@ -26,7 +26,7 @@ r.index; // 8 (where the 100 starts)
 
 /\b\d+ (pig|cow|chicken)s?\b/
 
-![Alt text](image.png)
+![Alt text](./images/image.png)
 
 ## Digits
 
@@ -38,7 +38,7 @@ Les try to write a regex that extract the digits
 Binary, normal, hexadecimal
 /\b([01]+b | \d+ | [\da-f]+h)\b/
 
-![Alt text](image-1.png)
+![Alt text](./images/image-1.png)
 
 ---
 
