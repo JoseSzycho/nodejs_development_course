@@ -1,5 +1,7 @@
 # Class 18 - RegEx
 
+[How regex works](https://javascript.info/regexp-greedy-and-lazy)
+
 For learning regex
 https://regexone.com/
 
