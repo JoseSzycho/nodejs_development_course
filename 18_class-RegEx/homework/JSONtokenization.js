@@ -1,50 +1,42 @@
 const JSONtokenization = (JSONstring) => {
-  /* To catch:
-    x strings 
-    x numbers
-    x objects
-    x array
-    x boolean
-    x null
-    x keys
-    x , : separators
-
-   */
   /*
-    ("[a-zA-Z]+") => capture key names and some string cases
-    (-?\d+\.?\d*) => capture negative, positive numbers with or with not decimals
-    (true|false) => capture boolean
-    (null) => capture null
-    (\[|\]) => capture array aperture and closing
-    (\{|\}) => capture object aperture and closing
-    (".+") => capture string
-    (:|,) => : and , separators
+    matching object keys    (?<key>"[a-zA-Z]+")(?=:) 
+    matching boolean        (?<boolean>true|false)
+    matching null           (?<null>null)
+    matching array limits   (?<array>\[|\])
+    matching obj limits     (\{|\})
+    matching separators     (:|,)
+    matching string lazily  (?<string>".+?")
+    matching numbers        (-?\d+\.?\d*)
   */
   const regEx =
-    /("[a-zA-Z]+")|(-?\d+\.?\d*)|(true|false)|(null)|(\[|\])|(\{|\})|(".+")|(:|,)/g;
+    /(?<object>\{|\})|(?<key>"[a-zA-Z]+")(?=:)|(?<string>".+?")|(?<separator>:|,)|(?<boolean>(true|false))|(?<number>-?\d+\.?\d*)|(?<array>\[|\])|(?<null>null)/g;
   let match;
   const tokens = [];
   while ((match = regEx.exec(JSONstring))) {
+    console.log(match.groups);
     tokens.push(match[0]);
   }
   return tokens;
 };
 
 const JSONString = JSON.stringify({
-  name: "name",
-  age: 25,
-  numbers: [1, 2.5, -3, -4.5, -999.32, 331.211, 99],
-  isMarried: false,
-  numberOfChild: null,
-  pets: ["John", "Snow"],
-  moreInfo: {
-    lastName: "LastName",
-    houseOwner: false,
-    likeStudying: true,
+  nameKEY: "names",
+  ageKEY: 25,
+  numbersKEY: [1, { name: 2.5 }, -3, -4.5, -999.32, 331.211, 99],
+  isMarriedKEY: false,
+  numberOfChildKEY: null,
+  textKEY: "more Text",
+  petsKEY: ["John true", "false{},Snow"],
+  moreInfoKEY: {
+    lastNameKEY: "Last,Name",
+    houseOwnerKEY: false,
+    likeStudyingKEY: true,
+    arrayKey: [1, [2], [[[3]]]],
   },
-  string: "[im a string] a {not a object} or array",
+  stringKEY: "[im a string] a null true false{not a object} or ar,,ray",
 });
-let string = '{"name":"name","age":25,"numbers":[1,2.5,-3,-4.5,-999.32,331.211,99],"isMarried":false,"numberOfChild":null,"pets":["John","Snow"],"moreInfo":{"lastName":"LastName","houseOwner":false,"likeStudying":true},"string":"[im a string] a {not a object} or array"}'
-console.log(string);
-const tokens = JSONtokenization(string);
+
+const tokens = JSONtokenization(JSONString);
+console.log(JSONString);
 console.log(tokens);
