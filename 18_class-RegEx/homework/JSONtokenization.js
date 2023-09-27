@@ -1,42 +1,48 @@
+/**
+ * Perform the tokenization of a structured JSON string.
+ *
+ * All primitive values are parsed into its correct data
+ * type, even if the primitive is part of an object or array.
+ * @param {string} JSONstring The JSON string
+ * @returns {array} The tokenized JSON string
+ */
 const JSONtokenization = (JSONstring) => {
-  /*
+  /* regEx explanation
     matching object keys    (?<key>"[a-zA-Z]+")(?=:) 
     matching boolean        (?<boolean>true|false)
     matching null           (?<null>null)
     matching array limits   (?<array>\[|\])
     matching obj limits     (\{|\})
-    matching separators     (:|,)
+    matching separators     (?<separator>:|,)
     matching string lazily  (?<string>".+?")
-    matching numbers        (-?\d+\.?\d*)
+    matching numbers        (?<number>-?\d+\.?\d*)
   */
+
+  // regex with named groups
   const regEx =
     /(?<object>\{|\})|(?<key>"[a-zA-Z]+")(?=:)|(?<string>".+?")|(?<separator>:|,)|(?<boolean>(true|false))|(?<number>-?\d+\.?\d*)|(?<array>\[|\])|(?<null>null)/g;
+
   let match;
   const tokens = [];
+
+  // Tokenizing the JSON string
   while ((match = regEx.exec(JSONstring))) {
-    console.log(match.groups);
-    tokens.push(match[0]);
+    // Using named groups for parsing the primitive values
+    if (match.groups.number) tokens.push(Number(match[0]));
+    if (match.groups.boolean)
+      tokens.push(match[0] === "true" ? tokens.push(true) : tokens.push(false));
+    if (match.groups.string) tokens.push(String(match[0]));
+    if (match.groups.null) tokens.push(null);
+
+    // Using named groups for completing tokenization
+    if (match.groups.object) tokens.push(match[0]);
+    if (match.groups.array) tokens.push(match[0]);
+    if (match.groups.key) tokens.push(match[0]);
+    if (match.groups.separator) tokens.push(match[0]);
   }
+
+  // tokenized JSON string
   return tokens;
 };
 
-const JSONString = JSON.stringify({
-  nameKEY: "names",
-  ageKEY: 25,
-  numbersKEY: [1, { name: 2.5 }, -3, -4.5, -999.32, 331.211, 99],
-  isMarriedKEY: false,
-  numberOfChildKEY: null,
-  textKEY: "more Text",
-  petsKEY: ["John true", "false{},Snow"],
-  moreInfoKEY: {
-    lastNameKEY: "Last,Name",
-    houseOwnerKEY: false,
-    likeStudyingKEY: true,
-    arrayKey: [1, [2], [[[3]]]],
-  },
-  stringKEY: "[im a string] a null true false{not a object} or ar,,ray",
-});
-
-const tokens = JSONtokenization(JSONString);
-console.log(JSONString);
-console.log(tokens);
+module.exports = { JSONtokenization };
