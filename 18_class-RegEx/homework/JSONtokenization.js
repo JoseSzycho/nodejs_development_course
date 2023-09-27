@@ -30,7 +30,7 @@ const JSONtokenization = (JSONstring) => {
     // Using named groups for parsing the primitive values
     if (match.groups.number) tokens.push(Number(match[0]));
     if (match.groups.boolean)
-      tokens.push(match[0] === "true" ? tokens.push(true) : tokens.push(false));
+      tokens.push(match[0] === "true" ? true : false);
     if (match.groups.string) tokens.push(String(match[0]));
     if (match.groups.null) tokens.push(null);
 
