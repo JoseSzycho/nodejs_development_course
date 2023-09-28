@@ -1,5 +1,7 @@
 # Class 15 - REST and Hash
 
+[Read this for REST example.](https://www.freecodecamp.org/news/rest-api-design-best-practices-build-a-rest-api/)
+
 ## Hash
 
 [Fast approach of hash.](https://www.freecodecamp.org/espanol/news/tabla-hash-en-javascript-hash-de-arreglo-asociativo-en-js/)
