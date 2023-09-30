@@ -3,6 +3,9 @@
  *
  * All primitive values are parsed into its correct data
  * type, even if the primitive is part of an object or array.
+ * 
+ * To differentiate a key of a string, strings are inside "<...>" and 
+ * keys are inside '"<...>"'
  * @param {string} JSONstring The JSON string
  * @returns {array} The tokenized JSON string
  */
@@ -31,7 +34,7 @@ const JSONtokenization = (JSONstring) => {
     if (match.groups.number) tokens.push(Number(match[0]));
     if (match.groups.boolean)
       tokens.push(match[0] === "true" ? true : false);
-    if (match.groups.string) tokens.push(String(match[0]));
+    if (match.groups.string) tokens.push(String(match[0].slice(1,-1)));
     if (match.groups.null) tokens.push(null);
 
     // Using named groups for completing tokenization
