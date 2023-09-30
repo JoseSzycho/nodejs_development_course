@@ -5,13 +5,11 @@ const myJSONParse = (JSONString) => {
   let parsedJSON;
   // Stores next token to parse
   let token;
-  /* Stores the actual state of the parsedJSON,
-    <"array">  indicates we are in a array, so primitive must be pushed
-    <"object"> indicates we are in a object, so primitive is added after a key 
-  */
-  let inArrayOrObject = false;
+
   // Stores actual position of parsedJSON for handling nested objects
-  let stack = [];
+  let objectStack = [];
+  // Store actual state of parsedJSON, if we are inside a object or array
+  let stateStack = [];
   // Tokenized JSON String to process and parse
   const tokenizedString = JSONtokenization(JSONString);
 
@@ -22,24 +20,24 @@ const myJSONParse = (JSONString) => {
   token = tokenizedString.shift();
   if (token === "{") {
     parsedJSON = {};
-    inArrayOrObject = "object";
+    stateStack.push("object");
   }
   if (token === "[") {
     parsedJSON = [];
-    inArrayOrObject = "array";
+    stateStack.push("array");
   }
 
   while (tokenizedString.length > 0) {
-    
     token = tokenizedString.shift();
-
+    console.log(token);
     switch (token) {
       case "{":
         break;
       case "[":
-        if (inArrayOrObject === "array") {
+        if (stateStack[stateStack.length - 1] === "array") {
           parsedJSON.push([]);
-          stack.push(parsedJSON);
+          objectStack.push(parsedJSON);
+          stateStack.push(stateStack[stateStack.length - 1]);
           parsedJSON = parsedJSON[parsedJSON.length - 1];
         }
         break;
@@ -50,12 +48,17 @@ const myJSONParse = (JSONString) => {
       case "}":
         break;
       case "]":
-        if (inArrayOrObject === "array" && stack.length > 0) {
-          parsedJSON = stack.pop();
+        if (
+          stateStack[stateStack.length - 1] === "array" &&
+          objectStack.length > 0
+        ) {
+          parsedJSON = objectStack.pop();
+          stateStack.pop();
         }
         break;
       default:
-        if (inArrayOrObject === "array") parsedJSON.push(token);
+        if (stateStack[stateStack.length - 1] === "array")
+          parsedJSON.push(token);
         break;
     }
   }
