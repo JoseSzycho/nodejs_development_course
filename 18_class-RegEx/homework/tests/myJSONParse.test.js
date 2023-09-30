@@ -98,7 +98,7 @@ describe("Testing combination of nested array and objects", () => {
       isStudent: false,
       address: {
         street: "123 Main St",
-        city: "Anytown",
+        city: "town",
         zipCode: "12345",
       },
       contact: {
@@ -110,7 +110,7 @@ describe("Testing combination of nested array and objects", () => {
         degree: "Bachelor's in Computer Science",
         school: {
           name: "University XYZ",
-          location: "Cityville",
+          location: "City",
         },
       },
       friends: [
