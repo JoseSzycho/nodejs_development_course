@@ -59,7 +59,34 @@ describe("Object tests", () => {
       isNull: null,
     };
 
-    console.log(myJSONParse(JSON.stringify(obj)));
     expect(myJSONParse(JSON.stringify(obj))).toEqual(obj);
+  });
+});
+
+describe("Testing combination of nested array and objects", () => {
+  test("Expect object with nested arrays to be parsed", () => {
+    const obj = {
+      name: "jose",
+      nestObj: {
+        a: 4,
+        b: 3,
+      },
+      numbers: [1, 2, 3, 4, [1, 2, 3, 4, [1]]],
+      end: true,
+      finish: [[[[4]]], [2, [5]]],
+    };
+    expect(myJSONParse(JSON.stringify(obj))).toEqual(obj);
+  });
+  test("Expect array with nested objects to be parsed", () => {
+    const arr = [
+      1,
+      2,
+      {
+        name: "Jose",
+        lastName: { a: 4, b: 4, continue: true, otherObj: { a: 1, b: 3 } },
+      },
+    ];
+
+    expect(myJSONParse(JSON.stringify(arr))).toEqual(arr);
   });
 });
