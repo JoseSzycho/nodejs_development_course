@@ -89,4 +89,47 @@ describe("Testing combination of nested array and objects", () => {
 
     expect(myJSONParse(JSON.stringify(arr))).toEqual(arr);
   });
+
+  test("Expect complex nested object to be parsed", () => {
+    // object taken from internet
+    const obj = {
+      name: "John Doe",
+      age: 30,
+      isStudent: false,
+      address: {
+        street: "123 Main St",
+        city: "Anytown",
+        zipCode: "12345",
+      },
+      contact: {
+        phone: "+1234567890",
+        email: "john.doe@example.com",
+      },
+      hobbies: ["reading", "traveling", "coding", ["helicopters", "planes"]],
+      education: {
+        degree: "Bachelor's in Computer Science",
+        school: {
+          name: "University XYZ",
+          location: "Cityville",
+        },
+      },
+      friends: [
+        {
+          name: "Alice",
+          age: 28,
+          isStudent: true,
+        },
+        {
+          name: "Bob",
+          age: 32,
+          isStudent: false,
+        },
+      ],
+      nullValue: null,
+      undefinedValue: undefined,
+      specialCharacters: "!@#$%^&*()_+",
+    };
+
+    expect(myJSONParse(JSON.stringify(obj))).toEqual(obj);
+  });
 });
