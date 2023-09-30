@@ -10,6 +10,8 @@ const myJSONParse = (JSONString) => {
   let objectStack = [];
   // Store actual state of parsedJSON, if we are inside a object or array
   let stateStack = [];
+  // Actual object key;
+  let key;
   // Tokenized JSON String to process and parse
   const tokenizedString = JSONtokenization(JSONString);
 
@@ -28,10 +30,17 @@ const myJSONParse = (JSONString) => {
   }
 
   while (tokenizedString.length > 0) {
+    console.log(stateStack);
     token = tokenizedString.shift();
-    console.log(token);
+
     switch (token) {
       case "{":
+        if (stateStack[stateStack.length - 1] === "object") {
+          parsedJSON[key] = {};
+          objectStack.push(parsedJSON);
+          stateStack.push(stateStack[stateStack.length - 1]);
+          parsedJSON = parsedJSON[key];
+        }
         break;
       case "[":
         if (stateStack[stateStack.length - 1] === "array") {
@@ -46,6 +55,13 @@ const myJSONParse = (JSONString) => {
       case ":":
         break;
       case "}":
+        if (
+          stateStack[stateStack.length - 1] === "object" &&
+          objectStack.length > 0
+        ) {
+          parsedJSON = objectStack.pop();
+          stateStack.pop();
+        }
         break;
       case "]":
         if (
@@ -57,6 +73,16 @@ const myJSONParse = (JSONString) => {
         }
         break;
       default:
+        // If it a key
+        if (tokenizedString[0] === ":") {
+          // Skips to nex cycle
+          key = token.slice(1, -1);
+          continue;
+        }
+
+        if (stateStack[stateStack.length - 1] === "object")
+          parsedJSON[key] = token;
+
         if (stateStack[stateStack.length - 1] === "array")
           parsedJSON.push(token);
         break;
