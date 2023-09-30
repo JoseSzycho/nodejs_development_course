@@ -30,30 +30,46 @@ const myJSONParse = (JSONString) => {
   }
 
   while (tokenizedString.length > 0) {
-    console.log(stateStack);
     token = tokenizedString.shift();
 
     switch (token) {
+      case ",":
+      case ":":
+        break;
       case "{":
+        if (stateStack[stateStack.length - 1] === "array") {
+          parsedJSON.push({});
+          objectStack.push(parsedJSON);
+          stateStack.push("object");
+          parsedJSON = parsedJSON[parsedJSON.length - 1];
+          break;
+        }
+
         if (stateStack[stateStack.length - 1] === "object") {
           parsedJSON[key] = {};
           objectStack.push(parsedJSON);
-          stateStack.push(stateStack[stateStack.length - 1]);
+          stateStack.push("object");
           parsedJSON = parsedJSON[key];
+          break;
         }
-        break;
+
       case "[":
         if (stateStack[stateStack.length - 1] === "array") {
           parsedJSON.push([]);
           objectStack.push(parsedJSON);
-          stateStack.push(stateStack[stateStack.length - 1]);
+          stateStack.push("array");
           parsedJSON = parsedJSON[parsedJSON.length - 1];
+          break;
         }
-        break;
-      case ",":
-        break;
-      case ":":
-        break;
+
+        if (stateStack[stateStack.length - 1] === "object") {
+          parsedJSON[key] = [];
+          objectStack.push(parsedJSON);
+          stateStack.push("array");
+          parsedJSON = parsedJSON[key];
+          break;
+        }
+
       case "}":
         if (
           stateStack[stateStack.length - 1] === "object" &&
@@ -89,6 +105,7 @@ const myJSONParse = (JSONString) => {
     }
   }
 
+  console.log(parsedJSON);
   return parsedJSON;
 };
 
