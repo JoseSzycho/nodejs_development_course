@@ -211,3 +211,18 @@ test("Expect stringified object to be equal", () => {
     "]",
   ]);
 });
+
+test.skip("Expect indentation error", () => {
+  expect(() => JSONtokenization("{{}")).toThrow('Missing "}"');
+  expect(() => JSONtokenization("{}}")).toThrow('Missing "{"');
+  expect(() => JSONtokenization("[][")).toThrow('Missing "]"');
+  expect(() => JSONtokenization("][]")).toThrow('Missing "["');
+});
+
+test("Expect JSON input error.", () => {
+  expect(() => JSONtokenization(":")).toThrow("Expected JSON input.");
+  expect(() => JSONtokenization(",")).toThrow("Expected JSON input.");
+  expect(() => JSONtokenization("[")).toThrow("Expected JSON input.");
+  expect(() => JSONtokenization("}")).toThrow("Expected JSON input.");
+  expect(() => JSONtokenization(".")).toThrow("Expected JSON input.");
+});
