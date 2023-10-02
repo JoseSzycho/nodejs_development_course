@@ -251,24 +251,4 @@ describe("Testing error scenarios", () => {
       "Invalid key at position 145"
     );
   });
-  test("Expect error.", () => {
-    const JSONString =
-      '{"name":"John Doe","age":30,"isStudent":false,"address":{"street":"123 Main St","city":"town","zipCode":"12345"},"contact":{"phone":"+1234567890","email":"john.doe@example.com"},"hobbies":["reading","traveling","coding",["helicopters","planes"]],"education":{"degree":"Bachelors in Computer Science","school":{"name":"University XYZ","location":"City"}},"friends":[{"name":"Alice","age":28,"isStudent":true},{"name":"Bob","age":32,"isStudent":false}],"nullValue":null,"specialCharacters":"!@#$%^&*()_+"}';
-    expect(() => JSONtokenization(JSONString)).toThrow("Expected JSON input.");
-  });
-  test.skip("Expect error.", () => {
-    const JSONString =
-      '{"name":"John Doe","age":30,"isStudent":false,"address":{"street":"123 Main St","city":"town","zipCode":"12345"},"contact":{"phone":"+1234567890","email":"john.doe@example.com"},"hobbies":["reading","traveling","coding",["helicopters","planes"]],"education":{"degree":"Bachelors in Computer Science","school":{"name":"University XYZ","location":"City"}},"friends":[{"name":"Alice","age":28,"isStudent":true},{"name":"Bob","age":32,"isStudent":false}],"nullValue":null,"specialCharacters":"!@#$%^&*()_+"}';
-    expect(() => JSONtokenization(JSONString)).toThrow("Expected JSON input.");
-  });
-  test.skip("Expect error.", () => {
-    const JSONString =
-      '{"name":"John Doe","age":30,"isStudent":false,"address":{"street":"123 Main St","city":"town","zipCode":"12345"},"contact":{"phone":"+1234567890","email":"john.doe@example.com"},"hobbies":["reading","traveling","coding",["helicopters","planes"]],"education":{"degree":"Bachelors in Computer Science","school":{"name":"University XYZ","location":"City"}},"friends":[{"name":"Alice","age":28,"isStudent":true},{"name":"Bob","age":32,"isStudent":false}],"nullValue":null,"specialCharacters":"!@#$%^&*()_+"}';
-    expect(() => JSONtokenization(JSONString)).toThrow("Expected JSON input.");
-  });
-  test.skip("Expect error.", () => {
-    const JSONString =
-      '{"name":"John Doe","age":30,"isStudent":false,"address":{"street":"123 Main St","city":"town","zipCode":"12345"},"contact":{"phone":"+1234567890","email":"john.doe@example.com"},"hobbies":["reading","traveling","coding",["helicopters","planes"]],"education":{"degree":"Bachelors in Computer Science","school":{"name":"University XYZ","location":"City"}},"friends":[{"name":"Alice","age":28,"isStudent":true},{"name":"Bob","age":32,"isStudent":false}],"nullValue":null,"specialCharacters":"!@#$%^&*()_+"}';
-    expect(() => JSONtokenization(JSONString)).toThrow("Expected JSON input.");
-  });
 });
