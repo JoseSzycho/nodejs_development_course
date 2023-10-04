@@ -49,9 +49,9 @@ This API **streamlines the process** for estimating production time, materials c
 
 ![](https://placehold.co/15x15/FF9933/FF9933.png) **`PUT`**
 
-![](https://placehold.co/15x15/00DC0D/00DC0D.png) **POST**
+![](https://placehold.co/15x15/00DC0D/00DC0D.png) **`POST`**
 
-![](https://placehold.co/15x15/00DC7F/00DC7F.png) **PATCH**
+![](https://placehold.co/15x15/EC01BE/EC01BE.png) **`PATCH`**
 
 ## API endpoints
 
@@ -59,14 +59,30 @@ This API **streamlines the process** for estimating production time, materials c
 
 ![](https://placehold.co/15x15/1589F0/1589F0.png) **`GET`** `/v1/inventory` Returns all inventory
 
+![](https://placehold.co/15x15/00DC0D/00DC0D.png) **`POST`** `/v1/inventory` Creates a new material
+
 ![](https://placehold.co/15x15/1589F0/1589F0.png) **`GET`** `/v1/inventory/{materialID}` Returns a material by material ID
+
+![](https://placehold.co/15x15/EC01BE/EC01BE.png) **`PATCH`** `/v1/inventory/{materialID}` Updates a material by material ID
 
 ### **labor:** labor operations
 
 ![](https://placehold.co/15x15/1589F0/1589F0.png) **`GET`** `/v1/labors` Returns all labors
 
+![](https://placehold.co/15x15/00DC0D/00DC0D.png) **`POST`** `/v1/labors` Creates a new labor
+
 ![](https://placehold.co/15x15/1589F0/1589F0.png) **`GET`** `/v1/labors/{laborID}` Returns a labor by labor ID
 
-### **manufacture**
+![](https://placehold.co/15x15/EC01BE/EC01BE.png) **`PATCH`** `/v1/labors/{laborID}` Updates a labor by labor ID
 
-![](https://placehold.co/15x15/1589F0/1589F0.png) **`GET`** `/v1/manufacture` Returns all manufacture orders
+### **orders** orders operations
+
+![](https://placehold.co/15x15/1589F0/1589F0.png) **`GET`** `/v1/orders` Returns all manufacture orders
+
+![](https://placehold.co/15x15/00DC0D/00DC0D.png) **`POST`** `/v1/order` Creates a new manufacture order
+
+![](https://placehold.co/15x15/1589F0/1589F0.png) **`GET`** `/v1/orders/{orderID}` Returns a manufacture order by manufacture order ID
+
+![](https://placehold.co/15x15/EC01BE/EC01BE.png) **`PATCH`** `/v1/orders/{orderID}` Update a manufacture order by manufacture order ID
+
+![](https://placehold.co/10x10/f03c15/f03c15.png) **`DELETE`** `/v1/orders/{orderID}` Delete an unplaced manufacture order by manufacture order ID
