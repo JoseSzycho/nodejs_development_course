@@ -50,7 +50,7 @@ This API **streamlines the process** for estimating production time, materials c
 ![](./images/get-colour.png) **`GET`** `/v1/inventory` Returns all inventory
 
 <details>
-  <summary><b>Click here for more information.</b></summary>
+  <summary>Click here for more information.</summary>
 
 - **Responses:**
 
@@ -90,7 +90,7 @@ This API **streamlines the process** for estimating production time, materials c
 ![](./images/post-colour.png) **`POST`** `/v1/inventory` Creates a new material
 
 <details>
-  <summary><b>Click here for more information.</b></summary>
+  <summary>Click here for more information.</summary>
 - **Example**
 
 ```json
@@ -113,7 +113,7 @@ This API **streamlines the process** for estimating production time, materials c
 ![](./images/get-colour.png) **`GET`** `/v1/inventory/{materialID}` Returns a material by material ID
 
 <details>
-  <summary><b>Click here for more information.</b></summary>
+  <summary>Click here for more information.</summary>
 **Responses:**
 
 - 200, ok
@@ -141,7 +141,7 @@ This API **streamlines the process** for estimating production time, materials c
 ![](./images/patch-colour.png) **`PATCH`** `/v1/inventory/{materialID}` Updates a material by material ID
 
 <details>
-  <summary><b>Click here for more information.</b></summary>
+  <summary>Click here for more information.</summary>
 - **Example**
 
 ```json
@@ -162,7 +162,7 @@ This API **streamlines the process** for estimating production time, materials c
 ![](./images/get-colour.png) **`GET`** `/v1/labors` Returns all labors
 
 <details>
-  <summary><b>Click here for more information.</b></summary>
+  <summary>Click here for more information.</summary>
 - **Responses:**
 
 - 200, ok
@@ -199,7 +199,7 @@ This API **streamlines the process** for estimating production time, materials c
 ![](./images/post-colour.png) **`POST`** `/v1/labors` Creates a new labor
 
 <details>
-  <summary><b>Click here for more information.</b></summary>
+  <summary>Click here for more information.</summary>
 - **Example**
 
 ```json
@@ -221,7 +221,7 @@ This API **streamlines the process** for estimating production time, materials c
 ![](./images/get-colour.png) **`GET`** `/v1/labors/{laborID}` Returns a labor by labor ID
 
 <details>
-  <summary><b>Click here for more information.</b></summary>
+  <summary>Click here for more information.</summary>
 **Responses:**
 
 - 200, ok
@@ -248,7 +248,7 @@ This API **streamlines the process** for estimating production time, materials c
 ![](./images/patch-colour.png) **`PATCH`** `/v1/labors/{laborID}` Updates a labor by labor ID
 
 <details>
-  <summary><b>Click here for more information.</b></summary>
+  <summary>Click here for more information.</summary>
 - **Example**
 
 ```json
@@ -270,7 +270,7 @@ This API **streamlines the process** for estimating production time, materials c
 ![](./images/get-colour.png) **`GET`** `/v1/orders` Returns all manufacture orders
 
 <details>
-  <summary><b>Click here for more information.</b></summary>
+  <summary>Click here for more information.</summary>
 - **Responses:**
 
 - 200, ok
@@ -327,7 +327,7 @@ This API **streamlines the process** for estimating production time, materials c
 ![](./images/post-colour.png) **`POST`** `/v1/order` Creates a new manufacture order
 
 <details>
-  <summary><b>Click here for more information.</b></summary>
+  <summary>Click here for more information.</summary>
 - **Example**
 
 ```json
@@ -355,7 +355,7 @@ This API **streamlines the process** for estimating production time, materials c
 ![](./images/get-colour.png) **`GET`** `/v1/orders/{orderID}` Returns a manufacture order by manufacture order ID
 
 <details>
-  <summary><b>Click here for more information.</b></summary>
+  <summary>Click here for more information.</summary>
 **Responses:**
 
 - 200, ok
@@ -392,7 +392,7 @@ This API **streamlines the process** for estimating production time, materials c
 ![](./images/patch-colour.png) **`PATCH`** `/v1/orders/{orderID}` Update a manufacture order by manufacture order ID
 
 <details>
-  <summary><b>Click here for more information.</b></summary>
+  <summary>Click here for more information.</summary>
 - **Example**
 
 ```json
@@ -411,7 +411,7 @@ This API **streamlines the process** for estimating production time, materials c
 ![](./images/delete-colour.png) **`DELETE`** `/v1/orders/{orderID}` Delete an unplaced manufacture order by manufacture order ID
 
 <details>
-  <summary><b>Click here for more information.</b></summary>
+  <summary>Click here for more information.</summary>
 - **Responses:**
   - 204, no content
   - 404, not found
