@@ -49,6 +49,9 @@ This API **streamlines the process** for estimating production time, materials c
 
 ![](./images/get-colour.png) **`GET`** `/v1/inventory` Returns all inventory
 
+<details>
+  <summary><b>Click here for more information.</b></summary>
+
 - **Responses:**
 
   - 200, ok
@@ -81,9 +84,11 @@ This API **streamlines the process** for estimating production time, materials c
     ```
 
   - 204, no content
+</details>
 
 ![](./images/post-colour.png) **`POST`** `/v1/inventory` Creates a new material
-
+<details>
+  <summary><b>Click here for more information.</b></summary>
 - **Example**
 
 ```json
@@ -124,6 +129,7 @@ This API **streamlines the process** for estimating production time, materials c
   ```
 
 - 404, not found
+</details>
 
 ![](./images/patch-colour.png) **`PATCH`** `/v1/inventory/{materialID}` Updates a material by material ID
 
