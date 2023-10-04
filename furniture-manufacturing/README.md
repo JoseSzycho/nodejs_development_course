@@ -232,7 +232,7 @@ This API **streamlines the process** for estimating production time, materials c
   - 400, bad request
   - 404, not found
 
-### **orders** orders operations
+### **orders:** orders operations
 
 ![](./images/get-colour.png) **`GET`** `/v1/orders` Returns all manufacture orders
 
