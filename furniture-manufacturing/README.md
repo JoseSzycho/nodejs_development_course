@@ -5,3 +5,8 @@
 </div> ```fasf```
 
 `fasf`
+
+
+<div style="background-color: #3498db; border-radius: 10px; padding: 20px;">
+    <strong style="color: white;">Bold Text</strong>
+</div>
