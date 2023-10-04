@@ -45,7 +45,7 @@ This API **streamlines the process** for estimating production time, materials c
 
 ## API endpoints
 
-### **inventory:** inventory operations
+### **`inventory`** inventory operations
 
 ![](./images/get-colour.png) **`GET`** `/v1/inventory` Returns all inventory
 
@@ -157,7 +157,7 @@ This API **streamlines the process** for estimating production time, materials c
 
 </details>
 
-### **labor:** labor operations
+### **`labor:`** labor operations
 
 ![](./images/get-colour.png) **`GET`** `/v1/labors` Returns all labors
 
@@ -218,7 +218,7 @@ This API **streamlines the process** for estimating production time, materials c
 
 </details>
 
-  ![](./images/get-colour.png) **`GET`** `/v1/labors/{laborID}` Returns a labor by labor ID
+![](./images/get-colour.png) **`GET`** `/v1/labors/{laborID}` Returns a labor by labor ID
 
 <details>
   <summary><b>Click here for more information.</b></summary>
@@ -265,7 +265,7 @@ This API **streamlines the process** for estimating production time, materials c
 
 </details>
 
-### **orders:** orders operations
+### **`orders:`** orders operations
 
 ![](./images/get-colour.png) **`GET`** `/v1/orders` Returns all manufacture orders
 
@@ -352,7 +352,7 @@ This API **streamlines the process** for estimating production time, materials c
 
 </details>
 
-  ![](./images/get-colour.png) **`GET`** `/v1/orders/{orderID}` Returns a manufacture order by manufacture order ID
+![](./images/get-colour.png) **`GET`** `/v1/orders/{orderID}` Returns a manufacture order by manufacture order ID
 
 <details>
   <summary><b>Click here for more information.</b></summary>
@@ -415,5 +415,5 @@ This API **streamlines the process** for estimating production time, materials c
 - **Responses:**
   - 204, no content
   - 404, not found
-  
+
 </details>
