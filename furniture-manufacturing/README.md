@@ -47,7 +47,7 @@ This API **streamlines the process** for estimating production time, materials c
 
 ### **inventory:** inventory operations
 
-![](https://placehold.co/15x15/1589F0/1589F0.png) **`GET`** `/v1/inventory` Returns all inventory
+![](./images/get-colour.png) **`GET`** `/v1/inventory` Returns all inventory
 
 - **Responses:**
 
@@ -80,7 +80,7 @@ This API **streamlines the process** for estimating production time, materials c
 
   - 204, no content
 
-![](https://placehold.co/15x15/00DC0D/00DC0D.png) **`POST`** `/v1/inventory` Creates a new material
+![](./images/post-colour.png) **`POST`** `/v1/inventory` Creates a new material
 
 - **Example**
 
@@ -98,13 +98,47 @@ This API **streamlines the process** for estimating production time, materials c
   - 201, created
   - 400, bad request
 
-![](https://placehold.co/15x15/1589F0/1589F0.png) **`GET`** `/v1/inventory/{materialID}` Returns a material by material ID
+![](./images/get-colour.png) **`GET`** `/v1/inventory/{materialID}` Returns a material by material ID
 
-![](https://placehold.co/15x15/EC01BE/EC01BE.png) **`PATCH`** `/v1/inventory/{materialID}` Updates a material by material ID
+**Responses:**
+
+- 200, ok
+
+  - **Example**
+
+  ```json
+  {
+    "id": "a7cbefaf-b451-4a40-8e77-753bf1f5f639",
+    "createdAt": "4/10/2023, 3:58:56 PM",
+    "description": "wood",
+    "quantity": 24,
+    "pricePerUnit": 15,
+    "unit": "m2",
+    "purchaseTime": 5
+  }
+  ```
+
+- 404, not found
+
+![](./images/patch-colour.png) **`PATCH`** `/v1/inventory/{materialID}` Updates a material by material ID
+
+- **Example**
+
+```json
+{
+  "id": "a7cbefaf-b451-4a40-8e77-753bf1f5f639",
+  "description": "new description"
+}
+```
+
+- **Responses:**
+  - 204, no content
+  - 400, bad request
+  - 404, not found
 
 ### **labor:** labor operations
 
-![](https://placehold.co/15x15/1589F0/1589F0.png) **`GET`** `/v1/labors` Returns all labors
+![](./images/get-colour.png) **`GET`** `/v1/labors` Returns all labors
 
 - **Responses:**
 
@@ -135,7 +169,7 @@ This API **streamlines the process** for estimating production time, materials c
 
   - 204, no content
 
-![](https://placehold.co/15x15/00DC0D/00DC0D.png) **`POST`** `/v1/labors` Creates a new labor
+![](./images/post-colour.png) **`POST`** `/v1/labors` Creates a new labor
 
 - **Example**
 
@@ -152,13 +186,47 @@ This API **streamlines the process** for estimating production time, materials c
   - 201, created
   - 400, bad request
 
-![](https://placehold.co/15x15/1589F0/1589F0.png) **`GET`** `/v1/labors/{laborID}` Returns a labor by labor ID
+![](./images/get-colour.png) **`GET`** `/v1/labors/{laborID}` Returns a labor by labor ID
 
-![](https://placehold.co/15x15/EC01BE/EC01BE.png) **`PATCH`** `/v1/labors/{laborID}` Updates a labor by labor ID
+**Responses:**
+
+- 200, ok
+
+  - **Example**
+
+  ```json
+  {
+    "id": "7b45ccd1-e1c3-4e75-99ed-aa41bcc98dd1",
+    "createdAt": "4/10/2023, 1:55:56 PM",
+    "description": "screw a leg",
+    "pricePerUnit": 1, // USD
+    "timePerUnit": 2, // seconds
+    "unit": "unit"
+  }
+  ```
+
+- 404, not found
+
+![](./images/patch-colour.png) **`PATCH`** `/v1/labors/{laborID}` Updates a labor by labor ID
+
+- **Example**
+
+```json
+{
+  "id": "7b45ccd1-e1c3-4e75-99ed-aa41bcc98dd1",
+  "description": "new description",
+  "timePerUnit": 1 // seconds
+}
+```
+
+- **Responses:**
+  - 204, no content
+  - 400, bad request
+  - 404, not found
 
 ### **orders** orders operations
 
-![](https://placehold.co/15x15/1589F0/1589F0.png) **`GET`** `/v1/orders` Returns all manufacture orders
+![](./images/get-colour.png) **`GET`** `/v1/orders` Returns all manufacture orders
 
 - **Responses:**
 
@@ -173,6 +241,7 @@ This API **streamlines the process** for estimating production time, materials c
         "createdAt": "4/10/2023, 1:55:56 PM",
         "description": "antique table",
         "status": "pending",
+        "manufactured": 0,
         "price": 450,
         "totalProductionTime": 143,
         "unitsToManufacture": 25,
@@ -190,6 +259,7 @@ This API **streamlines the process** for estimating production time, materials c
         "createdAt": "2/10/2023, 1:23:54 PM",
         "description": "antique chair",
         "status": "in production",
+        "manufactured": 40,
         "price": 3000,
         "totalProductionTime": 15,
         "unitsToManufacture": 100,
@@ -207,7 +277,7 @@ This API **streamlines the process** for estimating production time, materials c
 
   - 204, no content
 
-![](https://placehold.co/15x15/00DC0D/00DC0D.png) **`POST`** `/v1/order` Creates a new manufacture order
+![](./images/post-colour.png) **`POST`** `/v1/order` Creates a new manufacture order
 
 - **Example**
 
@@ -230,18 +300,55 @@ This API **streamlines the process** for estimating production time, materials c
   - 201, created
   - 400, bad request
 
-![](https://placehold.co/15x15/1589F0/1589F0.png) **`GET`** `/v1/orders/{orderID}` Returns a manufacture order by manufacture order ID
+![](./images/get-colour.png) **`GET`** `/v1/orders/{orderID}` Returns a manufacture order by manufacture order ID
 
-![](https://placehold.co/15x15/EC01BE/EC01BE.png) **`PATCH`** `/v1/orders/{orderID}` Update a manufacture order by manufacture order ID
+**Responses:**
 
-![](https://placehold.co/10x10/f03c15/f03c15.png) **`DELETE`** `/v1/orders/{orderID}` Delete an unplaced manufacture order by manufacture order ID
+- 200, ok
 
-![](https://placehold.co/10x10/f03c15/f03c15.png) **`DELETE`**
+  - **Example**
 
-![](https://placehold.co/15x15/1589F0/1589F0.png) **`GET`**
+  ```json
+  {
+    "id": "54c42fec-f0a5-4e39-b9f6-e42e2a3c0222",
+    "createdAt": "4/10/2023, 1:55:56 PM",
+    "description": "antique table",
+    "status": "pending",
+    "manufactured": 0,
+    "price": 450,
+    "totalProductionTime": 143,
+    "unitsToManufacture": 25,
+    "materials": [
+      { "id": "4818bf86-d823-447c-8b44-314b9f3c6006", "quantity": 4 },
+      { "id": "1e763ff7-c953-4648-8662-535e2666ddb9", "quantity": 8 }
+    ],
+    "labors": [
+      { "id": "58aed305-ca17-4885-8be7-0d66160112b9", "quantity": 1 },
+      { "id": "557fa85c-08bf-48dd-a7d5-7d3df895881c", "quantity": 3 }
+    ]
+  }
+  ```
 
-![](https://placehold.co/15x15/FF9933/FF9933.png) **`PUT`**
+- 404, not found
 
-![](https://placehold.co/15x15/00DC0D/00DC0D.png) **`POST`**
+![](./images/patch-colour.png) **`PATCH`** `/v1/orders/{orderID}` Update a manufacture order by manufacture order ID
 
-![](https://placehold.co/15x15/EC01BE/EC01BE.png) **`PATCH`**
+- **Example**
+
+```json
+{
+  "id": "54c42fec-f0a5-4e39-b9f6-e42e2a3c0222",
+  "manufactured": 5
+}
+```
+
+- **Responses:**
+  - 204, no content
+  - 400, bad request
+  - 404, not found
+
+![](./images/delete-colour.png) **`DELETE`** `/v1/orders/{orderID}` Delete an unplaced manufacture order by manufacture order ID
+
+- **Responses:**
+  - 204, no content
+  - 404, not found
