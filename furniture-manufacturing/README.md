@@ -126,7 +126,6 @@ This API **streamlines the process** for estimating production time, materials c
 
 ```json
 {
-  "id": "a7cbefaf-b451-4a40-8e77-753bf1f5f639",
   "description": "new description"
 }
 ```
@@ -213,7 +212,6 @@ This API **streamlines the process** for estimating production time, materials c
 
 ```json
 {
-  "id": "7b45ccd1-e1c3-4e75-99ed-aa41bcc98dd1",
   "description": "new description",
   "timePerUnit": 1 // seconds
 }
@@ -337,7 +335,6 @@ This API **streamlines the process** for estimating production time, materials c
 
 ```json
 {
-  "id": "54c42fec-f0a5-4e39-b9f6-e42e2a3c0222",
   "manufactured": 5
 }
 ```
