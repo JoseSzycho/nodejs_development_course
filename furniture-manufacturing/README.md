@@ -52,3 +52,21 @@ This API **streamlines the process** for estimating production time, materials c
 ![](https://placehold.co/15x15/00DC0D/00DC0D.png) **POST**
 
 ![](https://placehold.co/15x15/00DC7F/00DC7F.png) **PATCH**
+
+## API endpoints
+
+### **inventory:** inventory operations
+
+![](https://placehold.co/15x15/1589F0/1589F0.png) **`GET`** `/v1/inventory` Returns all inventory
+
+![](https://placehold.co/15x15/1589F0/1589F0.png) **`GET`** `/v1/inventory/{materialID}` Returns a material by material ID
+
+### **labor:** labor operations
+
+![](https://placehold.co/15x15/1589F0/1589F0.png) **`GET`** `/v1/labors` Returns all labors
+
+![](https://placehold.co/15x15/1589F0/1589F0.png) **`GET`** `/v1/labors/{laborID}` Returns a labor by labor ID
+
+### **manufacture**
+
+![](https://placehold.co/15x15/1589F0/1589F0.png) **`GET`** `/v1/manufacture` Returns all manufacture orders
