@@ -56,6 +56,8 @@ This API **streamlines the process** for estimating production time, materials c
     - **Example**
 
     ```json
+    HTTP 200 OK
+      Content-Type: application/json
     [
       {
         "id": "a7cbefaf-b451-4a40-8e77-753bf1f5f639",
@@ -97,6 +99,7 @@ This API **streamlines the process** for estimating production time, materials c
 - **Responses:**
   - 201, created
   - 400, bad request
+  - 409, conflict
 
 ![](./images/get-colour.png) **`GET`** `/v1/inventory/{materialID}` Returns a material by material ID
 
@@ -107,6 +110,8 @@ This API **streamlines the process** for estimating production time, materials c
   - **Example**
 
   ```json
+  HTTP 200 OK
+    Content-Type: application/json
   {
     "id": "a7cbefaf-b451-4a40-8e77-753bf1f5f639",
     "createdAt": "4/10/2023, 3:58:56 PM",
@@ -146,6 +151,8 @@ This API **streamlines the process** for estimating production time, materials c
     - **Example**
 
     ```json
+    HTTP 200 OK
+      Content-Type: application/json
     [
       {
         "id": "7b45ccd1-e1c3-4e75-99ed-aa41bcc98dd1",
@@ -184,6 +191,7 @@ This API **streamlines the process** for estimating production time, materials c
 - **Responses:**
   - 201, created
   - 400, bad request
+  - 409, conflict
 
 ![](./images/get-colour.png) **`GET`** `/v1/labors/{laborID}` Returns a labor by labor ID
 
@@ -194,6 +202,8 @@ This API **streamlines the process** for estimating production time, materials c
   - **Example**
 
   ```json
+  HTTP 200 OK
+    Content-Type: application/json
   {
     "id": "7b45ccd1-e1c3-4e75-99ed-aa41bcc98dd1",
     "createdAt": "4/10/2023, 1:55:56 PM",
@@ -233,6 +243,8 @@ This API **streamlines the process** for estimating production time, materials c
     - **Example**
 
     ```json
+    HTTP 200 OK
+      Content-Type: application/json
     [
       {
         "id": "54c42fec-f0a5-4e39-b9f6-e42e2a3c0222",
@@ -297,6 +309,7 @@ This API **streamlines the process** for estimating production time, materials c
 - **Responses:**
   - 201, created
   - 400, bad request
+  - 409, conflict
 
 ![](./images/get-colour.png) **`GET`** `/v1/orders/{orderID}` Returns a manufacture order by manufacture order ID
 
@@ -307,6 +320,8 @@ This API **streamlines the process** for estimating production time, materials c
   - **Example**
 
   ```json
+  HTTP 200 OK
+    Content-Type: application/json
   {
     "id": "54c42fec-f0a5-4e39-b9f6-e42e2a3c0222",
     "createdAt": "4/10/2023, 1:55:56 PM",
