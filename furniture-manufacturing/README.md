@@ -36,7 +36,6 @@ This API **streamlines the process** for estimating production time, materials c
   - material availability
   - pre existing labor structures
   - total production time
-  - total manufacturing cost
 
 - **Labor structure management:** manages labor structured cost based on:
 
@@ -54,7 +53,7 @@ This API **streamlines the process** for estimating production time, materials c
 
 - **Responses:**
 
-  - 200, ok
+  - 200, successful operation
 
     - **Example**
 
@@ -105,7 +104,7 @@ This API **streamlines the process** for estimating production time, materials c
 ```
 
 - **Responses:**
-  - 201, created
+  - 201, created resource
   - 400, bad request
   - 409, conflict
 
@@ -118,7 +117,7 @@ This API **streamlines the process** for estimating production time, materials c
 
 **Responses:**
 
-- 200, ok
+- 200, successful operation
 
   - **Example**
 
@@ -149,12 +148,16 @@ This API **streamlines the process** for estimating production time, materials c
 
 ```json
 {
-  "description": "new description"
+  "description": "wood",
+  "quantity": 24,
+  "pricePerUnit": 15,
+  "unit": "m2",
+  "purchaseTime": 5
 }
 ```
 
 - **Responses:**
-  - 204, no content
+  - 204, updated resource
   - 400, bad request
   - 404, not found
 
@@ -169,7 +172,7 @@ This API **streamlines the process** for estimating production time, materials c
 
 - **Responses:**
 
-- 200, ok
+- 200, successful operation
 
   - **Example**
 
@@ -217,7 +220,7 @@ This API **streamlines the process** for estimating production time, materials c
 ```
 
 - **Responses:**
-  - 201, created
+  - 201, created resource
   - 400, bad request
   - 409, conflict
 
@@ -230,7 +233,7 @@ This API **streamlines the process** for estimating production time, materials c
 
 **Responses:**
 
-- 200, ok
+- 200, successful operation
 
   - **Example**
 
@@ -260,13 +263,15 @@ This API **streamlines the process** for estimating production time, materials c
 
 ```json
 {
-  "description": "new description",
-  "timePerUnit": 1 // seconds
+  "description": "screw a leg",
+  "pricePerUnit": 1, // USD
+  "timePerUnit": 2, // seconds
+  "unit": "unit"
 }
 ```
 
 - **Responses:**
-  - 204, no content
+  - 204, updated resource
   - 400, bad request
   - 404, not found
 
@@ -281,7 +286,7 @@ This API **streamlines the process** for estimating production time, materials c
 
 - **Responses:**
 
-- 200, ok
+- 200, successful operation
 
   - **Example**
 
@@ -355,7 +360,7 @@ This API **streamlines the process** for estimating production time, materials c
 ```
 
 - **Responses:**
-  - 201, created
+  - 201, created resource
   - 400, bad request
   - 409, conflict
 
@@ -368,7 +373,7 @@ This API **streamlines the process** for estimating production time, materials c
 
 **Responses:**
 
-- 200, ok
+- 200, successful operation
 
   - **Example**
 
@@ -408,12 +413,25 @@ This API **streamlines the process** for estimating production time, materials c
 
 ```json
 {
-  "manufactured": 5
-}
+    "description": "antique table",
+    "status": "pending",
+    "manufactured": 0,
+    "price": 450,
+    "totalProductionTime": 143,
+    "unitsToManufacture": 25,
+    "materials": [
+      { "id": "4818bf86-d823-447c-8b44-314b9f3c6006", "quantity": 4 },
+      { "id": "1e763ff7-c953-4648-8662-535e2666ddb9", "quantity": 8 }
+    ],
+    "labors": [
+      { "id": "58aed305-ca17-4885-8be7-0d66160112b9", "quantity": 1 },
+      { "id": "557fa85c-08bf-48dd-a7d5-7d3df895881c", "quantity": 3 }
+    ]
+  }
 ```
 
 - **Responses:**
-  - 204, no content
+  - 204, updated resource
   - 400, bad request
   - 404, not found
 
@@ -425,7 +443,7 @@ This API **streamlines the process** for estimating production time, materials c
   <summary>Click here</summary>
 
 - **Responses:**
-  - 204, no content
+  - 204, deleted resource
   - 404, not found
 
 </details>
