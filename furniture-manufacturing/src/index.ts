@@ -14,3 +14,5 @@ app.listen(PORT, () => {
   // eslint-disable-next-line no-console
   console.log(`API listening port ${PORT}...`);
 });
+
+export default app;
