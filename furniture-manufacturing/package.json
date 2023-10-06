@@ -1,0 +1,28 @@
+{
+  "name": "furniture-manufacturing",
+  "version": "0.0.0",
+  "description": "Furniture Manufacturing API System that provides an interface for integrating a bespoke ordering and manufacturing system into your business infrastructure",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jszychowskilaba/nodejs_development_course.git#main"
+  },
+  "keywords": [
+    "beskope",
+    "manufacturing",
+    "system",
+    "inventory"
+  ],
+  "author": "Jose Szychowski",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jszychowskilaba/nodejs_development_course/issues"
+  },
+  "homepage": "https://github.com/jszychowskilaba/nodejs_development_course/tree/main#readme",
+  "devDependencies": {
+    "typescript": "^5.2.2"
+  }
+}
