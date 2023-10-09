@@ -3,7 +3,7 @@ import express, { Application } from 'express';
 import bodyParser from 'body-parser';
 import v1AuthRouter from './v1/routes/authRoutes';
 import 'dotenv/config';
-
+import { createClient } from 'redis';
 const app: Application = express();
 const PORT: number = Number(process.env.PORT) || 3000;
 

@@ -1,6 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import request from 'supertest';
-import app from '../src/index';
+import app from '../index';
 
 const req = request(app);
 
