@@ -226,22 +226,22 @@ class BurgerBuilder {
 
   addCheese() {
     this.cheese = true;
-    return this.cheese;
+    return this;
   }
 
   addLettuce() {
     this.lettuce = true;
-    return this.lettuce;
+    return this;
   }
 
   addBacon() {
     this.bacon = true;
-    return this.bacon;
+    return this;
   }
 
   addTomato() {
     this.tomato = true;
-    return this.tomato;
+    return this;
   }
 
   build(): Burger {
@@ -255,5 +255,432 @@ burgerBuilder.addBacon().addChese();
 
 let burger = burgerBuilder.build();
 
-let burger2 = (new BurgerBuilder(20)).addLettuce().addCheese().build();
+let burger2 = new BurgerBuilder(20).addLettuce().addCheese().build();
+```
+
+## Structural Patterns
+
+### Adaptor
+
+https://refactoring.guru/es/design-patterns/adapter
+
+Help us to cover or interact one object with another.
+
+```ts
+interface Lion {
+  roar: () void;
+
+}
+
+class AfricanLion implements Lion {
+  roar() {};
+}
+
+class AsianLion implements Lion {
+  roar: () {};
+}
+
+class Hunter {
+  hunt(lion: Lion){
+
+  }
+}
+
+class WildDog{
+  bark(){
+
+  }
+}
+
+// We cannot hunt a dog because it does not have WildDog interface
+
+class WildDogAdapter implements Lion {
+  public dog;
+
+  constructor(dog: WildDog){
+    this.dog = dog;
+  }
+
+  roar: () {
+    this.dog.bark();
+  }
+}
+
+// Using it
+
+const wildDog = new WildDog();
+const adaptedWildDog = new WildDogAdapter(wildDog)
+const hunter = new Hunter();
+
+hunter.hunt(adaptedWildDog);
+```
+
+### Bridge
+
+https://refactoring.guru/es/design-patterns/bridge
+
+```ts
+interface WebPage {
+  get content:(): void;
+}
+
+interface Theme {
+  getColor: (): void;
+}
+
+class Career implements WebPage {
+  private theme: Theme;
+
+  constructor(theme: Theme) {
+    this.theme = theme;
+  }
+
+  getContent(){
+    console.log('Carrer in' + this.theme.getColor());
+  }
+}
+
+class About implements WebPage {
+  private theme: Theme;
+
+  constructor(theme: Theme) {
+    this.theme = theme;
+  }
+
+  getContent(){
+    console.log('About in' + this.theme.getColor());
+  }
+}
+
+class Project implements WebPage {
+  private theme: Theme;
+
+  constructor(theme: Theme) {
+    this.theme = theme;
+  }
+
+  getContent(){
+    console.log('Project in' + this.theme.getColor());
+  }
+}
+
+class DarkTheme implements Theme {
+  getColor(){
+    return 'dark';
+  }
+}
+
+class AquaTheme implements Theme {
+  getColor(){
+    return 'aqua';
+  }
+}
+
+class LightTheme implements Theme {
+  getColor(){
+    return 'light';
+  }
+}
+
+// Usign it
+
+const page = new About(new DarkTheme());
+```
+
+### Composite
+
+https://refactoring.guru/es/design-patterns/composite
+Put various object in one common function
+
+```ts
+interface Employee {
+  getName: () string;
+  getSalary:(): number;
+  setSalary:(number): void;
+  getRoles: () => string[];
+}
+
+class Developer implements Employee {
+  private name: string;
+  private salary: number;
+
+  constructor(name: string, salary: number){
+    this.name = name;
+    this.salary = salary;
+  }
+
+  getName(){
+    return this.name;
+  }
+
+  getSalary() {
+    return this.salary;
+  }
+
+  setSalary(salary: number) {
+    this.salary = salary;
+  }
+
+  getRoles() {
+    return [
+      'node dev',
+      'debugging ing'
+    ]
+  }
+}
+
+
+class Designer implements Employee {
+  private name: string;
+  private salary: number;
+
+  constructor(name: string, salary: number){
+    this.name = name;
+    this.salary = salary;
+  }
+
+  getName(){
+    return this.name;
+  }
+
+  getSalary() {
+    return this.salary;
+  }
+
+  setSalary(salary: number) {
+    this.salary = salary;
+  }
+
+  getRoles() {
+    return [
+      'design projects',
+      'play with fonts'
+    ]
+  }
+}
+
+// This is the composite class
+class Organization {
+  private employees: Employee();
+
+  addEmployee(employee: Employee){
+    this.employees.push(employee);
+  }
+
+  getNetSalaries(): number {
+    return this.employees.reduce((nemo, item) => nemo + item.getSalary),0)
+  }
+}
+```
+
+### Decorator
+
+https://refactoring.guru/es/design-patterns/decorator
+
+Helps to change dynamically the component behavior.
+
+```ts
+interface Coffee{
+  getCost() => number;
+  getDescription: () => string;
+}
+
+class SimpleCoffee implements Coffee{
+  getCost(){
+    return 2;
+  }
+
+  getDescription(){
+    return 'Simple coffee';
+  }
+}
+
+class MilkCoffee implements Coffee{
+  private coffee:
+
+  constructor(coffee: Coffee){
+    this.coffee = coffee;
+  }
+
+  getCost(){
+    return this.coffee.getCost() +1;
+  }
+
+  getDescription() {
+    return this.coffee.getDescription() + "+ milk";
+  }
+}
+
+class VainillaCoffee implements Coffee{
+  private coffee:
+
+  constructor(coffee: Coffee){
+    this.coffee = coffee;
+  }
+
+  getCost(){
+    return this.coffee.getCost() +3;
+  }
+
+  getDescription() {
+    return this.coffee.getDescription() + "+ vainilla";
+  }
+}
+
+class WhiskeyCoffee implements Coffee{
+  private coffee:
+
+  constructor(coffee: Coffee){
+    this.coffee = coffee;
+  }
+
+  getCost(){
+    return this.coffee.getCost() + 4;
+  }
+
+  getDescription() {
+    return this.coffee.getDescription() + "+ whiskey";
+  }
+}
+
+// Usign it
+
+let coffee = new SimpleCofee();
+// In runtime we add some functionality
+// and the prices continue increasing and
+// the description continue adding
+coffee = new MilkCoffee(coffee);
+coffee = new WhiskeyCoffee(coffee);
+```
+
+### Facade
+
+https://refactoring.guru/es/design-patterns/facade
+
+Creates a simpler interface for a complex system.
+
+```ts
+// Very complex class
+class Computer {
+  makeSound() {
+    console.log('Beep');
+  }
+
+  showLoadingScree() {
+    console.log('Loading...');
+  }
+
+  bam() {
+    console.log('Ready to be used');
+  }
+
+  closeEverything() {
+    console.log('some complex closing operation');
+  }
+
+  smooth() {
+    console.log('zzzz');
+  }
+
+  getElectricShock() {
+    console.log('Ouch');
+  }
+}
+
+class ComputerFacade {
+  private computer: Computer;
+
+  constructor(computer: Computer) {
+    this.computer = computer;
+  }
+
+  turnOn() {
+    this.computer.getElectricShock();
+    this.computer.makeSound();
+    this.computer.showLoadingScreen();
+    this.computer.bam();
+  }
+
+  turnOff() {
+    this.computer.closeEverything();
+    this.computer.smooth();
+  }
+}
+```
+
+### Flyweight
+
+Minimize memory and resources by sharing common parts of an object instead of of each object containing all the parts.
+
+```ts
+class KarakTea{
+
+}
+
+// Here, we do not store a KarakTea if it is already stored.
+class TeaMaker {
+  private availableTea: object;
+
+  make(preferences: string){
+    if(this.availableTea[preferences]){
+      return this.availableTea[preferences];
+    }
+    this.availableTea[preferences] = new KarakTea();
+    return this.availableTea[preferences];
+  }
+}
+
+class TeaShop {
+  private orders : string[];
+  private teaMaker;
+
+  constructor(teaMaker: TeaMaker) {
+    this.teaMaker = teaMaker;
+  }
+
+  takeOrder(string){
+    this.orders.push(order);
+  }
+
+  serve(){
+    this.orders.forEach(order => this.teaMaker.make(order));
+  }
+}
+```
+
+### Proxy
+
+```ts
+interface Door{
+  open: () => {};
+  close: () => {};
+}
+
+// The proxy
+class Security{
+  private door: Door;
+
+  constructor(door: Door){
+    this.door = door;
+  }
+
+  authenticate(password: string){
+    return password === "password";
+  }
+
+  open(password: string){
+    if(this.authenticate(password)) {
+      return this.door.open();
+    }
+  }
+
+  close(){
+    return this.door.close();
+  }
+}
+
+class HomeDoor implements Door {
+  open(){};
+  close(){};
+}
 ```
