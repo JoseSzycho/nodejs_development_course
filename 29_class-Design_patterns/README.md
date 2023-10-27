@@ -549,8 +549,8 @@ let coffee = new SimpleCofee();
 // In runtime we add some functionality
 // and the prices continue increasing and
 // the description continue adding
-coffee = new MilkCoffee(coffee);
-coffee = new WhiskeyCoffee(coffee);
+coffee = new MilkCoffee(coffee); //coffee + milk
+coffee = new WhiskeyCoffee(coffee); // coffee + milk + whiskey
 ```
 
 ### Facade
@@ -613,16 +613,14 @@ class ComputerFacade {
 Minimize memory and resources by sharing common parts of an object instead of of each object containing all the parts.
 
 ```ts
-class KarakTea{
-
-}
+class KarakTea {}
 
 // Here, we do not store a KarakTea if it is already stored.
 class TeaMaker {
   private availableTea: object;
 
-  make(preferences: string){
-    if(this.availableTea[preferences]){
+  make(preferences: string) {
+    if (this.availableTea[preferences]) {
       return this.availableTea[preferences];
     }
     this.availableTea[preferences] = new KarakTea();
@@ -631,19 +629,19 @@ class TeaMaker {
 }
 
 class TeaShop {
-  private orders : string[];
+  private orders: string[];
   private teaMaker;
 
   constructor(teaMaker: TeaMaker) {
     this.teaMaker = teaMaker;
   }
 
-  takeOrder(string){
+  takeOrder(string) {
     this.orders.push(order);
   }
 
-  serve(){
-    this.orders.forEach(order => this.teaMaker.make(order));
+  serve() {
+    this.orders.forEach((order) => this.teaMaker.make(order));
   }
 }
 ```
@@ -651,36 +649,493 @@ class TeaShop {
 ### Proxy
 
 ```ts
-interface Door{
+interface Door {
   open: () => {};
   close: () => {};
 }
 
 // The proxy
-class Security{
+class Security {
   private door: Door;
 
-  constructor(door: Door){
+  constructor(door: Door) {
     this.door = door;
   }
 
-  authenticate(password: string){
-    return password === "password";
+  authenticate(password: string) {
+    return password === 'password';
   }
 
-  open(password: string){
-    if(this.authenticate(password)) {
+  open(password: string) {
+    if (this.authenticate(password)) {
       return this.door.open();
     }
   }
 
-  close(){
+  close() {
     return this.door.close();
   }
 }
 
 class HomeDoor implements Door {
-  open(){};
-  close(){};
+  open() {}
+  close() {}
+}
+```
+
+## Behavioral patterns
+
+### Observer
+
+When we use event emitters.
+
+https://refactoring.guru/design-patterns/observer
+
+### Iterator
+
+https://refactoring.guru/design-patterns/iterator
+
+### Chain of responsibility
+
+The idea is to request from one object to another till we find the correct object to handle the request.
+
+https://refactoring.guru/design-patterns/chain-of-responsibility
+
+```ts
+class Account {
+  public balance = 0;
+  private successor: Account;
+
+  setNext(account: Account) {
+    this.successor = account;
+  }
+
+  pay(bill: number) {
+    if (this.canPay(bill)) {
+      this.balance -= bill;
+      console.log('success');
+    } else if (this.successor) {
+      this.successor.pay(bill);
+    } else {
+      console.log('not enough money.');
+    }
+  }
+
+  canPay(amount: number) {
+    return this.balance >= account;
+  }
+}
+
+class PayPal extends Account {
+  public balance: number = 0;
+
+  constructor(balance: number) {
+    super();
+    this.balance = balance;
+  }
+}
+
+class BitCoin extends Account {
+  public balance: number = 0;
+
+  constructor(balance: number) {
+    super();
+    this.balance = balance;
+  }
+}
+
+class Bank extends Account {
+  public balance: number = 0;
+
+  constructor(balance: number) {
+    super();
+    this.balance = balance;
+  }
+}
+
+// Using
+
+const bank = new Bank(200);
+const paypal = new PayPal(250);
+const bitcoin = new BitCoin(100);
+
+bank.setNext(paypal);
+paypal.setNext(bitcoint);
+
+bank.pay(200);
+```
+
+### Command
+
+https://refactoring.guru/design-patterns/command
+
+The idea is tu capsulate methods into a object.
+Is usefull when we do something based in transactions. As makes it easy to come back or redo something.
+
+```ts
+const Bulb{
+  turnOn(){
+    console.log("Light");
+  }
+
+  turnOff(){
+    console.log("dark");
+  }
+}
+
+interface Command{
+  execute: (): void;
+  undo: (): void;
+  redo: (): void:
+}
+
+class TurnOn implements Command {
+  private bulb;
+
+  constructor(bulb: Bulb){
+    this.bulb = bulb;
+  }
+
+  execute(){
+    this.bulb.turnOn();
+  }
+
+  redo() {
+    this.execute();
+  }
+
+  undo(){
+    this.bulb.turnOff();
+  }
+}
+
+class TurnOff implements Command {
+  private bulb;
+
+  constructor(bulb: Bulb){
+    this.bulb = bulb;
+  }
+
+  execute(){
+    this.bulb.turnOff();
+  }
+
+  redo() {
+    this.execute();
+  }
+
+  undo(){
+    this.bulb.turnOn();
+  }
+}
+
+class RemoteController {
+  submit(command: Command){
+    command.execute();
+  }
+}
+
+let bulb = new Bulb();
+let remoteController = new RemoteController();
+remoteController.submit(new TurnOff(bulb));
+```
+
+### Mediator
+
+https://refactoring.guru/design-patterns/mediator
+Help objects to handle each other.
+
+```ts
+interface ChatRoomMediator {
+  showMessage(user: User, message: string);
+}
+class ChatRoom implements ChatRoomMediator{
+  showMessage(user: User, message:string){
+    let time = Date.now().toLocalString();
+    let sender = user.getName();
+
+    console.log(`[${sender}] [${time}] [${message}]`)
+  }
+}
+class User{
+  private name: string;
+  private chatMediator: ChatRoomMediator;
+
+  constructor(name: string, chatMediator: ChatMediator){
+    this.name = name;
+    this.mediator = mediator;
+  }
+
+  getName(): string{
+    return this.name;
+  }
+
+  sendMessage(message:string){
+    this.chatMediator.showMessage(this, message);
+  }
+}
+
+// Using it
+
+cont mediator = new ChatRoom();
+const john = new User("John", mediator);
+const anna = new User("Anna", mediator);
+
+john.sendMessage("hi");
+```
+
+### Momento
+
+https://refactoring.guru/design-patterns/memento
+
+Help to save some state to come back later.
+
+```ts
+class EditorMomento {
+  private content: string;
+  constructor(context: string) {
+    this.content = content;
+  }
+
+  getContent() {
+    return this.content;
+  }
+}
+
+class Editor {
+  private content: string;
+
+  type(text: string) {
+    this.content += text;
+  }
+
+  getContent() {
+    return this.content;
+  }
+
+  save() {
+    return new EditorMomento(this.content);
+  }
+
+  restore(momento: EditorMomento) {
+    this.content = momento.getContent();
+  }
+}
+
+// Usign it
+
+const editor = new Editor();
+editor.type('saved info');
+const momento = editor.save();
+editor.type('we will remove this');
+editor.restore(momento);
+```
+
+### Visitor
+
+https://refactoring.guru/design-patterns/visitor
+Help us to make prepare everything to add more behavioraviour in the future.
+
+```ts
+interface Animal{
+  accept(operation: AnimalOperation);
+}
+
+interface AnimalOperation{
+  visitMonkey(money: Monkey);
+  visitLion(lion: Lion);
+  visitDolphin(dolphin: Dolphin);
+}
+
+class Monkey implements Animal {
+  accept(operation: AnimalOperation){
+    operation.visitMonkey(this);
+    operation.jumpMonkey(this);
+  }
+}
+
+class Lion implements Animal {
+  operation.visitLion(this);
+}
+
+class Dolphin implements Animal {
+  operation.visitLion(this);
+}
+
+// Lets create some operations
+
+class Speak implements AnimalOperation {
+  visitMonkey(monkey: Monkey){
+    console.log("ooh oo oaoa");
+  }
+  visitLion(lion: Lion){
+    console.log("Roarrr");
+  }
+  visitDolphin(dolphin: Dolphin){
+    console.log("tuu tuu tuu");
+  }
+}
+
+class Jump implement AnimalOperation {
+  jumpMonkey(monkey: Monkey){
+    console.log("jumping");
+  }
+}
+
+// We can create new operations like jump, etc
+const monkey = new Monkey();
+const lion = new Lion();
+const dolphin = new Dolphin();
+
+const speak = new Speak();
+const jump = new Jump();
+
+monkey.accept(speak);
+monkey.accept(jump);
+```
+
+### Strategy
+
+We have some type of behavior and we want to change them dynamically.
+
+https://refactoring.guru/design-patterns/strategy
+
+```ts
+interface SortStrategy {
+  sort(array: number[]): number[];
+}
+
+class BubbleSortStrategy implements SortStrategy {
+  sort(array: number[]): number[] {
+    // sort array
+    return array;
+  }
+}
+
+class QuickSortStrategy implements SortStrategy {
+  sort(array: number[]): number[] {
+    // sort array
+    return array;
+  }
+}
+
+class Sorter {
+  private sorter: SortStrategy;
+  constructor(sorter: SortStrategy) {
+    this.sorter = sorter;
+  }
+  sort(array: number[]) {
+    return this.sorter(array);
+  }
+}
+```
+
+### State
+
+https://refactoring.guru/design-patterns/state
+Change behavior of the class depending on the current state.
+
+```ts
+interface WritingState {
+  write(words: string);
+}
+
+class UpperCase implements WritingState {
+  write(words: string) {
+    console.log(words.toLocalUpperCase());
+  }
+}
+
+class LowerCase implements WritingState {
+  write(words: string) {
+    console.log(words.toLocalLowerCase());
+  }
+}
+
+class Default implements WritingState {
+  write(words: string) {
+    console.log(words);
+  }
+}
+
+class TextEditor {
+  private state: WritingState;
+
+  constructor(state: WritingState) {
+    this.state = state;
+  }
+
+  type(words: string) {
+    this.state.write(words);
+  }
+
+  setState(state: WritingState) {
+    this.state = state;
+  }
+}
+
+// Using
+
+let editor = new TextEditor(new Default());
+
+editor1.setState(new UpperCase());
+editor1.type('Second Line');
+editor1.setState(new LowerCase());
+editor1.type('He he');
+```
+
+### Template
+
+https://sourcemaking.com/design_patterns/template_method
+
+```ts
+class Builder {
+  test() {}
+  lint() {}
+  assemble() {}
+  deploy() {}
+
+  build() {
+    this.test();
+    this.lint();
+    this.assemble();
+    this.deploy();
+  }
+}
+
+class AndroidBuilder extends Builder {
+  test() {
+    console.log('Run android tests');
+  }
+
+  lint() {
+    console.log('Android styling code');
+  }
+
+  assemble() {
+    console.log('Run Java assembler');
+  }
+
+  deploy() {
+    console.log('deploy yto PlayMarket');
+  }
+}
+
+class IOSdBuilder extends Builder {
+  test() {
+    console.log('Run ios tests');
+  }
+
+  lint() {
+    console.log('Ios styling code');
+  }
+
+  assemble() {
+    console.log('Run objective-c assembler');
+  }
+
+  deploy() {
+    console.log('deploy yto AppStore');
+  }
 }
 ```
